@@ -1,4 +1,4 @@
-import {useState} from "react"
+import { useState } from "react"
 
 export default function TransliteratorNew() {
 
@@ -7,9 +7,20 @@ export default function TransliteratorNew() {
         setCurrentInput(event.target.value)
     }
 
+    const [history, setHistory] = useState([])
+    // ON SUBMIT FUNCTION
+    // Before activating it, decalte the output
+    // function addTransliterationToHistory() {
+    //     setHistory((prevHistory) => {
+    //         prevHistory.push({input: currentInput, output: currentOutput})
+    //     })
+    //     setCurrentInput("")
+    // }
+
     return (
         <div>
             <h1>Georgian Transliterator NEW</h1>
+
             <form
                 method="get"
             // onSubmit={}
@@ -24,6 +35,7 @@ export default function TransliteratorNew() {
                 />
                 <button>Transliterate!</button>
             </form>
+
             <h2>Results:</h2>
         </div>
     )
