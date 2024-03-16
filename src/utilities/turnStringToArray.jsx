@@ -3,5 +3,5 @@ export default function turnStringToArray (string) {
     for (let i = 0; i < string.length; i++) {
         charArray.push(string[i].toLowerCase());
     }
-    console.log(charArray)
+    return charArray
 }
