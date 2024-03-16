@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import turnStringToArray from "../utilities/turnStringToArray"
+
 {/*
 TO DO's
 – make a transliteration function
@@ -20,6 +22,7 @@ export default function TransliteratorNew() {
 
         // OK, instead of this thing we need a transliteartion function
         setLatestOutput(event.target.value)
+        turnStringToArray(event.target.value)
     }
 
     const [latestOutput, setLatestOutput] = useState("")
