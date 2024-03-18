@@ -43,14 +43,14 @@ export default function TransliteratorNew() {
                     value={currentInput}
                     onChange={handleChange}
                 />
-                <button>Transliterate!</button>
+                <button>Save to history</button>
             </form>
 
             <div className="Output--Window">
                 {latestOutput}
             </div>
 
-            <h2>Results:</h2>
+            <h2>Saved history:</h2>
         </div>
     )
 }

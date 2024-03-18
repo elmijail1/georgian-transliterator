@@ -1,8 +1,12 @@
+// functions
 import turnStringToArray from "./turnStringToArray";
-import transliterateArray from "./transliterateArray";
+import matchChars from "./matchChars";
 
-export default function transliterate (string, dictionary) {
+// data
+import {charsData} from "../data/charsData.js"
+
+export default function transliterate (string) {
     const initialArray = turnStringToArray(string)
-    const finalArray = transliterateArray(initialArray, dictionary)
+    const finalArray = matchChars(initialArray, charsData)
     return finalArray
 }
