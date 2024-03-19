@@ -1,6 +1,6 @@
 // functions
-import turnStringToArray from "./turnStringToArray";
-import matchChars from "./matchChars";
+import turnStringToArray from "./turnStringToArray.js";
+import matchChars from "./matchChars.js";
 
 // data
 import {charsData} from "../data/charsData.js"
