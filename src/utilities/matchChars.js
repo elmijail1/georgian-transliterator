@@ -1,5 +1,3 @@
-import checkIfInDictionary from "./checkIfInDictionary.js";
-
 export default function matchChars(initialArray, dictionary) {
     const finalArray = [] // S1
 

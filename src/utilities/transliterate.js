@@ -6,7 +6,10 @@ import matchChars from "./matchChars.js";
 import {charsData} from "../data/charsData.js"
 
 export default function transliterate (string) {
-    const initialArray = turnStringToArray(string)
-    const finalArray = matchChars(initialArray, charsData)
-    return finalArray
+
+    const initialArray = turnStringToArray(string) // lat string –> lat array
+    const finalArray = matchChars(initialArray, charsData) // lat array -> geo array
+    const finalOutput = finalArray.join("") // geo array –> geo string
+
+    return finalOutput
 }

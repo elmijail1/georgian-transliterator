@@ -4,8 +4,6 @@ import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO's
-– add proper transliteartion logic & parsing to the transliteration function
-instead of that dummy thing with upperCase
 – pass it to the handleChange
 – make a sendToHistory function that works onSubmit
 – make history a 5-item list that erases the fifth item whenever
