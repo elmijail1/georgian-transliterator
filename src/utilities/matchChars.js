@@ -10,9 +10,17 @@ export default function matchChars(initialArray, dictionary) {
         s_Digraphs: "t",
     }
 
+    let latestChar = "" // S4
+
     initialArray.map((char, charIndex) => { // S1; S3 for charIndex
 
+        if (latestChar.length > 1) { // S4
+            latestChar = char;
+            return
+        }
+
         if (!Array.from(dictionary, x => x.lat).includes(char)) { // S2
+            latestChar = char; // S4
             return finalArray.push(char);
         }
 
@@ -28,6 +36,7 @@ export default function matchChars(initialArray, dictionary) {
 
         dictionary.map((entry) => { // S1
             if (entry.lat === char) { // S1
+                latestChar = char; // S4
                 finalArray.push(entry.geo)
             }
         })
@@ -74,7 +83,7 @@ Which translates as "the new array of latin chars doesn't contain the current ch
 just pass the current character further to the finalArray and carry on to the next one.
 .
 .
-- S3. DIGRAPHS HANDLING
+- S3. DIGRAPHS HANDLING – THE INITIAL CHAR
 Digraphs are genuinely evil. Using 2 different characters to represent one sound is irrational
 and stupid but that's what we have to deal with. So after we've checked if the character present
 in the dictionary (i.e. not a special symbol, see S2 for more info) but before we start comparing
@@ -94,12 +103,20 @@ char belongs to and what char follows it. If there's a match, we make the curren
 char = char + particular char.
 .
 .
-- S4. DIGRAPHS HANDLING CLEAN
+- S4. DIGRAPHS HANDLING – THE ULTIMATE CHAR
 The previous step is very important since it lets us match digraphs. But it fails to return a
 clean output that avoids things like "შჰ" for "sh". Here we get შ instead of s which is what
 we'd love since, s is followed by h, and sh = შ. But it also keeps ჰ. This should be avoided
 at all costs and there is a way to do that. We'll need to use a separate variable for that though.
-...
+.
+That variable is latestChar. We use it to store the latest char, i.e. the char that has been
+mapped previously. If we deal with a digraph initial, we assign it to a full digraph. Say, if
+we determine that we have a digraph initial as a current char (s from sh, for example), we
+assign latestChar to "sh".
+.
+To avoid "h" being transliterated too, we look at the latestChar's length. If it's longer than 1
+(digraphs are always longer than 1 character), it's clear that the current letter is the second
+char of the digraph, hence we just skip mapping all together (with return).
 
 
 
