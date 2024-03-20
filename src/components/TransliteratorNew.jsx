@@ -1,13 +1,10 @@
+import { nanoid } from "nanoid"
 import { useState } from "react"
 
 import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO's
-– pass it to the handleChange
-– make a sendToHistory function that works onSubmit
-– make history a 5-item list that erases the fifth item whenever
-the limit has been reached
 – add styling, I'm tired of seeing this squalid barebones thing
 
 */}
@@ -25,13 +22,22 @@ export default function TransliteratorNew() {
 
     const [history, setHistory] = useState([])
 
+    function saveToHistory(event, latItem, geoItem) {
+        event.preventDefault()
+        setHistory(prevHistory => [...prevHistory, {latItem: latItem, geoItem: geoItem}])
+        if (history.length > 4) {
+            history.shift()
+        }
+        setCurrentInput("")
+        setLatestOutput("")
+    }
+
     return (
         <div>
             <h1>Georgian Transliterator NEW</h1>
 
             <form
                 method="get"
-            // onSubmit={}
             >
                 <input
                     type="text"
@@ -41,7 +47,7 @@ export default function TransliteratorNew() {
                     value={currentInput}
                     onChange={handleChange}
                 />
-                <button>Save to history</button>
+                <button onClick={() => saveToHistory(event, currentInput, latestOutput)}>Save to history</button>
             </form>
 
             <div className="Output--Window">
@@ -49,6 +55,17 @@ export default function TransliteratorNew() {
             </div>
 
             <h2>Saved history:</h2>
+            {history &&
+                <ul>
+                    {
+                        history.slice(0).reverse().map((item) => {
+                            return (
+                                <li key={nanoid()}>{item.geoItem} ← {item.latItem}</li>
+                            )
+                        })
+                    }
+                </ul>
+            }
         </div>
     )
 }
