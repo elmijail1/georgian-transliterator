@@ -24,7 +24,7 @@ export default function TransliteratorNew() {
 
     function saveToHistory(event, latItem, geoItem) {
         event.preventDefault()
-        setHistory(prevHistory => [...prevHistory, {latItem: latItem, geoItem: geoItem}])
+        setHistory(prevHistory => [...prevHistory, { latItem: latItem, geoItem: geoItem }])
         if (history.length > 4) {
             history.shift()
         }
@@ -34,25 +34,35 @@ export default function TransliteratorNew() {
 
     return (
         <div>
-            <h1>Georgian Transliterator NEW</h1>
+            <div className="Header">
+                <p className="Header__Title">Georgian Transliterator</p>
+            </div>
 
-            <form
-                method="get"
-            >
-                <input
-                    type="text"
-                    name="currentInput"
-                    id="current-input"
-                    placeholder="Enter Latin text"
-                    value={currentInput}
-                    onChange={handleChange}
-                />
-                <button onClick={() => saveToHistory(event, currentInput, latestOutput)}>Save to history</button>
-            </form>
+            <div className="InputWindow">
+                <p className="InputWindow__Subtitle">From Latin script</p>
+                <form
+                    method="get"
+                >
+                    {/* THINK OF USING TEXTAREA OR DIV INSTEAD OF INPUT
+                    SINCE WE NEED TO CONTROL THE PLACEMENT OF TEXT
+                    INSIDE IT, BUT INPUT WON'T LET US */}
+                    <input
+                        className="InputWindow__Input"
+                        type="text"
+                        name="currentInput"
+                        id="current-input"
+                        placeholder="Enter Latin text"
+                        value={currentInput}
+                        onChange={handleChange}
+                    />
+                    {/* <button onClick={() => saveToHistory(event, currentInput, latestOutput)}>Save to history</button> */}
+                </form>
+            </div>
 
             <div className="Output--Window">
                 {latestOutput}
             </div>
+
 
             <h2>Saved history:</h2>
             {history &&

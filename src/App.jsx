@@ -1,12 +1,10 @@
 import './App.css'
-import TransliteratorNew from "./components/TransliteratorNew"
-import TransliteratorOld from "./components/TransliteratorOld"
+import Transliterator from "./components/Transliterator"
 
 export default function App() {
   return (
     <>
-      <TransliteratorNew />
-      {/* <TransliteratorOld /> */}
+      <Transliterator />
     </>
   )
 }
