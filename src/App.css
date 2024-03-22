@@ -35,15 +35,28 @@
 .InputWindow__Input {
     height: 200px;
     width: 100%;
-    padding: 0 5px;
-    position: relative;
+    padding: 5px;
+    font-size: 1.2rem;
 }
 
 
-
-.Output--Window {
-    margin-top: 1rem;
-    width: 237px;
+/* OUTPUT WINDOW */
+.OutputWindow {
+    margin-top: 2rem;
     border: 1px solid black;
+    width: 100%;
+}
+
+.OutputWindow__Subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.OutputWindow__Display {
+    border: 1px solid black;
+    height: 200px;
+    width: 100%;
     padding: 5px;
+    font-size: 1.2rem;
 }

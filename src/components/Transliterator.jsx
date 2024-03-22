@@ -43,10 +43,7 @@ export default function TransliteratorNew() {
                 <form
                     method="get"
                 >
-                    {/* THINK OF USING TEXTAREA OR DIV INSTEAD OF INPUT
-                    SINCE WE NEED TO CONTROL THE PLACEMENT OF TEXT
-                    INSIDE IT, BUT INPUT WON'T LET US */}
-                    <input
+                    <textarea
                         className="InputWindow__Input"
                         type="text"
                         name="currentInput"
@@ -59,12 +56,14 @@ export default function TransliteratorNew() {
                 </form>
             </div>
 
-            <div className="Output--Window">
-                {latestOutput}
+            <div className="OutputWindow">
+                <p className="OutputWindow__Subtitle">From Latin script</p>
+                <div className="OutputWindow__Display">
+                    {latestOutput}
+                </div>
             </div>
 
-
-            <h2>Saved history:</h2>
+            {/* <h2>Saved history:</h2>
             {history &&
                 <ul>
                     {
@@ -75,7 +74,7 @@ export default function TransliteratorNew() {
                         })
                     }
                 </ul>
-            }
+            } */}
         </div>
     )
 }
