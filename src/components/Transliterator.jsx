@@ -1,16 +1,26 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 
+import { MdContentCopy } from "react-icons/md";
+
 import transliterate from "../utilities/transliterate"
 
 {/*
-TO DO's
-– add styling, I'm tired of seeing this squalid barebones thing
+TO DO'S:
+STYLING
+- 1. add colors and shadows (if necessary)
+- 2. see where you should keep borders and where you should remove them
+- 3. handle text overflow
+- 4. alternative options
+FUNCTIONALITY
+- 1. make copying work
+- 2. handle text overflow
+- 3. alternative options
 
 */}
 
 
-export default function TransliteratorNew() {
+export default function Transliterator() {
 
     const [currentInput, setCurrentInput] = useState("")
     function handleChange(event) {
@@ -57,8 +67,13 @@ export default function TransliteratorNew() {
             </div>
 
             <div className="OutputWindow">
-                <p className="OutputWindow__Subtitle">From Latin script</p>
+                <p className="OutputWindow__Subtitle">To Georgian script</p>
                 <div className="OutputWindow__Display">
+                    {latestOutput &&
+                    <div className="OutputWindow__CopyDiv">
+                        Click to copy
+                        <MdContentCopy className="OutputWindow__CopyIcon"/>
+                        </div>}
                     {latestOutput}
                 </div>
             </div>

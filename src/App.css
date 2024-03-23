@@ -27,7 +27,7 @@
 }
 
 .InputWindow__Subtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
     padding-left: 10px;
 }
@@ -36,7 +36,7 @@
     height: 200px;
     width: 100%;
     padding: 5px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 
@@ -48,15 +48,34 @@
 }
 
 .OutputWindow__Subtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
     padding-left: 10px;
 }
 
 .OutputWindow__Display {
     border: 1px solid black;
-    height: 200px;
     width: 100%;
-    padding: 5px;
+    padding: 5px 5px 40px 5px;
+    max-height: 200px;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.OutputWindow__CopyDiv {
+    position: absolute;
+    bottom: 0.3rem;
+    right: 0.4rem;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
     font-size: 1.2rem;
+    opacity: 0.8;
+    padding: 0.3rem 0.5rem;
+    background-color: rgb(233, 248, 246);
+    border-radius: 13px;
+}
+
+.OutputWindow__CopyIcon {
+    height: 1.4rem;
 }
