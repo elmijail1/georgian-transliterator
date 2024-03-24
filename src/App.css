@@ -74,37 +74,51 @@
 .InputWindow__Subtitle {
     font-size: 1.3rem;
     font-weight: 500;
-    padding-left: 10px;
+    padding-left: 15px;
+    margin: 15px 0 10px 0;
 }
 
 .InputWindow__Input {
     height: 200px;
     width: 100%;
-    padding: 5px 7px 5px 7px;
+    padding: 7px 7px 5px 15px;
     font-size: 1.5rem;
+    border: 1px solid rgba(96, 117, 115, 0.5);
+    border-radius: 5px;
+}
+
+.InputWindow__Input::placeholder {
+    color:rgb(96, 117, 115);
+    opacity: 0.7;
 }
 
 
 /* OUTPUT WINDOW */
 .OutputWindow {
-    margin-top: 2rem;
-    border: 1px solid black;
+    margin-top: 1rem;
     width: 100%;
 }
 
 .OutputWindow__Subtitle {
     font-size: 1.3rem;
     font-weight: 500;
-    padding-left: 10px;
+    padding-left: 15px;
+    margin: 0px 0 10px 0;
 }
 
 .OutputWindow__Display {
-    border: 1px solid black;
+    border: 1px solid rgba(96, 117, 115, 0.5);
+    border-radius: 5px;
     width: 100%;
-    padding: 5px 7px 40px 7px;
+    padding: 7px 7px 42px 15px;
     max-height: 200px;
     font-size: 1.5rem;
     position: relative;
+}
+
+.OuputWindow__PlaceholderText {
+    color:rgb(96, 117, 115);
+    opacity: 0.7;
 }
 
 .OutputWindow__CopyDiv {

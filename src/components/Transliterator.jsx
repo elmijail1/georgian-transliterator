@@ -8,12 +8,12 @@ import transliterate from "../utilities/transliterate"
 {/*
 TO DO'S:
 STYLING
-- 1. add colors and shadows (if necessary)
+- 1. add "Click to clear x" in Input;
 - 2. see where you should keep borders and where you should remove them
 - 3. handle text overflow
 - 4. alternative options
 FUNCTIONALITY
-- 1. make copying work
+- 1. make copying and clearing work
 - 2. handle text overflow
 - 3. alternative options
 
@@ -63,7 +63,7 @@ export default function Transliterator() {
                         type="text"
                         name="currentInput"
                         id="current-input"
-                        placeholder="Enter Latin text"
+                        placeholder="Enter Latin text here..."
                         value={currentInput}
                         onChange={handleChange}
                     />
@@ -79,7 +79,10 @@ export default function Transliterator() {
                             Click to copy
                             <MdContentCopy className="OutputWindow__CopyIcon" />
                         </div>}
-                    {latestOutput}
+                    {latestOutput ? latestOutput :
+                        <span className="OuputWindow__PlaceholderText">
+                            ...to see Georgian text here!
+                        </span>}
                 </div>
             </div>
 
