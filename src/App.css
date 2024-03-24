@@ -1,28 +1,73 @@
 * {
     font-family: "Inter", sans-serif;
     box-sizing: border-box;
+    color: rgb(57, 89, 86);
 }
 
 
 /* HEADER */
 .Header {
-    border: 1px solid black;
+    /* size */
     width: 100%;
     height: 50px;
+    /* arrangement */
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    /* decoration */
+    box-shadow: 2px -5px 20px rgb(215, 215, 215);
+    background-color: rgb(59, 175, 164);
+}
+
+.Header__Logo {
+    /* size */
+    font-size: 1.1rem;
+    font-weight: 400;
+    width: 30px;
+    height: 30px;
+    /* arrangement */
+    position: relative;
+    /* decoration */
+    background-color: white;
+    border-radius: 7px;
+}
+
+.Header__Logo--tlat {
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    font-style: italic;
+    color: rgb(59, 175, 164);
+}
+
+.Header__Logo--slash {
+    position: absolute;
+    top: 1px;
+    right: 5.5px;
+    font-size: 1.2rem;
+    color: rgb(59, 175, 164);
+}
+
+.Header__Logo--tgeo {
+    position: absolute;
+    right: 3px;
+    bottom: 2px;
+    font-style: italic;
+    color: rgb(59, 175, 164);
 }
 
 .Header__Title {
-    font-weight: 400;
-    opacity: 80%;
+    /* size */
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* decoration */
+    color: white;
 }
 
 
 /* INPUT WINDOW */
 .InputWindow {
-    border: 1px solid black;
     width: 100%;
 }
 
@@ -35,7 +80,7 @@
 .InputWindow__Input {
     height: 200px;
     width: 100%;
-    padding: 5px;
+    padding: 5px 7px 5px 7px;
     font-size: 1.5rem;
 }
 
@@ -56,7 +101,7 @@
 .OutputWindow__Display {
     border: 1px solid black;
     width: 100%;
-    padding: 5px 5px 40px 5px;
+    padding: 5px 7px 40px 7px;
     max-height: 200px;
     font-size: 1.5rem;
     position: relative;

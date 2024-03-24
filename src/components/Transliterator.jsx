@@ -45,6 +45,11 @@ export default function Transliterator() {
     return (
         <div>
             <div className="Header">
+                <div className="Header__Logo">
+                    <span className="Header__Logo--tlat">t</span>
+                    <span className="Header__Logo--slash">⃕</span>
+                    <span className="Header__Logo--tgeo">თ</span>
+                </div>
                 <p className="Header__Title">Georgian Transliterator</p>
             </div>
 
@@ -70,9 +75,9 @@ export default function Transliterator() {
                 <p className="OutputWindow__Subtitle">To Georgian script</p>
                 <div className="OutputWindow__Display">
                     {latestOutput &&
-                    <div className="OutputWindow__CopyDiv">
-                        Click to copy
-                        <MdContentCopy className="OutputWindow__CopyIcon"/>
+                        <div className="OutputWindow__CopyDiv">
+                            Click to copy
+                            <MdContentCopy className="OutputWindow__CopyIcon" />
                         </div>}
                     {latestOutput}
                 </div>
