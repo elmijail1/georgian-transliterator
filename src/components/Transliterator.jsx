@@ -1,17 +1,15 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 
-import { MdContentCopy } from "react-icons/md";
+import { MdCancel, MdContentCopy } from "react-icons/md";
 
 import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO'S:
 STYLING
-- 1. add "Click to clear x" in Input;
-- 2. see where you should keep borders and where you should remove them
-- 3. handle text overflow
-- 4. alternative options
+- 1. handle text overflow
+- 2. alternative options
 FUNCTIONALITY
 - 1. make copying and clearing work
 - 2. handle text overflow
@@ -55,20 +53,21 @@ export default function Transliterator() {
 
             <div className="InputWindow">
                 <p className="InputWindow__Subtitle">From Latin script</p>
-                <form
-                    method="get"
-                >
-                    <textarea
-                        className="InputWindow__Input"
-                        type="text"
-                        name="currentInput"
-                        id="current-input"
-                        placeholder="Enter Latin text here..."
-                        value={currentInput}
-                        onChange={handleChange}
-                    />
-                    {/* <button onClick={() => saveToHistory(event, currentInput, latestOutput)}>Save to history</button> */}
-                </form>
+                <textarea
+                    className="InputWindow__Input"
+                    type="text"
+                    name="currentInput"
+                    id="current-input"
+                    placeholder="Enter Latin text here..."
+                    value={currentInput}
+                    onChange={handleChange}
+                />
+                {currentInput &&
+                    <div className="InputWindow__ClearDiv">
+                        Click to clear
+                        <MdCancel className="OutputWindow__CopyIcon" />
+                    </div>
+                }
             </div>
 
             <div className="OutputWindow">
