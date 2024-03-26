@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { MdCancel, MdContentCopy } from "react-icons/md";
 
@@ -25,6 +25,11 @@ export default function Transliterator() {
         setCurrentInput(event.target.value)
         setLatestOutput(transliterate(event.target.value))
     }
+
+    const [counter, setCounter] = useState(currentInput.length)
+    useEffect (() => {
+        setCounter(currentInput.length)
+    }, [currentInput])
 
     const [latestOutput, setLatestOutput] = useState("")
 
@@ -61,7 +66,12 @@ export default function Transliterator() {
                     placeholder="Enter Latin text here..."
                     value={currentInput}
                     onChange={handleChange}
+                    maxLength="500"
                 />
+                <div className="InputWindow__Counter">
+                    {counter > 499 && <p className="InputWindow__Counter--Red">Text limit has been reached</p>}
+                    <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
+                </div>
                 {currentInput &&
                     <div className="InputWindow__ClearDiv">
                         Click to clear
