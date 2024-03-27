@@ -26,21 +26,14 @@ export default function Transliterator() {
         setLatestOutput(transliterate(event.target.value))
     }
 
+    const [latestOutput, setLatestOutput] = useState("")
+
     const [counter, setCounter] = useState(currentInput.length)
-    useEffect (() => {
+    useEffect(() => {
         setCounter(currentInput.length)
     }, [currentInput])
 
-    const [latestOutput, setLatestOutput] = useState("")
-
-    const [history, setHistory] = useState([])
-
-    function saveToHistory(event, latItem, geoItem) {
-        event.preventDefault()
-        setHistory(prevHistory => [...prevHistory, { latItem: latItem, geoItem: geoItem }])
-        if (history.length > 4) {
-            history.shift()
-        }
+    function clearCurrentInput() {
         setCurrentInput("")
         setLatestOutput("")
     }
@@ -73,7 +66,10 @@ export default function Transliterator() {
                     <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
                 </div>
                 {currentInput &&
-                    <div className="InputWindow__ClearDiv">
+                    <div
+                        className="InputWindow__ClearDiv"
+                        onClick={clearCurrentInput}
+                    >
                         Click to clear
                         <MdCancel className="OutputWindow__CopyIcon" />
                     </div>
