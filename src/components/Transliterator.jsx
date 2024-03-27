@@ -38,6 +38,10 @@ export default function Transliterator() {
         setLatestOutput("")
     }
 
+    function copyToClipboardLatestOutput() {
+        navigator.clipboard.writeText(latestOutput)
+    }
+
     return (
         <div>
             <div className="Header">
@@ -80,7 +84,10 @@ export default function Transliterator() {
                 <p className="OutputWindow__Subtitle">To Georgian script</p>
                 <div className="OutputWindow__Display">
                     {latestOutput &&
-                        <div className="OutputWindow__CopyDiv">
+                        <div
+                        className="OutputWindow__CopyDiv"
+                        onClick={copyToClipboardLatestOutput}
+                        >
                             Click to copy
                             <MdContentCopy className="OutputWindow__CopyIcon" />
                         </div>}

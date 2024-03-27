@@ -108,6 +108,10 @@
     border-radius: 13px;
 }
 
+.InputWindow__ClearDiv:active {
+    background-color: rgb(138, 165, 162);
+}
+
 .InputWindow__Counter {
     opacity: 60%;
     margin-top: 0rem;
@@ -167,6 +171,10 @@
     padding: 0.3rem 0.5rem;
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
+}
+
+.OutputWindow__CopyDiv:active {
+    background-color: rgb(138, 165, 162);
 }
 
 .OutputWindow__CopyIcon {
