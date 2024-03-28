@@ -8,6 +8,7 @@ import transliterate from "../utilities/transliterate"
 {/*
 TO DO'S:
 - 1. how to suggest alternative options?
+- 2. how to keep line breaks?
 
 */}
 
