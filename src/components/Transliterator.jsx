@@ -7,13 +7,7 @@ import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO'S:
-STYLING
-- 1. handle text overflow
-- 2. alternative options
-FUNCTIONALITY
-- 1. make copying and clearing work
-- 2. handle text overflow
-- 3. alternative options
+- 1. how to suggest alternative options?
 
 */}
 
@@ -83,19 +77,19 @@ export default function Transliterator() {
             <div className="OutputWindow">
                 <p className="OutputWindow__Subtitle">To Georgian script</p>
                 <div className="OutputWindow__Display">
-                    {latestOutput &&
-                        <div
-                        className="OutputWindow__CopyDiv"
-                        onClick={copyToClipboardLatestOutput}
-                        >
-                            Click to copy
-                            <MdContentCopy className="OutputWindow__CopyIcon" />
-                        </div>}
                     {latestOutput ? latestOutput :
                         <span className="OuputWindow__PlaceholderText">
                             ...to see Georgian text here!
                         </span>}
                 </div>
+                {latestOutput &&
+                    <div
+                        className="OutputWindow__CopyDiv"
+                        onClick={copyToClipboardLatestOutput}
+                    >
+                        Click to copy
+                        <MdContentCopy className="OutputWindow__CopyIcon" />
+                    </div>}
             </div>
 
             {/* <h2>Saved history:</h2>

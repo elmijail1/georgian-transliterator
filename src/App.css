@@ -82,7 +82,7 @@
 .InputWindow__Input {
     height: 200px;
     width: 100%;
-    padding: 7px 7px 5px 15px;
+    padding: 7px 7px 42px 15px;
     font-size: 1.5rem;
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
@@ -135,6 +135,7 @@
 .OutputWindow {
     margin-top: 1rem;
     width: 100%;
+    position: relative;
 }
 
 .OutputWindow__Subtitle {
@@ -152,6 +153,7 @@
     max-height: 200px;
     font-size: 1.5rem;
     position: relative;
+    overflow: scroll;
 }
 
 .OuputWindow__PlaceholderText {
