@@ -87,6 +87,7 @@
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     margin-bottom: 0;
+    white-space:;
 }
 
 .InputWindow__Input::placeholder {
@@ -154,6 +155,8 @@
     font-size: 1.5rem;
     position: relative;
     overflow: scroll;
+    /* this single line below solves the linebreak issue for OutputWindow */
+    white-space: pre;
 }
 
 .OuputWindow__PlaceholderText {
