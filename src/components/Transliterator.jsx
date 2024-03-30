@@ -7,9 +7,9 @@ import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO'S:
-- 1. how to suggest alternative options?
-- 2. how to keep line breaks?
-
+- 1. Create a function that maps letters with different colors
+- 2. Add an on-hover div that says what the issue with that letter is
+- 3. Can we add a way to change those letters via that on-hover?
 */}
 
 
@@ -34,8 +34,24 @@ export default function Transliterator() {
     }
 
     function copyToClipboardLatestOutput() {
-        navigator.clipboard.writeText(latestOutput)
+        navigator.clipboard.writeText(latestOutput.join(""))
     }
+
+    function mapOutput() {
+        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც"]
+        if (alternativeOptionsOn) {
+            return latestOutput.map(ch => {
+                if (triggerLetters.includes(ch)) {
+                    return <span className="highlighterLetter" key={nanoid()}>{ch}</span>
+                }
+                return <span key={nanoid()}>{ch}</span>
+            })
+        } else {
+            return latestOutput.join("")
+        }
+    }
+
+    const [alternativeOptionsOn, setAlternativeOptionsOn] = useState(false)
 
     return (
         <div>
@@ -78,7 +94,8 @@ export default function Transliterator() {
             <div className="OutputWindow">
                 <p className="OutputWindow__Subtitle">To Georgian script</p>
                 <div className="OutputWindow__Display">
-                    {latestOutput ? latestOutput :
+                    {latestOutput ?
+                        mapOutput() :
                         <span className="OuputWindow__PlaceholderText">
                             ...to see Georgian text here!
                         </span>}
@@ -93,18 +110,18 @@ export default function Transliterator() {
                     </div>}
             </div>
 
-            {/* <h2>Saved history:</h2>
-            {history &&
-                <ul>
-                    {
-                        history.slice(0).reverse().map((item) => {
-                            return (
-                                <li key={nanoid()}>{item.geoItem} ← {item.latItem}</li>
-                            )
-                        })
-                    }
-                </ul>
-            } */}
+            <div className="ExtraTools">
+                <p className="ExtraTools__Subtitle">Extra Tools</p>
+                <div className="ExtraTools__Buttons">
+                    <button
+                        className="ExtraTools__Button"
+                        onClick={() => setAlternativeOptionsOn(prevState => !prevState)}
+                    >
+                        {alternativeOptionsOn ? "Hide" : "Show"} alternative options for letters
+                    </button>
+                    {/* <div>Add translation</div> */}
+                </div>
+            </div>
         </div>
     )
 }
