@@ -23,6 +23,8 @@ TO DO'S:
 – IV. OPTIMIZING FOR OTHER VIEWPORTS
 – IV.1. See what other viewports are popular and optimize both layouts for them
 .
+- - THIS IS WHERE I CAN SEND IT LIVE: see what free options there are (Netlify?) - -
+.
 – V. TRANSLATOR
 – V.1. Can we use an API to get translation from Google Translate? Do it.
 - V.2. If 1 is true, can we add translator as a separate page? Do it.
