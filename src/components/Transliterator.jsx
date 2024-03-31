@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid"
 import { useState, useEffect } from "react"
 
-import { MdCancel, MdContentCopy } from "react-icons/md";
+import { MdCancel, MdContentCopy, MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
 import transliterate from "../utilities/transliterate"
 
@@ -113,12 +113,28 @@ export default function Transliterator() {
             <div className="ExtraTools">
                 <p className="ExtraTools__Subtitle">Extra Tools</p>
                 <div className="ExtraTools__Buttons">
-                    <button
-                        className="ExtraTools__Button"
-                        onClick={() => setAlternativeOptionsOn(prevState => !prevState)}
-                    >
-                        {alternativeOptionsOn ? "Hide" : "Show"} alternative options for letters
-                    </button>
+                    <div className="ExtraTools__AlternativeOptionsBox">
+                        <button
+                            className={`ExtraTools__Button ${alternativeOptionsOn ? "ExtraTools__Button--On" : ""}`}
+                            onClick={() => setAlternativeOptionsOn(prevState => !prevState)}
+                        >
+                            <div>
+                                {alternativeOptionsOn
+                                    ? <MdLightbulb id="LightBulb--On" />
+                                    : <MdLightbulbOutline />
+                                }
+                            </div>
+                            <p>
+                                {alternativeOptionsOn ? "Hide" : "Show"} alternative options for letters
+                            </p>
+                        </button>
+                        <div className="ExtraTools__Info">
+                            Hover over highlighted buttons to see how else they can be transliterated.
+                            Learn more about why it's important&nbsp;
+                            <a className="ExtraTools__Info--Link">here</a>.
+                        </div>
+                    </div>
+
                     {/* <div>Add translation</div> */}
                 </div>
             </div>

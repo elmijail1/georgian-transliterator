@@ -87,7 +87,7 @@
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     margin-bottom: 0;
-    white-space:;
+    white-space: ;
 }
 
 .InputWindow__Input::placeholder {
@@ -119,7 +119,6 @@
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
-    cursor: pointer;
 }
 
 .InputWindow__Counter p {
@@ -156,7 +155,7 @@
     position: relative;
     overflow: scroll;
     /* this single line below solves the linebreak issue for OutputWindow */
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 .OuputWindow__PlaceholderText {
@@ -203,14 +202,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 0.4rem;
+}
+
+.ExtraTools__AlternativeOptionsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .ExtraTools__Button {
-    /* display: flex; */
-    /* gap: 0.2rem; */
-    /* align-items: center; */
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
     font-size: 1.2rem;
-    width: 90%;
+    /* width: 90%; */
     opacity: 0.8;
     padding: 0.5rem 1rem;
     background-color: rgb(233, 248, 246);
@@ -219,8 +225,39 @@
     text-align: left;
 }
 
+.ExtraTools__Button--On {
+    background-color: rgb(57, 89, 86);
+}
+
+.ExtraTools__Button p {
+    margin: 0;
+}
+
+.ExtraTools__Button div {
+    font-size: 1.8rem;
+}
+
+.ExtraTools__Button--On p {
+    color: rgb(233, 248, 246);
+}
+
+#LightBulb--On {
+    fill: rgb(233, 248, 246);
+}
+
+.ExtraTools__Info {
+    color: rgba(57, 89, 86, 0.6);
+}
+
+.ExtraTools__Info--Link {
+    color: rgb(57, 89, 86, 0.8);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.1rem;
+}
+
 
 /* MISCELLANEOUS */
 .highlighterLetter {
-    background-color: rgb(233, 248, 246);;
+    background-color: rgb(198, 245, 238);
 }
