@@ -7,9 +7,27 @@ import transliterate from "../utilities/transliterate"
 
 {/*
 TO DO'S:
-- 1. Create a function that maps letters with different colors
-- 2. Add an on-hover div that says what the issue with that letter is
-- 3. Can we add a way to change those letters via that on-hover?
+– I. ALTERNATIVE OPTIONS
+- I.1. Add on-hover info for highlighted letters
+- I.2. Can we make that on-hover interactive so that we could change letters via it?
+- I.3. Add description of the issue with letter options as a separate page (Knowledge)
+- I.4. Add link to it to the header
+.
+– II. RUSSIAN LANGUAGE SUPPORT
+- II.1. Add a togler that would change Eng text to Russian
+- II.2. Add the Russian version of most texts
+.
+- III. DESKTOP LAYOUT
+- III.1. See what is the most common desktop layout and work on designing it
+.
+– IV. OPTIMIZING FOR OTHER VIEWPORTS
+– IV.1. See what other viewports are popular and optimize both layouts for them
+.
+– V. TRANSLATOR
+– V.1. Can we use an API to get translation from Google Translate? Do it.
+- V.2. If 1 is true, can we add translator as a separate page? Do it.
+- V.3. If 2 is true, can we add translator to the same page? Do it.
+- V.4. If 3 is true, can we rearrange our layout to make it all work well? Do it.
 */}
 
 
