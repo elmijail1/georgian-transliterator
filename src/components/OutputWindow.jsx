@@ -8,7 +8,11 @@ export default function OutputWindow({value, mapOutput, copyToClipboardLatestOut
 
     return (
         <div className="OutputWindow">
+
+            {/* Header */}
             <p className="OutputWindow__Subtitle">To Georgian script</p>
+
+            {/* Output Display Div */}
             <div className="OutputWindow__Display">
                 {value ?
                     mapOutput() :
@@ -16,6 +20,8 @@ export default function OutputWindow({value, mapOutput, copyToClipboardLatestOut
                         ...to see Georgian text here!
                     </span>}
             </div>
+
+            {/* Copy Button */}
             {value &&
                 <div
                     className="OutputWindow__CopyDiv"
@@ -24,6 +30,7 @@ export default function OutputWindow({value, mapOutput, copyToClipboardLatestOut
                     Click to copy
                     <MdContentCopy className="OutputWindow__CopyIcon" />
                 </div>}
+                
         </div>
     )
 }
