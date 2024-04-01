@@ -2,9 +2,11 @@ import { nanoid } from "nanoid"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-import { MdCancel, MdContentCopy, MdLightbulb, MdLightbulbOutline } from "react-icons/md";
+import { MdContentCopy, MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
 import transliterate from "../utilities/transliterate"
+
+import InputWindow from "../components/InputWindow"
 
 {/*
 TO DO'S:
@@ -39,15 +41,11 @@ export default function Transliterator() {
     const [currentInput, setCurrentInput] = useState("")
     function handleChange(event) {
         setCurrentInput(event.target.value)
+        console.log("sos")
         setLatestOutput(transliterate(event.target.value))
     }
 
     const [latestOutput, setLatestOutput] = useState("")
-
-    const [counter, setCounter] = useState(currentInput.length)
-    useEffect(() => {
-        setCounter(currentInput.length)
-    }, [currentInput])
 
     function clearCurrentInput() {
         setCurrentInput("")
@@ -76,32 +74,11 @@ export default function Transliterator() {
 
     return (
         <div>
-            <div className="InputWindow">
-                <p className="InputWindow__Subtitle">From Latin script</p>
-                <textarea
-                    className="InputWindow__Input"
-                    type="text"
-                    name="currentInput"
-                    id="current-input"
-                    placeholder="Enter Latin text here..."
-                    value={currentInput}
-                    onChange={handleChange}
-                    maxLength="500"
-                />
-                <div className="InputWindow__Counter">
-                    {counter > 499 && <p className="InputWindow__Counter--Red">Text limit has been reached</p>}
-                    <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
-                </div>
-                {currentInput &&
-                    <div
-                        className="InputWindow__ClearDiv"
-                        onClick={clearCurrentInput}
-                    >
-                        Click to clear
-                        <MdCancel className="OutputWindow__CopyIcon" />
-                    </div>
-                }
-            </div>
+            <InputWindow
+                value={currentInput}
+                onChange={handleChange}
+                clearCurrentInput={clearCurrentInput}
+            />
 
             <div className="OutputWindow">
                 <p className="OutputWindow__Subtitle">To Georgian script</p>
@@ -152,8 +129,7 @@ export default function Transliterator() {
                             .
                         </div>
                     </div>
-
-                    {/* <div>Add translation</div> */}
+                    
                 </div>
             </div>
         </div>
