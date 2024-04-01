@@ -59,7 +59,7 @@ export default function Transliterator() {
     }
 
     function mapOutput() {
-        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც"]
+        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
         if (alternativeOptionsOn) {
             return latestOutput.map(ch => {
                 if (triggerLetters.includes(ch)) {
