@@ -1,13 +1,11 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
-import { Link } from "react-router-dom"
-
-import { MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
 import transliterate from "../utilities/transliterate"
 
 import InputWindow from "../components/InputWindow"
 import OutputWindow from "../components/OutputWindow"
+import ExtraTools from "../components/ExtraTools"
 
 {/*
 TO DO'S:
@@ -81,39 +79,11 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            <div className="ExtraTools">
-                <p className="ExtraTools__Subtitle">Extra Tools</p>
-                <div className="ExtraTools__Buttons">
-                    <div className="ExtraTools__AlternativeOptionsBox">
-                        <button
-                            className={`ExtraTools__Button ${alternativeOptionsOn ? "ExtraTools__Button--On" : ""}`}
-                            onClick={() => setAlternativeOptionsOn(prevState => !prevState)}
-                        >
-                            <div>
-                                {alternativeOptionsOn
-                                    ? <MdLightbulb id="LightBulb--On" />
-                                    : <MdLightbulbOutline />
-                                }
-                            </div>
-                            <p>
-                                {alternativeOptionsOn ? "Hide" : "Show"} alternative options for letters
-                            </p>
-                        </button>
-                        <div className="ExtraTools__Info">
-                            Hover over highlighted buttons to see how else they can be transliterated.
-                            Learn more about why it's important&nbsp;
-                            <Link
-                                to="/knowledge"
-                                className="ExtraTools__Info--Link"
-                            >
-                                here
-                            </Link>
-                            .
-                        </div>
-                    </div>
+            <ExtraTools
+                alternativeOptionsOn={alternativeOptionsOn}
+                setAlternativeOptionsOn={setAlternativeOptionsOn}
+            />
 
-                </div>
-            </div>
         </div>
     )
 }
