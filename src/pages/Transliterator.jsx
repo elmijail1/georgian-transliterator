@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 import { MdCancel, MdContentCopy, MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
@@ -75,15 +76,6 @@ export default function Transliterator() {
 
     return (
         <div>
-            <div className="Header">
-                <div className="Header__Logo">
-                    <span className="Header__Logo--tlat">t</span>
-                    <span className="Header__Logo--slash">⃕</span>
-                    <span className="Header__Logo--tgeo">თ</span>
-                </div>
-                <p className="Header__Title">Georgian Transliterator</p>
-            </div>
-
             <div className="InputWindow">
                 <p className="InputWindow__Subtitle">From Latin script</p>
                 <textarea
@@ -151,7 +143,13 @@ export default function Transliterator() {
                         <div className="ExtraTools__Info">
                             Hover over highlighted buttons to see how else they can be transliterated.
                             Learn more about why it's important&nbsp;
-                            <a className="ExtraTools__Info--Link">here</a>.
+                            <Link
+                                to="/knowledge"
+                                className="ExtraTools__Info--Link"
+                            >
+                                here
+                            </Link>
+                            .
                         </div>
                     </div>
 
