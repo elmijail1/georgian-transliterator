@@ -1,12 +1,13 @@
 import { nanoid } from "nanoid"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
-import { MdContentCopy, MdLightbulb, MdLightbulbOutline } from "react-icons/md";
+import { MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
 import transliterate from "../utilities/transliterate"
 
 import InputWindow from "../components/InputWindow"
+import OutputWindow from "../components/OutputWindow"
 
 {/*
 TO DO'S:
@@ -41,7 +42,6 @@ export default function Transliterator() {
     const [currentInput, setCurrentInput] = useState("")
     function handleChange(event) {
         setCurrentInput(event.target.value)
-        console.log("sos")
         setLatestOutput(transliterate(event.target.value))
     }
 
@@ -50,10 +50,6 @@ export default function Transliterator() {
     function clearCurrentInput() {
         setCurrentInput("")
         setLatestOutput("")
-    }
-
-    function copyToClipboardLatestOutput() {
-        navigator.clipboard.writeText(latestOutput.join(""))
     }
 
     function mapOutput() {
@@ -80,24 +76,10 @@ export default function Transliterator() {
                 clearCurrentInput={clearCurrentInput}
             />
 
-            <div className="OutputWindow">
-                <p className="OutputWindow__Subtitle">To Georgian script</p>
-                <div className="OutputWindow__Display">
-                    {latestOutput ?
-                        mapOutput() :
-                        <span className="OuputWindow__PlaceholderText">
-                            ...to see Georgian text here!
-                        </span>}
-                </div>
-                {latestOutput &&
-                    <div
-                        className="OutputWindow__CopyDiv"
-                        onClick={copyToClipboardLatestOutput}
-                    >
-                        Click to copy
-                        <MdContentCopy className="OutputWindow__CopyIcon" />
-                    </div>}
-            </div>
+            <OutputWindow
+                value={latestOutput}
+                mapOutput={mapOutput}
+            />
 
             <div className="ExtraTools">
                 <p className="ExtraTools__Subtitle">Extra Tools</p>
@@ -129,7 +111,7 @@ export default function Transliterator() {
                             .
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
