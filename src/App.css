@@ -260,4 +260,23 @@
 /* MISCELLANEOUS */
 .highlighterLetter {
     background-color: rgb(198, 245, 238);
+    position:relative;
+    z-index: 1;
+}
+
+.goko {
+    font-size: 1.1rem;
+}
+
+.AlternativeOptions__CharDisplay {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    gap: 1rem;
+}
+
+.AlternativeOptions__SingleChar {
+    background-color: rgb(233, 248, 246);
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
 }

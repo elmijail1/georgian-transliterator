@@ -50,12 +50,24 @@ export default function Transliterator() {
         setLatestOutput("")
     }
 
+
+    const [goko, setGoko] = useState(false)
+    function showGoko() {
+        setGoko(prevGoko => !prevGoko)
+    }
+
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
         if (alternativeOptionsOn) {
             return latestOutput.map(ch => {
                 if (triggerLetters.includes(ch)) {
-                    return <span className="highlighterLetter" key={nanoid()}>{ch}</span>
+                    return <span
+                        className="highlighterLetter"
+                        key={nanoid()}
+                        onClick={showGoko}
+                    >
+                        {ch}
+                    </span>
                 }
                 return <span key={nanoid()}>{ch}</span>
             })
@@ -78,6 +90,19 @@ export default function Transliterator() {
                 value={latestOutput}
                 mapOutput={mapOutput}
             />
+
+            {goko && <div className="goko">
+                <p className="ExtraTools__Subtitle">Alternative options</p>
+                <p>
+                    Other ways to transliterate this character
+                    (you can click a suggested character to
+                    replace the current one with it)
+                    </p>
+                <div className="AlternativeOptions__CharDisplay">
+                    <div className="AlternativeOptions__SingleChar">ქ</div>
+                    <div className="AlternativeOptions__SingleChar">ყ</div>
+                </div>
+            </div>}
 
             <ExtraTools
                 alternativeOptionsOn={alternativeOptionsOn}
