@@ -256,16 +256,16 @@
     text-underline-offset: 0.1rem;
 }
 
-
-/* MISCELLANEOUS */
-.highlighterLetter {
-    background-color: rgb(198, 245, 238);
-    position:relative;
-    z-index: 1;
+/* ALTERNATIVE OPTIONS */
+.AlternativeOptions__Div {
+    font-size: 1.1rem;
 }
 
-.goko {
-    font-size: 1.1rem;
+.AlternativeOptions__Subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding-left: 15px;
+    margin: 15px 0 10px 0;
 }
 
 .AlternativeOptions__CharDisplay {
@@ -279,4 +279,12 @@
     background-color: rgb(233, 248, 246);
     padding: 0.3rem 0.5rem;
     border-radius: 5px;
+}
+
+
+/* MISCELLANEOUS */
+.highlighterLetter {
+    background-color: rgb(198, 245, 238);
+    position:relative;
+    z-index: 1;
 }

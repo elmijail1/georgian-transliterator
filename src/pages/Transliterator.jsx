@@ -51,20 +51,20 @@ export default function Transliterator() {
     }
 
 
-    const [goko, setGoko] = useState(false)
-    function showGoko() {
-        setGoko(prevGoko => !prevGoko)
+    const [alternativeOptions, setAlternativeOptions] = useState(false)
+    function showAlternativeOptions() {
+        setAlternativeOptions(prevGoko => !prevGoko)
     }
 
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
-        if (alternativeOptionsOn) {
+        if (optionsDisplay) {
             return latestOutput.map(ch => {
                 if (triggerLetters.includes(ch)) {
                     return <span
                         className="highlighterLetter"
                         key={nanoid()}
-                        onClick={showGoko}
+                        onClick={showAlternativeOptions}
                     >
                         {ch}
                     </span>
@@ -76,7 +76,7 @@ export default function Transliterator() {
         }
     }
 
-    const [alternativeOptionsOn, setAlternativeOptionsOn] = useState(false)
+    const [optionsDisplay, setOptionsDisplay] = useState(false)
 
     return (
         <div>
@@ -91,8 +91,8 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            {goko && <div className="goko">
-                <p className="ExtraTools__Subtitle">Alternative options</p>
+            {alternativeOptions && <div className="AlternativeOptions__Div">
+                <p className="AlternativeOptions__Subtitle">Alternative options</p>
                 <p>
                     Other ways to transliterate this character
                     (you can click a suggested character to
@@ -105,8 +105,8 @@ export default function Transliterator() {
             </div>}
 
             <ExtraTools
-                alternativeOptionsOn={alternativeOptionsOn}
-                setAlternativeOptionsOn={setAlternativeOptionsOn}
+                optionsDisplay={optionsDisplay}
+                setOptionsDisplay={setOptionsDisplay}
             />
 
         </div>
