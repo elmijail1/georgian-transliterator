@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 
+import { charsData } from "../data/charsData"
+
 import transliterate from "../utilities/transliterate"
 
 import InputWindow from "../components/InputWindow"
@@ -51,9 +53,10 @@ export default function Transliterator() {
     }
 
 
-    const [alternativeOptions, setAlternativeOptions] = useState(false)
-    function showAlternativeOptions() {
-        setAlternativeOptions(prevGoko => !prevGoko)
+    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "" })
+    function showAlternativeOptions(ch) {
+        setAlternativeOptions({shown: true, char: ch})
+        
     }
 
     function mapOutput() {
@@ -64,7 +67,7 @@ export default function Transliterator() {
                     return <span
                         className="highlighterLetter"
                         key={nanoid()}
-                        onClick={showAlternativeOptions}
+                        onClick={() => showAlternativeOptions(ch)}
                     >
                         {ch}
                     </span>
@@ -91,16 +94,26 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            {alternativeOptions && <div className="AlternativeOptions__Div">
+            {alternativeOptions.shown && <div className="AlternativeOptions__Div">
                 <p className="AlternativeOptions__Subtitle">Alternative options</p>
                 <p>
                     Other ways to transliterate this character
                     (you can click a suggested character to
                     replace the current one with it)
-                    </p>
+                </p>
                 <div className="AlternativeOptions__CharDisplay">
-                    <div className="AlternativeOptions__SingleChar">ქ</div>
-                    <div className="AlternativeOptions__SingleChar">ყ</div>
+                    {
+                        charsData.filter((char) => char.lat === "t")[0].options.map((char) => {
+                            return (
+                                <div
+                                    className="AlternativeOptions__SingleChar"
+                                    key={nanoid()}
+                                >
+                                    {char}
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>}
 
