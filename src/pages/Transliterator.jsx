@@ -39,10 +39,12 @@ TO DO'S:
 
 export default function Transliterator() {
 
+    const [optionfulChars, setOptionfulChars] = useState([])
+
     const [currentInput, setCurrentInput] = useState("")
     function handleChange(event) {
         setCurrentInput(event.target.value)
-        setLatestOutput(transliterate(event.target.value))
+        setLatestOutput(transliterate(event.target.value, setOptionfulChars))
     }
 
     const [latestOutput, setLatestOutput] = useState("")
@@ -56,8 +58,32 @@ export default function Transliterator() {
     const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "" })
     function showAlternativeOptions(ch) {
         setAlternativeOptions({shown: true, char: ch})
-        
+        setOptionfulChars(prevChars => {
+            return prevChars.map(entry => {
+                if (entry.geo === ch) {
+                    return {...entry, optionsShown: !entry.optionsShown}
+                } else {
+                    return entry
+                }
+            })
+        })
     }
+
+    function checkIfAnyCharHasOptionsShown() {
+        let shownCounter = 0
+        optionfulChars.map(entry => {
+            if (entry.optionsShown) {
+                shownCounter++
+            }
+        })
+        if (shownCounter > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    console.log(optionfulChars, checkIfAnyCharHasOptionsShown())
 
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
@@ -71,8 +97,9 @@ export default function Transliterator() {
                     >
                         {ch}
                     </span>
+                } else {           
+                    return <span key={nanoid()}>{ch}</span>
                 }
-                return <span key={nanoid()}>{ch}</span>
             })
         } else {
             return latestOutput.join("")
@@ -94,7 +121,7 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            {alternativeOptions.shown && <div className="AlternativeOptions__Div">
+            {checkIfAnyCharHasOptionsShown() && <div className="AlternativeOptions__Div">
                 <p className="AlternativeOptions__Subtitle">Alternative options</p>
                 <p>
                     Other ways to transliterate this character
