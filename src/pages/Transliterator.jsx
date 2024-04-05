@@ -53,9 +53,15 @@ export default function Transliterator() {
     }
 
 
-    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "", initLat: ""})
-    function showAlternativeOptions(geoChar, latInit) {
-        setAlternativeOptions({shown: true, geoChar: geoChar, latInit: latInit})
+    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "", initLat: "", index: null })
+    function showAlternativeOptions(geoChar, latInit, index) {
+        // the first condition closes the alternative options upon a second click on the same char
+        if (alternativeOptions.shown && alternativeOptions.index === index) {
+            setAlternativeOptions(prevOptions => ({ ...alternativeOptions, shown: false }))
+        // this condition shows alternative options the regular way upon the first click on a char
+        } else {
+            setAlternativeOptions({ shown: true, geoChar: geoChar, latInit: latInit, index: index })
+        }
     }
 
     console.log(latestOutput)
@@ -63,16 +69,16 @@ export default function Transliterator() {
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"] // change to match latInit, not geoChar, cause that's what matters
         if (optionsDisplay) {
-            return latestOutput.map(entry => {
+            return latestOutput.map((entry, index) => {
                 if (triggerLetters.includes(entry.geoChar)) {
                     return <span
                         className="highlighterLetter"
                         key={nanoid()}
-                        onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit)}
+                        onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit, index)}
                     >
                         {entry.geoChar}
                     </span>
-                } else {           
+                } else {
                     return <span key={nanoid()}>{entry.geoChar}</span>
                 }
             })
