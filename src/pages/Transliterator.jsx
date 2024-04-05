@@ -39,12 +39,10 @@ TO DO'S:
 
 export default function Transliterator() {
 
-    const [optionfulChars, setOptionfulChars] = useState([])
-
     const [currentInput, setCurrentInput] = useState("")
     function handleChange(event) {
         setCurrentInput(event.target.value)
-        setLatestOutput(transliterate(event.target.value, setOptionfulChars))
+        setLatestOutput(transliterate(event.target.value))
     }
 
     const [latestOutput, setLatestOutput] = useState("")
@@ -58,32 +56,7 @@ export default function Transliterator() {
     const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "" })
     function showAlternativeOptions(ch) {
         setAlternativeOptions({shown: true, char: ch})
-        setOptionfulChars(prevChars => {
-            return prevChars.map(entry => {
-                if (entry.geo === ch) {
-                    return {...entry, optionsShown: !entry.optionsShown}
-                } else {
-                    return entry
-                }
-            })
-        })
     }
-
-    function checkIfAnyCharHasOptionsShown() {
-        let shownCounter = 0
-        optionfulChars.map(entry => {
-            if (entry.optionsShown) {
-                shownCounter++
-            }
-        })
-        if (shownCounter > 0) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    console.log(optionfulChars, checkIfAnyCharHasOptionsShown())
 
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
@@ -107,6 +80,9 @@ export default function Transliterator() {
     }
 
     const [optionsDisplay, setOptionsDisplay] = useState(false)
+    // this thing activates when a button (the only button so far)
+    // has been clicked in the Extra Options component. It's used
+    // to highlight characters.
 
     return (
         <div>
@@ -121,7 +97,7 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            {checkIfAnyCharHasOptionsShown() && <div className="AlternativeOptions__Div">
+            {alternativeOptions.shown && <div className="AlternativeOptions__Div">
                 <p className="AlternativeOptions__Subtitle">Alternative options</p>
                 <p>
                     Other ways to transliterate this character

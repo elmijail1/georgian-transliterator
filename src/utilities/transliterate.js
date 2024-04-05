@@ -5,10 +5,10 @@ import matchChars from "./matchChars.js";
 // data
 import {charsData} from "../data/charsData.js"
 
-export default function transliterate (string, setOptionfulChars) {
+export default function transliterate (string) {
 
     const initialArray = turnStringToArray(string) // lat string –> lat array
-    const finalArray = matchChars(initialArray, charsData, setOptionfulChars) // lat array -> geo array
+    const finalArray = matchChars(initialArray, charsData) // lat array -> geo array
     
     return finalArray
 }

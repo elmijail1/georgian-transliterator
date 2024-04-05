@@ -1,4 +1,4 @@
-export default function matchChars(initialArray, dictionary, setOptionfulChars) {
+export default function matchChars(initialArray, dictionary) {
     const finalArray = [] // S1
 
     const digraphs = { // S3
@@ -11,10 +11,6 @@ export default function matchChars(initialArray, dictionary, setOptionfulChars) 
     let latestChar = "" // S4
 
     initialArray.map((char, charIndex) => { // S1; S3 for charIndex
-
-        if (charIndex === 0) {
-            setOptionfulChars([])
-        }
 
         if (latestChar.length > 1) { // S4
             latestChar = char;
@@ -40,7 +36,6 @@ export default function matchChars(initialArray, dictionary, setOptionfulChars) 
             if (entry.lat === char) { // S1
                 latestChar = char; // S4
                 finalArray.push(entry.geo)
-                setOptionfulChars(prevOptionsChar => [...prevOptionsChar, {lat: char, geo: entry.geo, optionsShown: false}]) // S5
             }
         })
     })
@@ -120,17 +115,4 @@ assign latestChar to "sh".
 To avoid "h" being transliterated too, we look at the latestChar's length. If it's longer than 1
 (digraphs are always longer than 1 character), it's clear that the current letter is the second
 char of the digraph, hence we just skip mapping all together (with return).
-.
-.
-– S5. OPTIONFUL CHARS (LATER DEVELOPMENT)
-This setter and the related states are used for alternative options for those characters that
-actually have them. At this stage – during transliteration – we need to save all our pairs of
-characters to an array in a form of 3-property objects: lat, geo, optionsShown.
-.
-The lat property will be used to see which latin character(s) was / were first input. That will
-show whether the input was ambiguous: say, "n" can't be ambiguous and can only mean ნ, while "t"
-can mean both "თ" and "ტ".
-.
-The geo prop will be used for matching and optionsShown will be used for displaying the related
-section "Alternative Options".
 */}
