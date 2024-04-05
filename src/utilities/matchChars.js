@@ -19,7 +19,7 @@ export default function matchChars(initialArray, dictionary) {
 
         if (!Array.from(dictionary, x => x.lat).includes(char)) { // S2
             latestChar = char; // S4
-            return finalArray.push(char);
+            return finalArray.push({geoChar: char, latInit: char});
         }
 
         if (digraphs.total.includes(char)) { // S3
@@ -35,7 +35,7 @@ export default function matchChars(initialArray, dictionary) {
         dictionary.map((entry) => { // S1
             if (entry.lat === char) { // S1
                 latestChar = char; // S4
-                finalArray.push(entry.geo)
+                finalArray.push({geoChar: entry.geo, latInit: char})
             }
         })
     })

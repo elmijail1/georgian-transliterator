@@ -53,29 +53,35 @@ export default function Transliterator() {
     }
 
 
-    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "" })
-    function showAlternativeOptions(ch) {
-        setAlternativeOptions({shown: true, char: ch})
+    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "", initLat: ""})
+    function showAlternativeOptions(geoChar, latInit) {
+        setAlternativeOptions({shown: true, geoChar: geoChar, latInit: latInit})
     }
 
+    console.log(latestOutput)
+
     function mapOutput() {
-        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"]
+        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"] // change to match latInit, not geoChar, cause that's what matters
         if (optionsDisplay) {
-            return latestOutput.map(ch => {
-                if (triggerLetters.includes(ch)) {
+            return latestOutput.map(entry => {
+                if (triggerLetters.includes(entry.geoChar)) {
                     return <span
                         className="highlighterLetter"
                         key={nanoid()}
-                        onClick={() => showAlternativeOptions(ch)}
+                        onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit)}
                     >
-                        {ch}
+                        {entry.geoChar}
                     </span>
                 } else {           
-                    return <span key={nanoid()}>{ch}</span>
+                    return <span key={nanoid()}>{entry.geoChar}</span>
                 }
             })
         } else {
-            return latestOutput.join("")
+            const outputArray = []
+            latestOutput.map(entry => {
+                outputArray.push(entry.geoChar)
+            })
+            return outputArray.join("")
         }
     }
 
@@ -106,7 +112,7 @@ export default function Transliterator() {
                 </p>
                 <div className="AlternativeOptions__CharDisplay">
                     {
-                        charsData.filter((char) => char.lat === "t")[0].options.map((char) => {
+                        charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
                             return (
                                 <div
                                     className="AlternativeOptions__SingleChar"
