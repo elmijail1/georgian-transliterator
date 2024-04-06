@@ -57,14 +57,12 @@ export default function Transliterator() {
     function showAlternativeOptions(geoChar, latInit, index) {
         // the first condition closes the alternative options upon a second click on the same char
         if (alternativeOptions.shown && alternativeOptions.index === index) {
-            setAlternativeOptions(prevOptions => ({ ...alternativeOptions, shown: false }))
+            setAlternativeOptions(prevOptions => ({ shown: false, geoChar: "", latInit: "", index: null }))
         // this condition shows alternative options the regular way upon the first click on a char
         } else {
             setAlternativeOptions({ shown: true, geoChar: geoChar, latInit: latInit, index: index })
         }
     }
-
-    console.log(latestOutput)
 
     function mapOutput() {
         const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"] // change to match latInit, not geoChar, cause that's what matters
@@ -72,7 +70,7 @@ export default function Transliterator() {
             return latestOutput.map((entry, index) => {
                 if (triggerLetters.includes(entry.geoChar)) {
                     return <span
-                        className="highlighterLetter"
+                        className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
                         key={nanoid()}
                         onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit, index)}
                     >
