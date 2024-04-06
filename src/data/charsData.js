@@ -10,12 +10,12 @@ export const charsData = [
     {
         lat: "c",
         geo: "ც",
-        options: ["წ"],
+        options: ["წ", "ც"],
     },
     {
         lat: "ch",
         geo: "ჩ",
-        options: ["ჭ"],
+        options: ["ჭ", "ჩ"],
     },
     {
         lat: "d",
@@ -36,7 +36,7 @@ export const charsData = [
     {
         lat: "g",
         geo: "გ",
-        options: ["ღ"],
+        options: ["ღ", "გ"],
     },
     {
         lat: "gh",
@@ -45,7 +45,7 @@ export const charsData = [
     {
         lat: "h",
         geo: "ჰ",
-        options: ["ხ"],
+        options: ["ხ", "ჰ"],
     },
     {
         lat: "i",
@@ -54,12 +54,12 @@ export const charsData = [
     {
         lat: "j",
         geo: "ჯ",
-        options: ["ჟ"],
+        options: ["ჟ", "ჯ"],
     },
     {
         lat: "k",
         geo: "კ",
-        options: ["ქ", "ყ"],
+        options: ["ქ", "ყ", "კ"],
     },
     {
         lat: "kh",
@@ -84,7 +84,7 @@ export const charsData = [
     {
         lat: "p",
         geo: "პ",
-        options: ["ფ"],
+        options: ["ფ", "პ"],
     },
     {
         lat: "ph",
@@ -109,12 +109,12 @@ export const charsData = [
     {
         lat: "t",
         geo: "თ",
-        options: ["ტ"],
+        options: ["ტ", "თ"],
     },
     {
         lat: "ts",
         geo: "ც",
-        options: ["წ"],
+        options: ["წ", "ც"],
     },
     {
         lat: "u",
@@ -135,7 +135,7 @@ export const charsData = [
     {
         lat: "y",
         geo: "ყ",
-        options: ["ი"],
+        options: ["ი", "ყ"],
     },
     {
         lat: "z",

@@ -58,7 +58,7 @@ export default function Transliterator() {
         // the first condition closes the alternative options upon a second click on the same char
         if (alternativeOptions.shown && alternativeOptions.index === index) {
             setAlternativeOptions(prevOptions => ({ shown: false, geoChar: "", latInit: "", index: null }))
-        // this condition shows alternative options the regular way upon the first click on a char
+            // this condition shows alternative options the regular way upon the first click on a char
         } else {
             setAlternativeOptions({ shown: true, geoChar: geoChar, latInit: latInit, index: index })
         }
@@ -117,14 +117,16 @@ export default function Transliterator() {
                 <div className="AlternativeOptions__CharDisplay">
                     {
                         charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
-                            return (
-                                <div
-                                    className="AlternativeOptions__SingleChar"
-                                    key={nanoid()}
-                                >
-                                    {char}
-                                </div>
-                            )
+                            if (char !== alternativeOptions.geoChar) {
+                                return (
+                                    <div
+                                        className="AlternativeOptions__SingleChar"
+                                        key={nanoid()}
+                                    >
+                                        {char}
+                                    </div>
+                                )
+                            }
                         })
                     }
                 </div>
