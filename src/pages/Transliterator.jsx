@@ -89,6 +89,19 @@ export default function Transliterator() {
         }
     }
 
+    // change the current letter to the chosen alternative option
+    function useAlternativeOption(char) {
+        setLatestOutput(previousOutput => {
+            return (
+                [
+                    ...previousOutput,
+                    previousOutput[alternativeOptions.index].geoChar = char
+                ]
+            )
+        })
+        setAlternativeOptions(prevOptions => ({ ...prevOptions, geoChar: char }))
+    }
+
     const [optionsDisplay, setOptionsDisplay] = useState(false)
     // this thing activates when a button (the only button so far)
     // has been clicked in the Extra Options component. It's used
@@ -122,6 +135,7 @@ export default function Transliterator() {
                                     <div
                                         className="AlternativeOptions__SingleChar"
                                         key={nanoid()}
+                                        onClick={() => useAlternativeOption(char)}
                                     >
                                         {char}
                                     </div>
