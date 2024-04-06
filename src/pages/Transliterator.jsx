@@ -65,10 +65,10 @@ export default function Transliterator() {
     }
 
     function mapOutput() {
-        const triggerLetters = ["თ", "ყ", "პ", "ჰ", "კ", "ც", "ჩ"] // change to match latInit, not geoChar, cause that's what matters
+        const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch"]
         if (optionsDisplay) {
             return latestOutput.map((entry, index) => {
-                if (triggerLetters.includes(entry.geoChar)) {
+                if (triggerLetters.includes(entry.latInit)) {
                     return <span
                         className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
                         key={nanoid()}
