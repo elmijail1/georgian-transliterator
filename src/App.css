@@ -259,6 +259,7 @@
 /* ALTERNATIVE OPTIONS */
 .AlternativeOptions__Div {
     font-size: 1.1rem;
+    position: relative;
 }
 
 .AlternativeOptions__Subtitle {
@@ -266,6 +267,19 @@
     font-weight: 500;
     padding-left: 15px;
     margin: 15px 0 10px 0;
+}
+
+.AlternativeOptions__Cross {
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    background-color: rgb(233, 248, 246);
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+}
+
+.AlternativeOptions__Cross:active{
+    background-color: rgb(138, 165, 162);
 }
 
 .AlternativeOptions__CharDisplay {

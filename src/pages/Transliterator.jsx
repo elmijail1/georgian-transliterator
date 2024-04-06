@@ -57,7 +57,7 @@ export default function Transliterator() {
     function showAlternativeOptions(geoChar, latInit, index) {
         // the first condition closes the alternative options upon a second click on the same char
         if (alternativeOptions.shown && alternativeOptions.index === index) {
-            setAlternativeOptions(prevOptions => ({ shown: false, geoChar: "", latInit: "", index: null }))
+            setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
             // this condition shows alternative options the regular way upon the first click on a char
         } else {
             setAlternativeOptions({ shown: true, geoChar: geoChar, latInit: latInit, index: index })
@@ -126,6 +126,12 @@ export default function Transliterator() {
                     Other ways to transliterate this character
                     (you can click a suggested character to
                     replace the current one with it)
+                </p>
+                <p
+                    className="AlternativeOptions__Cross"
+                    onClick={() => alternativeOptions(setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null })))}
+                >
+                    ╳
                 </p>
                 <div className="AlternativeOptions__CharDisplay">
                     {
