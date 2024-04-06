@@ -129,7 +129,7 @@ export default function Transliterator() {
                 </p>
                 <p
                     className="AlternativeOptions__Cross"
-                    onClick={() => alternativeOptions(setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null })))}
+                    onClick={() => setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))}
                 >
                     ╳
                 </p>
