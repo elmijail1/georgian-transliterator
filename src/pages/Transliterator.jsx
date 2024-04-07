@@ -107,6 +107,15 @@ export default function Transliterator() {
     // has been clicked in the Extra Options component. It's used
     // to highlight characters.
 
+
+    function showAltOpts() {
+        if (alternativeOptions.shown && optionsDisplay) {
+            return true
+        }
+    }
+    // with the help of it, if you disactivate the "Show alternative options"
+    // button, alternative options will be hidden now too
+
     return (
         <div>
             <InputWindow
@@ -120,43 +129,45 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            {alternativeOptions.shown && <div className="AlternativeOptions__Div">
-                <p className="AlternativeOptions__Subtitle">Alternative options</p>
-                <p>
-                    Other ways to transliterate this character
-                    (you can click a suggested character to
-                    replace the current one with it)
-                </p>
-                <p
-                    className="AlternativeOptions__Cross"
-                    onClick={() => setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))}
-                >
-                    ╳
-                </p>
-                <div className="AlternativeOptions__CharDisplay">
-                    {
-                        charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
-                            if (char !== alternativeOptions.geoChar) {
-                                return (
-                                    <div
-                                        className="AlternativeOptions__SingleChar"
-                                        key={nanoid()}
-                                        onClick={() => useAlternativeOption(char)}
-                                    >
-                                        {char}
-                                    </div>
-                                )
-                            }
-                        })
-                    }
+            { showAltOpts() &&
+                <div className="AlternativeOptions__Div">
+                    <p className="AlternativeOptions__Subtitle">Alternative options</p>
+                    <p>
+                        Other ways to transliterate this character
+                        (you can click a suggested character to
+                        replace the current one with it)
+                    </p>
+                    <p
+                        className="AlternativeOptions__Cross"
+                        onClick={() => setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))}
+                    >
+                        ╳
+                    </p>
+                    <div className="AlternativeOptions__CharDisplay">
+                        {
+                            charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
+                                if (char !== alternativeOptions.geoChar) {
+                                    return (
+                                        <div
+                                            className="AlternativeOptions__SingleChar"
+                                            key={nanoid()}
+                                            onClick={() => useAlternativeOption(char)}
+                                        >
+                                            {char}
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
+                    </div>
                 </div>
-            </div>}
+            }
 
             <ExtraTools
                 optionsDisplay={optionsDisplay}
                 setOptionsDisplay={setOptionsDisplay}
             />
 
-        </div>
+        </div >
     )
 }
