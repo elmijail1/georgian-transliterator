@@ -109,6 +109,8 @@ export default function Transliterator() {
     // has been clicked in the Extra Options component. It's used
     // to highlight characters.
 
+    const language = useOutletContext()
+
     return (
         <div>
             <InputWindow
@@ -122,13 +124,25 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            { alternativeOptions.shown &&
+            {alternativeOptions.shown &&
                 <div className="AlternativeOptions__Div">
-                    <p className="AlternativeOptions__Subtitle">Alternative options</p>
+                    <p className="AlternativeOptions__Subtitle">
+                        {
+                            language === "RU"
+                                ? "Варианты перевода"
+                                : "Alternative options"
+                        }
+                    </p>
                     <p>
-                        Other ways to transliterate this character
-                        (you can click a suggested character to
-                        replace the current one with it)
+                        {
+                            language === "RU"
+                            ? `Вот как ещё можно перевести эту букву
+                            (нажмите на предложенную букву, чтобы заменить
+                            нынешнюю букву на неё).`
+                            : `Other ways to transliterate this character
+                            (you can click a suggested character to
+                            replace the current one with it).`
+                        }
                     </p>
                     <p
                         className="AlternativeOptions__Cross"
