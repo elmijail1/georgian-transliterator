@@ -13,8 +13,9 @@
     /* arrangement */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.5rem;
+    padding: 0 0.5rem 0 1rem;
     /* appearance */
     box-shadow: 2px -5px 20px rgb(215, 215, 215);
     background-color: rgb(59, 175, 164);
@@ -73,6 +74,19 @@
     font-weight: 600;
     /* decoration */
     color: white;
+}
+
+.Header__Kebab {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding-top: 0.4rem;
+    fill: white;
+}
+
+/* necessary to change the color of it to white for some reason*/
+.Header__Kebab svg {
+    fill: inherit;
 }
 
 

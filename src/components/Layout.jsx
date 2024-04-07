@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom"
+import { MdMenu } from "react-icons/md";
 
 export default function Layout() {
     return (
@@ -21,6 +22,13 @@ export default function Layout() {
                         <div className="Header__Title">Georgian Transliterator </div>
                     </div>
                 </Link>
+
+                <button
+                className="Header__Kebab"
+                >
+                    <MdMenu />
+                </button>
+
 
             </div>
             <Outlet />
