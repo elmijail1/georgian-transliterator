@@ -76,6 +76,10 @@
     color: white;
 }
 
+.Header__KebabDiv {
+    position: relative;
+}
+
 .Header__Kebab {
     background: none;
     border: none;
@@ -87,6 +91,31 @@
 /* necessary to change the color of it to white for some reason*/
 .Header__Kebab svg {
     fill: inherit;
+}
+
+.Header__Kebab--Menu {
+    position: fixed;
+    z-index: 10;
+    top: 3.7rem;
+    right: 0;
+    list-style: none;
+    font-size: 1.3rem;
+    background: rgb(233, 248, 246);;
+    padding-inline-start: 0;
+    padding: 1rem;
+    margin: 0px;
+}
+
+.Header__Kebab--Menu li {
+    margin-bottom: 1rem;
+}
+
+.Header__Kebab--Menu li a {
+    text-decoration: none;
+}
+
+.Header__Kebab--Menu li:last-child {
+    margin-bottom: 0;
 }
 
 

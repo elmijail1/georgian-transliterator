@@ -1,7 +1,10 @@
 import { Link, Outlet } from "react-router-dom"
+import { useState } from "react"
 import { MdMenu } from "react-icons/md";
 
 export default function Layout() {
+    const [menuOpen, setMenuOpen] = useState(false)
+
     return (
         <>
             <div className="Header">
@@ -23,11 +26,26 @@ export default function Layout() {
                     </div>
                 </Link>
 
-                <button
-                className="Header__Kebab"
-                >
-                    <MdMenu />
-                </button>
+                <div className="Header__KebabDiv">
+                    <button
+                        className="Header__Kebab"
+                        onClick={() => setMenuOpen(prevMenu => !prevMenu)}
+                    >
+                        <MdMenu />
+                    </button>
+
+                    {
+                        menuOpen &&
+                        <ul className="Header__Kebab--Menu">
+                            <li><Link to="/" onClick={() => setMenuOpen(false)}>
+                                Home
+                            </Link></li>
+                            <li><Link to="/knowledge" onClick={() => setMenuOpen(false)}>
+                                Knowledge
+                            </Link></li>
+                        </ul>
+                    }
+                </div>
 
 
             </div>
