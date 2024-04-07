@@ -107,15 +107,6 @@ export default function Transliterator() {
     // has been clicked in the Extra Options component. It's used
     // to highlight characters.
 
-
-    function showAltOpts() {
-        if (alternativeOptions.shown && optionsDisplay) {
-            return true
-        }
-    }
-    // with the help of it, if you disactivate the "Show alternative options"
-    // button, alternative options will be hidden now too
-
     return (
         <div>
             <InputWindow
@@ -129,7 +120,7 @@ export default function Transliterator() {
                 mapOutput={mapOutput}
             />
 
-            { showAltOpts() &&
+            { alternativeOptions.shown &&
                 <div className="AlternativeOptions__Div">
                     <p className="AlternativeOptions__Subtitle">Alternative options</p>
                     <p>
@@ -166,6 +157,7 @@ export default function Transliterator() {
             <ExtraTools
                 optionsDisplay={optionsDisplay}
                 setOptionsDisplay={setOptionsDisplay}
+                setAlternativeOptions={setAlternativeOptions}
             />
 
         </div >

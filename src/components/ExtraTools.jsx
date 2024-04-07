@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 
-export default function ExtraTools({optionsDisplay, setOptionsDisplay}) {
+export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlternativeOptions }) {
     return (
         <div className="ExtraTools">
 
@@ -17,7 +17,11 @@ export default function ExtraTools({optionsDisplay, setOptionsDisplay}) {
                     {/* 1.1. Button proper */}
                     <button
                         className={`ExtraTools__Button ${optionsDisplay ? "ExtraTools__Button--On" : ""}`}
-                        onClick={() => setOptionsDisplay(prevState => !prevState)}
+                        onClick={
+                            () => {
+                                    setOptionsDisplay(prevState => !prevState)
+                                    setAlternativeOptions({ shown: false, geoChar: "", latInit: "", index: null })
+                            }}
                     >
                         <div>
                             {optionsDisplay
@@ -42,7 +46,7 @@ export default function ExtraTools({optionsDisplay, setOptionsDisplay}) {
                         </Link>
                         .
                     </div>
-                    
+
                 </div>
             </div>
         </div>
