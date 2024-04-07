@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet } from "react-router-dom"
 import { useState } from "react"
 import { MdMenu } from "react-icons/md";
 
@@ -37,12 +37,20 @@ export default function Layout() {
                     {
                         menuOpen &&
                         <ul className="Header__Kebab--Menu">
-                            <li><Link to="/" onClick={() => setMenuOpen(false)}>
+                            <li><NavLink
+                                to="/"
+                                onClick={() => setMenuOpen(false)}
+                                style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                            >
                                 Home
-                            </Link></li>
-                            <li><Link to="/knowledge" onClick={() => setMenuOpen(false)}>
+                            </NavLink></li>
+                            <li><NavLink
+                                to="/knowledge"
+                                onClick={() => setMenuOpen(false)}
+                                style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                            >
                                 Knowledge
-                            </Link></li>
+                            </NavLink></li>
                         </ul>
                     }
                 </div>
