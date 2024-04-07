@@ -4,6 +4,7 @@ import { MdMenu } from "react-icons/md";
 
 export default function Layout() {
     const [menuOpen, setMenuOpen] = useState(false)
+    const [language, setLanguage] = useState("EN")
 
     return (
         <>
@@ -37,19 +38,48 @@ export default function Layout() {
                     {
                         menuOpen &&
                         <ul className="Header__Kebab--Menu">
+                            {/* languages */}
+                            <li className="Header__Kebab--Menu--Languages">
+                                {/* ENglish */}
+                                <div
+                                    onClick={() => setLanguage("EN")}
+                                    style={language === "EN" ? { fontWeight: 700 } : null}
+                                >
+                                    EN
+                                </div>
+                                {/* RUssian */}
+                                <div
+                                    onClick={() => setLanguage("RU")}
+                                    style={language === "RU" ? { fontWeight: 700 } : null}
+                                >
+                                    RU
+                                </div>
+                            </li>
+
+                            {/* home */}
                             <li><NavLink
                                 to="/"
                                 onClick={() => setMenuOpen(false)}
                                 style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                             >
-                                Home
+                                {
+                                    language === "RU"
+                                        ? "Главная"
+                                        : "Home"
+                                }
                             </NavLink></li>
+
+                            {/* knowledge */}
                             <li><NavLink
                                 to="/knowledge"
                                 onClick={() => setMenuOpen(false)}
                                 style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                             >
-                                Knowledge
+                                {
+                                    language === "RU"
+                                    ? "Полезно знать"
+                                    : "Knowledge"
+                                }
                             </NavLink></li>
                         </ul>
                     }
