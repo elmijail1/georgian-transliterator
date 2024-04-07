@@ -87,7 +87,8 @@ export default function Layout() {
 
 
             </div>
-            <Outlet />
+
+            <Outlet context={language}/>
         </>
     )
 }

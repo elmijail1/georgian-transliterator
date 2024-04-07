@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 
+import { useOutletContext } from "react-router-dom"
+
 import { charsData } from "../data/charsData"
 
 import transliterate from "../utilities/transliterate"

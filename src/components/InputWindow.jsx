@@ -1,5 +1,6 @@
 import { MdCancel } from "react-icons/md"
 import { useState, useEffect } from "react"
+import { useOutletContext } from "react-router-dom"
 
 export default function InputWindow({ value, onChange, clearCurrentInput }) {
     const [counter, setCounter] = useState(value.length)
@@ -7,11 +8,19 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
         setCounter(value.length)
     }, [value])
 
+    const language = useOutletContext()
+
     return (
         <div className="InputWindow">
 
             {/* Header */}
-            <p className="InputWindow__Subtitle">From Latin script</p>
+            <p className="InputWindow__Subtitle">
+                {
+                    language === "RU"
+                    ? "С латиницы"
+                    : "From Latin script"
+                }
+            </p>
 
             {/* Input Textarea */}
             <textarea
@@ -19,7 +28,7 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                 type="text"
                 name="currentInput"
                 id="current-input"
-                placeholder="Enter Latin text here..."
+                placeholder={language === "RU" ? "Введите текст латиницей здесь..." : "Enter Latin text here..."}
                 value={value}
                 onChange={onChange}
                 maxLength="500"
@@ -27,7 +36,13 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
 
             {/* Counter */}
             <div className="InputWindow__Counter">
-                {counter > 499 && <p className="InputWindow__Counter--Red">Text limit has been reached</p>}
+                {counter > 499 && <p className="InputWindow__Counter--Red">
+                    {
+                        language === "RU"
+                        ? "Макс. кол-во символов"
+                        : "Text limit has been reached"
+                    }
+                    </p>}
                 <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
             </div>
 
@@ -37,7 +52,12 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                     className="InputWindow__ClearDiv"
                     onClick={clearCurrentInput}
                 >
-                    Click to clear
+                    {
+                        language === "RU"
+                        ? "Очистить"
+                        : "Click to clear"
+                    }
+                    
                     <MdCancel className="OutputWindow__CopyIcon" />
                 </div>
 
