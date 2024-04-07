@@ -15,9 +15,19 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    /* decoration */
+    /* appearance */
     box-shadow: 2px -5px 20px rgb(215, 215, 215);
     background-color: rgb(59, 175, 164);
+}
+
+.Header__HomeDiv {
+    /* arrangement */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* appearance */
+    color: white;
 }
 
 .Header__Logo {
@@ -278,7 +288,7 @@
     padding: 0.3rem 0.5rem;
 }
 
-.AlternativeOptions__Cross:active{
+.AlternativeOptions__Cross:active {
     background-color: rgb(138, 165, 162);
 }
 
@@ -299,7 +309,7 @@
 /* MISCELLANEOUS */
 .highlighterLetter {
     background-color: rgb(198, 245, 238);
-    position:relative;
+    position: relative;
     z-index: 1;
     padding: 2px;
     border-radius: 5px;
