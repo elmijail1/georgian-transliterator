@@ -1,10 +1,12 @@
 import { MdContentCopy } from "react-icons/md";
 import { useOutletContext } from "react-router-dom"
 
-export default function OutputWindow({ value, mapOutput, copyToClipboardLatestOutput }) {
+export default function OutputWindow({ value, mapOutput }) {
 
     function copyToClipboardLatestOutput() {
-        navigator.clipboard.writeText(value.join(""))
+        const arrayToCopy = []
+        value.map(entry => arrayToCopy.push(entry.geoChar))
+        navigator.clipboard.writeText(arrayToCopy.join(""))
     }
 
     const language = useOutletContext()
