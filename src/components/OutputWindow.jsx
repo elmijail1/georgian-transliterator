@@ -1,23 +1,36 @@
 import { MdContentCopy } from "react-icons/md";
+import { useOutletContext } from "react-router-dom"
 
-export default function OutputWindow({value, mapOutput, copyToClipboardLatestOutput}) {
+export default function OutputWindow({ value, mapOutput, copyToClipboardLatestOutput }) {
 
     function copyToClipboardLatestOutput() {
         navigator.clipboard.writeText(value.join(""))
     }
 
+    const language = useOutletContext()
+
     return (
         <div className="OutputWindow">
 
             {/* Header */}
-            <p className="OutputWindow__Subtitle">To Georgian script</p>
+            <p className="OutputWindow__Subtitle">
+                {
+                    language === "RU"
+                        ? "На грузинский шрифт"
+                        : "To Georgian script"
+                }
+            </p>
 
             {/* Output Display Div */}
             <div className="OutputWindow__Display">
                 {value ?
                     mapOutput() :
                     <span className="OuputWindow__PlaceholderText">
-                        ...to see Georgian text here!
+                        {
+                            language === "RU"
+                            ? "...и получите грузинский текст здесь!"
+                            : "...to see Georgian text here!"
+                        }
                     </span>}
             </div>
 
@@ -27,10 +40,14 @@ export default function OutputWindow({value, mapOutput, copyToClipboardLatestOut
                     className="OutputWindow__CopyDiv"
                     onClick={copyToClipboardLatestOutput}
                 >
-                    Click to copy
+                    {
+                        language === "RU"
+                        ? "Копировать"
+                        : "Click to copy"
+                    }
                     <MdContentCopy className="OutputWindow__CopyIcon" />
                 </div>}
-                
+
         </div>
     )
 }
