@@ -117,6 +117,11 @@ export const charsData = [
         options: ["წ", "ც", "თს", "ტს"],
     },
     {
+        lat: "tsh",
+        geo: "თშ",
+        options: ["ტშ"],
+    },
+    {
         lat: "u",
         geo: "უ",
     },
