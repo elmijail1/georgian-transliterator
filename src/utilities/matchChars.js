@@ -13,29 +13,36 @@ export default function matchChars(initialArray, dictionary) {
     initialArray.map((char, charIndex) => { // S1; S3 for charIndex
 
         if (latestChar.length > 1) { // S4
+            if (latestChar.length === 3 && latestChar[1] === char) { // S5
+                return
+            }
             latestChar = char;
             return
         }
 
         if (!Array.from(dictionary, x => x.lat).includes(char)) { // S2
             latestChar = char; // S4
-            return finalArray.push({geoChar: char, latInit: char});
+            return finalArray.push({ geoChar: char, latInit: char });
         }
 
         if (digraphs.total.includes(char)) { // S3
-            if (digraphs.h_Digraphs.includes(char) && initialArray[charIndex+1] === "h") {
+            if (digraphs.h_Digraphs.includes(char) && initialArray[charIndex + 1] === "h") {
                 char = char + "h"
-            } else if (char === digraphs.z_Digraphs && initialArray[charIndex+1] === "z") {
+            } else if (char === digraphs.z_Digraphs && initialArray[charIndex + 1] === "z") {
                 char = char + "z"
-            } else if (char === digraphs.s_Digraphs && initialArray[charIndex+1] === "s") {
-                char = char + "s"
+            } else if (char === digraphs.s_Digraphs && initialArray[charIndex + 1] === "s") {
+                if (initialArray[charIndex + 2] === "h") { // S5
+                    char = char + "sh"
+                } else {
+                    char = char + "s"
+                }
             }
         }
 
         dictionary.map((entry) => { // S1
             if (entry.lat === char) { // S1
                 latestChar = char; // S4
-                finalArray.push({geoChar: entry.geo, latInit: char})
+                finalArray.push({ geoChar: entry.geo, latInit: char })
             }
         })
     })
@@ -115,4 +122,36 @@ assign latestChar to "sh".
 To avoid "h" being transliterated too, we look at the latestChar's length. If it's longer than 1
 (digraphs are always longer than 1 character), it's clear that the current letter is the second
 char of the digraph, hence we just skip mapping all together (with return).
+.
+.
+- S5. TRIGRAPHS – SOMETHING THAT I DIDN'T EXPECT
+I thought that by this point I was prepared for anything but I was wrong. I've encountered the
+peculiar case of the word "paketshi" that got transliterated as პაკეცჰი which is obviously wrong.
+The transliterator didn't do anything wrong: it saw the dograph "ts", it turned it into ც. And the
+following "h" got transliterated as ჰ. So good job there but actually this set of letters should be
+treated differently: not as ts-h but as t-sh. The reason for that is a very frequent pattern in
+Georgian at the end of nouns: ...-shi (...-ში) which is the postposition "in". It's not rare for it
+to follow a stem ending with -t (-თ or -ტ). It occurs much more often than ცჰ (ts-h) that I personally
+haven't ever seen, albeit my experience with Georgian is not very extensive. Hence, I believe it's
+essential to make this set of letters work differently.
+.
+Of course, it's not a trigraph per se. It doesn't give one sound with 3 characters similarly to how
+the German "sh" is represented: sch. It's the regular character t and the digraph sh. But for the sake
+of simplicity we'll treat is a trigraph.
+.
+The first thing I changed to take it into account, was adding a condition inside the larger trigraph
+condition. I put it inside the "s" condition and it checks what the index+2 character is. If it's "h",
+it's safe to asume that we're not looking at "ts", we're looking at "t-sh". Hence, our char variable
+should take that value: "tsh". Later it will be found in the dictionary where I've added it to.
+.
+There's one more thing to change. The very first part of the map-code: digraph-checker. We have a condition
+there that checks the length of the latestChar variable that contains the previous char. If it was a digraph,
+the length is more than 1. If that's the case, the latestChar is updated to hold the value of the current char
+and the mapping ends (return). But that's not what we want. We need to skip the second char of the trigraph
+completely. So we add an extra condition: if (latestChar.length === 3 && latestChar[1] === char) {return}. So
+the second character of the trigraph should not be registered as latestChar. Is it a perfect solution? It
+doesn't look so since it lacks elegance and flexibility. It will work for trigraphs 100% but what if I'll have
+to deal with 4-character combinations in the future? Another solution will be needed and just adding more
+conditions might not be the best way to go about it. But since this thing works and I don't have other ideas
+at the moment, it should be good for the time being. 
 */}
