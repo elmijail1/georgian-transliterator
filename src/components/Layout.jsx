@@ -77,8 +77,21 @@ export default function Layout() {
                             >
                                 {
                                     language === "RU"
-                                    ? "Полезно знать"
-                                    : "Knowledge"
+                                        ? "Полезно знать"
+                                        : "Knowledge"
+                                }
+                            </NavLink></li>
+
+                            {/* contacts */}
+                            <li><NavLink
+                                to="/contacts"
+                                onClick={() => setMenuOpen(false)}
+                                style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                            >
+                                {
+                                    language === "RU"
+                                        ? "Контакты"
+                                        : "Contacts"
                                 }
                             </NavLink></li>
                         </ul>
@@ -88,7 +101,7 @@ export default function Layout() {
 
             </div>
 
-            <Outlet context={language}/>
+            <Outlet context={language} />
         </>
     )
 }

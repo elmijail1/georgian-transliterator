@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 // pages
 import Transliterator from "./pages/Transliterator.jsx"
 import Knowledge from "./pages/Knowledge.jsx"
+import Contacts from './pages/Contacts.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 // components
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Transliterator />} />
           <Route path="knowledge" element={<Knowledge />} />
+          <Route path="contacts" element={<Contacts/>} />
           <Route path="*" element={<NotFound/>} />
         </Route>
       </Routes>
