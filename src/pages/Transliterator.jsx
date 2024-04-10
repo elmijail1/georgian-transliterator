@@ -13,15 +13,10 @@ import ExtraTools from "../components/ExtraTools"
 
 {/*
 TO DO'S:
-– I. ALTERNATIVE OPTIONS
-- I.1. Add on-hover info for highlighted letters
-- I.2. Can we make that on-hover interactive so that we could change letters via it?
-- I.3. Add description of the issue with letter options as a separate page (Knowledge)
-- I.4. Add link to it to the header
-.
-– II. RUSSIAN LANGUAGE SUPPORT
-- II.1. Add a togler that would change Eng text to Russian
-- II.2. Add the Russian version of most texts
+- I. GENERAL
+..- fill Contacts & Konwledge with content & style it
+..- save language choice to a localStorage
+..- add a pop-up for language choosing on first visit
 .
 - III. DESKTOP LAYOUT
 - III.1. See what is the most common desktop layout and work on designing it
