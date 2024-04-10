@@ -13,8 +13,20 @@ export default function Contacts() {
                         : "Contacts"
                 }
             </h1>
-            Learn how to get in touch with the monster
-            who has created this.
+            <p>
+                Feel free to contact me for any questions and suggestions!
+            </p>
+            <ul>
+                <li>
+                    <b>Email:</b> elmijail1@proton.me
+                </li>
+                <li>
+                    <b>Discord:</b> something#something
+                </li>
+                <li>
+                    <b>Telegram:</b> @something
+                </li>
+            </ul>
         </>
     )
 }
