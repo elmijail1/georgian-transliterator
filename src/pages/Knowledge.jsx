@@ -4,6 +4,10 @@ export default function Knowledge() {
 
     const language = useOutletContext()
 
+    /*
+    STYLE IT UP
+    */
+
     return (
         <div>
             <h1>
@@ -106,7 +110,7 @@ export default function Knowledge() {
                             ch – "ch" as in "<b>ch</b>air" – can be written both as ჩ and ჭ;
                         </li>
                         <li>
-                            g – can represent 2 different sounds "g" as in "<g>g</g>et" and an
+                            g – can represent 2 different sounds "g" as in "<b>g</b>et" and an
                             exotic sound not met in English that is something between "g" and "h" –
                             the former is written as გ and the latter is written as ღ; 
                         </li>
