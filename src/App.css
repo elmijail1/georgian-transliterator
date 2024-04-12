@@ -411,3 +411,7 @@
 .Knowledge__SingleItem--QuestionButton--Button {
     font-size: 2.2rem;
 }
+
+.Knowledge__SingleItem--Answer {
+    white-space: pre-wrap;
+}
