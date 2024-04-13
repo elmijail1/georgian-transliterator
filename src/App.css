@@ -413,5 +413,7 @@
 }
 
 .Knowledge__SingleItem--Answer {
-    white-space: pre-wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
 }
