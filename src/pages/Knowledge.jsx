@@ -28,8 +28,6 @@ export default function Knowledge() {
         })
     }
 
-    // console.log(knowledgeItems)
-
     function KnowledgeSingleItem({ entry, index }) {
         return (
             <div
@@ -70,7 +68,7 @@ export default function Knowledge() {
 
     return (
         <div>
-            <h1>
+            <h1 className="Knowledge__Header">
                 {
                     language === "RU"
                         ? "Полезно знать"

@@ -377,6 +377,11 @@
 
 /* PAGE: KNOWLEDGE*/
 /* ITEMS */
+.Knowledge__Header {
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
 .Knowledge__ItemsDisplay {
     margin: 0 1rem;
     display: flex;
