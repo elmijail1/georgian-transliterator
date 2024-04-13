@@ -32,11 +32,11 @@ export default function Knowledge() {
 
     function KnowledgeSingleItem({ entry, index }) {
         return (
-            <div className="Knowledge__SingleItem">
-                <div
-                    className="Knowledge__SingleItem--QuestionButton"
-                    onClick={() => showAnswer(index)}
-                >
+            <div
+                className="Knowledge__SingleItem"
+                onClick={() => showAnswer(index)}
+            >
+                <div className="Knowledge__SingleItem--QuestionButton">
                     <button
                         className="Knowledge__SingleItem--QuestionButton--Question"
                     >
@@ -52,7 +52,16 @@ export default function Knowledge() {
                 {
                     entry.open &&
                     <div className="Knowledge__SingleItem--Answer">
-                        {entry.answer}
+                        {entry.answer.map(paragraph => {
+                            return (
+                                <div
+                                    key={nanoid()}
+                                    className="Knowledge__SingleItem--AnswerParagraph"
+                                >
+                                    {paragraph}
+                                </div>
+                            )
+                        })}
                     </div>
                 }
             </div>
