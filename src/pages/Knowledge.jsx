@@ -28,6 +28,12 @@ export default function Knowledge() {
         })
     }
 
+    function splitAnswerIntoDivsAndMap(answer) {
+        const splitAnswer = answer.split("\n\n")
+        console.log(splitAnswer)
+        return splitAnswer.map(line => <div key={nanoid()}>{line}</div>)
+    }
+
     function KnowledgeSingleItem({ entry, index }) {
         return (
             <div
@@ -50,16 +56,7 @@ export default function Knowledge() {
                 {
                     entry.open &&
                     <div className="Knowledge__SingleItem--Answer">
-                        {entry.answer.map(paragraph => {
-                            return (
-                                <div
-                                    key={nanoid()}
-                                    className="Knowledge__SingleItem--AnswerParagraph"
-                                >
-                                    {paragraph}
-                                </div>
-                            )
-                        })}
+                        {splitAnswerIntoDivsAndMap(entry.answer)}
                     </div>
                 }
             </div>
