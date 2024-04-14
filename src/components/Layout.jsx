@@ -4,7 +4,8 @@ import { MdMenu } from "react-icons/md";
 
 export default function Layout() {
     const [menuOpen, setMenuOpen] = useState(false)
-    const [language, setLanguage] = useState("EN")
+    const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
+    const [language, setLanguage] = useState("ENG")
 
     return (
         <>
@@ -27,10 +28,60 @@ export default function Layout() {
                     </div>
                 </Link>
 
+
+
+                {/* LANGUAGE MENU */}
+                <div className="Header__Languages">
+                    <button
+                        className="Header__Languagues--Button"
+                        onClick={() => {
+                            setLanguageMenuOpen(prevOpen => !prevOpen)
+                            setMenuOpen(false)
+                        }}
+                    >
+                        {
+                            language === "RUS"
+                                ? "RUS"
+                                : "ENG"
+                        }
+                    </button>
+                    {
+                        languageMenuOpen &&
+                        <ul className="Header__Languages--Menu">
+                            <li
+                                className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
+                                onClick={() => setLanguage("ENG")}
+                            >
+                                {
+                                    language === "RUS"
+                                        ? "Английский"
+                                        : "English"
+                                }
+                            </li>
+                            <li
+                                className={language === "RUS" ? "Header__Languages--MenuItemActive" : ""}
+                                onClick={() => setLanguage("RUS")}
+                            >
+                                {
+                                    language === "RUS"
+                                        ? "Русский"
+                                        : "Russian"
+                                }
+                            </li>
+                        </ul>
+                    }
+                </div>
+
+
+
+                {/* KEBAB MENU */}
                 <div className="Header__KebabDiv">
                     <button
                         className="Header__Kebab"
-                        onClick={() => setMenuOpen(prevMenu => !prevMenu)}
+                        onClick={() => {
+                            setMenuOpen(prevMenu => !prevMenu)
+                            setLanguageMenuOpen(false)
+                        }}
                     >
                         <MdMenu />
                     </button>
@@ -38,24 +89,6 @@ export default function Layout() {
                     {
                         menuOpen &&
                         <ul className="Header__Kebab--Menu">
-                            {/* languages */}
-                            <li className="Header__Kebab--Menu--Languages">
-                                {/* ENglish */}
-                                <div
-                                    onClick={() => setLanguage("EN")}
-                                    style={language === "EN" ? { fontWeight: 700 } : null}
-                                >
-                                    EN
-                                </div>
-                                {/* RUssian */}
-                                <div
-                                    onClick={() => setLanguage("RU")}
-                                    style={language === "RU" ? { fontWeight: 700 } : null}
-                                >
-                                    RU
-                                </div>
-                            </li>
-
                             {/* home */}
                             <li><NavLink
                                 to="/"
@@ -63,7 +96,7 @@ export default function Layout() {
                                 style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                             >
                                 {
-                                    language === "RU"
+                                    language === "RUS"
                                         ? "Главная"
                                         : "Home"
                                 }
@@ -76,7 +109,7 @@ export default function Layout() {
                                 style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                             >
                                 {
-                                    language === "RU"
+                                    language === "RUS"
                                         ? "Полезно знать"
                                         : "Knowledge"
                                 }
@@ -89,7 +122,7 @@ export default function Layout() {
                                 style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                             >
                                 {
-                                    language === "RU"
+                                    language === "RUS"
                                         ? "Контакты"
                                         : "Contacts"
                                 }
@@ -99,7 +132,7 @@ export default function Layout() {
                 </div>
 
 
-            </div>
+            </div >
 
             <Outlet context={language} />
         </>

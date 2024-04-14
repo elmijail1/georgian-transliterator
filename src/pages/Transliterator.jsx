@@ -123,14 +123,14 @@ export default function Transliterator() {
                 <div className="AlternativeOptions__Div">
                     <p className="AlternativeOptions__Subtitle">
                         {
-                            language === "RU"
+                            language === "RUS"
                                 ? "Варианты перевода"
                                 : "Alternative options"
                         }
                     </p>
                     <p>
                         {
-                            language === "RU"
+                            language === "RUS"
                             ? `Вот как ещё можно перевести эту букву
                             (нажмите на предложенную букву, чтобы заменить
                             нынешнюю букву на неё).`

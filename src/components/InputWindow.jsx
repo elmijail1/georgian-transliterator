@@ -16,7 +16,7 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
             {/* Header */}
             <p className="InputWindow__Subtitle">
                 {
-                    language === "RU"
+                    language === "RUS"
                     ? "С латиницы"
                     : "From Latin script"
                 }
@@ -28,7 +28,7 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                 type="text"
                 name="currentInput"
                 id="current-input"
-                placeholder={language === "RU" ? "Введите текст латиницей здесь..." : "Enter Latin text here..."}
+                placeholder={language === "RUS" ? "Введите текст латиницей здесь..." : "Enter Latin text here..."}
                 value={value}
                 onChange={onChange}
                 maxLength="500"
@@ -38,7 +38,7 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
             <div className="InputWindow__Counter">
                 {counter > 499 && <p className="InputWindow__Counter--Red">
                     {
-                        language === "RU"
+                        language === "RUS"
                         ? "Макс. кол-во символов"
                         : "Text limit has been reached"
                     }
@@ -53,7 +53,7 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                     onClick={clearCurrentInput}
                 >
                     {
-                        language === "RU"
+                        language === "RUS"
                         ? "Очистить"
                         : "Click to clear"
                     }

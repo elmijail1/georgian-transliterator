@@ -6,10 +6,10 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
 
     const language = useOutletContext()
     function defineLanguageHide() {
-        return language === "RU" ? "Убрать" : "Hide"
+        return language === "RUS" ? "Убрать" : "Hide"
     }
     function defineLanguageShow() {
-        return language === "RU" ? "Показать" : "Show"
+        return language === "RUS" ? "Показать" : "Show"
     }
 
     return (
@@ -18,7 +18,7 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
             {/* Header */}
             <p className="ExtraTools__Subtitle">
                 {
-                    language === "RU"
+                    language === "RUS"
                         ? "Инструменты"
                         : "Extra Tools"
                 }
@@ -49,7 +49,7 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
                             {optionsDisplay ? defineLanguageHide() : defineLanguageShow()}
                             &nbsp;
                             {
-                                language === "RU"
+                                language === "RUS"
                                     ? "другие варианты букв"
                                     : "alternative options for letters"
                             }
@@ -59,7 +59,7 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
                     {/* 1.2. Info text below the button */}
                     <div className="ExtraTools__Info">
                         {
-                            language === "RU"
+                            language === "RUS"
                             ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
                             : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                         }
@@ -68,7 +68,7 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
                             className="ExtraTools__Info--Link"
                         >
                             {
-                                language === "RU"
+                                language === "RUS"
                                 ? "здесь"
                                 : "here"
                             }

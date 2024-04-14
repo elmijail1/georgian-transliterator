@@ -17,7 +17,7 @@ export default function OutputWindow({ value, mapOutput }) {
             {/* Header */}
             <p className="OutputWindow__Subtitle">
                 {
-                    language === "RU"
+                    language === "RUS"
                         ? "На грузинский шрифт"
                         : "To Georgian script"
                 }
@@ -29,7 +29,7 @@ export default function OutputWindow({ value, mapOutput }) {
                     mapOutput() :
                     <span className="OuputWindow__PlaceholderText">
                         {
-                            language === "RU"
+                            language === "RUS"
                             ? "...и получите грузинский текст здесь!"
                             : "...to see Georgian text here!"
                         }
@@ -43,7 +43,7 @@ export default function OutputWindow({ value, mapOutput }) {
                     onClick={copyToClipboardLatestOutput}
                 >
                     {
-                        language === "RU"
+                        language === "RUS"
                         ? "Копировать"
                         : "Click to copy"
                     }
