@@ -50,7 +50,10 @@ export default function Layout() {
                         <ul className="Header__Languages--Menu">
                             <li
                                 className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
-                                onClick={() => setLanguage("ENG")}
+                                onClick={() => {
+                                    setLanguage("ENG")
+                                    setLanguageMenuOpen(false)
+                                }}
                             >
                                 {
                                     language === "RUS"
@@ -60,7 +63,10 @@ export default function Layout() {
                             </li>
                             <li
                                 className={language === "RUS" ? "Header__Languages--MenuItemActive" : ""}
-                                onClick={() => setLanguage("RUS")}
+                                onClick={() => {
+                                    setLanguage("RUS")
+                                    setLanguageMenuOpen(false)
+                                }}
                             >
                                 {
                                     language === "RUS"
