@@ -30,7 +30,6 @@ export default function Knowledge() {
 
     function splitAnswerIntoDivsAndMap(answer) {
         const splitAnswer = answer.split("\n\n")
-        console.log(splitAnswer)
         return splitAnswer.map(line => <div key={nanoid()}>{line}</div>)
     }
 
