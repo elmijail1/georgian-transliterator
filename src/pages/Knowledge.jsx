@@ -2,8 +2,6 @@ import { useOutletContext } from "react-router-dom"
 import { useState } from "react"
 import { nanoid } from "nanoid"
 
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-
 import { knowledgeData } from "../data/knowledgeData"
 
 
@@ -51,8 +49,8 @@ export default function Knowledge() {
                     </button>
                     {
                         entry.open
-                            ? <MdKeyboardArrowUp className="Knowledge__SingleItem--QuestionButton--Button" />
-                            : <MdKeyboardArrowDown className="Knowledge__SingleItem--QuestionButton--Button" />
+                            ? <div className="Knowledge__SingleItem--QuestionButton--Button">▲</div>
+                            : <div className="Knowledge__SingleItem--QuestionButton--Button">▼</div>
                     }
 
                 </div>
