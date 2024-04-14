@@ -459,3 +459,15 @@
     flex-direction: column;
     gap: 0.7rem;
 }
+
+
+
+/* PAGE: CONTACTS*/
+.Contacts__Header {
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.Contacts__Main {
+    padding: 0 1rem;
+}
