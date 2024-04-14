@@ -1,6 +1,7 @@
 export const knowledgeData = [
     {
         question: `What does Georgian Transliterator do?`,
+        questionRus: `Что делает этот транслитератор?`,
         answer:
             `It takes a Georgian text written in the Latin script and turns it
         into a Georgian text written in the Georgian script. So if you get
@@ -12,6 +13,7 @@ export const knowledgeData = [
     },
     {
         question: `Does the transliterator translate Georgian to English?`,
+        questionRus: `Переводит ли транслитератор с грузинского на английский?`,
         answer:
             `No, it doesn't. Translation and transliteration are 2 different
         things. However, they often work together and probably some day
@@ -20,6 +22,7 @@ export const knowledgeData = [
     },
     {
         question: `Why would anyone need to transliterate?`,
+        questionRus: `В каких случаях используется транслитератор?`,
         answer:
             `Sometimes you can come across a Georgian text written in
         Latin and have a hard time translating it to any other
@@ -30,6 +33,7 @@ export const knowledgeData = [
     },
     {
         question: `What is the Georgian script?`,
+        questionRus: `Что такое грузинский шрифт?`,
         answer:
             `Unlike many other European languages, Georgian doesn't use
         the Latin alphabet. It uses an alphabet of its own. The Georgian
@@ -38,6 +42,7 @@ export const knowledgeData = [
     },
     {
         question: `Where can I come across Georgian text written in Latin?`,
+        questionRus: `Где может встретиться грузинский текст, написанный латиницей?`,
         answer:
             `The most likely source of such texts are mobile messages. If you
         stay in Georgia and have a Georgian mobile number, you likely
@@ -59,6 +64,8 @@ export const knowledgeData = [
     {
         question: `Why can some Latin letters transliterate
         as more than one Georgian letter?`,
+        questionRus: `Почему некоторые латинские буквы можно транслитерировать
+        несколькими способами?`,
         answer: `While the Georgian alphabet looks nothing like the Latin one, it's
             good news that most its letters represent the same sounds that Latin
             letters do. Some sounds, however, can be written down as several letters.
