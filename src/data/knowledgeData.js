@@ -9,6 +9,12 @@ export const knowledgeData = [
         with the help of this app.
 
         *"hello" in Georgian`,
+        answerRus:
+            `Он меняет латинские буквы в грузинском тексте на грузинские.
+            Таким образом, если вы вводите в него слово "gamarjoba"*, вы
+            получите его же, написанное грузинскими буквами: გამარჯობა.
+
+            *"привет" по-грузински`,
         open: false,
     },
     {
@@ -18,6 +24,11 @@ export const knowledgeData = [
             `No, it doesn't. Translation and transliteration are 2 different
         things. However, they often work together and probably some day
         there'll be a translator in this app too.`,
+        answerRus:
+            `Нет. Переводчик и транслитератор – это 2 разных инструмента.
+            Предполагается, впрочем, что они участвуют в процессе перевода
+            совместно. Поэтому в будущем мы, возможно, добавим переводчик
+            и в это приложение.`,
         open: false,
     },
     {
@@ -29,15 +40,26 @@ export const knowledgeData = [
         language. Most online translators can't translate a Georgian
         text in Latin scipt at all. So you have to first transliterate
         the Georgian text in Latin script to the Georgian script.`,
+        answerRus:
+            `Иногда вам может встретиться грузинский текст, написанный
+            латиницей. Перевести такой текст не всегда легко, потому что
+            большинство онлайн-переводчиков могут только переводить
+            грузинский текст, когда он написан грузинскими буквами. Поэтому
+            сперва вам понадобится перевести буквы с латиницы на грузинский
+            алфавит и только потом переводить грузинский текст на другой язык.`,
         open: false,
     },
     {
         question: `What is the Georgian script?`,
-        questionRus: `Что такое грузинский шрифт?`,
+        questionRus: `Что такое грузинские буквы?`,
         answer:
             `Unlike many other European languages, Georgian doesn't use
         the Latin alphabet. It uses an alphabet of its own. The Georgian
         script is basically the same as the Georgian alphabet.`,
+        answerRus:
+            `Грузинский язык, в отличие от большинства европейских языков,
+        не использует латиницу или кириллицу. У него есть свой собственный
+        уникальный алфавит.`,
         open: false,
     },
     {
@@ -58,6 +80,21 @@ export const knowledgeData = [
         And if you've just started studying Georgian yourself, you might find it
         easier to stick to the Latin alphabet before you're confident with
         Georgian letters. The transliterator might be of use to you in such case too.
+        `,
+        answerRus:
+            `Чаще всего такие тексты можно найти в мобильных сообщениях. Если вы
+        живёте в Грузии и у вас есть грузинский мобильный номер, вы наверняка
+        периодически получаете СМС. Например, сли вы пользуетесь грузинскими
+        сервисами (банки, паркинг, проч.), вы точно получаете сообщения от них.
+        Чаще всего эти сообщения написаны на грузинском, но латиницей. Чтобы
+        понять, о чём эти сообщения, вам понадобится транслитератор.
+
+        Также такие тексты могут вам встретиться и в сети. Например, некоторые
+        грузинские пользователи Facebook используют латиницу в своих сообщениях.
+
+        Если вы только начали изучать грузинский, вам какое-то время тоже может
+        быть удобнее писать латиницей, если вы ещё не выучили грузинский
+        алфавит. В таких случаях транслитератор тоже может пригодиться.
         `,
         open: false,
     },
@@ -111,6 +148,14 @@ export const knowledgeData = [
             the Latin script. However, if you want to transliterate a proper noun like "Yellowstone",
             the letter you'll want to use for "Y" at the beginning is "ი". We offer it as an alterantive
             option whenever there's the letter "y" in the input.`,
+        answerRus: `Несмотря на то, что грузинский алфавит внешне сильно отличается
+        от латинского, на самом деле большинство грузинских букв выражают те же
+        звуки, что и латинские. Впрочем, некоторые звуки могут передаваться не одной
+        буквой, а несколькими. Например, звук "ц". Сколькими способами можно его
+        записать в русском? Как минимум тремя: буквой "ц" (цапля) и комбинациями букв
+        "тс" (бутсы) и "тьс" (купаться).
+
+        Вот список похожих ситуаций в грузинском:`,
         open: false,
     }
 
