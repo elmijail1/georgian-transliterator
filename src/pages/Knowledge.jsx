@@ -43,7 +43,11 @@ export default function Knowledge() {
                     <button
                         className="Knowledge__SingleItem--QuestionButton--Question"
                     >
-                        {entry.question}
+                        {
+                            language === "RUS"
+                                ? entry.questionRus
+                                : entry.question
+                        }
                     </button>
                     {
                         entry.open
@@ -55,7 +59,10 @@ export default function Knowledge() {
                 {
                     entry.open &&
                     <div className="Knowledge__SingleItem--Answer">
-                        {splitAnswerIntoDivsAndMap(entry.answer)}
+                        {language === "RUS"
+                            ? splitAnswerIntoDivsAndMap(entry.answerRus)
+                            : splitAnswerIntoDivsAndMap(entry.answer)
+                        }
                     </div>
                 }
             </div>
@@ -66,7 +73,7 @@ export default function Knowledge() {
         <div>
             <h1 className="Knowledge__Header">
                 {
-                    language === "RU"
+                    language === "RUS"
                         ? "Полезно знать"
                         : "Knowledge"
                 }
