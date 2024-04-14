@@ -14,9 +14,7 @@ import ExtraTools from "../components/ExtraTools"
 {/*
 TO DO'S:
 - I. GENERAL
-..- fill Contacts & Konwledge with content & style it
 ..- save language choice to a localStorage
-..- add a pop-up for language choosing on first visit
 .
 - III. DESKTOP LAYOUT
 - III.1. See what is the most common desktop layout and work on designing it
