@@ -1,11 +1,19 @@
 import { Link, NavLink, Outlet } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { MdMenu } from "react-icons/md";
 
 export default function Layout() {
     const [menuOpen, setMenuOpen] = useState(false)
     const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
-    const [language, setLanguage] = useState("ENG")
+    const [language, setLanguage] = useState()
+
+    useEffect(() => {
+        if (localStorage.getItem("language")) {
+            setLanguage(localStorage.getItem("language"))
+        } else {
+            setLanguage("ENG")
+        }
+    }, [])
 
     return (
         <>
@@ -53,6 +61,7 @@ export default function Layout() {
                                 onClick={() => {
                                     setLanguage("ENG")
                                     setLanguageMenuOpen(false)
+                                    localStorage.setItem("language", "ENG")
                                 }}
                             >
                                 {
@@ -66,6 +75,7 @@ export default function Layout() {
                                 onClick={() => {
                                     setLanguage("RUS")
                                     setLanguageMenuOpen(false)
+                                    localStorage.setItem("language", "RUS")
                                 }}
                             >
                                 {
