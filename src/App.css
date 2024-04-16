@@ -20,6 +20,12 @@
     background-color: rgb(59, 175, 164);
 }
 
+@media (min-width: 1920px) {
+    .Header {
+        padding: 0 10%;
+    }
+}
+
 
 
 /* header lettering + logo */
