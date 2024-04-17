@@ -9,7 +9,7 @@ import Contacts from './pages/Contacts.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 // components
-import Layout from "./components/Layout.jsx"
+import Layout from "./components/Layout/Layout.jsx"
 
 
 export default function App() {
