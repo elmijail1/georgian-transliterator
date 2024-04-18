@@ -50,19 +50,22 @@ export default function Layout() {
                 <LayoutContext.Provider value={layoutContextContents}>
                     <HeaderLetteringAndLogo />
                     {/* <div>vpWidth = {vpWidth}</div> */}
-                    {
-                        vpWidth > 1919
-                            ?
-                            <>
-                                <HeaderLaguageMenuDesktop />
-                                <HeaderKebabMenuDesktop />
-                            </>
-                            :
-                            <>
-                                <HeaderLanguageMenuMobile />
-                                <HeaderKebabMenuMobile />
-                            </>
-                    }
+                    <div className="Header__RightBox">
+
+                        {
+                            vpWidth > 1919
+                                ?
+                                <>
+                                    <HeaderLaguageMenuDesktop />
+                                    <HeaderKebabMenuDesktop />
+                                </>
+                                :
+                                <>
+                                    <HeaderLanguageMenuMobile />
+                                    <HeaderKebabMenuMobile />
+                                </>
+                        }
+                    </div>
                 </LayoutContext.Provider >
             </div >
 

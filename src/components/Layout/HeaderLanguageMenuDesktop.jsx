@@ -19,24 +19,22 @@ export default function HeaderLanguageMenuDesktop() {
                     setMenuOpen(false)
                 }}
             >
-                <span>
                 {
                     language === "RUS"
                     ? "Русский"
-                    : "Английский"
+                    : "English"
                 }
-                </span>
                 <span>
                 {
                     languageMenuOpen
-                    ? "▼"
-                    : "▲"
+                    ? "▲"
+                    : "▼"
                 }
                 </span>
             </button>
             {
                 languageMenuOpen &&
-                <ul className="Header__Languages--Menu">
+                <ul className={`Header__Languages--Menu ${language === "RUS" ? "Header__Languages--MenuRus" : ""}`}>
                     <li
                         className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
                         onClick={() => {
