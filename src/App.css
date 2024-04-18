@@ -110,6 +110,12 @@
     color: white;
 }
 
+@media (min-width: 1920px) {
+    .Header__Title {
+        font-size: 1.5rem;
+    }
+}
+
 
 
 
