@@ -128,8 +128,6 @@
 
 
 
-
-
 /* header languages */
 .Header__Languages {
     padding: 2px 0 0 10px;
@@ -149,6 +147,7 @@
 
 @media (min-width: 1920px) {
     .Header__Languagues--Button {
+        font-size: 1.2rem;
         background-color: rgb(57, 89, 86, 0.5);
         padding: 0.4rem 0.7rem;
         border-radius: 10px;
@@ -157,7 +156,7 @@
 
 .Header__Languagues--Button span {
     color: inherit;
-    font-size: 0.55rem;
+    font-size: 0.7rem;
     margin-left: 0.3rem;
     padding-top: 0.2rem;
 }
