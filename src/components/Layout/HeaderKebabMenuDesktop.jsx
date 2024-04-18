@@ -23,7 +23,7 @@ export default function HeaderKebabMenuDesktop() {
                     <li><NavLink
                         to="/"
                         onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
                     >
                         {
                             language === "RUS"
@@ -36,7 +36,7 @@ export default function HeaderKebabMenuDesktop() {
                     <li><NavLink
                         to="/knowledge"
                         onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
                     >
                         {
                             language === "RUS"
@@ -49,7 +49,7 @@ export default function HeaderKebabMenuDesktop() {
                     <li><NavLink
                         to="/contacts"
                         onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
+                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
                     >
                         {
                             language === "RUS"

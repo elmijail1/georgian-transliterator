@@ -247,12 +247,16 @@
 .Header__DesktopMenu {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .Header__DesktopMenu * {
     color: white;
     text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 1.5px 0.1rem;
+    box-sizing: border-box;
 }
 
 
