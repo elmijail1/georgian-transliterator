@@ -177,12 +177,13 @@
 @media (min-width: 1920px) {
     .Header__Languages--Menu {
         right: auto;
-        left: 71%;
+        top: 6.5%;
+        left: 65%;
     }
 
     .Header__Languages--MenuRus {
         right: auto;
-        left: 66%;
+        left: 59.7%;
     }
 }
 
