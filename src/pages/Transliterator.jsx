@@ -13,22 +13,19 @@ import ExtraTools from "../components/ExtraTools"
 
 {/*
 TO DO'S:
-- I. GENERAL
-..- save language choice to a localStorage
+- I. DESKTOP LAYOUT
+- I.1. See what is the most common desktop layout and work on designing it
 .
-- III. DESKTOP LAYOUT
-- III.1. See what is the most common desktop layout and work on designing it
-.
-– IV. OPTIMIZING FOR OTHER VIEWPORTS
-– IV.1. See what other viewports are popular and optimize both layouts for them
+– II. OPTIMIZING FOR OTHER VIEWPORTS
+– II.1. See what other viewports are popular and optimize both layouts for them
 .
 - - THIS IS WHERE I CAN SEND IT LIVE: see what free options there are (Netlify?) - -
 .
-– V. TRANSLATOR
-– V.1. Can we use an API to get translation from Google Translate? Do it.
-- V.2. If 1 is true, can we add translator as a separate page? Do it.
-- V.3. If 2 is true, can we add translator to the same page? Do it.
-- V.4. If 3 is true, can we rearrange our layout to make it all work well? Do it.
+– III. TRANSLATOR
+– III.1. Can we use an API to get translation from Google Translate? Do it.
+- III.2. If 1 is true, can we add translator as a separate page? Do it.
+- III.3. If 2 is true, can we add translator to the same page? Do it.
+- III.4. If 3 is true, can we rearrange our layout to make it all work well? Do it.
 */}
 
 
@@ -106,17 +103,21 @@ export default function Transliterator() {
 
     return (
         <div>
-            <InputWindow
-                value={currentInput}
-                onChange={handleChange}
-                clearCurrentInput={clearCurrentInput}
-            />
+            <div className="TransliteratorBody">
 
-            <OutputWindow
-                value={latestOutput}
-                mapOutput={mapOutput}
-            />
+                <InputWindow
+                    value={currentInput}
+                    onChange={handleChange}
+                    clearCurrentInput={clearCurrentInput}
+                />
 
+                <OutputWindow
+                    value={latestOutput}
+                    mapOutput={mapOutput}
+                />
+
+            </div>
+            
             {alternativeOptions.shown &&
                 <div className="AlternativeOptions__Div">
                     <p className="AlternativeOptions__Subtitle">
@@ -129,10 +130,10 @@ export default function Transliterator() {
                     <p>
                         {
                             language === "RUS"
-                            ? `Вот как ещё можно перевести эту букву
+                                ? `Вот как ещё можно перевести эту букву
                             (нажмите на предложенную букву, чтобы заменить
                             нынешнюю букву на неё).`
-                            : `Other ways to transliterate this character
+                                : `Other ways to transliterate this character
                             (you can click a suggested character to
                             replace the current one with it).`
                         }

@@ -5,6 +5,28 @@
 }
 
 
+.TransliteratorBody {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1920px) {
+    .TransliteratorBody {
+        flex-direction: row;
+        padding: 0 10%;
+        gap: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /* HEADER */
 .Header {
     /* size */
@@ -168,7 +190,8 @@
     right: 4.2%;
     list-style: none;
     font-size: 1.3rem;
-    background: rgb(233, 248, 246);;
+    background: rgb(233, 248, 246);
+    ;
     padding-inline-start: 0;
     padding: 1rem;
     margin: 0px;
@@ -226,7 +249,8 @@
     right: 0;
     list-style: none;
     font-size: 1.3rem;
-    background: rgb(233, 248, 246);;
+    background: rgb(233, 248, 246);
+    ;
     padding-inline-start: 0;
     padding: 1rem;
     margin: 0px;
@@ -263,10 +287,22 @@
 
 
 
+
+
+
+
+
+
 /* INPUT WINDOW */
 .InputWindow {
     width: 100%;
     position: relative;
+}
+
+@media (min-width: 1920px) {
+    /* .InputWindow {
+        padding: 0 10%;
+    } */
 }
 
 .InputWindow__Subtitle {
@@ -328,6 +364,14 @@
 }
 
 
+
+
+
+
+
+
+
+
 /* OUTPUT WINDOW */
 .OutputWindow {
     margin-top: 1rem;
@@ -355,6 +399,12 @@
     white-space: pre-wrap;
 }
 
+@media (min-width: 1920px) {
+    .OutputWindow__Display {
+        height: 200px;
+    }
+}
+
 .OuputWindow__PlaceholderText {
     color: rgb(96, 117, 115);
     opacity: 0.7;
@@ -372,6 +422,12 @@
     padding: 0.3rem 0.5rem;
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
+}
+
+@media (min-width: 1920px) {
+    .OutputWindow__CopyDiv {
+        bottom: 1.8rem;
+    }
 }
 
 .OutputWindow__CopyDiv:active {
