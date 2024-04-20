@@ -1,6 +1,6 @@
 // utilities
 import { NavLink } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useRef, useEffect } from "react"
 
 // context
 import { LayoutContext } from "./Layout.jsx"
@@ -17,6 +17,22 @@ export default function HeaderKebabMenuMobile() {
         setMenuOpen,
     } = useContext(LayoutContext)
 
+
+    let menuRef = useRef() // these 2 are used to make the kebab menu close when clicked elsewhere; ref refers to the menu element in the render
+    useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
+        function closeMenuIfClickedElsewhere (event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
+
+        return(() => {
+            document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
+        })
+    })
+
     return (
         <div className="Header__KebabDiv">
             <button
@@ -31,7 +47,7 @@ export default function HeaderKebabMenuMobile() {
 
             {
                 menuOpen &&
-                <ul className="Header__Kebab--Menu">
+                <ul className="Header__Kebab--Menu" ref={menuRef}>
                     {/* home */}
                     <li><NavLink
                         to="/"

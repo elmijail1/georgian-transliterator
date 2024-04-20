@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useRef, useEffect } from "react"
 import { LayoutContext } from "./Layout.jsx"
 
 export default function HeaderLanguageMenuMobile() {
@@ -9,6 +9,23 @@ export default function HeaderLanguageMenuMobile() {
         setLanguageMenuOpen,
         setMenuOpen
     } = useContext(LayoutContext)
+
+
+    let languageMenuRef = useRef() // used to refer to the languageMenu in the render
+    useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
+        function closeMenuIfClickedElsewhere (event) {
+            if (languageMenuRef.current && !languageMenuRef.current.contains(event.target)) {
+                setLanguageMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
+
+        return(() => {
+            document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
+        })
+    })
+
 
     return (
         <div className="Header__Languages">
@@ -27,7 +44,7 @@ export default function HeaderLanguageMenuMobile() {
             </button>
             {
                 languageMenuOpen &&
-                <ul className="Header__Languages--Menu">
+                <ul className="Header__Languages--Menu" ref={languageMenuRef}>
                     <li
                         className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
                         onClick={() => {

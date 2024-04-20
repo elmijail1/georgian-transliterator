@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { LayoutContext } from "./Layout.jsx"
 
 export default function HeaderLanguageMenuDesktop() {
@@ -9,6 +9,22 @@ export default function HeaderLanguageMenuDesktop() {
         setLanguageMenuOpen,
         setMenuOpen
     } = useContext(LayoutContext)
+
+    // these are needed to make the languageMenu close whenever you click elsewhere
+    let menuRef = useRef() // used to refer to the languageMenu in the render
+    useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
+        function closeMenuIfClickedElsewhere(event) {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setLanguageMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
+
+        return (() => {
+            document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
+        })
+    })
 
     return (
         <div className="Header__Languages">
@@ -21,20 +37,23 @@ export default function HeaderLanguageMenuDesktop() {
             >
                 {
                     language === "RUS"
-                    ? "Русский"
-                    : "English"
+                        ? "Русский"
+                        : "English"
                 }
                 <span>
-                {
-                    languageMenuOpen
-                    ? "▲"
-                    : "▼"
-                }
+                    {
+                        languageMenuOpen
+                            ? "▲"
+                            : "▼"
+                    }
                 </span>
             </button>
             {
                 languageMenuOpen &&
-                <ul className={`Header__Languages--Menu ${language === "RUS" ? "Header__Languages--MenuRus" : ""}`}>
+                <ul
+                    className="Header__Languages--Menu"
+                    ref={menuRef}
+                >
                     <li
                         className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
                         onClick={() => {
