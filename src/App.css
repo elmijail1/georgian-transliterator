@@ -15,6 +15,7 @@
         flex-direction: row;
         padding: 0 10%;
         gap: 1rem;
+        margin-top: 3rem;
     }
 }
 
@@ -301,17 +302,17 @@
     position: relative;
 }
 
-@media (min-width: 1920px) {
-    /* .InputWindow {
-        padding: 0 10%;
-    } */
-}
-
 .InputWindow__Subtitle {
     font-size: 1.3rem;
     font-weight: 500;
     padding-left: 15px;
     margin: 15px 0 10px 0;
+}
+
+@media (min-width: 1920px) {
+    .InputWindow__Subtitle {
+        font-size: 1.5rem;
+    }
 }
 
 .InputWindow__Input {
@@ -322,7 +323,13 @@
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     margin-bottom: 0;
-    white-space: ;
+}
+
+@media (min-width: 1920px) {
+    .InputWindow__Input {
+        height: 420px;
+        font-size: 1.7rem;
+    }
 }
 
 .InputWindow__Input::placeholder {
@@ -388,6 +395,12 @@
     margin: 0px 0 10px 0;
 }
 
+@media (min-width: 1920px) {
+    .OutputWindow__Subtitle {
+        font-size: 1.5rem;
+    }
+}
+
 .OutputWindow__Display {
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
@@ -403,7 +416,8 @@
 
 @media (min-width: 1920px) {
     .OutputWindow__Display {
-        height: 200px;
+        height: 420px;
+        max-height: none;
     }
 }
 
@@ -440,17 +454,40 @@
     height: 1.4rem;
 }
 
+
+
+
+
+
+
+
+
+
 /* EXTRA TOOLS */
 .ExtraTools {
     display: flex;
     flex-direction: column;
 }
 
+@media (min-width: 1920px) {
+    .ExtraTools {
+        padding: 0 10%;
+        margin-top: 3rem;
+    }
+}
+
+
 .ExtraTools__Subtitle {
     font-size: 1.3rem;
     font-weight: 500;
     padding-left: 15px;
     margin: 15px 0 10px 0;
+}
+
+@media (min-width: 1920px) {
+    .ExtraTools__Subtitle {
+        font-size: 1.5rem;
+    }
 }
 
 .ExtraTools__Buttons {
@@ -460,11 +497,26 @@
     padding: 0 0.4rem;
 }
 
+@media (min-width: 1920px) {
+    .ExtraTools__Buttons {
+        flex-direction: row;
+    }
+}
+
 .ExtraTools__AlternativeOptionsBox {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
+
+@media (min-width: 1920px) {
+    .ExtraTools__AlternativeOptionsBox {
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
 
 .ExtraTools__Button {
     display: flex;
@@ -478,6 +530,12 @@
     border-radius: 13px;
     border: 0;
     text-align: left;
+}
+
+@media (min-width: 1920px) {
+    .ExtraTools__Button {
+        width: 20rem;
+    }
 }
 
 .ExtraTools__Button--On {
@@ -504,12 +562,26 @@
     color: rgba(57, 89, 86, 0.6);
 }
 
+@media (min-width: 1920px) {
+    .ExtraTools__Info {
+        width: 27rem;
+    }
+}
+
 .ExtraTools__Info--Link {
     color: rgb(57, 89, 86, 0.8);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 0.1rem;
 }
+
+
+
+
+
+
+
+
 
 /* ALTERNATIVE OPTIONS */
 .AlternativeOptions__Div {
