@@ -155,6 +155,12 @@
     padding: 2px 0 0 10px;
 }
 
+@media (min-width: 1920px) {
+    .Header__Languages {
+        position: relative;
+    }
+}
+
 .Header__Languagues--Button {
     background: none;
     border: none;
@@ -198,14 +204,14 @@
 
 @media (min-width: 1920px) {
     .Header__Languages--Menu {
+        position: absolute;
         right: auto;
-        top: 6.5%;
-        left: 65%;
+        top: 120%;
+        left: 10%;
     }
 
     .Header__Languages--MenuRus {
         right: auto;
-        left: 59.7%;
     }
 }
 
