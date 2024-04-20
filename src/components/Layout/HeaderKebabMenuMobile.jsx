@@ -34,7 +34,7 @@ export default function HeaderKebabMenuMobile() {
     })
 
     return (
-        <div className="Header__KebabDiv">
+        <div className="Header__KebabDiv" ref={menuRef}>
             <button
                 className="Header__Kebab"
                 onClick={() => {
@@ -47,7 +47,7 @@ export default function HeaderKebabMenuMobile() {
 
             {
                 menuOpen &&
-                <ul className="Header__Kebab--Menu" ref={menuRef}>
+                <ul className="Header__Kebab--Menu">
                     {/* home */}
                     <li><NavLink
                         to="/"

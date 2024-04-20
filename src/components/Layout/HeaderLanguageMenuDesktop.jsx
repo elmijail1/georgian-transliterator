@@ -7,32 +7,30 @@ export default function HeaderLanguageMenuDesktop() {
         languageMenuOpen,
         setLanguage,
         setLanguageMenuOpen,
-        setMenuOpen
     } = useContext(LayoutContext)
 
     // these are needed to make the languageMenu close whenever you click elsewhere
-    let menuRef = useRef() // used to refer to the languageMenu in the render
+    let languageMenuRef = useRef() // used to refer to the languageMenu in the render
     useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
         function closeMenuIfClickedElsewhere(event) {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if (languageMenuRef.current && !languageMenuRef.current.contains(event.target)) {
                 setLanguageMenuOpen(false)
             }
         }
 
         document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
 
-        return (() => {
+        return () => {
             document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
-        })
+        }
     })
 
     return (
-        <div className="Header__Languages">
+        <div className="Header__Languages" ref={languageMenuRef}>
             <button
                 className="Header__Languagues--Button"
                 onClick={() => {
                     setLanguageMenuOpen(prevOpen => !prevOpen)
-                    setMenuOpen(false)
                 }}
             >
                 {
@@ -52,7 +50,6 @@ export default function HeaderLanguageMenuDesktop() {
                 languageMenuOpen &&
                 <ul
                     className="Header__Languages--Menu"
-                    ref={menuRef}
                 >
                     <li
                         className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}

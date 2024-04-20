@@ -28,7 +28,7 @@ export default function HeaderLanguageMenuMobile() {
 
 
     return (
-        <div className="Header__Languages">
+        <div className="Header__Languages" ref={languageMenuRef}>
             <button
                 className="Header__Languagues--Button"
                 onClick={() => {
@@ -44,7 +44,7 @@ export default function HeaderLanguageMenuMobile() {
             </button>
             {
                 languageMenuOpen &&
-                <ul className="Header__Languages--Menu" ref={languageMenuRef}>
+                <ul className="Header__Languages--Menu">
                     <li
                         className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
                         onClick={() => {
