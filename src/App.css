@@ -191,7 +191,6 @@
     list-style: none;
     font-size: 1.3rem;
     background: rgb(233, 248, 246);
-    ;
     padding-inline-start: 0;
     padding: 1rem;
     margin: 0px;
@@ -212,6 +211,7 @@
 
 .Header__Languages--Menu li {
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .Header__Languages--MenuItemActive {
