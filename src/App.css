@@ -645,6 +645,7 @@
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
     padding: 0.3rem 0.5rem;
+    cursor: pointer;
 }
 
 .AlternativeOptions__Cross:active {

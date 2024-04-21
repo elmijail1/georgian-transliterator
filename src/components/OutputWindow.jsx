@@ -19,6 +19,8 @@ export default function OutputWindow() {
 
     const language = useOutletContext()
 
+    console.log(latestOutput)
+
     return (
         <div className="OutputWindow">
 
@@ -33,8 +35,9 @@ export default function OutputWindow() {
 
             {/* Output Display Div */}
             <div className="OutputWindow__Display">
-                {latestOutput ?
-                    mapOutput() :
+                {latestOutput.length
+                    ? mapOutput()
+                    :
                     <span className="OuputWindow__PlaceholderText">
                         {
                             language === "RUS"
