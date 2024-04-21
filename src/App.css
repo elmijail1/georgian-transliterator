@@ -491,6 +491,12 @@
     width: 100%;
 }
 
+.ExtraTools--Alone {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
 .ExtraTools__Subtitle {
     font-size: 1.3rem;
     font-weight: 500;
@@ -549,8 +555,8 @@
 
 @media (min-width: 1920px) {
     .ExtraTools__Button {
-        width: 20rem;
         font-size: 1.4rem;
+        max-width: 18.5rem;
     }
 }
 
@@ -580,7 +586,6 @@
 
 @media (min-width: 1920px) {
     .ExtraTools__Info {
-        width: 27rem;
         font-size: 1.2rem;
     }
 }

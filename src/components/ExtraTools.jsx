@@ -5,6 +5,7 @@ import { TransliteratorContext } from "../pages/Transliterator";
 
 export default function ExtraTools() {
     const {
+        alternativeOptions,
         optionsDisplay,
         setAlternativeOptions,
         setOptionsDisplay,
@@ -19,7 +20,7 @@ export default function ExtraTools() {
     }
 
     return (
-        <div className="ExtraTools">
+        <div className={`${alternativeOptions.shown ? "ExtraTools" : "ExtraTools--Alone"}`}>
 
             {/* Header */}
             <p className="ExtraTools__Subtitle">
