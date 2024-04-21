@@ -19,6 +19,18 @@
     }
 }
 
+@media (min-width: 1920px) {
+    .TransliteratorExtras {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 0 10%;
+        gap: 1rem;
+        margin-top: 5rem;
+    }
+}
+
 
 
 
@@ -351,6 +363,12 @@
     border-radius: 13px;
 }
 
+@media (min-width: 1920px) {
+    .InputWindow__ClearDiv {
+        font-size: 1.5rem;
+    }
+}
+
 .InputWindow__ClearDiv:active {
     background-color: rgb(138, 165, 162);
 }
@@ -443,6 +461,7 @@
 @media (min-width: 1920px) {
     .OutputWindow__CopyDiv {
         bottom: 1.8rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -467,15 +486,8 @@
 .ExtraTools {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
-
-@media (min-width: 1920px) {
-    .ExtraTools {
-        padding: 0 10%;
-        margin-top: 3rem;
-    }
-}
-
 
 .ExtraTools__Subtitle {
     font-size: 1.3rem;
@@ -513,10 +525,9 @@
     .ExtraTools__AlternativeOptionsBox {
         flex-direction: row;
         gap: 0.5rem;
-        align-items: center;
+        align-items: flex-start;
     }
 }
-
 
 .ExtraTools__Button {
     display: flex;
@@ -535,6 +546,7 @@
 @media (min-width: 1920px) {
     .ExtraTools__Button {
         width: 20rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -565,6 +577,7 @@
 @media (min-width: 1920px) {
     .ExtraTools__Info {
         width: 27rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -587,6 +600,13 @@
 .AlternativeOptions__Div {
     font-size: 1.1rem;
     position: relative;
+    width: 100%;
+}
+
+@media (min-width: 1920px) {
+    .AlternativeOptions__Div {
+        font-size: 1.4rem;
+    }
 }
 
 .AlternativeOptions__Subtitle {
@@ -596,12 +616,25 @@
     margin: 15px 0 10px 0;
 }
 
+@media (min-width: 1920px) {
+    .AlternativeOptions__Subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1920px) {
+.AlternativeOptions__Description {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+}
+
 .AlternativeOptions__Cross {
     position: absolute;
     top: -20px;
     right: 10px;
     background-color: rgb(233, 248, 246);
-    border-radius: 50%;
+    border-radius: 13px;
     padding: 0.3rem 0.5rem;
 }
 
@@ -616,10 +649,23 @@
     gap: 1rem;
 }
 
+@media (min-width: 1920px) {
+    .AlternativeOptions__CharDisplay {
+        font-size: 1.8rem;
+        gap: 2rem;
+    }
+}
+
 .AlternativeOptions__SingleChar {
     background-color: rgb(233, 248, 246);
     padding: 0.3rem 0.5rem;
     border-radius: 5px;
+}
+
+@media (min-width: 1920px) {
+    .AlternativeOptions__SingleChar {
+        padding: 0.5rem 0.7rem;
+    }
 }
 
 
