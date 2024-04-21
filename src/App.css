@@ -491,10 +491,12 @@
     width: 100%;
 }
 
-.ExtraTools--Alone {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+@media (min-width: 1920px) {
+    .ExtraTools--Alone {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
 }
 
 .ExtraTools__Subtitle {
@@ -557,6 +559,7 @@
     .ExtraTools__Button {
         font-size: 1.4rem;
         max-width: 18.5rem;
+        min-width: 17rem;
     }
 }
 
@@ -632,10 +635,10 @@
 }
 
 @media (min-width: 1920px) {
-.AlternativeOptions__Description {
-    margin: 0;
-    margin-bottom: 1rem;
-}
+    .AlternativeOptions__Description {
+        margin: 0;
+        margin-bottom: 1rem;
+    }
 }
 
 .AlternativeOptions__Cross {

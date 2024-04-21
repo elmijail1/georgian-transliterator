@@ -45,6 +45,7 @@ export default function Transliterator() {
     function clearCurrentInput() {
         setCurrentInput("")
         setLatestOutput("")
+        setAlternativeOptions({ shown: false, char: "", initLat: "", index: null })
     }
 
 
