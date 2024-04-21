@@ -1,12 +1,20 @@
 import { MdCancel } from "react-icons/md"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useOutletContext } from "react-router-dom"
 
-export default function InputWindow({ value, onChange, clearCurrentInput }) {
-    const [counter, setCounter] = useState(value.length)
+import { TransliteratorContext } from "../pages/Transliterator.jsx"
+
+export default function InputWindow() {
+    const {
+        clearCurrentInput,
+        currentInput,
+        handleChange,
+    } = useContext(TransliteratorContext)
+
+    const [counter, setCounter] = useState(currentInput.length)
     useEffect(() => {
-        setCounter(value.length)
-    }, [value])
+        setCounter(currentInput.length)
+    }, [currentInput])
 
     const language = useOutletContext()
 
@@ -17,8 +25,8 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
             <p className="InputWindow__Subtitle">
                 {
                     language === "RUS"
-                    ? "С латиницы"
-                    : "From Latin script"
+                        ? "С латиницы"
+                        : "From Latin script"
                 }
             </p>
 
@@ -29,8 +37,8 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                 name="currentInput"
                 id="current-input"
                 placeholder={language === "RUS" ? "Введите текст латиницей здесь..." : "Enter Latin text here..."}
-                value={value}
-                onChange={onChange}
+                value={currentInput}
+                onChange={handleChange}
                 maxLength="500"
             />
 
@@ -39,25 +47,25 @@ export default function InputWindow({ value, onChange, clearCurrentInput }) {
                 {counter > 499 && <p className="InputWindow__Counter--Red">
                     {
                         language === "RUS"
-                        ? "Макс. кол-во символов"
-                        : "Text limit has been reached"
+                            ? "Макс. кол-во символов"
+                            : "Text limit has been reached"
                     }
-                    </p>}
+                </p>}
                 <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
             </div>
 
             {/* Clear Button */}
-            {value &&
+            {currentInput &&
                 <div
                     className="InputWindow__ClearDiv"
                     onClick={clearCurrentInput}
                 >
                     {
                         language === "RUS"
-                        ? "Очистить"
-                        : "Click to clear"
+                            ? "Очистить"
+                            : "Click to clear"
                     }
-                    
+
                     <MdCancel className="OutputWindow__CopyIcon" />
                 </div>
 

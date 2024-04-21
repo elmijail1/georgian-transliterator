@@ -361,6 +361,7 @@
     padding: 0.3rem 0.5rem;
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
+    cursor: pointer;
 }
 
 @media (min-width: 1920px) {
@@ -456,6 +457,7 @@
     padding: 0.3rem 0.5rem;
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
+    cursor: pointer;
 }
 
 @media (min-width: 1920px) {
@@ -512,6 +514,7 @@
 @media (min-width: 1920px) {
     .ExtraTools__Buttons {
         flex-direction: row;
+        padding: 0;
     }
 }
 
@@ -541,6 +544,7 @@
     border-radius: 13px;
     border: 0;
     text-align: left;
+    cursor: pointer;
 }
 
 @media (min-width: 1920px) {
@@ -660,6 +664,7 @@
     background-color: rgb(233, 248, 246);
     padding: 0.3rem 0.5rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 @media (min-width: 1920px) {

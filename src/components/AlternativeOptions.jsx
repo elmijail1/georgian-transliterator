@@ -1,9 +1,16 @@
 import { nanoid } from "nanoid"
+import { useContext } from "react"
+import { TransliteratorContext } from "../pages/Transliterator"
 
+export default function AlternativeOptions() {
+    const {
+        alternativeOptions,
+        charsData,
+        language,
+        setAlternativeOptions,
+        useAlternativeOption,
+    } = useContext(TransliteratorContext)
 
-export default function AlternativeOptions({language, alternativeOptions, setAlternativeOptions, useAlternativeOption, charsData}
-
-) {
     return (
         <div className="AlternativeOptions__Div">
             <p className="AlternativeOptions__Subtitle">

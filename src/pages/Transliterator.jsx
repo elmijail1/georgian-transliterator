@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import { useState } from "react"
+import { useState, createContext } from "react"
 
 import { useOutletContext } from "react-router-dom"
 
@@ -28,6 +28,8 @@ TO DO'S:
 - III.3. If 2 is true, can we add translator to the same page? Do it.
 - III.4. If 3 is true, can we rearrange our layout to make it all work well? Do it.
 */}
+
+export const TransliteratorContext = createContext()
 
 
 export default function Transliterator() {
@@ -102,42 +104,39 @@ export default function Transliterator() {
 
     const language = useOutletContext()
 
+    const transliteratorContextContent = {
+        alternativeOptions,
+        charsData,
+        clearCurrentInput,
+        currentInput,
+        handleChange,
+        language,
+        latestOutput,
+        mapOutput,
+        optionsDisplay,
+        setAlternativeOptions,
+        useAlternativeOption,
+        setOptionsDisplay,
+    }
+
     return (
-        <div>
-            <div className="TransliteratorBody">
+        <TransliteratorContext.Provider value={transliteratorContextContent}>
+            <div>
+                <div className="TransliteratorBody">
+                    <InputWindow />
+                    <OutputWindow />
+                </div>
 
-                <InputWindow
-                    value={currentInput}
-                    onChange={handleChange}
-                    clearCurrentInput={clearCurrentInput}
-                />
+                <div className="TransliteratorExtras">
 
-                <OutputWindow
-                    value={latestOutput}
-                    mapOutput={mapOutput}
-                />
+                    {alternativeOptions.shown &&
+                        <AlternativeOptions />
+                    }
 
+                    <ExtraTools />
+
+                </div >
             </div>
-
-            <div className="TransliteratorExtras">
-
-                {alternativeOptions.shown &&
-                    <AlternativeOptions
-                        language={language}
-                        alternativeOptions={alternativeOptions}
-                        setAlternativeOptions={setAlternativeOptions}
-                        useAlternativeOption={useAlternativeOption}
-                        charsData={charsData}
-                    />
-                }
-
-                <ExtraTools
-                    optionsDisplay={optionsDisplay}
-                    setOptionsDisplay={setOptionsDisplay}
-                    setAlternativeOptions={setAlternativeOptions}
-                />
-
-            </div >
-        </div>
+        </TransliteratorContext.Provider>
     )
 }

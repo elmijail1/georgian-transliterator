@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useOutletContext } from "react-router-dom"
 import { MdLightbulb, MdLightbulbOutline } from "react-icons/md";
-import { useOutletContext } from "react-router-dom"
+import { useContext } from "react"
+import { TransliteratorContext } from "../pages/Transliterator";
 
-export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlternativeOptions }) {
+export default function ExtraTools() {
+    const {
+        optionsDisplay,
+        setAlternativeOptions,
+        setOptionsDisplay,
+    } = useContext(TransliteratorContext)
 
     const language = useOutletContext()
     function defineLanguageHide() {
@@ -60,8 +66,8 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
                     <div className="ExtraTools__Info">
                         {
                             language === "RUS"
-                            ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
-                            : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
+                                ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
+                                : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                         }
                         <Link
                             to="/knowledge"
@@ -69,8 +75,8 @@ export default function ExtraTools({ optionsDisplay, setOptionsDisplay, setAlter
                         >
                             {
                                 language === "RUS"
-                                ? "здесь"
-                                : "here"
+                                    ? "здесь"
+                                    : "here"
                             }
                         </Link>
                         .
