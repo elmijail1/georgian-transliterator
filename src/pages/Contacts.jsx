@@ -5,7 +5,7 @@ export default function Contacts() {
     const language = useOutletContext()
 
     return (
-        <>
+        <main>
             <h1 className="Contacts__Header">
                 {
                     language === "RUS"
@@ -39,6 +39,6 @@ export default function Contacts() {
                     </li>
                 </ul>
             </div>
-        </>
+        </main>
     )
 }

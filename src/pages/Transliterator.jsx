@@ -122,7 +122,7 @@ export default function Transliterator() {
 
     return (
         <TransliteratorContext.Provider value={transliteratorContextContent}>
-            <div>
+            <main>
                 <div className="TransliteratorBody">
                     <InputWindow />
                     <OutputWindow />
@@ -137,7 +137,7 @@ export default function Transliterator() {
                     <ExtraTools />
 
                 </div >
-            </div>
+            </main>
         </TransliteratorContext.Provider>
     )
 }

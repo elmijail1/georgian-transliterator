@@ -19,8 +19,6 @@ export default function OutputWindow() {
 
     const language = useOutletContext()
 
-    console.log(latestOutput)
-
     return (
         <div className="OutputWindow">
 

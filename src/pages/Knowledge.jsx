@@ -68,7 +68,7 @@ export default function Knowledge() {
     }
 
     return (
-        <div>
+        <main>
             <h1 className="Knowledge__Header">
                 {
                     language === "RUS"
@@ -86,6 +86,6 @@ export default function Knowledge() {
                     })
                 }
             </div>
-        </div>
+        </main>
     )
 }
