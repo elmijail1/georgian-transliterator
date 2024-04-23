@@ -10,7 +10,8 @@ main {
 
 @media (min-width: 1920px) {
     main {
-        margin-top: 6rem;
+        margin: 6rem 0 4rem 0;
+        padding: 0 10%;
     }
 }
 
@@ -22,7 +23,6 @@ main {
 @media (min-width: 1920px) {
     .TransliteratorBody {
         flex-direction: row;
-        padding: 0 10%;
         gap: 1rem;
     }
 }
@@ -33,7 +33,6 @@ main {
         flex-direction: row-reverse;
         justify-content: flex-end;
         align-items: flex-start;
-        padding: 0 10%;
         gap: 1rem;
         margin-top: 5rem;
     }
@@ -737,6 +736,7 @@ main {
 @media (min-width: 1920px) {
     .Knowledge__Header {
         margin-top: 6.5rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -745,6 +745,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+@media (min-width: 1920px) {
+    .Knowledge__ItemsDisplay {
+        margin-top: 2rem;
+        gap: 1.5rem;
+    }
 }
 
 .Knowledge__SingleItem {
@@ -756,10 +763,36 @@ main {
     gap: 1rem;
 }
 
+@media (min-width: 1920px) {
+    .Knowledge__SingleItem {
+        background-color: transparent;
+        border: 1px solid rgb(57, 89, 86);
+        border-radius: 1rem;
+        padding: 0;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+}
+
 .Knowledge__SingleItem--QuestionButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (min-width: 1920px) {
+    .Knowledge__SingleItem--QuestionButton {
+        gap: 1rem;
+        background-color: rgb(233, 248, 246);
+        padding: 1rem;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .Knowledge__SingleItem--QuestionButtonOpen {
+        border-radius: 1rem 1rem 0 0;
+        border-bottom: 1px solid rgb(57, 89, 86);
+    }
 }
 
 .Knowledge__SingleItem--QuestionButton--Question {
@@ -771,6 +804,12 @@ main {
     padding: 0;
 }
 
+@media (min-width: 1920px) {
+    .Knowledge__SingleItem--QuestionButton--Question {
+        font-size: 1.5rem;
+    }
+}
+
 .Knowledge__SingleItem--QuestionButton--Button {
     font-size: 1rem;
     opacity: 0.8;
@@ -780,6 +819,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+}
+
+@media (min-width: 1920px) {
+    .Knowledge__SingleItem--Answer {
+        padding: 0 1rem 1rem 1rem;
+        font-size: 1.5rem;
+    }  
 }
 
 

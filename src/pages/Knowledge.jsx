@@ -37,7 +37,7 @@ export default function Knowledge() {
                 className="Knowledge__SingleItem"
                 onClick={() => showAnswer(index)}
             >
-                <div className="Knowledge__SingleItem--QuestionButton">
+                <div className={`Knowledge__SingleItem--QuestionButton ${entry.open && "Knowledge__SingleItem--QuestionButtonOpen"}`}>
                     <button
                         className="Knowledge__SingleItem--QuestionButton--Question"
                     >
