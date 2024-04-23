@@ -32,10 +32,10 @@ export default function Contacts() {
                             :</b> elmijail1@proton.me
                     </li>
                     <li>
-                        <b>Discord:</b> something#something
+                        <b>Discord:</b> elmijail1
                     </li>
                     <li>
-                        <b>Telegram:</b> @something
+                        <b>Telegram:</b> @elmijail1
                     </li>
                 </ul>
             </div>
