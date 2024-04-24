@@ -825,7 +825,7 @@ main {
     .Knowledge__SingleItem--Answer {
         padding: 0 1rem 1rem 1rem;
         font-size: 1.5rem;
-    }  
+    }
 }
 
 
@@ -868,6 +868,13 @@ main {
     gap: 1rem;
 }
 
+@media (min-width: 1920px) {
+    .Contacts__Box {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
 .Contacts__General {
     border: 2px solid rgb(57, 89, 86);
     border-radius: 0.8rem;
@@ -877,6 +884,34 @@ main {
     justify-content: center;
     padding: 1rem;
     gap: 0.5rem;
+    cursor: pointer;
+}
+
+@media (min-width: 1920px) {
+    .Contacts__General {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 1.5rem;
+        gap: 1rem;
+        width: 30%;
+    }
+}
+
+.Contacts__General:hover {
+    background-color: rgb(233, 248, 246);
+}
+
+.Contacts__General:hover .Contacts__Copy {
+    outline: rgb(57, 89, 86) solid 1px;
+}
+
+.Contacts__General:active {
+    background-color: rgb(203, 234, 230);
+}
+
+.Contacts__General:active .Contacts__Copy {
+    background-color: rgb(57, 89, 86);
+    color: rgb(59, 175, 164);
 }
 
 .Contacts__BoxImageChannel {
@@ -906,5 +941,13 @@ main {
     padding: 0.3rem 0.5rem;
     background-color: rgb(233, 248, 246);
     border-radius: 13px;
-    cursor: pointer;
+}
+
+.Contacts__Copy:hover {
+    background-color: rgb(57, 89, 86);
+    color: white;
+}
+
+.Contacts__Copy:active {
+    color: rgb(59, 175, 164);
 }
