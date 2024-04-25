@@ -85,6 +85,42 @@ export default function Contacts() {
                         </p>
                     </div>
 
+
+                    <div
+                        onClick={() => navigator.clipboard.writeText("elmijail1")}
+                        className="ContactsNew__General"
+                    >
+                        <div className="ContactsNew__TextHalf">
+                            <p
+                                className="ContacctsNew__TextHalf__Name"
+                            >
+                                Discord
+                            </p>
+                            <p
+                                className="ContactsNew__TextHalf__Contact"
+                            >
+                                elmijail1
+                            </p>
+                            <p
+                                className="ContactNew__TextHalf__CopyButton"
+                            >
+                                {
+                                    language === "RUS"
+                                        ? "Скопировать"
+                                        : "Click to copy"
+                                }
+                            </p>
+                        </div>
+
+                        <div>
+                            <img
+                                src="src/images/discord.png"
+                                className="ContactsNew__ImageHalf__Image"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
