@@ -24,7 +24,6 @@ export default function Contacts() {
                 </p>
 
                 <div className="Contacts__Box">
-
                     <div
                         className="Contacts__General"
                         onClick={() => navigator.clipboard.writeText("elmijail1@proton.me")}
