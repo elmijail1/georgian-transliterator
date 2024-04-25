@@ -1,4 +1,7 @@
 import { useOutletContext } from "react-router-dom"
+import { nanoid } from "nanoid"
+
+import { contactsData } from "../data/contactsData.js"
 
 export default function Contacts() {
 
@@ -24,104 +27,50 @@ export default function Contacts() {
                 </p>
 
                 <div className="Contacts__Box">
-                    <div
-                        className="Contacts__General"
-                        onClick={() => navigator.clipboard.writeText("elmijail1@proton.me")}
-                    >
-                        <div className="Contacts__BoxImageChannel">
-                            <p className="Contacts__Image">✉️</p>
-                            <p className="Contacts__Channel">
-                                {
-                                    language === "RUS"
-                                        ? "Эл. почта"
-                                        : "Email"
-                                }
-                            </p>
-                        </div>
-                        <p className="Contacts__Contact">elmijail1@proton.me</p>
-                        <p className="Contacts__Copy">
-                            {
-                                language === "RUS"
-                                    ? "Скопировать"
-                                    : "Click to copy"
-                            }
-                        </p>
-                    </div>
+                    {
+                        contactsData.map(contact => {
+                            return (
+                                <div
+                                    className="Contacts__General"
+                                    onClick={() => navigator.clipboard.writeText(contact.address)}
+                                    key={nanoid()}
+                                >
+                                    <div className="Contacts__TextHalf">
+                                        <p
+                                            className="Contaccts__TextHalf__Name"
+                                        >
+                                            {contact.channel}
+                                        </p>
+                                        <p
+                                            className="Contacts__TextHalf__Contact"
+                                        >
+                                            {contact.address}
+                                        </p>
+                                        <p
+                                            className="Contact__TextHalf__CopyButton"
+                                        >
+                                            {
+                                                language === "RUS"
+                                                    ? "Скопировать"
+                                                    : "Click to copy"
+                                            }
+                                        </p>
+                                    </div>
 
-                    <div
-                        className="Contacts__General"
-                        onClick={() => navigator.clipboard.writeText("@elmijail1")}
-
-                    >
-                        <div className="Contacts__BoxImageChannel">
-                            <p className="Contacts__Image">💬</p>
-                            <p className="Contacts__Channel">Telegram</p>
-                        </div>
-                        <p className="Contacts__Contact">@elmijail1</p>
-                        <p className="Contacts__Copy">
-                            {
-                                language === "RUS"
-                                    ? "Скопировать"
-                                    : "Click to copy"
-                            }
-                        </p>
-                    </div>
-
-                    <div
-                        className="Contacts__General"
-                        onClick={() => navigator.clipboard.writeText("elmijail1")}
-                    >
-                        <div className="Contacts__BoxImageChannel">
-                            <p className="Contacts__Image">👾</p>
-                            <p className="Contacts__Channel">Discord</p>
-                        </div>
-                        <p className="Contacts__Contact">elmijail1</p>
-                        <p className="Contacts__Copy">
-                            {
-                                language === "RUS"
-                                    ? "Скопировать"
-                                    : "Click to copy"
-                            }
-                        </p>
-                    </div>
-
-
-                    <div
-                        onClick={() => navigator.clipboard.writeText("elmijail1")}
-                        className="ContactsNew__General"
-                    >
-                        <div className="ContactsNew__TextHalf">
-                            <p
-                                className="ContacctsNew__TextHalf__Name"
-                            >
-                                Discord
-                            </p>
-                            <p
-                                className="ContactsNew__TextHalf__Contact"
-                            >
-                                elmijail1
-                            </p>
-                            <p
-                                className="ContactNew__TextHalf__CopyButton"
-                            >
-                                {
-                                    language === "RUS"
-                                        ? "Скопировать"
-                                        : "Click to copy"
-                                }
-                            </p>
-                        </div>
-
-                        <div>
-                            <img
-                                src="src/images/discord.png"
-                                className="ContactsNew__ImageHalf__Image"
-                                alt=""
-                            />
-                        </div>
-                    </div>
+                                    <div>
+                                        <img
+                                            src={contact.image}
+                                            className="Contacts__ImageHalf__Image"
+                                            alt={contact.image}
+                                        />
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
 
                 </div>
+
             </div>
 
         </main>
