@@ -18,7 +18,7 @@ export default function Contacts() {
                             : "Contacts"
                     }
                 </h1>
-                <p>
+                <p className="Contacts__Description">
                     {
                         language === "RUS"
                             ? "Вы можете связаться с нами любым из этих способов. Будем рады получить обратную связь и ответить на ваши вопросы!"
@@ -37,7 +37,7 @@ export default function Contacts() {
                                 >
                                     <div className="Contacts__TextHalf">
                                         <p
-                                            className="Contaccts__TextHalf__Name"
+                                            className="Contacts__TextHalf__Name"
                                         >
                                             {contact.channel}
                                         </p>
