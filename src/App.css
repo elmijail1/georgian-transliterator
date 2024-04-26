@@ -1002,9 +1002,22 @@ main {
     margin-top: 4rem;
 }
 
+@media (min-width: 1920px) {
+    .NotFound__Header {
+        margin-top: 6.5rem;
+        font-size: 3rem;
+    }
+}
+
 .NotFound__Description {
     margin: 0;
     font-size: 1.2rem;
+}
+
+@media (min-width: 1920px) {
+    .NotFound__Description {
+        font-size: 1.5rem;
+    }
 }
 
 .NotFound__Links {
@@ -1018,6 +1031,14 @@ main {
     font-size: 1.4rem;
 }
 
+@media (min-width: 1920px) {
+    .NotFound__Links {
+        flex-direction: row;
+        width: 80%;
+        margin: 2rem auto;
+    }
+}
+
 .NotFound__Links li {
     background:rgb(59, 175, 164);
     padding: 1rem;
@@ -1027,8 +1048,18 @@ main {
     cursor: pointer;
 }
 
+@media (min-width: 1920px) {
+    .NotFound__Links li {
+        padding: 2rem;
+        font-size: 1.7rem;
+        letter-spacing: 0.1rem;
+        max-width: 30rem;
+    }
+}
+
 .NotFound__Links li:hover {
     background-color: rgb(47, 143, 133);
+    transition-duration: 0.5s;
 }
 
 .NotFound__Links li a {
