@@ -53,7 +53,7 @@ export default function Layout() {
                     <div className="Header__RightBox">
 
                         {
-                            vpWidth > 1919
+                            vpWidth > 999
                                 ?
                                 <>
                                     <HeaderLaguageMenuDesktop />

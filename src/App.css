@@ -8,9 +8,15 @@ main {
     margin-top: 3.5rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     main {
         margin: 6rem 0 4rem 0;
+        padding: 0 5%;
+    }
+}
+
+@media (min-width: 1300px) {
+    main {
         padding: 0 10%;
     }
 }
@@ -20,21 +26,27 @@ main {
     flex-direction: column;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .TransliteratorBody {
         flex-direction: row;
         gap: 1rem;
     }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .TransliteratorExtras {
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
         align-items: flex-start;
         gap: 1rem;
-        margin-top: 5rem;
+        margin-top: 3rem;
+    }
+}
+
+@media (max-height: 1000px) {
+    .TransliteratorExtras {
+        margin-top: 1rem;
     }
 }
 
@@ -66,7 +78,14 @@ main {
     top: 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
+    .Header {
+        padding: 0 5%;
+        height: 4.5rem;
+    }
+}
+
+@media (min-width: 1300px) {
     .Header {
         padding: 0 10%;
         height: 5rem;
@@ -124,7 +143,7 @@ main {
     color: rgb(59, 175, 164);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Header__Logo {
         font-size: 1.5rem;
         width: 40px;
@@ -156,7 +175,7 @@ main {
     color: white;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Header__Title {
         font-size: 1.5rem;
     }
@@ -179,7 +198,7 @@ main {
     padding: 2px 0 0 10px;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Header__Languages {
         position: relative;
     }
@@ -197,7 +216,7 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Header__Languagues--Button {
         font-size: 1.2rem;
         background-color: rgb(57, 89, 86, 0.5);
@@ -226,7 +245,7 @@ main {
     margin: 0px;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Header__Languages--Menu {
         position: absolute;
         right: auto;
@@ -332,7 +351,7 @@ main {
     margin: 15px 0 10px 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .InputWindow__Subtitle {
         font-size: 1.5rem;
     }
@@ -348,10 +367,16 @@ main {
     margin-bottom: 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .InputWindow__Input {
         height: 420px;
         font-size: 1.7rem;
+    }
+}
+
+@media (max-height: 1000px) {
+    .InputWindow__Input {
+        height: 320px;
     }
 }
 
@@ -375,11 +400,12 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .InputWindow__ClearDiv {
         font-size: 1.5rem;
     }
 }
+
 
 .InputWindow__ClearDiv:active {
     background-color: rgb(138, 165, 162);
@@ -425,7 +451,7 @@ main {
     margin: 0px 0 10px 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .OutputWindow__Subtitle {
         font-size: 1.5rem;
     }
@@ -444,10 +470,16 @@ main {
     white-space: pre-wrap;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .OutputWindow__Display {
         height: 420px;
         max-height: none;
+    }
+}
+
+@media (max-height: 1000px) {
+    .OutputWindow__Display {
+        height: 320px;
     }
 }
 
@@ -471,7 +503,7 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .OutputWindow__CopyDiv {
         bottom: 1.8rem;
         font-size: 1.5rem;
@@ -516,11 +548,11 @@ main {
     width: 100%;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools--Alone {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 49%;
     }
 }
 
@@ -531,7 +563,7 @@ main {
     margin: 15px 0 10px 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools__Subtitle {
         font-size: 1.5rem;
     }
@@ -544,7 +576,7 @@ main {
     padding: 0 0.4rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools__Buttons {
         flex-direction: row;
         padding: 0;
@@ -557,7 +589,7 @@ main {
     gap: 0.25rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools__AlternativeOptionsBox {
         flex-direction: row;
         gap: 0.5rem;
@@ -580,7 +612,7 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools__Button {
         font-size: 1.4rem;
         max-width: 18.5rem;
@@ -612,7 +644,7 @@ main {
     color: rgba(57, 89, 86, 0.6);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .ExtraTools__Info {
         font-size: 1.2rem;
     }
@@ -640,7 +672,7 @@ main {
     width: 100%;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .AlternativeOptions__Div {
         font-size: 1.4rem;
     }
@@ -653,13 +685,13 @@ main {
     margin: 15px 0 10px 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .AlternativeOptions__Subtitle {
         font-size: 1.5rem;
     }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .AlternativeOptions__Description {
         margin: 0;
         margin-bottom: 1rem;
@@ -687,7 +719,7 @@ main {
     gap: 1rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .AlternativeOptions__CharDisplay {
         font-size: 1.8rem;
         gap: 2rem;
@@ -701,7 +733,7 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .AlternativeOptions__SingleChar {
         padding: 0.5rem 0.7rem;
     }
@@ -733,7 +765,7 @@ main {
     margin: 4rem 0 1rem 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__Header {
         margin-top: 6.5rem;
         font-size: 3rem;
@@ -747,7 +779,7 @@ main {
     gap: 1rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__ItemsDisplay {
         margin-top: 2rem;
         gap: 1.5rem;
@@ -763,7 +795,7 @@ main {
     gap: 1rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__SingleItem {
         background-color: transparent;
         border: 1px solid rgb(57, 89, 86);
@@ -780,7 +812,7 @@ main {
     align-items: center;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__SingleItem--QuestionButton {
         gap: 1rem;
         background-color: rgb(233, 248, 246);
@@ -804,7 +836,7 @@ main {
     padding: 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__SingleItem--QuestionButton--Question {
         font-size: 1.5rem;
     }
@@ -821,7 +853,7 @@ main {
     gap: 0.7rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Knowledge__SingleItem--Answer {
         padding: 0 1rem 1rem 1rem;
         font-size: 1.5rem;
@@ -857,14 +889,14 @@ main {
     font-size: 2rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__Header {
         margin-top: 6.5rem;
         font-size: 3rem;
     }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__Description {
         font-size: 1.5rem;
     }
@@ -877,7 +909,7 @@ main {
     margin-top: 2rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__Box {
         flex-direction: row;
         justify-content: space-between;
@@ -895,7 +927,7 @@ main {
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__General {
         width: 30%;
         padding: 1rem 1.5rem 0 1.5rem;
@@ -922,7 +954,7 @@ main {
     gap: 0.8rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__TextHalf {
         gap: 1rem;
     }
@@ -933,7 +965,7 @@ main {
     font-size: 1.5rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__TextHalf__Name {
         font-size: 2rem;
     }
@@ -944,7 +976,7 @@ main {
     font-size: 1.3rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__TextHalf__Contact {
         font-size: 1.8rem;
     }
@@ -963,7 +995,7 @@ main {
     width: fit-content;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contact__TextHalf__CopyButton {
         margin-left: -1.5rem;
         font-size: 1.7rem;
@@ -977,7 +1009,7 @@ main {
     right: -0.7rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .Contacts__ImageHalf__Image {
         position: static;
         width: 5.8rem;
@@ -1002,7 +1034,7 @@ main {
     margin-top: 4rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .NotFound__Header {
         margin-top: 6.5rem;
         font-size: 3rem;
@@ -1014,7 +1046,7 @@ main {
     font-size: 1.2rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .NotFound__Description {
         font-size: 1.5rem;
     }
@@ -1031,7 +1063,7 @@ main {
     font-size: 1.4rem;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1000px) {
     .NotFound__Links {
         flex-direction: row;
         width: 80%;
@@ -1040,20 +1072,42 @@ main {
 }
 
 .NotFound__Links li {
-    background:rgb(59, 175, 164);
+    background: rgb(59, 175, 164);
     padding: 1rem;
     width: 80%;
+    display: flex;
+    align-items: center;
     text-align: center;
+    justify-content: center;
     border-radius: 1rem;
     cursor: pointer;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 600px) {
+    .NotFound__Links li {
+        width: 70%;
+    }
+}
+
+@media (min-width: 700px) {
+    .NotFound__Links li {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1000px) {
     .NotFound__Links li {
         padding: 2rem;
         font-size: 1.7rem;
         letter-spacing: 0.1rem;
         max-width: 30rem;
+        height: 7rem;
+    }
+}
+
+@media (min-width: 1480px) {
+    .NotFound__Links li {
+        height: unset;
     }
 }
 
