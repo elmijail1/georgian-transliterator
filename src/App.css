@@ -787,22 +787,19 @@ main {
 }
 
 .Knowledge__SingleItem {
-    background-color: rgb(233, 248, 246);
-    padding: 0.8rem 1rem;
-    border-radius: 0.5rem;
+    background-color: transparent;
+    border: 1px solid rgb(57, 89, 86);
+    padding: 0;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: flex-start;
 }
 
 @media (min-width: 1000px) {
     .Knowledge__SingleItem {
-        background-color: transparent;
-        border: 1px solid rgb(57, 89, 86);
-        border-radius: 1rem;
-        padding: 0;
         gap: 1.5rem;
-        align-items: flex-start;
     }
 }
 
@@ -810,21 +807,16 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(233, 248, 246);
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 1rem;
 }
 
-@media (min-width: 1000px) {
-    .Knowledge__SingleItem--QuestionButton {
-        gap: 1rem;
-        background-color: rgb(233, 248, 246);
-        padding: 1rem;
-        width: 100%;
-        border-radius: 1rem;
-    }
-
-    .Knowledge__SingleItem--QuestionButtonOpen {
-        border-radius: 1rem 1rem 0 0;
-        border-bottom: 1px solid rgb(57, 89, 86);
-    }
+.Knowledge__SingleItem--QuestionButtonOpen {
+    border-radius: 1rem 1rem 0 0;
+    border-bottom: 1px solid rgb(57, 89, 86);
 }
 
 .Knowledge__SingleItem--QuestionButton--Question {
@@ -851,11 +843,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    padding: 0 1rem 1rem 1rem;
 }
 
 @media (min-width: 1000px) {
     .Knowledge__SingleItem--Answer {
-        padding: 0 1rem 1rem 1rem;
         font-size: 1.5rem;
     }
 }
