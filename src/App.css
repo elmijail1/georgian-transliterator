@@ -901,10 +901,18 @@ main {
     margin-top: 2rem;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 650px) {
     .Contacts__Box {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
+    }
+}
+
+@media (min-width: 1400px) {
+    .Contacts__Box {
+        justify-content: flex-start;
+        gap: 5%;
     }
 }
 
@@ -919,10 +927,23 @@ main {
     cursor: pointer;
 }
 
+@media (min-width: 650px) {
+    .Contacts__General {
+        width: 45%;
+        padding: 1rem 1rem 0 1rem;
+    }
+}
+
 @media (min-width: 1000px) {
     .Contacts__General {
-        width: 30%;
         padding: 1rem 1.5rem 0 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .Contacts__General {
+        width: 30%;
+        max-width: 30rem;
     }
 }
 
@@ -952,6 +973,7 @@ main {
     }
 }
 
+
 .Contacts__TextHalf__Name {
     margin: 0;
     font-size: 1.5rem;
@@ -974,6 +996,7 @@ main {
     }
 }
 
+
 .Contact__TextHalf__CopyButton {
     margin: 0;
     margin-left: -1rem;
@@ -987,10 +1010,16 @@ main {
     width: fit-content;
 }
 
+@media (min-width: 650px) {
+    .Contact__TextHalf__CopyButton {
+        margin-left: -1rem;
+    }
+}
+
 @media (min-width: 1000px) {
     .Contact__TextHalf__CopyButton {
-        margin-left: -1.5rem;
         font-size: 1.7rem;
+        margin-left: -1.5rem;
     }
 }
 
@@ -1001,7 +1030,7 @@ main {
     right: -0.7rem;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1840px) {
     .Contacts__ImageHalf__Image {
         position: static;
         width: 5.8rem;
