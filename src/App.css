@@ -68,7 +68,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0.5rem 0 1rem;
+    padding: 0 1rem;
     /* appearance */
     box-shadow: 2px -5px 20px rgb(215, 215, 215);
     background-color: rgb(59, 175, 164);
@@ -173,6 +173,13 @@ main {
     font-weight: 600;
     /* decoration */
     color: white;
+    display: none;
+}
+
+@media (min-width: 350px) {
+    .Header__Title {
+        display: unset;
+    }
 }
 
 @media (min-width: 1000px) {
@@ -189,6 +196,20 @@ main {
 .Header__RightBox {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 35%;
+}
+
+@media (min-width: 350px) {
+    .Header__RightBox {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .Header__RightBox {
+        width: unset;
+    }
 }
 
 
@@ -196,12 +217,7 @@ main {
 /* header languages */
 .Header__Languages {
     padding: 2px 0 0 10px;
-}
-
-@media (min-width: 1000px) {
-    .Header__Languages {
-        position: relative;
-    }
+    position: relative;
 }
 
 .Header__Languagues--Button {
@@ -214,6 +230,15 @@ main {
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+@media (min-width: 400px) {
+    .Header__Languagues--Button {
+        font-weight: 600;
+        background-color: rgb(57, 89, 86, 0.5);
+        padding: 0.4rem 0.7rem;
+        border-radius: 10px;
+    }
 }
 
 @media (min-width: 1000px) {
@@ -245,10 +270,29 @@ main {
     margin: 0px;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 400px) {
     .Header__Languages--Menu {
         position: absolute;
         right: auto;
+        top: 150%;
+        left: -110%;
+    }
+}
+
+@media (min-width: 500px) {
+    .Header__Languages--Menu {
+        left: -50%;
+    }
+}
+
+@media (min-width: 600px) {
+    .Header__Languages--Menu {
+        left: -10%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .Header__Languages--Menu {
         top: 120%;
         left: 10%;
     }
