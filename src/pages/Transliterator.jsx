@@ -103,7 +103,7 @@ export default function Transliterator() {
     // has been clicked in the Extra Options component. It's used
     // to highlight characters.
 
-    const {language, vpWidth} = useOutletContext()
+    const { language, vpWidth } = useOutletContext()
 
     const transliteratorContextContent = {
         alternativeOptions,
@@ -128,15 +128,50 @@ export default function Transliterator() {
                     <OutputWindow />
                 </div>
 
-                <div className="TransliteratorExtras">
+                {
+                    vpWidth > 999
+                        ?
+                        <div
+                            className="aoDesktop__General"
+                        >
+                            <input
+                                type="checkbox"
+                                id="aoDesktop__Checkbox"
+                                value={optionsDisplay}
+                                onChange={() => setOptionsDisplay(prevOptions => !prevOptions)}
+                            />
 
-                    {alternativeOptions.shown &&
-                        <AlternativeOptions />
-                    }
+                            <div className="aoDesktop__RightBox">
+                                <label htmlFor="aoDesktop__Checkbox">
+                                    {optionsDisplay ? "Hide" : "Show"} alternative options for letters
+                                </label>
+                                <div className="aoDesktop__TooltipButton">
+                                    What does it mean?
+                                    <div className="aoDesktop__TooltipText">
+                                        {
+                                            language === "RUS"
+                                                ? `Вот как ещё можно перевести эту букву
+                                                    (нажмите на предложенную букву, чтобы заменить
+                                                    нынешнюю букву на неё).`
+                                                : `Other ways to transliterate this character
+                                                    (you can click a suggested character to
+                                                    replace the current one with it).`
+                                        }
+                                    </div>
+                                </div>
+                            </div>
 
-                    <ExtraTools />
+                        </div>
 
-                </div >
+                        : <div className="TransliteratorExtras">
+                            {alternativeOptions.shown &&
+                                <AlternativeOptions />
+                            }
+
+                            <ExtraTools />
+
+                        </div >
+                }
             </main>
         </TransliteratorContext.Provider>
     )
