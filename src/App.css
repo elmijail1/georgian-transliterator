@@ -794,7 +794,7 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     gap: 0.2rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 #aoDesktop__Checkbox {
@@ -811,7 +811,7 @@ main {
 
 .aoDesktop__TooltipButton {
     position: relative;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     opacity: 0.8;
     margin-left: -0.1rem;
     padding: 0.3rem 0.7rem;
@@ -825,8 +825,9 @@ main {
     display: none;
     position: absolute;
     z-index: 1;
-    top: 1rem;
-    width: 30rem;
+    top: 95%;
+    left: 10%;
+    width: 28rem;
     background-color: rgb(233, 248, 246);
     padding: 0.8rem 1rem;
     border-radius: 1rem;

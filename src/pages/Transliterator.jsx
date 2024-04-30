@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid"
 import { useState, createContext } from "react"
 
-import { useOutletContext } from "react-router-dom"
+import { Link, useOutletContext } from "react-router-dom"
 
 import { charsData } from "../data/charsData"
 
@@ -143,20 +143,34 @@ export default function Transliterator() {
 
                             <div className="aoDesktop__RightBox">
                                 <label htmlFor="aoDesktop__Checkbox">
-                                    {optionsDisplay ? "Hide" : "Show"} alternative options for letters
+                                    {
+                                        language === "RUS"
+                                            ? `${ optionsDisplay ? "Показать" : "Спрятать" } альтернативные опции перевода букв`
+                                            : `${ optionsDisplay ? "Hide" : "Show" } alternative options for letters`
+                                    }
                                 </label>
                                 <div className="aoDesktop__TooltipButton">
-                                    What does it mean?
+                                    {
+                                        language === "RUS"
+                                            ? "Что это значит?"
+                                            : "What does it mean?"
+                                    }
                                     <div className="aoDesktop__TooltipText">
                                         {
                                             language === "RUS"
-                                                ? `Вот как ещё можно перевести эту букву
-                                                    (нажмите на предложенную букву, чтобы заменить
-                                                    нынешнюю букву на неё).`
-                                                : `Other ways to transliterate this character
-                                                    (you can click a suggested character to
-                                                    replace the current one with it).`
+                                                ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
+                                                : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                                         }
+                                        <Link
+                                            to="/knowledge"
+                                            className="ExtraTools__Info--Link"
+                                        >
+                                            {
+                                                language === "RUS"
+                                                    ? "здесь"
+                                                    : "here"
+                                            }
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
