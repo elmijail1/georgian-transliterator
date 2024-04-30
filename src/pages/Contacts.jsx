@@ -5,7 +5,7 @@ import { contactsData } from "../data/contactsData.js"
 
 export default function Contacts() {
 
-    const language = useOutletContext()
+    const {language} = useOutletContext()
 
     return (
         <main>

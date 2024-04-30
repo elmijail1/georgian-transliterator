@@ -7,7 +7,7 @@ import { knowledgeData } from "../data/knowledgeData"
 
 export default function Knowledge() {
 
-    const language = useOutletContext()
+    const {language} = useOutletContext()
 
     /*
     - style data the right way (especially those lists)

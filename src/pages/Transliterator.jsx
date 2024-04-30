@@ -103,7 +103,7 @@ export default function Transliterator() {
     // has been clicked in the Extra Options component. It's used
     // to highlight characters.
 
-    const language = useOutletContext()
+    const {language, vpWidth} = useOutletContext()
 
     const transliteratorContextContent = {
         alternativeOptions,

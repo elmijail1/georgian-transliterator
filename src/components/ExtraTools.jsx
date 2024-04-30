@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { MdLightbulb, MdLightbulbOutline } from "react-icons/md";
 import { useContext } from "react"
 import { TransliteratorContext } from "../pages/Transliterator";
@@ -6,12 +6,12 @@ import { TransliteratorContext } from "../pages/Transliterator";
 export default function ExtraTools() {
     const {
         alternativeOptions,
+        language,
         optionsDisplay,
         setAlternativeOptions,
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
-    const language = useOutletContext()
     function defineLanguageHide() {
         return language === "RUS" ? "Убрать" : "Hide"
     }

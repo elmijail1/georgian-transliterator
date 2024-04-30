@@ -1,6 +1,5 @@
 import { MdCancel } from "react-icons/md"
 import { useState, useEffect, useContext } from "react"
-import { useOutletContext } from "react-router-dom"
 
 import { TransliteratorContext } from "../pages/Transliterator.jsx"
 
@@ -9,14 +8,13 @@ export default function InputWindow() {
         clearCurrentInput,
         currentInput,
         handleChange,
+        language,
     } = useContext(TransliteratorContext)
 
     const [counter, setCounter] = useState(currentInput.length)
     useEffect(() => {
         setCounter(currentInput.length)
     }, [currentInput])
-
-    const language = useOutletContext()
 
     return (
         <div className="InputWindow">

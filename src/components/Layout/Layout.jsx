@@ -69,7 +69,7 @@ export default function Layout() {
                 </LayoutContext.Provider >
             </div >
 
-            <Outlet context={language} />
+            <Outlet context={{language, vpWidth}} />
         </>
     )
 }

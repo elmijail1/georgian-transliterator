@@ -1,5 +1,4 @@
 import { MdContentCopy } from "react-icons/md";
-import { useOutletContext } from "react-router-dom"
 import { useContext } from "react"
 
 import { TransliteratorContext } from "../pages/Transliterator.jsx"
@@ -7,6 +6,7 @@ import { TransliteratorContext } from "../pages/Transliterator.jsx"
 export default function OutputWindow() {
 
     const {
+        language,
         latestOutput,
         mapOutput,
     } = useContext(TransliteratorContext)
@@ -16,8 +16,6 @@ export default function OutputWindow() {
         latestOutput.map(entry => arrayToCopy.push(entry.geoChar))
         navigator.clipboard.writeText(arrayToCopy.join(""))
     }
-
-    const language = useOutletContext()
 
     return (
         <div className="OutputWindow">
