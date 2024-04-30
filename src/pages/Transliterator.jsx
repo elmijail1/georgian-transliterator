@@ -60,18 +60,48 @@ export default function Transliterator() {
         }
     }
 
+    function determineIfDekstopLetterOptionsShouldBeShown(charIndex) {
+        if (vpWidth > 999 && alternativeOptions.shown && alternativeOptions.index === charIndex) {
+            return true
+        }
+    }
+
+
     function mapOutput() {
         const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch"]
         if (optionsDisplay) {
             return latestOutput.map((entry, index) => {
                 if (triggerLetters.includes(entry.latInit)) {
-                    return <span
-                        className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
-                        key={nanoid()}
-                        onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit, index)}
-                    >
-                        {entry.geoChar}
-                    </span>
+                    return (
+                        <span
+                            className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
+                            key={nanoid()}
+                            onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit, index)}
+                        >
+                            {entry.geoChar}
+                            {
+                                determineIfDekstopLetterOptionsShouldBeShown(index) &&
+                                <span className="aoDesktop__LetterOptions">
+                                    {
+                                        charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
+                                            if (char !== alternativeOptions.geoChar) {
+                                                return (
+                                                    <div
+                                                        key={nanoid()}
+                                                        className="aoDesktip__LetterOptions__Letter"
+                                                        onClick={() => useAlternativeOption(char)}
+                                                    >
+                                                        {char}
+                                                    </div>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </span>
+                            }
+                        </span>
+                    )
+
                 } else {
                     return <span key={nanoid()}>{entry.geoChar}</span>
                 }
@@ -116,8 +146,8 @@ export default function Transliterator() {
         mapOutput,
         optionsDisplay,
         setAlternativeOptions,
-        useAlternativeOption,
         setOptionsDisplay,
+        useAlternativeOption,
     }
 
     return (
@@ -138,15 +168,18 @@ export default function Transliterator() {
                                 type="checkbox"
                                 id="aoDesktop__Checkbox"
                                 value={optionsDisplay}
-                                onChange={() => setOptionsDisplay(prevOptions => !prevOptions)}
+                                onChange={() => {
+                                    setOptionsDisplay(prevOptions => !prevOptions)
+                                    setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
+                                }}
                             />
 
                             <div className="aoDesktop__RightBox">
                                 <label htmlFor="aoDesktop__Checkbox">
                                     {
                                         language === "RUS"
-                                            ? `${ optionsDisplay ? "Показать" : "Спрятать" } альтернативные опции перевода букв`
-                                            : `${ optionsDisplay ? "Hide" : "Show" } alternative options for letters`
+                                            ? `${optionsDisplay ? "Спрятать" : "Показать"} альтернативные опции перевода букв`
+                                            : `${optionsDisplay ? "Hide" : "Show"} alternative options for letters`
                                     }
                                 </label>
                                 <div className="aoDesktop__TooltipButton">

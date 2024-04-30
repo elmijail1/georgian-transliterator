@@ -565,7 +565,8 @@ main {
 .highlighterLetter {
     background-color: rgb(198, 245, 238);
     position: relative;
-    z-index: 1;
+    display: inline-block;
+    justify-content: center;
     padding: 2px;
     border-radius: 5px;
     cursor: pointer;
@@ -841,6 +842,21 @@ main {
     background-color: rgb(214, 237, 234);
 }
 
+.aoDesktop__LetterOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    background-color: rgb(214, 237, 234);
+    box-shadow: 0px 2px 5px rgb(81, 81, 81);
+    padding: 0.4rem 0.6rem 0.8rem 0.6rem;
+    width: 2.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
 
 
 
