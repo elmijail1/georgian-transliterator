@@ -413,14 +413,15 @@ main {
 
 @media (min-width: 1000px) {
     .InputWindow__Input {
-        height: 420px;
+        height: 320px;
         font-size: 1.7rem;
     }
 }
 
-@media (max-height: 1000px) {
+@media (min-width: 1000px) and (min-height: 1000px) {
     .InputWindow__Input {
-        height: 320px;
+        height: 420px;
+        font-size: 1.7rem;
     }
 }
 
@@ -516,14 +517,14 @@ main {
 
 @media (min-width: 1000px) {
     .OutputWindow__Display {
-        height: 420px;
+        height: 320px;
         max-height: none;
     }
 }
 
-@media (max-height: 1000px) {
+@media (min-width: 1000px) and (min-height: 1000px) {
     .OutputWindow__Display {
-        height: 320px;
+        height: 420px;
     }
 }
 

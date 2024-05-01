@@ -2,7 +2,7 @@ import { nanoid } from "nanoid"
 import { useContext } from "react"
 import { TransliteratorContext } from "../pages/Transliterator"
 
-export default function AlternativeOptions() {
+export default function AlternativeOptionsMobile() {
     const {
         alternativeOptions,
         charsData,

@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid"
 import { useState, createContext } from "react"
 
-import { Link, useOutletContext } from "react-router-dom"
+import { useOutletContext } from "react-router-dom"
 
 import { charsData } from "../data/charsData"
 
@@ -10,7 +10,8 @@ import transliterate from "../utilities/transliterate"
 import InputWindow from "../components/InputWindow"
 import OutputWindow from "../components/OutputWindow"
 import ExtraTools from "../components/ExtraTools"
-import AlternativeOptions from "../components/AlternativeOptions"
+import AlternativeOptionsDesktop from "../components/AlternativeOptionsDesktop"
+import AlternativeOptionsMobile from "../components/AlternativeOptionsMobile"
 
 {/*
 TO DO'S:
@@ -160,59 +161,10 @@ export default function Transliterator() {
 
                 {
                     vpWidth > 999
-                        ?
-                        <div
-                            className="aoDesktop__General"
-                        >
-                            <input
-                                type="checkbox"
-                                id="aoDesktop__Checkbox"
-                                value={optionsDisplay}
-                                onChange={() => {
-                                    setOptionsDisplay(prevOptions => !prevOptions)
-                                    setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
-                                }}
-                            />
-
-                            <div className="aoDesktop__RightBox">
-                                <label htmlFor="aoDesktop__Checkbox">
-                                    {
-                                        language === "RUS"
-                                            ? `${optionsDisplay ? "Спрятать" : "Показать"} альтернативные опции перевода букв`
-                                            : `${optionsDisplay ? "Hide" : "Show"} alternative options for letters`
-                                    }
-                                </label>
-                                <div className="aoDesktop__TooltipButton">
-                                    {
-                                        language === "RUS"
-                                            ? "Что это значит?"
-                                            : "What does it mean?"
-                                    }
-                                    <div className="aoDesktop__TooltipText">
-                                        {
-                                            language === "RUS"
-                                                ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
-                                                : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
-                                        }
-                                        <Link
-                                            to="/knowledge"
-                                            className="ExtraTools__Info--Link"
-                                        >
-                                            {
-                                                language === "RUS"
-                                                    ? "здесь"
-                                                    : "here"
-                                            }
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        ? <AlternativeOptionsDesktop />
                         : <div className="TransliteratorExtras">
                             {alternativeOptions.shown &&
-                                <AlternativeOptions />
+                                <AlternativeOptionsMobile />
                             }
 
                             <ExtraTools />
