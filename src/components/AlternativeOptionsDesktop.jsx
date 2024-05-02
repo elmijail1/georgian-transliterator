@@ -11,19 +11,23 @@ export default function AlternativeOptionsDesktop() {
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
+    console.log(optionsDisplay)
+
     return (
         <div
             className="aoDesktop__General"
-            id="aoDesktop__GeneralID"
         >
             <input
                 type="checkbox"
+                id="aoDesktop__Checkbox"
                 value={optionsDisplay}
                 onChange={() => {
                     setOptionsDisplay(prevOptions => !prevOptions)
                     setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
                 }}
             />
+            
+            <label htmlFor="aoDesktop__Checkbox" id="aoDesktop__SwitchLabel"></label>
 
             <div className="aoDesktop__RightBox">
                 <label htmlFor="aoDesktop__Checkbox">

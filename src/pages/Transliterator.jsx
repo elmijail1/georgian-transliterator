@@ -69,7 +69,7 @@ export default function Transliterator() {
 
 
     function mapOutput() {
-        const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch"]
+        const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c"]
         if (optionsDisplay) {
             return latestOutput.map((entry, index) => {
                 if (triggerLetters.includes(entry.latInit)) {

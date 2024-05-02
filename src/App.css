@@ -803,6 +803,41 @@ main {
     width: 1rem;
     height: 1rem;
     margin-top: 0.25rem;
+    display: none;
+}
+
+#aoDesktop__Checkbox:checked + #aoDesktop__SwitchLabel::after {
+    left: 1.6rem;
+}
+
+#aoDesktop__Checkbox:checked + #aoDesktop__SwitchLabel {
+    background-color: rgb(59, 175, 164);
+}
+
+#aoDesktop__SwitchLabel {
+    position : relative ;
+    display : inline-block;
+    width : 3.5rem;
+    height : 2rem;
+    background-color: rgb(209, 224, 222);
+    border-radius: 1.1rem;
+    cursor: pointer;
+}
+
+#aoDesktop__SwitchLabel::after {
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    top: 0.2rem;
+    left: 0.3rem;
+    /* outline: rgb(218, 217, 217) solid 1px; */
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.3s;
 }
 
 .aoDesktop__RightBox {
@@ -846,17 +881,33 @@ main {
 .aoDesktop__LetterOptions {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
     align-items: center;
+    justify-content: center;
     position: absolute;
     z-index: 1;
     top: 110%;
     background-color: rgb(214, 237, 234);
     box-shadow: 0px 2px 5px rgb(81, 81, 81);
-    padding: 0.4rem 0.6rem 0.8rem 0.6rem;
     width: 2.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
+}
+
+.aoDesktop__LetterOptions div {
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+}
+
+.aoDesktop__LetterOptions div:first-of-type {
+    padding-top: 0.7rem;
+}
+
+.aoDesktop__LetterOptions div:last-of-type {
+    padding-bottom: 0.7rem;
+}
+
+.aoDesktop__LetterOptions div:hover{
+    background-color: rgb(201, 223, 220);
 }
 
 
