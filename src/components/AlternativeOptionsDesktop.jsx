@@ -20,7 +20,7 @@ export default function AlternativeOptionsDesktop() {
             <input
                 type="checkbox"
                 id="aoDesktop__Checkbox"
-                value={optionsDisplay}
+                checked={optionsDisplay ? true : false}
                 onChange={() => {
                     setOptionsDisplay(prevOptions => !prevOptions)
                     setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
