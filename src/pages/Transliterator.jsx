@@ -67,6 +67,16 @@ export default function Transliterator() {
         }
     }
 
+    /* COORDINATES STUF */
+    const gotIt = document.getElementById("rock")
+    console.log(gotIt, gotIt?.getBoundingClientRect().y)
+    const [letterMenuDisplay, setLetterMenuDisplay] = useState(
+        {
+            menuHeight: {},
+            windowHeight: {},
+            menuPosition: "bottom",
+        })
+    console.log(letterMenuDisplay)
 
     function mapOutput() {
         const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c"]
@@ -89,8 +99,10 @@ export default function Transliterator() {
                                                 return (
                                                     <div
                                                         key={nanoid()}
+                                                        id={"rock"}
                                                         className="aoDesktip__LetterOptions__Letter"
                                                         onClick={() => useAlternativeOption(char)}
+                                                        onLoad={() => setLetterMenuDisplay(prevDisplay => ({ ...prevDisplay, menuHeight: gotIt.getBoundingClientRect().y + gotIt.getBoundingClientRect().height }))}
                                                     >
                                                         {char}
                                                     </div>

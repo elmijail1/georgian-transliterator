@@ -11,8 +11,6 @@ export default function AlternativeOptionsDesktop() {
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
-    console.log(optionsDisplay)
-
     return (
         <div
             className="aoDesktop__General"
