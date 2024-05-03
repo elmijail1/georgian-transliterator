@@ -519,6 +519,7 @@ main {
     .OutputWindow__Display {
         height: 320px;
         max-height: none;
+        font-size: 1.7rem;
     }
 }
 
