@@ -404,7 +404,7 @@ main {
 .InputWindow__Input {
     height: 200px;
     width: 100%;
-    min-width: 35rem;
+    /* min-width: 35rem; */
     padding: 7px 7px 42px 15px;
     font-size: 1.5rem;
     border: 1px solid rgba(96, 117, 115, 0.5);
@@ -507,12 +507,12 @@ main {
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     width: 100%;
-    max-width: 35rem;
     padding: 7px 7px 42px 15px;
     max-height: 200px;
     font-size: 1.5rem;
     position: relative;
     overflow-wrap: break-word;
+    word-break:break-all;
     /* this single line below solves the linebreak issue for OutputWindow */
     white-space: pre-wrap;
 }
@@ -521,6 +521,7 @@ main {
     .OutputWindow__Display {
         height: 320px;
         max-height: none;
+        max-width: 100%;
         font-size: 1.7rem;
     }
 }
