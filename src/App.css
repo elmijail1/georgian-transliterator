@@ -404,6 +404,7 @@ main {
 .InputWindow__Input {
     height: 200px;
     width: 100%;
+    min-width: 35rem;
     padding: 7px 7px 42px 15px;
     font-size: 1.5rem;
     border: 1px solid rgba(96, 117, 115, 0.5);
@@ -506,11 +507,12 @@ main {
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     width: 100%;
+    max-width: 35rem;
     padding: 7px 7px 42px 15px;
     max-height: 200px;
     font-size: 1.5rem;
     position: relative;
-    overflow: scroll;
+    overflow-wrap: break-word;
     /* this single line below solves the linebreak issue for OutputWindow */
     white-space: pre-wrap;
 }
