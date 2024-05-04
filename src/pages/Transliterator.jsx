@@ -67,17 +67,6 @@ export default function Transliterator() {
         }
     }
 
-    /* COORDINATES STUF */
-    const gotIt = document.getElementById("rock")
-    console.log(gotIt, gotIt?.getBoundingClientRect().y)
-    const [letterMenuDisplay, setLetterMenuDisplay] = useState(
-        {
-            menuHeight: {},
-            windowHeight: {},
-            menuPosition: "bottom",
-        })
-    console.log(letterMenuDisplay)
-
     function mapOutput() {
         const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c"]
         if (optionsDisplay) {
@@ -87,7 +76,12 @@ export default function Transliterator() {
                         <span
                             className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
                             key={nanoid()}
-                            onClick={() => showAlternativeOptions(entry.geoChar, entry.latInit, index)}
+                            id={`letter-${index}`}
+                            onClick={() => {
+                                // document.getElementById(`letter-${index}`).focus()
+                                document.getElementById(`letter-${index}`).scrollIntoView()
+                                showAlternativeOptions(entry.geoChar, entry.latInit, index)
+                            }}
                         >
                             {entry.geoChar}
                             {
@@ -102,7 +96,6 @@ export default function Transliterator() {
                                                         id={"rock"}
                                                         className="aoDesktip__LetterOptions__Letter"
                                                         onClick={() => useAlternativeOption(char)}
-                                                        onLoad={() => setLetterMenuDisplay(prevDisplay => ({ ...prevDisplay, menuHeight: gotIt.getBoundingClientRect().y + gotIt.getBoundingClientRect().height }))}
                                                     >
                                                         {char}
                                                     </div>

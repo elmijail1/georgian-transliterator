@@ -17,10 +17,6 @@ export default function OutputWindow() {
         navigator.clipboard.writeText(arrayToCopy.join(""))
     }
 
-    /* COORDINATES STUFF */
-    const gotItOutput = document.getElementById("OutputWindow__DisplayID")
-    console.log(gotItOutput, gotItOutput?.getBoundingClientRect())
-
     return (
         <div className="OutputWindow">
 
@@ -34,7 +30,9 @@ export default function OutputWindow() {
             </p>
 
             {/* Output Display Div */}
-            <div className="OutputWindow__Display" id="OutputWindow__DisplayID">
+            <div
+                className="OutputWindow__Display"
+            >
                 {latestOutput.length
                     ? mapOutput()
                     :
