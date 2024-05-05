@@ -7,7 +7,7 @@ import { knowledgeData } from "../data/knowledgeData"
 
 export default function Knowledge() {
 
-    const {language} = useOutletContext()
+    const { language } = useOutletContext()
 
     /*
     - style data the right way (especially those lists)
@@ -35,9 +35,10 @@ export default function Knowledge() {
         return (
             <div
                 className="Knowledge__SingleItem"
-                onClick={() => showAnswer(index)}
             >
-                <div className={`Knowledge__SingleItem--QuestionButton ${entry.open && "Knowledge__SingleItem--QuestionButtonOpen"}`}>
+                <div
+                    onClick={() => showAnswer(index)}
+                    className={`Knowledge__SingleItem--QuestionButton ${entry.open && "Knowledge__SingleItem--QuestionButtonOpen"}`}>
                     <button
                         className="Knowledge__SingleItem--QuestionButton--Question"
                     >
