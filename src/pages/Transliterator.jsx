@@ -79,7 +79,6 @@ export default function Transliterator() {
                             id={`letter-${index}`}
                             onClick={() => {
                                 // document.getElementById(`letter-${index}`).focus()
-                                document.getElementById(`letter-${index}`).scrollIntoView()
                                 showAlternativeOptions(entry.geoChar, entry.latInit, index)
                             }}
                         >
