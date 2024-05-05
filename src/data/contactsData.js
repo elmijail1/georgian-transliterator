@@ -2,8 +2,7 @@ export const contactsData = [
     {
         channel: "Email",
         address: "elmijail1@proton.me",
-        image: "../images/email.png"
-        // image: "src/images/email.png",
+        image: "georgian-transliterator/src/images/email.png",
     },
     {
         channel: "Telegram",
