@@ -270,6 +270,7 @@ main {
     margin: 0;
     border: 1px solid rgb(57, 89, 86, 0.5);
     border-radius: 0.5rem;
+    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
 }
 
 @media (min-width: 400px) {
@@ -358,6 +359,7 @@ main {
     margin: 0px;
     border: 1px solid rgb(57, 89, 86, 0.5);
     border-radius: 0.5rem;
+    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
 }
 
 .Header__Kebab--Menu li {
@@ -463,9 +465,9 @@ main {
     gap: 0.2rem;
     align-items: center;
     font-size: 1.2rem;
-    opacity: 0.8;
+    opacity: 0.9;
     padding: 0.3rem 0.5rem;
-    background-color: rgb(233, 248, 246);
+    background-color: hsl(172, 50%, 90%);
     border-radius: 13px;
     cursor: pointer;
 }
@@ -541,7 +543,7 @@ main {
     position: relative;
     overflow-wrap: break-word;
     overflow: scroll;
-    word-break: break-all;
+    word-break: break-word;
     /* this single line below solves the linebreak issue for OutputWindow */
     white-space: pre-wrap;
 }
@@ -574,9 +576,9 @@ main {
     gap: 0.2rem;
     align-items: center;
     font-size: 1.2rem;
-    opacity: 0.8;
+    opacity: 0.9;
     padding: 0.3rem 0.5rem;
-    background-color: rgb(233, 248, 246);
+    background-color: hsl(172, 50%, 90%);
     border-radius: 13px;
     cursor: pointer;
 }
