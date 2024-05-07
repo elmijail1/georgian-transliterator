@@ -132,10 +132,12 @@ export const charsData = [
     {
         lat: "w",
         geo: "წ",
+        options: ["წ", "უ"],
     },
     {
         lat: "x",
         geo: "ხ",
+        options: ["ხ", "კს"],
     },
     {
         lat: "y",
