@@ -489,7 +489,7 @@ main {
 
 .InputWindow__Counter {
     opacity: 60%;
-    margin-top: 0rem;
+    margin-top: 0.2rem;
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
