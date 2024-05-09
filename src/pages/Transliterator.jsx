@@ -13,23 +13,6 @@ import ExtraTools from "../components/ExtraTools"
 import AlternativeOptionsDesktop from "../components/AlternativeOptionsDesktop"
 import AlternativeOptionsMobile from "../components/AlternativeOptionsMobile"
 
-{/*
-TO DO'S:
-- I. DESKTOP LAYOUT
-- I.1. See what is the most common desktop layout and work on designing it
-.
-– II. OPTIMIZING FOR OTHER VIEWPORTS
-– II.1. See what other viewports are popular and optimize both layouts for them
-.
-- - THIS IS WHERE I CAN SEND IT LIVE: see what free options there are (Netlify?) - -
-.
-– III. TRANSLATOR
-– III.1. Can we use an API to get translation from Google Translate? Do it.
-- III.2. If 1 is true, can we add translator as a separate page? Do it.
-- III.3. If 2 is true, can we add translator to the same page? Do it.
-- III.4. If 3 is true, can we rearrange our layout to make it all work well? Do it.
-*/}
-
 export const TransliteratorContext = createContext()
 
 
@@ -62,7 +45,7 @@ export default function Transliterator() {
     }
 
     function determineIfDekstopLetterOptionsShouldBeShown(charIndex) {
-        if (vpWidth > 999 && alternativeOptions.shown && alternativeOptions.index === charIndex) {
+        if (alternativeOptions.shown && alternativeOptions.index === charIndex) {
             return true
         }
     }
@@ -163,18 +146,7 @@ export default function Transliterator() {
                     <OutputWindow />
                 </div>
 
-                {
-                    vpWidth > 999
-                        ? <AlternativeOptionsDesktop />
-                        : <div className="TransliteratorExtras">
-                            {alternativeOptions.shown &&
-                                <AlternativeOptionsMobile />
-                            }
-
-                            <ExtraTools />
-
-                        </div >
-                }
+                <AlternativeOptionsDesktop />
             </main>
         </TransliteratorContext.Provider>
     )
