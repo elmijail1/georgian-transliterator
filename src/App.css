@@ -974,6 +974,50 @@ main {
     background-color: rgb(201, 223, 220);
 }
 
+/* additional options mobile*/
+.aoMobile__General {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    padding: 0 10%;
+}
+
+.aoMobile__Button {
+    border: 1px solid rgb(57, 89, 86);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background-color: rgb(214, 237, 234);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.aoMobile__Button:hover {
+    background-color: hsl(172, 30%, 80%);
+}
+
+.aoMobile__ButtonBulb {
+    width: 2rem;
+    height: 2rem;
+}
+
+.aoMobile__ButtonText {
+    text-align: left;
+}
+
+.aoMobile__Description {
+    text-align: center;
+    color:rgb(58, 90, 87, 0.8);
+}
+
+.aoMobile__Description a {
+    color:rgb(57, 89, 86);
+}
 
 
 
