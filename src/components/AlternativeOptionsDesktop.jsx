@@ -21,7 +21,12 @@ export default function AlternativeOptionsDesktop() {
             <div
                 className="aoMobile__General"
             >
-                <button className="aoMobile__Button">
+                <button
+                    className="aoMobile__Button"
+                    onClick={() => {
+                        setOptionsDisplay(prevOptions => !prevOptions)
+                        setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
+                    }}>
                     <MdLightbulbOutline className="aoMobile__ButtonBulb" />
                     <div className="aoMobile__ButtonText">
                         {
