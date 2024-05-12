@@ -22,12 +22,19 @@ export default function AlternativeOptionsDesktop() {
                 className="aoMobile__General"
             >
                 <button
-                    className="aoMobile__Button"
+                    className={`
+                    aoMobile__Button
+                    ${optionsDisplay ? "aoMobile__ButtonActive" : null}
+                    `}
                     onClick={() => {
                         setOptionsDisplay(prevOptions => !prevOptions)
                         setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
                     }}>
-                    <MdLightbulbOutline className="aoMobile__ButtonBulb" />
+                    {
+                        optionsDisplay
+                            ? <MdLightbulb className="aoMobile__ButtonBulbActive" />
+                            : <MdLightbulbOutline className="aoMobile__ButtonBulb" />
+                    }
                     <div className="aoMobile__ButtonText">
                         {
                             language === "RUS"

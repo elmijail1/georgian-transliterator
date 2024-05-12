@@ -999,13 +999,20 @@ main {
     width: 100%;
 }
 
-.aoMobile__Button:hover {
-    background-color: hsl(172, 30%, 80%);
-}
-
-.aoMobile__ButtonBulb {
+.aoMobile__ButtonBulb,
+.aoMobile__ButtonBulbActive {
     width: 2rem;
     height: 100%;
+}
+
+.aoMobile__ButtonBulb svg,
+.aoMobile__ButtonBulbActive svg {
+    height: 1rem;
+    width: 1rem;
+}
+
+.aoMobile__ButtonBulbActive {
+    fill: white;
 }
 
 .aoMobile__ButtonText {
@@ -1013,8 +1020,16 @@ main {
     width: 15rem;
 }
 
+.aoMobile__ButtonActive {
+    background-color: rgb(57, 89, 86);
+}
+
+.aoMobile__ButtonActive > .aoMobile__ButtonText {
+    color: white;
+}
+
 .aoMobile__Description {
-    text-align: center;
+    text-align: left;
     color:rgb(58, 90, 87, 0.8);
 }
 
