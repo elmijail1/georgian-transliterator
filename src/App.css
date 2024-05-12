@@ -996,6 +996,7 @@ main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .aoMobile__Button:hover {
@@ -1004,11 +1005,12 @@ main {
 
 .aoMobile__ButtonBulb {
     width: 2rem;
-    height: 2rem;
+    height: 100%;
 }
 
 .aoMobile__ButtonText {
     text-align: left;
+    width: 15rem;
 }
 
 .aoMobile__Description {
