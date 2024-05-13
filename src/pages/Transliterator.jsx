@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect, useRef } from "react"
 
 import { useOutletContext } from "react-router-dom"
 
@@ -50,6 +50,22 @@ export default function Transliterator() {
         }
     }
 
+
+    let letterOptionRef = useRef()
+    useEffect(() => {
+        let handler = (e) => {
+            if (!letterOptionRef.current.contains(e.target)) {
+                setAlternativeOptions({ shown: false, char: "", initLat: "", index: null })
+            }
+        }
+
+        document.addEventListener("mousedown", handler)
+
+        return () => {
+            document.removeEventListener("mousedown", handler)
+        }
+    })
+
     function mapOutput() {
         const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c", "w", "x"]
         if (optionsDisplay) {
@@ -68,14 +84,16 @@ export default function Transliterator() {
                             {entry.geoChar}
                             {
                                 determineIfDekstopLetterOptionsShouldBeShown(index) &&
-                                <span className="aoDesktop__LetterOptions">
+                                <span
+                                    className="aoDesktop__LetterOptions"
+                                    ref={letterOptionRef}
+                                >
                                     {
                                         charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
                                             if (char !== alternativeOptions.geoChar) {
                                                 return (
                                                     <div
                                                         key={nanoid()}
-                                                        id={"rock"}
                                                         className="aoDesktop__LetterOptions__Letter"
                                                         onClick={() => useAlternativeOption(char)}
                                                     >
