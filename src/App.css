@@ -955,7 +955,7 @@ main {
     cursor: pointer;
 }
 
-.aoDesktop__LetterOptions div {
+.aoDesktop__LetterOptions__Letter {
     padding: 0.3rem 0rem;
     margin: 0 1rem;
     text-align: center;
@@ -963,15 +963,15 @@ main {
     border-radius: 0.5rem;
 }
 
-.aoDesktop__LetterOptions div:first-of-type {
+.aoDesktop__LetterOptions__Letter:first-of-type {
     padding-top: 0.7rem;
 }
 
-.aoDesktop__LetterOptions div:last-of-type {
+.aoDesktop__LetterOptions__Letter:last-of-type {
     padding-bottom: 0.7rem;
 }
 
-.aoDesktop__LetterOptions div:hover {
+.aoDesktop__LetterOptions__Letter:hover {
     background-color: rgb(201, 223, 220);
 }
 

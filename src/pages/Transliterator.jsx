@@ -76,7 +76,7 @@ export default function Transliterator() {
                                                     <div
                                                         key={nanoid()}
                                                         id={"rock"}
-                                                        className="aoDesktip__LetterOptions__Letter"
+                                                        className="aoDesktop__LetterOptions__Letter"
                                                         onClick={() => useAlternativeOption(char)}
                                                     >
                                                         {char}
