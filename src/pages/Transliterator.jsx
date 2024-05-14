@@ -50,17 +50,17 @@ export default function Transliterator() {
         }
     }
 
-
+    
     let letterOptionRef = useRef()
     useEffect(() => {
         let handler = (e) => {
-            if (!letterOptionRef.current.contains(e.target)) {
+            if (letterOptionRef.current && !letterOptionRef.current.contains(e.target)) {
                 setAlternativeOptions({ shown: false, char: "", initLat: "", index: null })
             }
         }
-
+        
         document.addEventListener("mousedown", handler)
-
+        
         return () => {
             document.removeEventListener("mousedown", handler)
         }
