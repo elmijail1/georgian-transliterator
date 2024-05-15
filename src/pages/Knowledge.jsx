@@ -9,10 +9,6 @@ export default function Knowledge() {
 
     const { language } = useOutletContext()
 
-    /*
-    - style data the right way (especially those lists)
-    */
-
     const [knowledgeItems, setKnowledgeItems] = useState(knowledgeData)
     function showAnswer(index) {
         setKnowledgeItems(prevItems => {

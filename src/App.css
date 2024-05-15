@@ -360,28 +360,27 @@ main {
     border: 1px solid rgb(57, 89, 86, 0.5);
     border-radius: 0.5rem;
     box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
+    display: flex;
+    flex-direction: column;
 }
 
-.Header__Kebab--Menu li {
+.Header__Kebab--Menu a {
     padding: 1rem 1rem;
     width: 100%;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.Header__Kebab--Menu li:first-child {
+.Header__Kebab--Menu a:first-child {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.Header__Kebab--Menu li:last-child {
+.Header__Kebab--Menu a:last-child {
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
-.Header__Kebab--Menu li:hover {
+.Header__Kebab--Menu a:hover {
     background-color: hsl(172, 42%, 84%);
-}
-
-.Header__Kebab--Menu li a {
-    text-decoration: none;
 }
 
 /* desktop menu */

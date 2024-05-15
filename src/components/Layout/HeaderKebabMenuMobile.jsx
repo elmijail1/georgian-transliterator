@@ -20,7 +20,7 @@ export default function HeaderKebabMenuMobile() {
 
     let menuRef = useRef() // these 2 are used to make the kebab menu close when clicked elsewhere; ref refers to the menu element in the render
     useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
-        function closeMenuIfClickedElsewhere (event) {
+        function closeMenuIfClickedElsewhere(event) {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
                 setMenuOpen(false)
             }
@@ -28,7 +28,7 @@ export default function HeaderKebabMenuMobile() {
 
         document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
 
-        return(() => {
+        return (() => {
             document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
         })
     })
@@ -47,10 +47,10 @@ export default function HeaderKebabMenuMobile() {
 
             {
                 menuOpen &&
-                <ul className="Header__Kebab--Menu">
+                <div className="Header__Kebab--Menu">
                     {/* home */}
-                    <li><NavLink
-                        to="/"
+                    <NavLink
+                        to=""
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
                     >
@@ -59,10 +59,10 @@ export default function HeaderKebabMenuMobile() {
                                 ? "Главная"
                                 : "Home"
                         }
-                    </NavLink></li>
+                    </NavLink>
 
                     {/* knowledge */}
-                    <li><NavLink
+                    <NavLink
                         to="/knowledge"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
@@ -72,10 +72,10 @@ export default function HeaderKebabMenuMobile() {
                                 ? "Полезно знать"
                                 : "Knowledge"
                         }
-                    </NavLink></li>
+                    </NavLink>
 
                     {/* contacts */}
-                    <li><NavLink
+                    <NavLink
                         to="/contacts"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
@@ -85,8 +85,8 @@ export default function HeaderKebabMenuMobile() {
                                 ? "Контакты"
                                 : "Contacts"
                         }
-                    </NavLink></li>
-                </ul>
+                    </NavLink>
+                </div>
             }
         </div>
     )
