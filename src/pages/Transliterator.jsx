@@ -9,9 +9,7 @@ import transliterate from "../utilities/transliterate"
 
 import InputWindow from "../components/InputWindow"
 import OutputWindow from "../components/OutputWindow"
-import ExtraTools from "../components/ExtraTools"
-import AlternativeOptionsDesktop from "../components/AlternativeOptionsDesktop"
-import AlternativeOptionsMobile from "../components/AlternativeOptionsMobile"
+import AlternativeOptions from "../components/AlternativeOptions"
 
 export const TransliteratorContext = createContext()
 
@@ -164,7 +162,7 @@ export default function Transliterator() {
                     <OutputWindow />
                 </div>
 
-                <AlternativeOptionsDesktop />
+                <AlternativeOptions />
             </main>
         </TransliteratorContext.Provider>
     )

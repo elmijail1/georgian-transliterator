@@ -5,7 +5,7 @@ import { TransliteratorContext } from "../pages/Transliterator.jsx"
 import { MdLightbulbOutline, MdLightbulb } from "react-icons/md";
 
 
-export default function AlternativeOptionsDesktop() {
+export default function AlternativeOptions() {
 
     const {
         language,
