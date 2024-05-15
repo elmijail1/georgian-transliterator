@@ -50,7 +50,7 @@ export default function AlternativeOptions() {
                             : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                     }
                     <Link
-                        to="/knowledge"
+                        to="/knowledge?preopen=5"
                         className="ExtraTools__Info--Link"
                     >
                         {

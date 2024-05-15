@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext, useSearchParams } from "react-router-dom"
 import { useState } from "react"
 import { nanoid } from "nanoid"
 
@@ -7,9 +7,27 @@ import { knowledgeData } from "../data/knowledgeData"
 
 export default function Knowledge() {
 
+    const [searchParams, setSearchParams] = useSearchParams()
+    // console.log(searchParams.get("preopen"))
+
     const { language } = useOutletContext()
 
-    const [knowledgeItems, setKnowledgeItems] = useState(knowledgeData)
+    function prepareKnowledgeData() {
+        if (searchParams && searchParams.get("preopen")) {
+            return knowledgeData.map((item, ind) => {
+                if (ind.toString() === searchParams.get("preopen")) {
+                    return ({ ...item, open: true })
+                } else {
+                    return item
+                }
+            })
+        } else {
+            return knowledgeData
+        }
+    }
+
+    const [knowledgeItems, setKnowledgeItems] = useState(prepareKnowledgeData())
+
     function showAnswer(index) {
         setKnowledgeItems(prevItems => {
             return prevItems.map((en, ind) => {
@@ -74,15 +92,20 @@ export default function Knowledge() {
                 }
             </h1>
 
-            <div className="Knowledge__ItemsDisplay">
-                {
-                    knowledgeItems.map((entry, index) => {
-                        return (
-                            <KnowledgeSingleItem entry={entry} index={index} key={nanoid()} />
-                        )
-                    })
-                }
-            </div>
+            {
+                knowledgeItems
+                    ?
+                    <div className="Knowledge__ItemsDisplay">
+                        {
+                            knowledgeItems.map((entry, index) => {
+                                return (
+                                    <KnowledgeSingleItem entry={entry} index={index} key={nanoid()} />
+                                )
+                            })
+                        }
+                    </div>
+                    : <p>Loading...</p>
+            }
         </main>
     )
 }
