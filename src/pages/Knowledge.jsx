@@ -1,5 +1,5 @@
 import { useOutletContext, useSearchParams } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { nanoid } from "nanoid"
 
 import { knowledgeData } from "../data/knowledgeData"
@@ -8,7 +8,6 @@ import { knowledgeData } from "../data/knowledgeData"
 export default function Knowledge() {
 
     const [searchParams, setSearchParams] = useSearchParams()
-    // console.log(searchParams.get("preopen"))
 
     const { language } = useOutletContext()
 
@@ -16,7 +15,7 @@ export default function Knowledge() {
         if (searchParams && searchParams.get("preopen")) {
             return knowledgeData.map((item, ind) => {
                 if (ind.toString() === searchParams.get("preopen")) {
-                    return ({ ...item, open: true })
+                    return ({ ...item, open: true, id: searchParams.get("preopen") })
                 } else {
                     return item
                 }
@@ -27,6 +26,16 @@ export default function Knowledge() {
     }
 
     const [knowledgeItems, setKnowledgeItems] = useState(prepareKnowledgeData())
+
+    // SCROLL ISSUE
+    const idRef = useRef(null)
+
+    // SCROLL ISSUE
+    useEffect(() => {
+        if (searchParams.get("preopen") && idRef.current) {
+            idRef.current.scrollIntoView()
+        }
+    }, [])
 
     function showAnswer(index) {
         setKnowledgeItems(prevItems => {
@@ -98,6 +107,14 @@ export default function Knowledge() {
                     <div className="Knowledge__ItemsDisplay">
                         {
                             knowledgeItems.map((entry, index) => {
+                                if (entry.id) { // SCROLL ISSUE
+                                    return (
+                                        <KnowledgeSingleItem entry={entry} index={index} key={nanoid()}
+                                        // SCROLL ISSUE ref={idRef} 
+                                        />
+                                    )
+                                }
+
                                 return (
                                     <KnowledgeSingleItem entry={entry} index={index} key={nanoid()} />
                                 )
