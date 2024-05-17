@@ -32,8 +32,8 @@ export default function Knowledge() {
 
     // SCROLL ISSUE
     useEffect(() => {
-        if (searchParams.get("preopen") && idRef.current) {
-            idRef.current.scrollIntoView()
+        if (idRef.current) {
+            idRef.current.scrollIntoView({behavior: "smooth"})
         }
     }, [])
 
@@ -92,7 +92,7 @@ export default function Knowledge() {
     }
 
     return (
-        <main>
+        <main className="Knowledge__Main">
             <h1 className="Knowledge__Header">
                 {
                     language === "RUS"
@@ -107,16 +107,13 @@ export default function Knowledge() {
                     <div className="Knowledge__ItemsDisplay">
                         {
                             knowledgeItems.map((entry, index) => {
-                                if (entry.id) { // SCROLL ISSUE
-                                    return (
-                                        <KnowledgeSingleItem entry={entry} index={index} key={nanoid()}
-                                        // SCROLL ISSUE ref={idRef} 
-                                        />
-                                    )
-                                }
-
                                 return (
-                                    <KnowledgeSingleItem entry={entry} index={index} key={nanoid()} />
+                                        <KnowledgeSingleItem
+                                            entry={entry}
+                                            index={index}
+                                            key={nanoid()}
+                                            ref={index === searchParams.get("preopen") ? idRef : null}
+                                        />
                                 )
                             })
                         }
