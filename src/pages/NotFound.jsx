@@ -23,7 +23,6 @@ export default function NotFound() {
                     }
                 </p>
                 <ul className="NotFound__Links">
-                    <li>
                         <Link to="/" >
                             {
                                 language === "RUS"
@@ -31,8 +30,6 @@ export default function NotFound() {
                                     : "Transliterator"
                             }
                         </Link>
-                    </li>
-                    <li>
                         <Link to="/knowledge">
                             {
                                 language === "RUS"
@@ -40,8 +37,6 @@ export default function NotFound() {
                                     : "Knowledge"
                             }
                         </Link>
-                    </li>
-                    <li>
                         <Link to="/contacts">
                             {
                                 language === "RUS"
@@ -49,7 +44,6 @@ export default function NotFound() {
                                     : "Contacts"
                             }
                         </Link>
-                    </li>
                 </ul>
             </div>
         </main>
