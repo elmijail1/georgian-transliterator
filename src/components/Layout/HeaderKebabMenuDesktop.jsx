@@ -20,7 +20,7 @@ export default function HeaderKebabMenuDesktop() {
         <div className="Header__KebabDiv">
                 <ul className="Header__DesktopMenu">
                     {/* home */}
-                    <li><NavLink
+                        <NavLink
                         to="/"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
@@ -30,10 +30,10 @@ export default function HeaderKebabMenuDesktop() {
                                 ? "Главная"
                                 : "Home"
                         }
-                    </NavLink></li>
+                    </NavLink>
 
                     {/* knowledge */}
-                    <li><NavLink
+                        <NavLink
                         to="/knowledge"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
@@ -43,10 +43,10 @@ export default function HeaderKebabMenuDesktop() {
                                 ? "Полезно знать"
                                 : "Knowledge"
                         }
-                    </NavLink></li>
+                    </NavLink>
 
                     {/* contacts */}
-                    <li><NavLink
+                        <NavLink
                         to="/contacts"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
@@ -56,7 +56,7 @@ export default function HeaderKebabMenuDesktop() {
                                 ? "Контакты"
                                 : "Contacts"
                         }
-                    </NavLink></li>
+                    </NavLink>
                 </ul>
         </div>
     )
