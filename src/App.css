@@ -118,6 +118,12 @@ main {
     border-radius: 7px;
 }
 
+.Header__LogoImage {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 7px;
+}
+
 .Header__Logo--tlat {
     position: absolute;
     left: 3px;
@@ -144,6 +150,11 @@ main {
 }
 
 @media (min-width: 1000px) {
+    .Header__LogoImage {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
     .Header__Logo {
         font-size: 1.5rem;
         width: 40px;
