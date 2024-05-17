@@ -240,15 +240,20 @@ main {
     color: white;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
 @media (min-width: 400px) {
     .Header__Languagues--Button {
-        font-weight: 600;
         background-color: rgb(57, 89, 86, 0.5);
         padding: 0.4rem 0.7rem;
+        font-weight: 600;
         border-radius: 10px;
+    }
+}
+
+@media (min-width: 640px) {
+    .Header__Languagues--Button {
+        cursor: pointer;
     }
 }
 
@@ -350,7 +355,16 @@ main {
     font-size: 1.5rem;
     padding-top: 0.5rem;
     fill: white;
-    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+.Header__Kebab svg {
+}
+
+@media (min-width: 650px) {
+    .Header__Kebab {
+        cursor: pointer;
+    }
 }
 
 /* necessary to change the color of it to white for some reason*/
@@ -480,6 +494,7 @@ main {
     background-color: hsl(172, 50%, 90%);
     border-radius: 13px;
     cursor: pointer;
+    user-select: none;
 }
 
 .InputWindow__ClearDiv:hover {
@@ -592,16 +607,21 @@ main {
     background-color: hsl(172, 50%, 90%);
     border-radius: 13px;
     cursor: pointer;
+    user-select: none;
 }
 
-.OutputWindow__CopyDiv:hover {
-    background-color: hsl(172, 42%, 84%);    
+.OutputWindow__CopyDiv:active {
+    background-color: hsl(172, 42%, 84%);
 }
 
 @media (min-width: 1000px) {
     .OutputWindow__CopyDiv {
         bottom: 1.8rem;
         font-size: 1.5rem;
+    }
+
+    .OutputWindow__CopyDiv:hover {
+        background-color: hsl(172, 42%, 84%);
     }
 }
 
@@ -1034,17 +1054,17 @@ main {
     background-color: rgb(57, 89, 86);
 }
 
-.aoMobile__ButtonActive > .aoMobile__ButtonText {
+.aoMobile__ButtonActive>.aoMobile__ButtonText {
     color: white;
 }
 
 .aoMobile__Description {
     text-align: left;
-    color:rgb(58, 90, 87, 0.8);
+    color: rgb(58, 90, 87, 0.8);
 }
 
 .aoMobile__Description a {
-    color:rgb(57, 89, 86);
+    color: rgb(57, 89, 86);
 }
 
 
@@ -1238,13 +1258,23 @@ main {
     border: 2px solid rgb(57, 89, 86);
     border-radius: 0.8rem;
     padding: 0.5rem 1rem 0 1rem;
-    cursor: pointer;
+}
+
+.Contacts__General:active {
+    background-color: rgb(233, 248, 246);
 }
 
 @media (min-width: 650px) {
     .Contacts__General {
         width: 45%;
         padding: 1rem 1rem 0 1rem;
+        cursor: pointer;
+    }
+    .Contacts__General:hover {
+        background-color: rgb(233, 248, 246);
+    }
+    .Contacts__General:hover .Contact__TextHalf__CopyButton {
+        background-color: white;
     }
 }
 
@@ -1259,18 +1289,12 @@ main {
         width: 30%;
         max-width: 30rem;
     }
+
 }
 
-.Contacts__General:hover {
-    background-color: rgb(233, 248, 246);
-}
-
-.Contacts__General:hover .Contact__TextHalf__CopyButton {
-    background-color: white;
-}
 
 .Contacts__General:active .Contact__TextHalf__CopyButton {
-    background-color: rgb(57, 89, 86);
+    background-color: hsl(172, 30%, 70%);
     opacity: 1;
     color: white;
 }
@@ -1406,7 +1430,7 @@ main {
     }
 }
 
-.NotFound__Links li {
+.NotFound__Links a {
     background: rgb(59, 175, 164);
     padding: 1rem;
     width: 80%;
@@ -1416,6 +1440,9 @@ main {
     justify-content: center;
     border-radius: 1rem;
     cursor: pointer;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
 }
 
 @media (min-width: 600px) {
@@ -1449,10 +1476,4 @@ main {
 .NotFound__Links li:hover {
     background-color: rgb(47, 143, 133);
     transition-duration: 0.5s;
-}
-
-.NotFound__Links li a {
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
 }
