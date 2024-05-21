@@ -18,9 +18,10 @@ export default function InputWindow() {
         setCounter(currentInput.length)
     }, [currentInput])
 
-    const textAreaRef = useRef(null)
+    // dynamic height change block
+    const textAreaRef = useRef(null) // DHCB
 
-    function resizeTextArea() {
+    function resizeTextArea() { // DHCB
         if (vpWidth < 450) {
             textAreaRef.current.style.height = "auto"
             textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
@@ -29,7 +30,7 @@ export default function InputWindow() {
         }
     }
 
-    useEffect(resizeTextArea, [currentInput, vpWidth])
+    useEffect(resizeTextArea, [currentInput, vpWidth]) // DHCB
 
     return (
         <div className="InputWindow">
