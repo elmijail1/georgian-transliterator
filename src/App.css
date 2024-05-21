@@ -774,6 +774,7 @@ main {
 
 .ExtraTools__Info {
     color: rgba(57, 89, 86, 0.6);
+    color: blue;
 }
 
 @media (min-width: 1000px) {
@@ -783,12 +784,17 @@ main {
 }
 
 .ExtraTools__Info--Link {
-    color: rgb(57, 89, 86, 0.8);
+    color: hsl(174, 22%, 29%);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 0.1rem;
 }
 
+@media (min-width: 450px) {
+    .ExtraTools__Info--Link:hover {
+        color: hsl(174, 15%, 15%);
+    }
+}
 
 
 
@@ -1054,7 +1060,7 @@ main {
     background-color: rgb(57, 89, 86);
 }
 
-.aoMobile__ButtonActive>.aoMobile__ButtonText {
+.aoMobile__ButtonActive > .aoMobile__ButtonText {
     color: white;
 }
 
