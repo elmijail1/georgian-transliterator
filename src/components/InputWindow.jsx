@@ -1,5 +1,5 @@
 import { MdCancel } from "react-icons/md"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
 
 import { TransliteratorContext } from "../pages/Transliterator.jsx"
 
@@ -9,12 +9,27 @@ export default function InputWindow() {
         currentInput,
         handleChange,
         language,
+        setCurrentInput,
+        vpWidth,
     } = useContext(TransliteratorContext)
 
     const [counter, setCounter] = useState(currentInput.length)
     useEffect(() => {
         setCounter(currentInput.length)
     }, [currentInput])
+
+    const textAreaRef = useRef(null)
+
+    function resizeTextArea() {
+        if (vpWidth < 450) {
+            textAreaRef.current.style.height = "auto"
+            textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
+        } else {
+            textAreaRef.current.style.height = null
+        }
+    }
+
+    useEffect(resizeTextArea, [currentInput, vpWidth])
 
     return (
         <div className="InputWindow">
@@ -38,6 +53,8 @@ export default function InputWindow() {
                 value={currentInput}
                 onChange={handleChange}
                 maxLength="500"
+                ref={textAreaRef}
+                rows={1}
             />
 
             {/* Counter */}

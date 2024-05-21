@@ -149,9 +149,11 @@ export default function Transliterator() {
         latestOutput,
         mapOutput,
         optionsDisplay,
-        setAlternativeOptions,
-        setOptionsDisplay,
         useAlternativeOption,
+        setAlternativeOptions,
+        setCurrentInput,
+        setOptionsDisplay,
+        vpWidth,
     }
 
     return (
