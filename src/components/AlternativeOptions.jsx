@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Link, useOutletContext } from "react-router-dom"
+import { HashLink } from "react-router-hash-link"
 import { TransliteratorContext } from "../pages/Transliterator.jsx"
 
 import { MdLightbulbOutline, MdLightbulb } from "react-icons/md";
@@ -11,6 +12,7 @@ export default function AlternativeOptions() {
         language,
         optionsDisplay,
         setAlternativeOptions,
+        setKnowledgeItems,
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
@@ -49,16 +51,28 @@ export default function AlternativeOptions() {
                             ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
                             : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                     }
-                    <Link
-                        to="/knowledge-experiment#laplaza"
+                    <HashLink
+                        smooth
+                        to="/knowledge-experiment#item-5"
                         className="ExtraTools__Info--Link"
+                        onClick={() => {
+                            setKnowledgeItems(prevItems => {
+                                return prevItems.map((item, index) => {
+                                    if (index === 4) {
+                                        return { ...item, open: true }
+                                    } else {
+                                        return item
+                                    }
+                                })
+                            })
+                        }}
                     >
                         {
                             language === "RUS"
                                 ? "здесь"
                                 : "here"
                         }
-                    </Link>
+                    </HashLink>
                 </div>
             </div>
         )
@@ -100,20 +114,32 @@ export default function AlternativeOptions() {
                                 ? "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
                                 : "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
                         }
-                        <Link
-                            to="/knowledge?preopen=5"
+                        <HashLink
+                            smooth
+                            to="/knowledge-experiment#item-5D"
                             className="ExtraTools__Info--Link"
+                            onClick={() => {
+                                setKnowledgeItems(prevItems => {
+                                    return prevItems.map((item, index) => {
+                                        if (index === 4) {
+                                            return { ...item, open: true }
+                                        } else {
+                                            return item
+                                        }
+                                    })
+                                })
+                            }}
                         >
                             {
                                 language === "RUS"
                                     ? "здесь"
                                     : "here"
                             }
-                        </Link>
+                        </HashLink>
                     </div>
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }

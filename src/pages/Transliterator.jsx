@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import { useState, createContext, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext, createContext } from "react"
 
 import { useOutletContext } from "react-router-dom"
 
@@ -11,8 +11,9 @@ import InputWindow from "../components/InputWindow"
 import OutputWindow from "../components/OutputWindow"
 import AlternativeOptions from "../components/AlternativeOptions"
 
-export const TransliteratorContext = createContext()
+import { KnowledgeContext } from "../App"
 
+export const TransliteratorContext = createContext()
 
 export default function Transliterator() {
 
@@ -139,6 +140,8 @@ export default function Transliterator() {
 
     const { language, vpWidth } = useOutletContext()
 
+    const {setKnowledgeItems} = useContext(KnowledgeContext)
+
     const transliteratorContextContent = {
         alternativeOptions,
         charsData,
@@ -152,6 +155,7 @@ export default function Transliterator() {
         useAlternativeOption,
         setAlternativeOptions,
         setCurrentInput,
+        setKnowledgeItems,
         setOptionsDisplay,
         vpWidth,
     }

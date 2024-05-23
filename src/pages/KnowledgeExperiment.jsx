@@ -1,41 +1,15 @@
-import { useOutletContext, useSearchParams } from "react-router-dom"
-import { useState, useEffect, useRef } from "react"
+import { useOutletContext } from "react-router-dom"
+import { useState, useEffect, useRef, useContext } from "react"
 import { nanoid } from "nanoid"
 
 import { knowledgeData } from "../data/knowledgeData"
+import { KnowledgeContext } from "../App"
 
 
 export default function KnowledgeExperiment() {
 
-    const [searchParams, setSearchParams] = useSearchParams()
-
     const { language } = useOutletContext()
-
-    function prepareKnowledgeData() {
-        if (searchParams && searchParams.get("preopen")) {
-            return knowledgeData.map((item, ind) => {
-                if (ind.toString() === searchParams.get("preopen")) {
-                    return ({ ...item, open: true, id: searchParams.get("preopen") })
-                } else {
-                    return item
-                }
-            })
-        } else {
-            return knowledgeData
-        }
-    }
-
-    const [knowledgeItems, setKnowledgeItems] = useState(prepareKnowledgeData())
-
-    // SCROLL ISSUE
-    const idRef = useRef(null)
-
-    // SCROLL ISSUE
-    useEffect(() => {
-        if (idRef.current) {
-            idRef.current.scrollIntoView({ behavior: "smooth" })
-        }
-    }, [])
+    const { knowledgeItems, setKnowledgeItems} = useContext(KnowledgeContext)
 
     function showAnswer(index) {
         setKnowledgeItems(prevItems => {
@@ -149,6 +123,14 @@ export default function KnowledgeExperiment() {
                                             key={nanoid()}
                                             style={{ position: "relative" }}
                                         >
+                                                                                        <div
+                                                id={`item-${index + 1}D`}
+                                                style={{
+                                                    position: "absolute",
+                                                    top: "-5rem",
+                                                }}
+                                            >
+                                            </div>
                                             <div
                                                 id={`item-${index + 1}`}
                                                 style={{
@@ -160,7 +142,6 @@ export default function KnowledgeExperiment() {
                                             <KnowledgeSingleItem
                                                 entry={entry}
                                                 index={index}
-                                                ref={index === searchParams.get("preopen") ? idRef : null}
                                             />
                                         </div>
                                     )
