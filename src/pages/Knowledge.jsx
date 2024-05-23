@@ -1,5 +1,5 @@
-import { useOutletContext } from "react-router-dom"
-import { useState, useEffect, useRef, useContext } from "react"
+import { useOutletContext, useLocation } from "react-router-dom"
+import { useContext, useEffect } from "react"
 import { nanoid } from "nanoid"
 
 import { knowledgeData } from "../data/knowledgeData"
@@ -10,6 +10,20 @@ export default function Knowledge() {
 
     const { language } = useOutletContext()
     const { knowledgeItems, setKnowledgeItems } = useContext(KnowledgeContext)
+
+    // this is needed to reset the knowledgeItems when you go
+    // to another page
+    const location = useLocation()
+    useEffect(() => {
+        if (
+            location.hash
+            && ["#item-5", "#item-5D"].includes(location.hash)
+        ) {
+            return
+        } else {
+            setKnowledgeItems(knowledgeData)
+        }
+    }, [])
 
     function showAnswer(index) {
         setKnowledgeItems(prevItems => {
