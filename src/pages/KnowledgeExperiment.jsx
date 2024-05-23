@@ -119,7 +119,20 @@ export default function KnowledgeExperiment() {
                 </li>
 
                 <li>
-                    <a>
+                    <a
+                        href="#item-5"
+                        onClick={() => {
+                            setKnowledgeItems(prevItems => {
+                                return prevItems.map((item, index) => {
+                                    if (index === 4) {
+                                        return { ...item, open: true }
+                                    } else {
+                                        return item
+                                    }
+                                })
+                            })
+                        }}
+                    >
                         Take me to number 5 & open it
                     </a>
                 </li>
@@ -134,13 +147,13 @@ export default function KnowledgeExperiment() {
                                     return (
                                         <div
                                             key={nanoid()}
-                                            style={{position:"relative"}}
+                                            style={{ position: "relative" }}
                                         >
                                             <div
                                                 id={`item-${index + 1}`}
                                                 style={{
-                                                    position:"absolute",
-                                                    bottom:"10rem",
+                                                    position: "absolute",
+                                                    top: "-4rem",
                                                 }}
                                             >
                                             </div>
@@ -164,7 +177,7 @@ export default function KnowledgeExperiment() {
                                     id="laplaza"
                                     style={{
                                         position: "absolute",
-                                        bottom: "4.6rem",
+                                        top: "-3.4rem",
                                     }}
                                 ></div>
                                 la plaza
