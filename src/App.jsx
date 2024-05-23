@@ -10,7 +10,7 @@ import Transliterator from "./pages/Transliterator.jsx"
 import Knowledge from "./pages/Knowledge.jsx"
 import Contacts from './pages/Contacts.jsx'
 import NotFound from './pages/NotFound.jsx'
-import KnowledgeExperiment from './pages/KnowledgeExperiment.jsx'
+import KnowledgeExperiment from './pages/Knowledge.jsx'
 
 // components
 import Layout from "./components/Layout/Layout.jsx"

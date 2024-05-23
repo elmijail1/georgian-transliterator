@@ -53,7 +53,7 @@ export default function AlternativeOptions() {
                     }
                     <HashLink
                         smooth
-                        to="/knowledge-experiment#item-5"
+                        to="/knowledge#item-5"
                         className="ExtraTools__Info--Link"
                         onClick={() => {
                             setKnowledgeItems(prevItems => {
@@ -116,7 +116,7 @@ export default function AlternativeOptions() {
                         }
                         <HashLink
                             smooth
-                            to="/knowledge-experiment#item-5D"
+                            to="/knowledge#item-5D"
                             className="ExtraTools__Info--Link"
                             onClick={() => {
                                 setKnowledgeItems(prevItems => {
