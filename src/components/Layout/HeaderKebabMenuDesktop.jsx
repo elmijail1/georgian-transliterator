@@ -18,11 +18,15 @@ export default function HeaderKebabMenuDesktop() {
 
     return (
         <div className="Header__KebabDiv">
-                <ul className="Header__DesktopMenu">
-                    {/* home */}
-                        <NavLink
+            <ul className="Header__DesktopMenu">
+                {/* home */}
+
+                <li
+                    onClick={() => setMenuOpen(false)}
+                    className="Header__DesktopMenu__ListItem"
+                >
+                    <NavLink
                         to="/"
-                        onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
                     >
                         {
@@ -31,9 +35,14 @@ export default function HeaderKebabMenuDesktop() {
                                 : "Home"
                         }
                     </NavLink>
+                </li>
 
-                    {/* knowledge */}
-                        <NavLink
+                {/* knowledge */}
+                <li
+                    onClick={() => setMenuOpen(false)}
+                    className="Header__DesktopMenu__ListItem"
+                >
+                    <NavLink
                         to="/knowledge"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
@@ -44,9 +53,14 @@ export default function HeaderKebabMenuDesktop() {
                                 : "Knowledge"
                         }
                     </NavLink>
+                </li>
 
-                    {/* contacts */}
-                        <NavLink
+                {/* contacts */}
+                <li
+                    onClick={() => setMenuOpen(false)}
+                    className="Header__DesktopMenu__ListItem"
+                >
+                    <NavLink
                         to="/contacts"
                         onClick={() => setMenuOpen(false)}
                         style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
@@ -57,7 +71,8 @@ export default function HeaderKebabMenuDesktop() {
                                 : "Contacts"
                         }
                     </NavLink>
-                </ul>
+                </li>
+            </ul>
         </div>
     )
 }
