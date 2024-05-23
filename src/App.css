@@ -421,12 +421,13 @@ main {
     box-sizing: border-box;
 }
 
-.Header__DesktopMenu li {
+.Header__DesktopMenu__ListItem {
     width: 7.4rem;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-
 
 
 
