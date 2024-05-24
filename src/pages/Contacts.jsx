@@ -56,7 +56,7 @@ export default function Contacts() {
 }
 
 {/*
-BASIC RENDER STRUCTURE
+RENDER STRUCTURE
 [0. Header (handled by the Layout page)]
 1. Title
 2. Description
