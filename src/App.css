@@ -1095,7 +1095,7 @@ main {
 
 
 
-/* PAGE: KNOWLEDGE*/
+/* KNOWLEDGE*/
 /* ITEMS */
 .Knowledge__Header {
     padding-left: 15px;
@@ -1119,23 +1119,6 @@ main {
 @media (min-width: 1000px) {
     .Knowledge__ItemsDisplay {
         margin-top: 2rem;
-        gap: 1.5rem;
-    }
-}
-
-.Knowledge__SingleItem {
-    background-color: transparent;
-    border: 1px solid rgb(57, 89, 86);
-    padding: 0;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-}
-
-@media (min-width: 1000px) {
-    .Knowledge__SingleItem {
         gap: 1.5rem;
     }
 }
@@ -1201,8 +1184,37 @@ main {
     }
 }
 
+/* component: Knowledge/KnowledgeItem */
+.KnowItem__GeneralDiv {
+    position: relative;
+}
 
+.KnowItem__DesktopAnchor {
+    position: absolute;
+    top: -5rem;
+}
 
+.KnowItem__MobileAnchor {
+    position: absolute;
+    top: -4rem;
+}
+
+.KnowItem__ItemBody {
+    background-color: transparent;
+    border: 1px solid rgb(57, 89, 86);
+    padding: 0;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+@media (min-width: 1000px) {
+    .KnowItem__ItemBody {
+        gap: 1.5rem;
+    }
+}
 
 
 
