@@ -15,7 +15,7 @@ export default function NotFound() {
 
             <div className="NF__GeneralDiv">
 
-                {/* main title */}
+                {/* title */}
                 <h1 className="NF__Title">
                     {
                         language === "ENG"
