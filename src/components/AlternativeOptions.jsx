@@ -12,7 +12,6 @@ export default function AlternativeOptions() {
         language,
         optionsDisplay,
         setAlternativeOptions,
-        setKnowledgeItems,
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
@@ -107,17 +106,6 @@ export default function AlternativeOptions() {
                             smooth
                             to="/knowledge#item-5D"
                             className="ExtraTools__Info--Link"
-                            onClick={() => {
-                                setKnowledgeItems(prevItems => {
-                                    return prevItems.map((item, index) => {
-                                        if (index === 4) {
-                                            return { ...item, open: true }
-                                        } else {
-                                            return item
-                                        }
-                                    })
-                                })
-                            }}
                         >
                             {
                                 language === "RUS"
