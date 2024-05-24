@@ -1,52 +1,66 @@
-import { Link, useOutletContext } from "react-router-dom"
+// general
+import { useOutletContext } from "react-router-dom"
+import { nanoid } from "nanoid"
+// data
+import { notFoundData } from "../data/notFoundData.js"
+// components
+import NotFoundButton from "../components/NotFound/NotFoundButton.jsx"
+
 
 export default function NotFound() {
-
-    const language = useOutletContext()
+    const { language } = useOutletContext() // *1
 
     return (
         <main>
-            <div className="NotFound__MainDiv">
-                <h1 className="NotFound__Header">
 
+            <div className="NF__GeneralDiv">
+
+                {/* main title */}
+                <h1 className="NF__Title">
                     {
-                        language === "RUS"
-                            ? "Такой страницы у нас пока нет :-/"
-                            : "No such page :-/"
+                        language === "ENG"
+                            ? "No such page :-/"
+                            : "Такой страницы у нас пока нет :-/"
                     }
                 </h1>
-                <p className="NotFound__Description">
+
+                {/* description */}
+                <p className="NF__Description">
                     {
-                        language === "RUS"
-                            ? "Но есть такие:"
-                            : "Try these pages:"
+                        language === "ENG"
+                            ? "Try these pages:"
+                            : "Но есть такие:"
                     }
                 </p>
-                <ul className="NotFound__Links">
-                        <Link to="/" >
-                            {
-                                language === "RUS"
-                                    ? "Транслитератор"
-                                    : "Transliterator"
-                            }
-                        </Link>
-                        <Link to="/knowledge">
-                            {
-                                language === "RUS"
-                                    ? "Полезно знать"
-                                    : "Knowledge"
-                            }
-                        </Link>
-                        <Link to="/contacts">
-                            {
-                                language === "RUS"
-                                    ? "Контакты"
-                                    : "Contacts"
-                            }
-                        </Link>
+
+                {/* buttons */}
+                <ul className="NF__Buttons">
+                    {
+                        notFoundData.map(entry => (
+                            <NotFoundButton
+                                entry={entry}
+                                language={language}
+                                key={nanoid()}
+                            />
+                        ))
+                    }
                 </ul>
+
             </div>
+
         </main>
-        // add navigation + styling
     )
 }
+
+{/*
+BASIC RENDER STRUCTURE
+[0. Header (handled by the Layout page)]
+1. Title
+2. Description
+3. Buttons
+
+COMMENTS
+- 1*. "language" defines the language of the UI (as chosen by user)
+and comes from the outlet context set in the Layout page.
+
+*/}
