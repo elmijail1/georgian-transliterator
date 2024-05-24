@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound.jsx'
 import KnowledgeExperiment from './pages/Knowledge.jsx'
 
 // components
-import Layout from "./components/Layout/Layout.jsx"
+import Layout from "./pages/Layout.jsx"
 
 export const KnowledgeContext = createContext()
 

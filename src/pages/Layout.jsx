@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom"
 import { useState, useEffect, createContext } from "react"
 
 // components
-import HeaderKebabMenuDesktop from "./HeaderKebabMenuDesktop.jsx"
-import HeaderKebabMenuMobile from "./HeaderKebabMenuMobile.jsx"
-import HeaderLaguageMenuDesktop from "./HeaderLanguageMenuDesktop.jsx"
-import HeaderLanguageMenuMobile from "./HeaderLanguageMenuMobile.jsx"
-import HeaderLetteringAndLogo from "./HeaderLetteringAndLogo.jsx"
+import HeaderKebabMenuDesktop from "../components/Layout/HeaderKebabMenuDesktop.jsx"
+import HeaderKebabMenuMobile from "../components/Layout/HeaderKebabMenuMobile.jsx"
+import HeaderLaguageMenuDesktop from "../components/Layout/HeaderLanguageMenuDesktop.jsx"
+import HeaderLanguageMenuMobile from "../components/Layout/HeaderLanguageMenuMobile.jsx"
+import HeaderLetteringAndLogo from "../components/Layout/HeaderLetteringAndLogo.jsx"
 
 export const LayoutContext = createContext()
 

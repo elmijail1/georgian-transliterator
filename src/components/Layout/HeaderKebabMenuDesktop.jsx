@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 
 // context
-import { LayoutContext } from "./Layout.jsx"
+import { LayoutContext } from "../../pages/Layout.jsx"
 
 // icon
 import { MdMenu } from "react-icons/md";
