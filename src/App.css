@@ -1220,18 +1220,19 @@ main {
 
 
 
-/* PAGE: CONTACTS*/
-.Contacts__Main {
+/* CONTACTS*/
+/* page: Contacts */
+.Contacts__GeneralDiv {
     padding: 0 1rem;
 }
 
-.Contacts__Header {
+.Contacts__Title {
     margin: 4rem 0 1rem 0;
     font-size: 2rem;
 }
 
 @media (min-width: 1000px) {
-    .Contacts__Header {
+    .Contacts__Title {
         margin-top: 6.5rem;
         font-size: 3rem;
     }
@@ -1243,7 +1244,7 @@ main {
     }
 }
 
-.Contacts__Box {
+.Contacts__Buttons {
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
@@ -1251,7 +1252,7 @@ main {
 }
 
 @media (min-width: 650px) {
-    .Contacts__Box {
+    .Contacts__Buttons {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -1259,13 +1260,15 @@ main {
 }
 
 @media (min-width: 1400px) {
-    .Contacts__Box {
+    .Contacts__Buttons {
         justify-content: flex-start;
         gap: 5%;
     }
 }
 
-.Contacts__General {
+
+/* component: Contacts/ContactsButton */
+.ContactsButton__GeneralDiv {
     position: relative;
     display: flex;
     align-items: center;
@@ -1275,82 +1278,79 @@ main {
     padding: 0.5rem 1rem 0 1rem;
 }
 
-.Contacts__General:active {
+.ContactsButton__GeneralDiv:active {
     background-color: rgb(233, 248, 246);
 }
 
 @media (min-width: 650px) {
-    .Contacts__General {
+    .ContactsButton__GeneralDiv {
         width: 45%;
         padding: 1rem 1rem 0 1rem;
         cursor: pointer;
     }
-    .Contacts__General:hover {
+    .ContactsButton__GeneralDiv:hover {
         background-color: rgb(233, 248, 246);
     }
-    .Contacts__General:hover .Contact__TextHalf__CopyButton {
+    .ContactsButton__GeneralDiv:hover .Contact__TextHalf__CopyButton {
         background-color: white;
     }
 }
 
 @media (min-width: 1000px) {
-    .Contacts__General {
+    .ContactsButton__GeneralDiv {
         padding: 1rem 1.5rem 0 1.5rem;
     }
 }
 
 @media (min-width: 1400px) {
-    .Contacts__General {
+    .ContactsButton__GeneralDiv {
         width: 30%;
         max-width: 30rem;
     }
 
 }
 
-
-.Contacts__General:active .Contact__TextHalf__CopyButton {
+.ContactsButton__GeneralDiv:active .ContactsButton__Button {
     background-color: hsl(172, 30%, 70%);
     opacity: 1;
     color: white;
 }
 
-.Contacts__TextHalf {
+.ContactsButton__TextsDiv {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
 
 @media (min-width: 1000px) {
-    .Contacts__TextHalf {
+    .ContactsButton__TextsDiv {
         gap: 1rem;
     }
 }
 
-
-.Contacts__TextHalf__Name {
+.ContactsButton__Title {
     margin: 0;
     font-size: 1.5rem;
 }
 
 @media (min-width: 1000px) {
-    .Contacts__TextHalf__Name {
+    .ContactsButton__Title {
         font-size: 2rem;
     }
 }
 
-.Contacts__TextHalf__Contact {
+.ContactsButton__Subtitle {
     margin: 0;
     font-size: 1.3rem;
 }
 
 @media (min-width: 1000px) {
-    .Contacts__TextHalf__Contact {
+    .ContactsButton__Subtitle {
         font-size: 1.8rem;
     }
 }
 
-
-.Contact__TextHalf__CopyButton {
+.ContactsButton__Button {
     margin: 0;
     margin-left: -1rem;
     font-size: 1.2rem;
@@ -1364,19 +1364,19 @@ main {
 }
 
 @media (min-width: 650px) {
-    .Contact__TextHalf__CopyButton {
+    .ContactsButton__Button {
         margin-left: -1rem;
     }
 }
 
 @media (min-width: 1000px) {
-    .Contact__TextHalf__CopyButton {
+    .ContactsButton__Button {
         font-size: 1.7rem;
         margin-left: -1.5rem;
     }
 }
 
-.Contacts__ImageHalf__Image {
+.ContactsButton__Image {
     width: 5rem;
     position: absolute;
     top: -0.7rem;
@@ -1384,7 +1384,7 @@ main {
 }
 
 @media (min-width: 1840px) {
-    .Contacts__ImageHalf__Image {
+    .ContactsButton__Image {
         position: static;
         width: 5.8rem;
     }
@@ -1392,10 +1392,7 @@ main {
 
 
 
-
-
-
-
+/* *** */
 
 
 
