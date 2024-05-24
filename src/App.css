@@ -1399,34 +1399,35 @@ main {
 
 
 
-/* PAGE: NOT FOUND*/
-.NotFound__MainDiv {
+/* NOT FOUND */
+/* page: NotFound */
+.NF__GeneralDiv {
     padding: 0 1rem;
 }
 
-.NotFound__Header {
+.NF__Title {
     margin-top: 4rem;
 }
 
 @media (min-width: 1000px) {
-    .NotFound__Header {
+    .NF__Title {
         margin-top: 6.5rem;
         font-size: 3rem;
     }
 }
 
-.NotFound__Description {
+.NF__Description {
     margin: 0;
     font-size: 1.2rem;
 }
 
 @media (min-width: 1000px) {
-    .NotFound__Description {
+    .NF__Description {
         font-size: 1.5rem;
     }
 }
 
-.NotFound__Links {
+.NF__Buttons {
     list-style: none;
     margin: 2rem 0;
     padding: 0;
@@ -1438,14 +1439,16 @@ main {
 }
 
 @media (min-width: 1000px) {
-    .NotFound__Links {
+    .NF__Buttons {
         flex-direction: row;
         width: 80%;
         margin: 2rem auto;
     }
 }
 
-.NotFound__Links a {
+
+/* component: NotFound/NotFoundButton */
+.NFButton__General {
     background: rgb(59, 175, 164);
     padding: 1rem;
     width: 80%;
@@ -1461,19 +1464,19 @@ main {
 }
 
 @media (min-width: 600px) {
-    .NotFound__Links li {
+    .NFButton__General {
         width: 70%;
     }
 }
 
 @media (min-width: 700px) {
-    .NotFound__Links li {
+    .NFButton__General {
         width: 60%;
     }
 }
 
 @media (min-width: 1000px) {
-    .NotFound__Links li {
+    .NFButton__General {
         padding: 2rem;
         font-size: 1.7rem;
         letter-spacing: 0.1rem;
@@ -1483,12 +1486,12 @@ main {
 }
 
 @media (min-width: 1480px) {
-    .NotFound__Links li {
+    .NFButton__General {
         height: unset;
     }
 }
 
-.NotFound__Links li:hover {
+.NFButton__General:hover {
     background-color: rgb(47, 143, 133);
     transition-duration: 0.5s;
 }
