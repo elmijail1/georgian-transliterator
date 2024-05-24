@@ -55,17 +55,6 @@ export default function AlternativeOptions() {
                         smooth
                         to="/knowledge#item-5"
                         className="ExtraTools__Info--Link"
-                        onClick={() => {
-                            setKnowledgeItems(prevItems => {
-                                return prevItems.map((item, index) => {
-                                    if (index === 4) {
-                                        return { ...item, open: true }
-                                    } else {
-                                        return item
-                                    }
-                                })
-                            })
-                        }}
                     >
                         {
                             language === "RUS"
