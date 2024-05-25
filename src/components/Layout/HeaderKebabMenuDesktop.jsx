@@ -49,7 +49,7 @@ export default function HeaderKebabMenuDesktop() {
                     >
                         {
                             language === "RUS"
-                                ? "Полезно знать"
+                                ? "Инфо"
                                 : "Knowledge"
                         }
                     </NavLink>

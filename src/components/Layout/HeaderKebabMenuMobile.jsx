@@ -69,7 +69,7 @@ export default function HeaderKebabMenuMobile() {
                     >
                         {
                             language === "RUS"
-                                ? "Полезно знать"
+                                ? "Информация"
                                 : "Knowledge"
                         }
                     </NavLink>
