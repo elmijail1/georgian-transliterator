@@ -939,7 +939,7 @@ main {
     position: absolute;
     width: 1.6rem;
     height: 1.6rem;
-    top: 0.2rem;
+    top: 0.19rem;
     left: 0.3rem;
     /* outline: rgb(218, 217, 217) solid 1px; */
     border-radius: 50%;
@@ -954,7 +954,7 @@ main {
 }
 
 .aoDesktop__RightBox label {
-    max-width: 25rem;
+    max-width: 21rem;
 }
 
 
