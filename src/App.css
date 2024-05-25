@@ -1084,105 +1084,39 @@ main {
 
 
 
-
-
-
-
-
-
-
-
+/* *** */
 
 
 
 /* KNOWLEDGE*/
-/* ITEMS */
-.Knowledge__Header {
+/* page: Knowledge */
+.Know__Title {
     padding-left: 15px;
     margin: 4rem 0 1rem 0;
 }
 
 @media (min-width: 1000px) {
-    .Knowledge__Header {
+    .Know__Title {
         margin-top: 6.5rem;
         font-size: 3rem;
     }
 }
 
-.Knowledge__ItemsDisplay {
+.Know__ItemsDisplay {
     margin: 0 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 40rem;
 }
 
 @media (min-width: 1000px) {
-    .Knowledge__ItemsDisplay {
+    .Know__ItemsDisplay {
         margin-top: 2rem;
         gap: 1.5rem;
     }
 }
 
-.Knowledge__SingleItem--QuestionButton {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(233, 248, 246);
-    width: 100%;
-    padding: 1rem;
-    gap: 1rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}
-
-.Knowledge__SingleItem--QuestionButton:hover {
-    background-color: hsl(173, 44%, 84%);
-}
-
-.Knowledge__SingleItem--QuestionButtonOpen {
-    border-radius: 1rem 1rem 0 0;
-    border-bottom: 1px solid rgb(57, 89, 86);
-    background-color: hsl(173, 44%, 84%);
-}
-
-.Knowledge__SingleItem--QuestionButtonOpen:hover {
-    background-color: hsl(173, 34%, 74%);
-}
-
-.Knowledge__SingleItem--QuestionButton--Question {
-    background-color: transparent;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: start;
-    padding: 0;
-    cursor: pointer;
-}
-
-@media (min-width: 1000px) {
-    .Knowledge__SingleItem--QuestionButton--Question {
-        font-size: 1.5rem;
-    }
-}
-
-.Knowledge__SingleItem--QuestionButton--Button {
-    font-size: 1rem;
-    height: 1.3rem;
-    opacity: 0.8;
-}
-
-.Knowledge__SingleItem--Answer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    padding: 0 1rem 1rem 1rem;
-}
-
-@media (min-width: 1000px) {
-    .Knowledge__SingleItem--Answer {
-        font-size: 1.5rem;
-    }
-}
 
 /* component: Knowledge/KnowledgeItem */
 .KnowItem__GeneralDiv {
@@ -1216,19 +1150,71 @@ main {
     }
 }
 
+.KnowQuestion__OpenCloseSymbol {
+    font-size: 1rem;
+    height: 1.3rem;
+    opacity: 0.8;
+}
+
+
+/* component: Knowledge/KnowledgeItemQuestion */
+.KnowQuestion__Button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(233, 248, 246);
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.KnowQuestion__Button:hover {
+    background-color: hsl(173, 44%, 84%);
+}
+
+.KnowQuestion__ButtonOpen {
+    border-radius: 1rem 1rem 0 0;
+    border-bottom: 1px solid rgb(57, 89, 86);
+    background-color: hsl(173, 44%, 84%);
+}
+
+.KnowQuestion__ButtonOpen:hover {
+    background-color: hsl(173, 34%, 74%);
+}
+
+.KnowQuestion__Text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: start;
+}
+
+@media (min-width: 1000px) {
+    .KnowQuestion__Text {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* component: Knowledge/KnowledgeItemAnswer */
+.KnowAnswer__GeneralDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+@media (min-width: 1000px) {
+    .KnowAnswer__GeneralDiv {
+        font-size: 1.5rem;
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
+/* *** */
 
 
 
