@@ -41,35 +41,37 @@ export default function Knowledge() {
     }
 
     return (
-        <main className="Knowledge__Main">
+        <main>
 
-            <h1 className="Knowledge__Header">
-                {
-                    language === "ENG"
-                        ? "Knowledge"
-                        : "Полезно знать"
-                }
+            {/* title */}
+            <h1 className="Know__Title">
+                {language === "ENG" ? "Knowledge" : "Информация"}
             </h1>
 
-            <div style={{ marginBottom: "40rem" }}>
-
-                <div className="Knowledge__ItemsDisplay">
-                    {
-                        knowledgeItems.map((entry, index) => {
-                            return (
-                                <KnowledgeItem
-                                    entry={entry}
-                                    index={index}
-                                    language={language}
-                                    setKnowledgeItems={setKnowledgeItems}
-                                    key={nanoid()}
-                                />
-                            )
-                        })
-                    }
-                </div>
-
+            {/* items display */}
+            <div className="Know__ItemsDisplay">
+                {
+                    knowledgeItems.map((entry, index) => {
+                        return (
+                            <KnowledgeItem
+                                entry={entry}
+                                index={index}
+                                language={language}
+                                setKnowledgeItems={setKnowledgeItems}
+                                key={nanoid()}
+                            />
+                        )
+                    })
+                }
             </div>
+
         </main>
     )
 }
+
+{/*
+RENDER STRUCTURE:
+1. Title
+2. Items display (it's a div in which the knowledgeItems array is mapped
+as KnowledgeItem components)
+*/}
