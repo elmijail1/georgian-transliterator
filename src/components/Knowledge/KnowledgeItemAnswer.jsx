@@ -16,8 +16,13 @@ export default function KnowledgeItemAnswer({ entry, language }) {
 RENDER STRUCTURE:
 1. Description (split in lines at every \n\n
 
-COMMENT
-Accepted values:
+COMMENTS
+1. What this component is
+This component displays the answer text coming from the knowledgeItems array's
+entry. The function "splitAnswerIntoDivsAndMap" detects linebreaks (\n\n), splits
+the initial text at them, and renders the text with the detected linebreaks.
+.
+2. Accepted values:
 - entry: it comes from knowledgeItems and represents a question-answer pair.
 There are answers for both English & Russian versions of the UI.
 - language: the language of the interface set by the user. It comes from the
