@@ -953,6 +953,11 @@ main {
     gap: 0.3rem;
 }
 
+.aoDesktop__RightBox label {
+    max-width: 25rem;
+}
+
+
 .aoDesktop__TooltipButton {
     position: relative;
     font-size: 1.2rem;
