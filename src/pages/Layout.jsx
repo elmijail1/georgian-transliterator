@@ -1,13 +1,12 @@
-// utilities
+// components
+import MenuDesktop from "../components/Layout/MenuDesktop.jsx"
+import MenuMobile from "../components/Layout/MenuMobile.jsx"
+import LanguagesDesktop from "../components/Layout/LanguagesDesktop.jsx"
+import LanguagesMobile from "../components/Layout/LanguagesMobile.jsx"
+import LetteringAndLogo from "../components/Layout/LetteringAndLogo.jsx"
+
 import { Outlet } from "react-router-dom"
 import { useState, useEffect, createContext } from "react"
-
-// components
-import HeaderKebabMenuDesktop from "../components/Layout/HeaderKebabMenuDesktop.jsx"
-import HeaderKebabMenuMobile from "../components/Layout/HeaderKebabMenuMobile.jsx"
-import HeaderLaguageMenuDesktop from "../components/Layout/HeaderLanguageMenuDesktop.jsx"
-import HeaderLanguageMenuMobile from "../components/Layout/HeaderLanguageMenuMobile.jsx"
-import HeaderLetteringAndLogo from "../components/Layout/HeaderLetteringAndLogo.jsx"
 
 export const LayoutContext = createContext()
 
@@ -48,24 +47,26 @@ export default function Layout() {
         <>
             <div className="Header">
                 <LayoutContext.Provider value={layoutContextContents}>
-                    <HeaderLetteringAndLogo />
-                    {/* <div>vpWidth = {vpWidth}</div> */}
+
+                    <LetteringAndLogo />
+
                     <div className="Header__RightBox">
 
                         {
                             vpWidth > 999
                                 ?
                                 <>
-                                    <HeaderLaguageMenuDesktop />
-                                    <HeaderKebabMenuDesktop />
+                                    <LanguagesDesktop />
+                                    <MenuDesktop />
                                 </>
                                 :
                                 <>
-                                    <HeaderLanguageMenuMobile />
-                                    <HeaderKebabMenuMobile />
+                                    <LanguagesMobile />
+                                    <MenuMobile />
                                 </>
                         }
                     </div>
+
                 </LayoutContext.Provider >
             </div >
 

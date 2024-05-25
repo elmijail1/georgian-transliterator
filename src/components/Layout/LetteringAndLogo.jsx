@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function HeaderLetteringAndLogo() {
+export default function LetteringAndLogo() {
     return (
         <Link
             to="/"

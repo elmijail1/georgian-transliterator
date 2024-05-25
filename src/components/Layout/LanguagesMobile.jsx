@@ -1,7 +1,7 @@
 import { useContext, useRef, useEffect } from "react"
 import { LayoutContext } from "../../pages/Layout.jsx"
 
-export default function HeaderLanguageMenuMobile() {
+export default function LanguagesMobile() {
     const {
         language,
         languageMenuOpen,

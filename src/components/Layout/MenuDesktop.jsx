@@ -8,7 +8,7 @@ import { LayoutContext } from "../../pages/Layout.jsx"
 // icon
 import { MdMenu } from "react-icons/md";
 
-export default function HeaderKebabMenuDesktop() {
+export default function MenuDesktop() {
     const {
         language,
         menuOpen,
