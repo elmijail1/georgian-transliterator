@@ -1,11 +1,13 @@
-// utilities
-import { NavLink } from "react-router-dom"
+// general
+import { nanoid } from "nanoid"
 import { useContext, useRef, useEffect } from "react"
-
+// components
+import MenuItem from "./MenuItem.jsx"
+// data
+import { menuData } from "../../data/layoutData.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
-
-// icon
+// svg
 import { MdMenu } from "react-icons/md";
 
 
@@ -33,6 +35,8 @@ export default function MenuMobile() {
         })
     })
 
+    const activeStyles = { fontWeight: 700 }
+
     return (
         <div className="Header__KebabDiv" ref={menuRef}>
             <button
@@ -48,44 +52,21 @@ export default function MenuMobile() {
             {
                 menuOpen &&
                 <div className="Header__Kebab--Menu">
-                    {/* home */}
-                    <NavLink
-                        to=""
-                        onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Главная"
-                                : "Home"
-                        }
-                    </NavLink>
 
-                    {/* knowledge */}
-                    <NavLink
-                        to="/knowledge"
-                        onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Информация"
-                                : "Knowledge"
-                        }
-                    </NavLink>
+                    {
+                        menuData.map(entry => {
+                            return (
+                                <MenuItem
+                                    entry={entry}
+                                    activeStyles={activeStyles}
+                                    language={language}
+                                    onClick={() => setMenuOpen(false)}
+                                    key={nanoid()}
+                                />
+                            )
+                        })
+                    }
 
-                    {/* contacts */}
-                    <NavLink
-                        to="/contacts"
-                        onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 700 } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Контакты"
-                                : "Contacts"
-                        }
-                    </NavLink>
                 </div>
             }
         </div>
