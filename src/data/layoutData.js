@@ -1,4 +1,4 @@
-export const menuDesktopData = [
+export const menuData = [
     {
         textEng: "Home",
         textRus: "Главная",
