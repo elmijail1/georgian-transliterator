@@ -36,7 +36,7 @@ export default function LanguagesMobile() {
         })
     })
 
-    function chooseLanguage(entry) {
+    function chooseLanguage(entry) { // Option click handling 3*
         setLanguage(entry.langShort)
         setLanguageMenuOpen(false)
         localStorage.setItem("language", entry.langShort)
@@ -107,4 +107,12 @@ Event's stages:
 - i. Listener attachment. It's attached right to the document object. The trigger event
 is "mousedown".
 - ii. Cleanup. At the end of the effect's cycle the listener is removed.
+.
+3. Option click handling
+Whenever an option (LanguagesItem) is clicked, 3 things happen:
+- the language state's value is set to the respective clicked option and the UI's
+language changes to it;
+- this component (LanguagesMobile) gets hidden;
+- the clicked value is saved to the local storage so that the user will have the
+same language setting upon rerendering or reload.
 */}
