@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Link, useOutletContext } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
-import { TransliteratorContext } from "../pages/Transliterator.jsx"
+import { TransliteratorContext } from "../../pages/Home.jsx"
 
 import { MdLightbulbOutline, MdLightbulb } from "react-icons/md";
 

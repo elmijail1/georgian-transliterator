@@ -1,7 +1,7 @@
 import { MdCancel } from "react-icons/md"
 import { useState, useEffect, useContext, useRef } from "react"
 
-import { TransliteratorContext } from "../pages/Transliterator.jsx"
+import { TransliteratorContext } from "../../pages/Home.jsx"
 
 export default function InputWindow() {
     const {

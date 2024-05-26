@@ -1,7 +1,7 @@
 import { MdContentCopy } from "react-icons/md";
 import { useContext } from "react"
 
-import { TransliteratorContext } from "../pages/Transliterator.jsx"
+import { TransliteratorContext } from "../../pages/Home.jsx"
 
 export default function OutputWindow() {
 
