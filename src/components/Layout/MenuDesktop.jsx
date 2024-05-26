@@ -4,7 +4,7 @@ import { nanoid } from "nanoid"
 // components
 import MenuItem from "./MenuItem.jsx"
 // data
-import { menuDesktopData } from "../../data/layoutData.js"
+import { menuData } from "../../data/layoutData.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 
@@ -21,16 +21,15 @@ export default function MenuDesktop() {
         // list
         <ul className="MenuDesk__ListGeneral">
             {
-                menuDesktopData.map(entry => {
+                menuData.map(entry => {
                     return (
 
                         // list item
-                        <li className="MenuDesk__ListItem">
+                        <li className="MenuDesk__ListItem" key={nanoid()}>
                             <MenuItem
                                 entry={entry}
                                 activeStyles={activeStyles}
                                 language={language}
-                                key={nanoid()}
                             />
                         </li>
                     )
