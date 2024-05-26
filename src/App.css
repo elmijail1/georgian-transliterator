@@ -140,6 +140,35 @@ main {
 }
 
 
+/* component/MenuDesktop */
+.MenuDesk__ListGeneral {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.MenuDesk__ListGeneral * {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 1.5px 0.1rem;
+    box-sizing: border-box;
+}
+
+.MenuDesk__ListItem {
+    width: 7.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+
+
 
 .Layout__MenusDiv {
     display: flex;
@@ -340,30 +369,6 @@ main {
 
 .Header__Kebab--Menu a:hover {
     background-color: hsl(172, 42%, 84%);
-}
-
-/* desktop menu */
-.Header__DesktopMenu {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.Header__DesktopMenu * {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding: 1.5px 0.1rem;
-    box-sizing: border-box;
-}
-
-.Header__DesktopMenu__ListItem {
-    width: 7.4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 
