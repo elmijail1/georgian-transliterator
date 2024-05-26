@@ -6,7 +6,7 @@ import { knowledgeData } from "./data/knowledgeData"
 import { createContext, useState } from "react"
 
 // pages
-import Transliterator from "./pages/Transliterator.jsx"
+import Home from "./pages/Home.jsx"
 import Knowledge from "./pages/Knowledge.jsx"
 import Contacts from './pages/Contacts.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -22,7 +22,7 @@ export default function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Transliterator />} />
+            <Route index element={<Home />} />
             <Route path="knowledge" element={<Knowledge />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="*" element={<NotFound />} />
