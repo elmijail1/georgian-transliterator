@@ -245,21 +245,13 @@ main {
 }
 
 
-
-
-
-
-
-
-
-
-/* header languages */
-.Header__Languages {
+/* component/Languages */
+.Lang__GeneralDiv {
     padding: 2px 0 0 10px;
     position: relative;
 }
 
-.Header__Languagues--Button {
+.Lang__Button {
     background: none;
     border: none;
     font-size: 0.9rem;
@@ -271,7 +263,7 @@ main {
 }
 
 @media (min-width: 400px) {
-    .Header__Languagues--Button {
+    .Lang__Button {
         background-color: rgb(57, 89, 86, 0.5);
         padding: 0.4rem 0.7rem;
         font-weight: 600;
@@ -280,13 +272,13 @@ main {
 }
 
 @media (min-width: 640px) {
-    .Header__Languagues--Button {
+    .Lang__Button {
         cursor: pointer;
     }
 }
 
 @media (min-width: 1000px) {
-    .Header__Languagues--Button {
+    .Lang__Button {
         font-size: 1.2rem;
         background-color: rgb(57, 89, 86, 0.5);
         padding: 0.4rem 0.7rem;
@@ -294,14 +286,14 @@ main {
     }
 }
 
-.Header__Languagues--Button span {
+.Lang__Button span {
     color: inherit;
     font-size: 0.7rem;
     margin-left: 0.3rem;
     padding-top: 0.2rem;
 }
 
-.Header__Languages--Menu {
+.Lang__Menu {
     position: fixed;
     z-index: 1;
     top: 5.5%;
@@ -318,7 +310,7 @@ main {
 }
 
 @media (min-width: 400px) {
-    .Header__Languages--Menu {
+    .Lang__Menu {
         position: absolute;
         right: auto;
         top: 150%;
@@ -327,46 +319,46 @@ main {
 }
 
 @media (min-width: 500px) {
-    .Header__Languages--Menu {
+    .Lang__Menu {
         left: -50%;
     }
 }
 
 @media (min-width: 600px) {
-    .Header__Languages--Menu {
+    .Lang__Menu {
         left: -10%;
     }
 }
 
 @media (min-width: 1000px) {
-    .Header__Languages--Menu {
+    .Lang__Menu {
         top: 120%;
         left: 10%;
     }
 }
 
-.Header__Languages--Menu li {
+.Lang__MenuItem {
     padding: 1rem 1rem;
     width: 100%;
     cursor: pointer;
 }
 
-.Header__Languages--Menu li:hover {
+.Lang__MenuItem:hover {
     padding: 1rem 1rem;
     width: 100%;
     cursor: pointer;
     background-color: hsl(172, 42%, 84%);
 }
 
-.Header__Languages--Menu li:first-of-type {
+.Lang__MenuItem:first-of-type {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.Header__Languages--Menu li:last-of-type {
+.Lang__MenuItem:last-of-type {
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
-.Header__Languages--MenuItemActive {
+.Lang__MenuItemActive {
     font-weight: 700;
 }
 
