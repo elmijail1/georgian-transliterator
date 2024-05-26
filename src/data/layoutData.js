@@ -15,3 +15,16 @@ export const menuData = [
         path: "/contacts",
     },
 ]
+
+export const languagesData = [
+    {
+        langShort: "ENG",
+        langFullNative: "English",
+        langFullTrans: "Английский",
+    },
+    {
+        langShort: "RUS",
+        langFullNative: "Русский",
+        langFullTrans: "Russian",
+    },
+]
