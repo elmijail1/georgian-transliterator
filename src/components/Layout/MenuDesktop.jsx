@@ -1,78 +1,58 @@
-// utilities
-import { NavLink } from "react-router-dom"
+// general
 import { useContext } from "react"
-
+import { nanoid } from "nanoid"
+// components
+import MenuItem from "./MenuItem.jsx"
+// data
+import { menuDesktopData } from "../../data/layoutData.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 
-// icon
-import { MdMenu } from "react-icons/md";
-
 export default function MenuDesktop() {
-    const {
-        language,
-        menuOpen,
-        setLanguageMenuOpen,
-        setMenuOpen,
-    } = useContext(LayoutContext)
+
+    const { language } = useContext(LayoutContext) // Context 1*
+
+    const activeStyles = {  // Styles 2*
+        fontWeight: 800,
+        borderBottom: "3px solid white"
+    }
 
     return (
-        <div className="Header__KebabDiv">
-            <ul className="Header__DesktopMenu">
-                {/* home */}
+        // list
+        <ul className="MenuDesk__ListGeneral">
+            {
+                menuDesktopData.map(entry => {
+                    return (
 
-                <li
-                    onClick={() => setMenuOpen(false)}
-                    className="Header__DesktopMenu__ListItem"
-                >
-                    <NavLink
-                        to="/"
-                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Главная"
-                                : "Home"
-                        }
-                    </NavLink>
-                </li>
-
-                {/* knowledge */}
-                <li
-                    onClick={() => setMenuOpen(false)}
-                    className="Header__DesktopMenu__ListItem"
-                >
-                    <NavLink
-                        to="/knowledge"
-                        onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Инфо"
-                                : "Knowledge"
-                        }
-                    </NavLink>
-                </li>
-
-                {/* contacts */}
-                <li
-                    onClick={() => setMenuOpen(false)}
-                    className="Header__DesktopMenu__ListItem"
-                >
-                    <NavLink
-                        to="/contacts"
-                        onClick={() => setMenuOpen(false)}
-                        style={({ isActive }) => isActive ? { fontWeight: 800, borderBottom: "3px solid white" } : null}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Контакты"
-                                : "Contacts"
-                        }
-                    </NavLink>
-                </li>
-            </ul>
-        </div>
+                        // list item
+                        <li className="MenuDesk__ListItem">
+                            <MenuItem
+                                entry={entry}
+                                activeStyles={activeStyles}
+                                language={language}
+                                key={nanoid()}
+                            />
+                        </li>
+                    )
+                })
+            }
+        </ul>
     )
 }
+
+{/*
+RENDER STRUCTURE
+1. List
+1.1. List Item
+(It comes in 2 elements here since the li "MenuDesk__ListItem is required for extra
+styles)
+
+COMMENTS
+1. Context
+We import the state language from the Layout page to determine the language which
+the texts in the menu should be in. The language is set by the user or is English
+by default.
+.
+2. Active styles
+It's an object containing additional styles applied to a currently active NavLink.
+*/}
