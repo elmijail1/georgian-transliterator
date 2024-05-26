@@ -45,8 +45,10 @@ export default function Layout() {
             <div className="Layout__GeneralDiv">
                 <LayoutContext.Provider value={layoutContextContents}>
 
+                    {/* identity + home button */}
                     <LetteringAndLogo />
 
+                    {/* menus */}
                     <div className="Layout__MenusDiv">
 
                         {
@@ -74,11 +76,10 @@ export default function Layout() {
 
 {/*
 RENDER STRUCTURE
-1. LetteringAndLogo
-2. MenusDiv
+1. Identity + Home button
+2. Menus
 2.1. Languages
-2.2. MenuDesktop / MenuMobile
-MenuDesktop is rendered if vpWidth (1.4) is larger than 999.
+2.2. Website navigation
 3. Outlet
 .
 COMMENTS
