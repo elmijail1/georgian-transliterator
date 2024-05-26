@@ -1,11 +1,12 @@
 // general
 import { NavLink } from "react-router-dom"
 
-export default function MenuItem({entry, activeStyles, language}) {
+export default function MenuItem({ entry, activeStyles, language, onClick = null }) {
     return (
         <NavLink
             to={entry.path}
             style={({ isActive }) => isActive ? activeStyles : null}
+            onClick={onClick}
         >
             {language === "ENG" ? entry.textEng : entry.textRus}
         </NavLink>
