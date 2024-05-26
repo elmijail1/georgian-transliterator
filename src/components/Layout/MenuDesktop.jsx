@@ -53,5 +53,6 @@ the texts in the menu should be in. The language is set by the user or is Englis
 by default.
 .
 2. Active styles
-It's an object containing additional styles applied to a currently active NavLink.
+It's an object containing additional styles applied to a currently active NavLink
+in the MenuItem component mapped with menuData.
 */}
