@@ -93,6 +93,25 @@ main {
     }
 }
 
+.Layout__MenusDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+}
+
+@media (min-width: 350px) {
+    .Layout__MenusDiv {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .Layout__MenusDiv {
+        width: unset;
+    }
+}
+
 
 /* component/LetteringAndLogo */
 .LAL__Link {
@@ -165,29 +184,72 @@ main {
 }
 
 
+/* component/MenuMobile */
+.MenuMob__GeneralDiv {
+    position: relative;
+}
 
+.MenuMob__Button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    fill: white;
+    border-radius: 0.5rem;
+}
 
+@media (min-width: 650px) {
+    .MenuMob__Button {
+        cursor: pointer;
+    }
+}
 
+.MenuMob__Button svg {
+    fill: inherit;
+}
 
-
-.Layout__MenusDiv {
+.MenuMob__Menu {
+    position: fixed;
+    z-index: 10;
+    top: 3.7rem;
+    right: 0;
+    list-style: none;
+    font-size: 1.3rem;
+    background: rgb(233, 248, 246);
+    padding-inline-start: 0;
+    margin: 0px;
+    border: 1px solid rgb(57, 89, 86, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 35%;
+    flex-direction: column;
 }
 
-@media (min-width: 350px) {
-    .Layout__MenusDiv {
-        width: 25%;
-    }
+.MenuMob__Menu a {
+    padding: 1rem 1rem;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-@media (min-width: 1000px) {
-    .Layout__MenusDiv {
-        width: unset;
-    }
+.MenuMob__Menu a:hover {
+    background-color: hsl(172, 42%, 84%);
 }
+
+.MenuMob__Menu a:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.MenuMob__Menu a:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+
+
+
+
+
+
 
 
 
@@ -307,71 +369,6 @@ main {
 .Header__Languages--MenuItemActive {
     font-weight: 700;
 }
-
-
-
-/* header kebab */
-.Header__KebabDiv {
-    position: relative;
-}
-
-.Header__Kebab {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    padding-top: 0.5rem;
-    fill: white;
-    border-radius: 0.5rem;
-}
-
-@media (min-width: 650px) {
-    .Header__Kebab {
-        cursor: pointer;
-    }
-}
-
-/* necessary to change the color of it to white for some reason*/
-.Header__Kebab svg {
-    fill: inherit;
-}
-
-.Header__Kebab--Menu {
-    position: fixed;
-    z-index: 10;
-    top: 3.7rem;
-    right: 0;
-    list-style: none;
-    font-size: 1.3rem;
-    background: rgb(233, 248, 246);
-    padding-inline-start: 0;
-    margin: 0px;
-    border: 1px solid rgb(57, 89, 86, 0.5);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
-    display: flex;
-    flex-direction: column;
-}
-
-.Header__Kebab--Menu a {
-    padding: 1rem 1rem;
-    width: 100%;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.Header__Kebab--Menu a:first-child {
-    border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.Header__Kebab--Menu a:last-child {
-    border-radius: 0 0 0.5rem 0.5rem;
-}
-
-.Header__Kebab--Menu a:hover {
-    background-color: hsl(172, 42%, 84%);
-}
-
-
 
 
 
