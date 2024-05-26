@@ -1,7 +1,14 @@
+// general
 import { useContext, useRef, useEffect } from "react"
+// data
+import { languagesData } from "../../data/layoutData.js"
+// utilities
+import { closeMenuIfClickedElsewhere } from "../../utilities/layoutUtilities.js"
+// context
 import { LayoutContext } from "../../pages/Layout.jsx"
 
 export default function LanguagesMobile() {
+
     const {
         language,
         languageMenuOpen,
@@ -11,17 +18,16 @@ export default function LanguagesMobile() {
     } = useContext(LayoutContext)
 
 
-    let languageMenuRef = useRef() // used to refer to the languageMenu in the render
-    useEffect(() => { // adds logic for closing the languageMenu whenever clicked elsewhere
-        function closeMenuIfClickedElsewhere (event) {
-            if (languageMenuRef.current && !languageMenuRef.current.contains(event.target)) {
-                setLanguageMenuOpen(false)
-            }
-        }
+    let languageMenuRef = useRef()
+    useEffect(() => {
+        document.addEventListener(
+            "mousedown",
+            () => closeMenuIfClickedElsewhere(
+                event, languageMenuRef, setLanguageMenuOpen
+            )
+        )
 
-        document.addEventListener("mousedown", closeMenuIfClickedElsewhere)
-
-        return(() => {
+        return (() => {
             document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
         })
     })
@@ -29,6 +35,7 @@ export default function LanguagesMobile() {
 
     return (
         <div className="Header__Languages" ref={languageMenuRef}>
+
             <button
                 className="Header__Languagues--Button"
                 onClick={() => {
@@ -36,45 +43,33 @@ export default function LanguagesMobile() {
                     setMenuOpen(false)
                 }}
             >
-                {
-                    language === "RUS"
-                        ? "RUS"
-                        : "ENG"
-                }
+                {language === "ENG" ? "ENG" : "RUS"}
             </button>
-            {
-                languageMenuOpen &&
+
+            {languageMenuOpen &&
                 <ul className="Header__Languages--Menu">
-                    <li
-                        className={language === "ENG" ? "Header__Languages--MenuItemActive" : ""}
-                        onClick={() => {
-                            setLanguage("ENG")
-                            setLanguageMenuOpen(false)
-                            localStorage.setItem("language", "ENG")
-                        }}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Английский"
-                                : "English"
-                        }
-                    </li>
-                    <li
-                        className={language === "RUS" ? "Header__Languages--MenuItemActive" : ""}
-                        onClick={() => {
-                            setLanguage("RUS")
-                            setLanguageMenuOpen(false)
-                            localStorage.setItem("language", "RUS")
-                        }}
-                    >
-                        {
-                            language === "RUS"
-                                ? "Русский"
-                                : "Russian"
-                        }
-                    </li>
+
+                    {
+                        languagesData.map(entry => (
+                            <li
+                                className={language === entry.langShort ? "Header__Languages--MenuItemActive" : ""}
+                                onClick={() => {
+                                    setLanguage(entry.langShort)
+                                    setLanguageMenuOpen(false)
+                                    localStorage.setItem("language", entry.langShort)
+                                }}
+                            >
+                                {language === entry.langShort
+                                    ? entry.langFullNative
+                                    : entry.langFullTrans
+                                }
+                            </li>
+                        ))
+                    }
+
                 </ul>
             }
+
         </div>
     )
 }
