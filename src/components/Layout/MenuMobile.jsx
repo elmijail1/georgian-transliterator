@@ -32,13 +32,15 @@ export default function MenuMobile() {
         })
     })
 
-    // Active styles 3*
-    const activeStyles = { fontWeight: 700 }
+    const activeStyles = { fontWeight: 700 } // Active styles 3*
 
     return (
-        <div className="Header__KebabDiv" ref={menuRef}>
+        // container div
+        <div className="MenuMob__GeneralDiv" ref={menuRef}>
+
+            {/* button */}
             <button
-                className="Header__Kebab"
+                className="MenuMob__Button"
                 onClick={() => {
                     setMenuOpen(prevMenu => !prevMenu)
                     setLanguageMenuOpen(false)
@@ -47,31 +49,37 @@ export default function MenuMobile() {
                 <MdMenu />
             </button>
 
-            {
-                menuOpen &&
-                <div className="Header__Kebab--Menu">
+            {/* list */}
+            {menuOpen &&
+                <ul className="MenuMob__Menu">
 
-                    {
-                        menuData.map(entry => {
-                            return (
-                                <MenuItem
-                                    entry={entry}
-                                    activeStyles={activeStyles}
-                                    language={language}
-                                    onClick={() => setMenuOpen(false)}
-                                    key={nanoid()}
-                                />
-                            )
-                        })
+                    {menuData.map(entry => {
+                        return (
+                            // list item
+                            <MenuItem
+                                entry={entry}
+                                activeStyles={activeStyles}
+                                language={language}
+                                onClick={() => setMenuOpen(false)}
+                                key={nanoid()}
+                            />
+                        )
+                    })
                     }
 
-                </div>
+                </ul>
             }
-        </div>
+
+        </div >
     )
 }
 
 {/*
+RENDER STRUCTURE
+1. Container div
+1.1. Button (shows / hides the list)
+1.2. List
+1.2.1. List item
 
 COMMENTS
 1. Context
