@@ -25,7 +25,13 @@ export default function MenuMobile() {
     let menuRef = useRef() // Elsewhere clicks handling 2.1*
     useEffect(() => {   // Elsewhere clicks handling 2.2*
         // Listener attachment 2.2.i*
-        document.addEventListener("mousedown", () => closeMenuIfClickedElsewhere(event, menuRef, setMenuOpen))
+        document.addEventListener(
+            "mousedown",
+            () => closeMenuIfClickedElsewhere(
+                event, menuRef, setMenuOpen
+
+            )
+        )
         // Cleanup 2.2.ii*
         return (() => {
             document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
