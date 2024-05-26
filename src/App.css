@@ -94,111 +94,52 @@ main {
 }
 
 
+/* component/LetteringAndLogo */
+.LAL__Link {
+    text-decoration: none;
+}
 
-/* header lettering + logo */
-.Header__HomeDiv {
-    /* arrangement */
+.LAL__GeneralDiv {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    /* appearance */
     color: white;
 }
 
-.Header__Logo {
-    /* size */
-    font-size: 1.1rem;
-    font-weight: 400;
-    width: 30px;
-    height: 30px;
-    /* arrangement */
-    position: relative;
-    /* decoration */
-    background-color: white;
-    border-radius: 7px;
-}
-
-.Header__LogoImage {
+.LAL__Image {
     width: 2rem;
     height: 2rem;
     border-radius: 7px;
 }
 
-.Header__Logo--tlat {
-    position: absolute;
-    left: 3px;
-    top: 2px;
-    font-style: italic;
-    color: rgb(59, 175, 164);
-}
-
-
-.Header__Logo--slash {
-    position: absolute;
-    top: 1px;
-    right: 5.5px;
-    font-size: 1.2rem;
-    color: rgb(59, 175, 164);
-}
-
-.Header__Logo--tgeo {
-    position: absolute;
-    right: 3px;
-    bottom: 2px;
-    font-style: italic;
-    color: rgb(59, 175, 164);
-}
-
 @media (min-width: 1000px) {
-    .Header__LogoImage {
+    .LAL__Image {
         width: 2.5rem;
         height: 2.5rem;
     }
-
-    .Header__Logo {
-        font-size: 1.5rem;
-        width: 40px;
-        height: 40px;
-    }
-
-    .Header__Logo--tlat {
-        left: 5px;
-        top: 2px;
-    }
-
-    .Header__Logo--slash {
-        top: 3px;
-        right: 7px;
-        font-size: 1.5rem;
-    }
-
-    .Header__Logo--tgeo {
-        right: 6px;
-        bottom: 2.7px;
-    }
 }
 
-.Header__Title {
-    /* size */
+.LAL__Title {
     font-size: 1.1rem;
     font-weight: 600;
-    /* decoration */
     color: white;
     display: none;
 }
 
 @media (min-width: 350px) {
-    .Header__Title {
+    .LAL__Title {
         display: unset;
     }
 }
 
 @media (min-width: 1000px) {
-    .Header__Title {
+    .LAL__Title {
         font-size: 1.5rem;
     }
 }
+
+
 
 .Layout__MenusDiv {
     display: flex;
