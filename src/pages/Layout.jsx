@@ -4,8 +4,7 @@ import { useState, useEffect, createContext } from "react"
 // components
 import MenuDesktop from "../components/Layout/MenuDesktop.jsx"
 import MenuMobile from "../components/Layout/MenuMobile.jsx"
-import LanguagesDesktop from "../components/Layout/LanguagesDesktop.jsx"
-import LanguagesMobile from "../components/Layout/LanguagesMobile.jsx"
+import Languages from "../components/Layout/Languages.jsx"
 import LetteringAndLogo from "../components/Layout/LetteringAndLogo.jsx"
 
 export const LayoutContext = createContext()
@@ -38,6 +37,7 @@ export default function Layout() {
         setLanguage,
         setLanguageMenuOpen,
         setMenuOpen,
+        vpWidth,
     }
 
     return (
@@ -51,25 +51,18 @@ export default function Layout() {
                     {/* menus */}
                     <div className="Layout__MenusDiv">
 
-                        {
-                            vpWidth > 999
-                                ?
-                                <>
-                                    <LanguagesDesktop />
-                                    <MenuDesktop />
-                                </>
-                                :
-                                <>
-                                    <LanguagesMobile />
-                                    <MenuMobile />
-                                </>
-                        }
+                        {/* language menu */}
+                        <Languages />
+
+                        {/* website navigation menu */}
+                        {vpWidth > 999 ? <MenuDesktop /> : <MenuMobile />}
+
                     </div>
 
                 </LayoutContext.Provider >
             </div >
 
-            <Outlet context={{language, vpWidth}} />
+            <Outlet context={{ language, vpWidth }} />
         </>
     )
 }
@@ -78,8 +71,8 @@ export default function Layout() {
 RENDER STRUCTURE
 1. Identity + Home button
 2. Menus
-2.1. Languages
-2.2. Website navigation
+2.1. Language menu
+2.2. Website navigation menu
 3. Outlet
 .
 COMMENTS
