@@ -1,8 +1,11 @@
+// general
 import { MdCancel } from "react-icons/md"
 import { useState, useEffect, useContext, useRef } from "react"
-
+// components
+import DisplayButton from "./DisplayButton.jsx"
+// context
 import { TransliteratorContext } from "../../pages/Home.jsx"
-
+// utilities
 import transliterate from "../../utilities/transliterate"
 
 export default function InputWindow() {
@@ -85,19 +88,13 @@ export default function InputWindow() {
 
             {/* Clear Button */}
             {currentInput &&
-                <div
+                <DisplayButton
                     className="InputWindow__ClearDiv"
                     onClick={clearCurrentInput}
-                >
-                    {
-                        language === "RUS"
-                            ? "Очистить"
-                            : "Click to clear"
-                    }
-
-                    <MdCancel className="OutputWindow__CopyIcon" />
-                </div>
-
+                    language={language}
+                    text={{ eng: "Click to clear", rus: "Очистить" }}
+                    icon={<MdCancel className="OutputWindow__CopyIcon" />}
+                />
             }
         </div>
     )
