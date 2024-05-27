@@ -3,15 +3,28 @@ import { useState, useEffect, useContext, useRef } from "react"
 
 import { TransliteratorContext } from "../../pages/Home.jsx"
 
+import transliterate from "../../utilities/transliterate"
+
 export default function InputWindow() {
     const {
-        clearCurrentInput,
-        currentInput,
-        handleChange,
         language,
-        setCurrentInput,
+        setActiveAlternativeOption,
+        setLatestOutput,
         vpWidth,
     } = useContext(TransliteratorContext)
+
+    const [currentInput, setCurrentInput] = useState("")
+
+    function handleChange(event) {
+        setCurrentInput(event.target.value)
+        setLatestOutput(transliterate(event.target.value))
+    }
+
+    function clearCurrentInput() {
+        setCurrentInput("")
+        setLatestOutput("")
+        setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
+    }
 
     const [counter, setCounter] = useState(currentInput.length)
     useEffect(() => {
