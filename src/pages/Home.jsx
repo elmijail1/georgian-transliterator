@@ -9,24 +9,17 @@ import AlternativeOptions from "../components/Home/AlternativeOptions"
 // data
 import { charsData } from "../data/charsData"
 // utilities
-import { showAlternativeOptions } from "../utilities/Home/mapOutput"
+import { showAlternativeOptions, determineIfOptionsShouldBeShown, useAlternativeOption } from "../utilities/Home/mapOutput"
 
 export const TransliteratorContext = createContext()
 
 export default function Home() {
 
-    const [latestOutput, setLatestOutput] = useState("") // States 1.1*
+    const [latestOutput, setLatestOutput] = useState("")
 
-    const [activeAlternativeOption, setActiveAlternativeOption] = useState( // States 1.2*
+    const [activeAlternativeOption, setActiveAlternativeOption] = useState(
         { shown: false, char: "", initLat: "", index: null }
     )
-
-    function determineIfDekstopLetterOptionsShouldBeShown(charIndex) { // MOVE TO utilities/Home/mapOutput
-        // charIndex, activeAlternativeOption
-        if (activeAlternativeOption.shown && activeAlternativeOption.index === charIndex) {
-            return true
-        }
-    }
 
 
     let letterOptionRef = useRef() // Effects 3.1*
@@ -62,7 +55,7 @@ export default function Home() {
                         >
                             {entry.geoChar}
                             {
-                                determineIfDekstopLetterOptionsShouldBeShown(index) &&
+                                determineIfOptionsShouldBeShown(index, activeAlternativeOption) &&
                                 <span
                                     className="aoDesktop__LetterOptions"
                                     ref={letterOptionRef}
@@ -74,7 +67,7 @@ export default function Home() {
                                                     <div
                                                         key={nanoid()}
                                                         className="aoDesktop__LetterOptions__Letter"
-                                                        onClick={() => useAlternativeOption(char)}
+                                                        onClick={() => useAlternativeOption(char, setLatestOutput, activeAlternativeOption, setActiveAlternativeOption)}
                                                     >
                                                         {char}
                                                     </div>
@@ -98,19 +91,6 @@ export default function Home() {
             })
             return outputArray.join("")
         }
-    }
-
-    // change the current letter to the chosen alternative option
-    function useAlternativeOption(char) { // MOVE TO utilities/Home/mapOutput
-        setLatestOutput(previousOutput => {
-            return (
-                [
-                    ...previousOutput,
-                    previousOutput[activeAlternativeOption.index].geoChar = char
-                ]
-            )
-        })
-        setActiveAlternativeOption(prevOptions => ({ ...prevOptions, geoChar: char }))
     }
 
     const [optionsDisplay, setOptionsDisplay] = useState(false)

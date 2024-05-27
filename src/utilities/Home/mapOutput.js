@@ -8,6 +8,25 @@ export function showAlternativeOptions(
     }
 }
 
+export function determineIfOptionsShouldBeShown(charIndex, activeAlternativeOption) {
+    if (activeAlternativeOption.shown && activeAlternativeOption.index === charIndex) {
+        return true
+    }
+}
+
+    // change the current letter to the chosen alternative option
+export function useAlternativeOption(char, setLatestOutput, activeAlternativeOption, setActiveAlternativeOption) {
+    setLatestOutput(previousOutput => {
+        return (
+            [
+                ...previousOutput,
+                previousOutput[activeAlternativeOption.index].geoChar = char
+            ]
+        )
+    })
+    setActiveAlternativeOption(prevOptions => ({ ...prevOptions, geoChar: char }))
+}
+
 
 
 {/*
