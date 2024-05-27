@@ -9,73 +9,55 @@ import AlternativeOptions from "../components/Home/AlternativeOptions"
 // data
 import { charsData } from "../data/charsData"
 // utilities
-import transliterate from "../utilities/transliterate"
+import { showAlternativeOptions } from "../utilities/Home/mapOutput"
 
 export const TransliteratorContext = createContext()
 
 export default function Home() {
 
-    const [currentInput, setCurrentInput] = useState("")
-    function handleChange(event) {
-        setCurrentInput(event.target.value)
-        setLatestOutput(transliterate(event.target.value))
-    }
+    const [latestOutput, setLatestOutput] = useState("") // States 1.1*
 
-    const [latestOutput, setLatestOutput] = useState("")
+    const [activeAlternativeOption, setActiveAlternativeOption] = useState( // States 1.2*
+        { shown: false, char: "", initLat: "", index: null }
+    )
 
-    function clearCurrentInput() {
-        setCurrentInput("")
-        setLatestOutput("")
-        setAlternativeOptions({ shown: false, char: "", initLat: "", index: null })
-    }
-
-
-    const [alternativeOptions, setAlternativeOptions] = useState({ shown: false, char: "", initLat: "", index: null })
-    function showAlternativeOptions(geoChar, latInit, index) {
-        // the first condition closes the alternative options upon a second click on the same char
-        if (alternativeOptions.shown && alternativeOptions.index === index) {
-            setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
-            // this condition shows alternative options the regular way upon the first click on a char
-        } else {
-            setAlternativeOptions({ shown: true, geoChar: geoChar, latInit: latInit, index: index })
-        }
-    }
-
-    function determineIfDekstopLetterOptionsShouldBeShown(charIndex) {
-        if (alternativeOptions.shown && alternativeOptions.index === charIndex) {
+    function determineIfDekstopLetterOptionsShouldBeShown(charIndex) { // MOVE TO utilities/Home/mapOutput
+        // charIndex, activeAlternativeOption
+        if (activeAlternativeOption.shown && activeAlternativeOption.index === charIndex) {
             return true
         }
     }
 
-    
-    let letterOptionRef = useRef()
-    useEffect(() => {
+
+    let letterOptionRef = useRef() // Effects 3.1*
+    useEffect(() => { // Effects 3.1*
         let handler = (e) => {
             if (letterOptionRef.current && !letterOptionRef.current.contains(e.target)) {
-                setAlternativeOptions({ shown: false, char: "", initLat: "", index: null })
+                setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
             }
         }
-        
+
         document.addEventListener("mousedown", handler)
-        
+
         return () => {
             document.removeEventListener("mousedown", handler)
         }
     })
 
-    function mapOutput() {
+    function mapOutput() { // MOVE TO utilities/Home/mapOutput
+        // args: optionsDisplay, latestOutput, activeAlternativeOption, setActiveAlternativeOption, nanoid, charsData, letterOptionsRef (what am I supposed to do with it, I wonder)
+        // subfunctions: showAlternativeOptions, determineIfDesktop..., useAlternativeOption
         const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c", "w", "x"]
         if (optionsDisplay) {
             return latestOutput.map((entry, index) => {
                 if (triggerLetters.includes(entry.latInit)) {
                     return (
                         <span
-                            className={`highlighterLetter ${alternativeOptions.index === index && "highlighterLetter--pressed"}`}
+                            className={`highlighterLetter ${activeAlternativeOption.index === index && "highlighterLetter--pressed"}`}
                             key={nanoid()}
                             id={`letter-${index}`}
                             onClick={() => {
-                                // document.getElementById(`letter-${index}`).focus()
-                                showAlternativeOptions(entry.geoChar, entry.latInit, index)
+                                showAlternativeOptions(entry, index, activeAlternativeOption, setActiveAlternativeOption)
                             }}
                         >
                             {entry.geoChar}
@@ -86,8 +68,8 @@ export default function Home() {
                                     ref={letterOptionRef}
                                 >
                                     {
-                                        charsData.filter((char) => char.lat === alternativeOptions.latInit)[0].options.map((char) => {
-                                            if (char !== alternativeOptions.geoChar) {
+                                        charsData.filter((char) => char.lat === activeAlternativeOption.latInit)[0].options.map((char) => {
+                                            if (char !== activeAlternativeOption.geoChar) {
                                                 return (
                                                     <div
                                                         key={nanoid()}
@@ -119,16 +101,16 @@ export default function Home() {
     }
 
     // change the current letter to the chosen alternative option
-    function useAlternativeOption(char) {
+    function useAlternativeOption(char) { // MOVE TO utilities/Home/mapOutput
         setLatestOutput(previousOutput => {
             return (
                 [
                     ...previousOutput,
-                    previousOutput[alternativeOptions.index].geoChar = char
+                    previousOutput[activeAlternativeOption.index].geoChar = char
                 ]
             )
         })
-        setAlternativeOptions(prevOptions => ({ ...prevOptions, geoChar: char }))
+        setActiveAlternativeOption(prevOptions => ({ ...prevOptions, geoChar: char }))
     }
 
     const [optionsDisplay, setOptionsDisplay] = useState(false)
@@ -139,21 +121,19 @@ export default function Home() {
     const { language, vpWidth } = useOutletContext()
 
     const transliteratorContextContent = {
-        alternativeOptions,
+        activeAlternativeOption,
         charsData,
-        clearCurrentInput,
-        currentInput,
-        handleChange,
         language,
         latestOutput,
         mapOutput,
         optionsDisplay,
-        useAlternativeOption,
-        setAlternativeOptions,
-        setCurrentInput,
+        setActiveAlternativeOption,
+        setLatestOutput,
         setOptionsDisplay,
+        useAlternativeOption,
         vpWidth,
     }
+
 
     return (
         <TransliteratorContext.Provider value={transliteratorContextContent}>
@@ -174,7 +154,8 @@ export default function Home() {
 {/*
 RENDER STRUCTURE
 0. Layout [see Layout page]
-1. Input window
-2. Output window
-3. Alternative Options section
+1. Body (input + output)
+1.1. Input window
+1.2. Output window
+2. Alternative Options section
 */}
