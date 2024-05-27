@@ -1,5 +1,4 @@
 // general
-import { nanoid } from "nanoid"
 import { useState, useEffect, useRef, createContext } from "react"
 import { useOutletContext } from "react-router-dom"
 // components
@@ -8,8 +7,6 @@ import OutputWindow from "../components/Home/OutputWindow"
 import AlternativeOptions from "../components/Home/AlternativeOptions"
 // data
 import { charsData } from "../data/charsData"
-// utilities
-import { showAlternativeOptions, determineIfOptionsShouldBeShown, useAlternativeOption } from "../utilities/Home/mapOutput"
 
 export const TransliteratorContext = createContext()
 
@@ -37,62 +34,6 @@ export default function Home() {
         }
     })
 
-    function mapOutput() { // MOVE TO utilities/Home/mapOutput
-        // args: optionsDisplay, latestOutput, activeAlternativeOption, setActiveAlternativeOption, nanoid, charsData, letterOptionsRef (what am I supposed to do with it, I wonder)
-        // subfunctions: showAlternativeOptions, determineIfDesktop..., useAlternativeOption
-        const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c", "w", "x"]
-        if (optionsDisplay) {
-            return latestOutput.map((entry, index) => {
-                if (triggerLetters.includes(entry.latInit)) {
-                    return (
-                        <span
-                            className={`highlighterLetter ${activeAlternativeOption.index === index && "highlighterLetter--pressed"}`}
-                            key={nanoid()}
-                            id={`letter-${index}`}
-                            onClick={() => {
-                                showAlternativeOptions(entry, index, activeAlternativeOption, setActiveAlternativeOption)
-                            }}
-                        >
-                            {entry.geoChar}
-                            {
-                                determineIfOptionsShouldBeShown(index, activeAlternativeOption) &&
-                                <span
-                                    className="aoDesktop__LetterOptions"
-                                    ref={letterOptionRef}
-                                >
-                                    {
-                                        charsData.filter((char) => char.lat === activeAlternativeOption.latInit)[0].options.map((char) => {
-                                            if (char !== activeAlternativeOption.geoChar) {
-                                                return (
-                                                    <div
-                                                        key={nanoid()}
-                                                        className="aoDesktop__LetterOptions__Letter"
-                                                        onClick={() => useAlternativeOption(char, setLatestOutput, activeAlternativeOption, setActiveAlternativeOption)}
-                                                    >
-                                                        {char}
-                                                    </div>
-                                                )
-                                            }
-                                        })
-                                    }
-                                </span>
-                            }
-                        </span>
-                    )
-
-                } else {
-                    return <span key={nanoid()}>{entry.geoChar}</span>
-                }
-            })
-        } else {
-            const outputArray = []
-            latestOutput.map(entry => {
-                outputArray.push(entry.geoChar)
-            })
-            return outputArray.join("")
-        }
-    }
-
     const [optionsDisplay, setOptionsDisplay] = useState(false)
     // this thing activates when a button (the only button so far)
     // has been clicked in the Extra Options component. It's used
@@ -105,12 +46,11 @@ export default function Home() {
         charsData,
         language,
         latestOutput,
-        mapOutput,
+        letterOptionRef,
         optionsDisplay,
         setActiveAlternativeOption,
         setLatestOutput,
         setOptionsDisplay,
-        useAlternativeOption,
         vpWidth,
     }
 
