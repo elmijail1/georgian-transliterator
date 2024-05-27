@@ -11,7 +11,7 @@ export default function AlternativeOptions() {
     const {
         language,
         optionsDisplay,
-        setAlternativeOptions,
+        setActiveAlternativeOption,
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
@@ -29,7 +29,7 @@ export default function AlternativeOptions() {
                     `}
                     onClick={() => {
                         setOptionsDisplay(prevOptions => !prevOptions)
-                        setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
+                        setActiveAlternativeOption(({ shown: false, geoChar: "", latInit: "", index: null }))
                     }}>
                     {
                         optionsDisplay
@@ -76,7 +76,7 @@ export default function AlternativeOptions() {
                 checked={optionsDisplay ? true : false}
                 onChange={() => {
                     setOptionsDisplay(prevOptions => !prevOptions)
-                    setAlternativeOptions(({ shown: false, geoChar: "", latInit: "", index: null }))
+                    setActiveAlternativeOption(({ shown: false, geoChar: "", latInit: "", index: null }))
                 }}
             />
 
