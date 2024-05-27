@@ -1,15 +1,35 @@
+// general
 import { MdContentCopy } from "react-icons/md";
 import { useContext } from "react"
-
+// components
+import DisplayButton from "./DisplayButton.jsx"
+// context
 import { TransliteratorContext } from "../../pages/Home.jsx"
+// utilities
+import { mapOutput } from "../../utilities/Home/mapOutput"
 
 export default function OutputWindow() {
 
-    const {
+    const { // Context 1*
+        activeAlternativeOption,
+        charsData,
         language,
         latestOutput,
-        mapOutput,
+        letterOptionRef,
+        optionsDisplay,
+        setActiveAlternativeOption,
+        setLatestOutput,
     } = useContext(TransliteratorContext)
+
+    const mapOutputArguments = { // Map Output 2*
+        optionsDisplay,
+        latestOutput,
+        activeAlternativeOption,
+        setActiveAlternativeOption,
+        charsData,
+        letterOptionRef,
+        setLatestOutput,
+    }
 
     function copyToClipboardLatestOutput() {
         const arrayToCopy = []
@@ -20,7 +40,7 @@ export default function OutputWindow() {
     return (
         <div className="OutputWindow">
 
-            {/* Header */}
+            {/* title */}
             <p className="OutputWindow__Subtitle">
                 {
                     language === "RUS"
@@ -29,12 +49,13 @@ export default function OutputWindow() {
                 }
             </p>
 
-            {/* Output Display Div */}
+
+            {/* output display */}
             <div
                 className="OutputWindow__Display"
             >
                 {latestOutput.length
-                    ? mapOutput()
+                    ? mapOutput(mapOutputArguments)
                     :
                     <span className="OuputWindow__PlaceholderText">
                         {
@@ -45,19 +66,16 @@ export default function OutputWindow() {
                     </span>}
             </div>
 
-            {/* Copy Button */}
+            {/* copy button */}
             {latestOutput &&
-                <div
+                <DisplayButton
                     className="OutputWindow__CopyDiv"
                     onClick={copyToClipboardLatestOutput}
-                >
-                    {
-                        language === "RUS"
-                            ? "Копировать"
-                            : "Click to copy"
-                    }
-                    <MdContentCopy className="OutputWindow__CopyIcon" />
-                </div>}
+                    language={language}
+                    text={{ eng: "Click to copy", rus: "Копировать" }}
+                    icon={<MdContentCopy className="OutputWindow__CopyIcon" />}
+                />
+            }
 
         </div>
     )
