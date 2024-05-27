@@ -1,5 +1,5 @@
 // utilities
-import { showAnswer } from "../../utilities/knowledgeUtilities"
+import { showAnswer } from "../../utilities/Knowledge/knowledgeUtilities.jsx"
 
 export default function KnowledgeItemQuestion({ entry, index, language, setKnowledgeItems }) {
     return (

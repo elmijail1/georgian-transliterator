@@ -1,6 +1,5 @@
 // utilities
-import { splitAnswerIntoDivsAndMap } from "../../utilities/knowledgeUtilities"
-
+import { splitAnswerIntoDivsAndMap } from "../../utilities/Knowledge/knowledgeUtilities"
 export default function KnowledgeItemAnswer({ entry, language }) {
     return (
         <div className="KnowAnswer__GeneralDiv">

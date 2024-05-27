@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem.jsx"
 // data
 import { menuData } from "../../data/layoutData.js"
 // utilities
-import { closeMenuIfClickedElsewhere } from "../../utilities/layoutUtilities.js"
+import { closeMenuIfClickedElsewhere } from "../../utilities/Layout/layoutUtilities.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 // svg

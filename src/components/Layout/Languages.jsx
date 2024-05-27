@@ -6,7 +6,7 @@ import LanguagesItem from "./LanguagesItem.jsx"
 // data
 import { languagesData } from "../../data/layoutData.js"
 // utilities
-import { closeMenuIfClickedElsewhere } from "../../utilities/layoutUtilities.js"
+import { closeMenuIfClickedElsewhere } from "../../utilities/Layout/layoutUtilities.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 
