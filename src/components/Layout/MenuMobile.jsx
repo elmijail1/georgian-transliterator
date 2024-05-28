@@ -7,6 +7,7 @@ import MenuItem from "./MenuItem.jsx"
 import { menuData } from "../../data/layoutData.js"
 // utilities
 import { closeMenuIfClickedElsewhere } from "../../utilities/Layout/layoutUtilities.js"
+import { useElsewhereClick } from "../../utilities/useElsewhereClick.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 // svg
@@ -23,20 +24,9 @@ export default function MenuMobile() {
 
 
     let menuRef = useRef() // Elsewhere clicks handling 2.1*
-    useEffect(() => {   // Elsewhere clicks handling 2.2*
-        // Listener attachment 2.2.i*
-        document.addEventListener(
-            "mousedown",
-            () => closeMenuIfClickedElsewhere(
-                event, menuRef, setMenuOpen
-
-            )
-        )
-        // Cleanup 2.2.ii*
-        return (() => {
-            document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
-        })
-    })
+    useElsewhereClick(() => closeMenuIfClickedElsewhere( // Elsewhere clicks handling 2.2*
+        event, menuRef, setMenuOpen,
+    ))
 
     const activeStyles = { fontWeight: 700 } // Active styles 3*
 

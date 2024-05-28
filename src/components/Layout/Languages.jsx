@@ -7,6 +7,7 @@ import LanguagesItem from "./LanguagesItem.jsx"
 import { languagesData } from "../../data/layoutData.js"
 // utilities
 import { closeMenuIfClickedElsewhere } from "../../utilities/Layout/layoutUtilities.js"
+import { useElsewhereClick } from "../../utilities/useElsewhereClick.js"
 // context
 import { LayoutContext } from "../../pages/Layout.jsx"
 
@@ -23,19 +24,9 @@ export default function Languages() {
 
 
     let languageMenuRef = useRef() // Elsewhere clicks handling 2.1*
-    useEffect(() => {      // Elsewhere clicks handling 2.2*
-        // Listener attachment 2.2.i*
-        document.addEventListener(
-            "mousedown",
-            () => closeMenuIfClickedElsewhere(
-                event, languageMenuRef, setLanguageMenuOpen
-            )
-        )
-        // Cleanup 2.2.ii*
-        return (() => {
-            document.removeEventListener("mousedown", closeMenuIfClickedElsewhere)
-        })
-    })
+    useElsewhereClick(() => closeMenuIfClickedElsewhere( // Elsewhere clicks handling 2.2*
+        event, languageMenuRef, setLanguageMenuOpen
+    ))
 
     function chooseLanguage(entry) { // Option click handling 3*
         setLanguage(entry.langShort)
@@ -131,7 +122,7 @@ should be hidden right away.
 2.1. menuRef is a reference that we set to the GeneralDiv of this component.
 2.2. This effect contains the elsewhere clicks handling logic. The function that's
 used here is closeMenuIfClickedElsewere and it's defined & explained in the utility
-file "utilities/layoutUtilities".
+file "utilities/layoutUtilities". The effect can be found in "utilties/useElsewhereClick"
 Event's stages:
 - i. Listener attachment. It's attached right to the document object. The trigger event
 is "mousedown".
