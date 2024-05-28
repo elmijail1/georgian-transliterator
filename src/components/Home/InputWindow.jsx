@@ -1,20 +1,22 @@
 // general
-import { MdCancel } from "react-icons/md"
 import { useState, useEffect, useContext, useRef } from "react"
+import { useOutletContext } from "react-router-dom"
 // components
-import DisplayButton from "./DisplayButton.jsx"
+import WindowButton from "./subcomponents/WindowButton.jsx"
 // context
 import { TransliteratorContext } from "../../pages/Home.jsx"
 // utilities
 import transliterate from "../../utilities/transliterate"
+// icons
+import { MdCancel } from "react-icons/md"
 
 export default function InputWindow() {
     const {
-        language,
         setActiveAlternativeOption,
         setLatestOutput,
-        vpWidth,
     } = useContext(TransliteratorContext)
+
+    const { language, vpWidth } = useOutletContext()
 
     const [currentInput, setCurrentInput] = useState("")
 
@@ -88,7 +90,7 @@ export default function InputWindow() {
 
             {/* Clear Button */}
             {currentInput &&
-                <DisplayButton
+                <WindowButton
                     className="InputWindow__ClearDiv"
                     onClick={clearCurrentInput}
                     language={language}
