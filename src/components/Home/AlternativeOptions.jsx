@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Link, useOutletContext } from "react-router-dom"
+import { useOutletContext } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
 import { TransliteratorContext } from "../../pages/Home.jsx"
 
@@ -9,13 +9,12 @@ import { MdLightbulbOutline, MdLightbulb } from "react-icons/md";
 export default function AlternativeOptions() {
 
     const {
-        language,
         optionsDisplay,
         setActiveAlternativeOption,
         setOptionsDisplay,
     } = useContext(TransliteratorContext)
 
-    const { vpWidth } = useOutletContext()
+    const { language, vpWidth } = useOutletContext()
 
     if (vpWidth < 450) {
         return (
