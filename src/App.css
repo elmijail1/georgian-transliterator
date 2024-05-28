@@ -570,29 +570,6 @@ main {
     height: 1.4rem;
 }
 
-.highlighterLetter {
-    background-color: rgb(198, 245, 238);
-    position: relative;
-    display: inline-block;
-    justify-content: center;
-    padding: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.highlighterLetter:hover {
-    background-color: hsl(171, 60%, 77%);
-}
-
-.highlighterLetter--pressed {
-    background-color: rgb(57, 89, 86, 0.8);
-    color: white;
-}
-
-.highlighterLetter--pressed:hover {
-    background-color: hsla(174, 32%, 39%);
-}
-
 
 
 
@@ -918,41 +895,6 @@ main {
     background-color: rgb(214, 237, 234);
 }
 
-.aoDesktop__LetterOptions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    z-index: 1;
-    top: 0%;
-    left: 120%;
-    background-color: rgb(214, 237, 234);
-    box-shadow: 0px 2px 5px rgb(81, 81, 81);
-    border-radius: 0.5rem;
-    cursor: pointer;
-}
-
-.aoDesktop__LetterOptions__Letter {
-    padding: 0.3rem 0rem;
-    margin: 0 1rem;
-    text-align: center;
-    width: 100%;
-    border-radius: 0.5rem;
-}
-
-.aoDesktop__LetterOptions__Letter:first-of-type {
-    padding-top: 0.7rem;
-}
-
-.aoDesktop__LetterOptions__Letter:last-of-type {
-    padding-bottom: 0.7rem;
-}
-
-.aoDesktop__LetterOptions__Letter:hover {
-    background-color: rgb(201, 223, 220);
-}
-
 /* additional options mobile*/
 .aoMobile__General {
     display: flex;
@@ -1002,7 +944,7 @@ main {
     background-color: rgb(57, 89, 86);
 }
 
-.aoMobile__ButtonActive > .aoMobile__ButtonText {
+.aoMobile__ButtonActive>.aoMobile__ButtonText {
     color: white;
 }
 
@@ -1219,9 +1161,11 @@ main {
         padding: 1rem 1rem 0 1rem;
         cursor: pointer;
     }
+
     .ContactsButton__GeneralDiv:hover {
         background-color: rgb(233, 248, 246);
     }
+
     .ContactsButton__GeneralDiv:hover .Contact__TextHalf__CopyButton {
         background-color: white;
     }
@@ -1422,4 +1366,70 @@ main {
 .NFButton__General:hover {
     background-color: rgb(47, 143, 133);
     transition-duration: 0.5s;
+}
+
+
+
+/* *** */
+
+
+
+/* MAPOUTPUT */
+/* utilities/Home/mapOutput */
+.TriggerLetter {
+    background-color: rgb(198, 245, 238);
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.TriggerLetter:hover {
+    background-color: hsl(171, 60%, 77%);
+}
+
+.TriggerLetterActive {
+    background-color: rgb(57, 89, 86, 0.8);
+    color: white;
+}
+
+.TriggerLetterActive:hover {
+    background-color: hsla(174, 32%, 39%);
+}
+
+.TriggerLetter__Options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    left: 120%;
+    background-color: rgb(214, 237, 234);
+    box-shadow: 0px 2px 5px rgb(81, 81, 81);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.TriggerLetter__SingleOption {
+    padding: 0.3rem 0rem;
+    margin: 0 1rem;
+    text-align: center;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.TriggerLetter__SingleOption:first-of-type {
+    padding-top: 0.7rem;
+}
+
+.TriggerLetter__SingleOption:last-of-type {
+    padding-bottom: 0.7rem;
+}
+
+.TriggerLetter__SingleOption:hover {
+    background-color: rgb(201, 223, 220);
 }
