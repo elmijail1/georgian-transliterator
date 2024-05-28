@@ -1,35 +1,38 @@
 // general
-import { MdContentCopy } from "react-icons/md";
-import { useContext } from "react"
+import { useContext, useRef } from "react"
+import { useOutletContext } from "react-router-dom"
 // components
-import DisplayButton from "./DisplayButton.jsx"
+import WindowButton from "./subcomponents/WindowButton.jsx"
+// data
+import { charsData } from "../../data/charsData.js"
 // context
 import { TransliteratorContext } from "../../pages/Home.jsx"
 // utilities
-import { mapOutput } from "../../utilities/Home/mapOutput"
+import { mapOutput } from "../../utilities/Home/mapOutput.jsx"
+import { useElsewhereClick } from "../../utilities/useElsewhereClick.js"
+// icons
+import { MdContentCopy } from "react-icons/md";
 
 export default function OutputWindow() {
 
-    const { // Context 1*
+    const {
         activeAlternativeOption,
-        charsData,
-        language,
         latestOutput,
-        letterOptionRef,
         optionsDisplay,
         setActiveAlternativeOption,
         setLatestOutput,
     } = useContext(TransliteratorContext)
 
-    const mapOutputArguments = { // Map Output 2*
-        optionsDisplay,
-        latestOutput,
-        activeAlternativeOption,
-        setActiveAlternativeOption,
-        charsData,
-        letterOptionRef,
-        setLatestOutput,
+    const { language } = useOutletContext()
+
+    let letterOptionRef = useRef()
+    let handler = (e) => {
+        if (letterOptionRef.current && !letterOptionRef.current.contains(e.target)) {
+            setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
+        }
     }
+    useElsewhereClick(() => handler(event))
+
 
     function copyToClipboardLatestOutput() {
         const arrayToCopy = []
@@ -37,38 +40,41 @@ export default function OutputWindow() {
         navigator.clipboard.writeText(arrayToCopy.join(""))
     }
 
+    const mapOutputArguments = {
+        optionsDisplay,
+        latestOutput,
+        activeAlternativeOption,
+        setActiveAlternativeOption,
+        charsData,
+        letterOptionRef,
+        setLatestOutput,
+    }
+
     return (
         <div className="OutputWindow">
 
             {/* title */}
             <p className="OutputWindow__Subtitle">
-                {
-                    language === "RUS"
-                        ? "На грузинский шрифт"
-                        : "To Georgian script"
-                }
+                {language === "ENG" ? "To Georgian script" : "На грузинский шрифт"}
             </p>
 
 
             {/* output display */}
-            <div
-                className="OutputWindow__Display"
-            >
+            <div className="OutputWindow__Display">
                 {latestOutput.length
                     ? mapOutput(mapOutputArguments)
                     :
                     <span className="OuputWindow__PlaceholderText">
-                        {
-                            language === "RUS"
-                                ? "...и получите грузинский текст здесь!"
-                                : "...to see Georgian text here!"
+                        {language === "ENG"
+                            ? "...to see Georgian text here!"
+                            : "...и получите грузинский текст здесь!"
                         }
                     </span>}
             </div>
 
             {/* copy button */}
             {latestOutput &&
-                <DisplayButton
+                <WindowButton
                     className="OutputWindow__CopyDiv"
                     onClick={copyToClipboardLatestOutput}
                     language={language}
