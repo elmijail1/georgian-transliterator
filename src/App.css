@@ -686,27 +686,9 @@ main {
     fill: rgb(233, 248, 246);
 }
 
-.ExtraTools__Info {
-    color: rgba(57, 89, 86, 0.6);
-    color: blue;
-}
-
 @media (min-width: 1000px) {
     .ExtraTools__Info {
         font-size: 1.2rem;
-    }
-}
-
-.ExtraTools__Info--Link {
-    color: hsl(174, 22%, 29%);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.1rem;
-}
-
-@media (min-width: 450px) {
-    .ExtraTools__Info--Link:hover {
-        color: hsl(174, 15%, 15%);
     }
 }
 
@@ -895,18 +877,19 @@ main {
     background-color: rgb(214, 237, 234);
 }
 
-/* additional options mobile*/
-.aoMobile__General {
+/* components/Home/subcomponents/AlternativeOptionsMobile */
+.AOM__GeneralDiv {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     gap: 0.5rem;
     margin-top: 0.7rem;
+    margin-bottom: 5rem;
     padding: 0 10%;
 }
 
-.aoMobile__Button {
+.AOM__Button {
     border: 1px solid rgb(57, 89, 86);
     border-radius: 0.5rem;
     font-size: 1.2rem;
@@ -919,42 +902,45 @@ main {
     width: 100%;
 }
 
-.aoMobile__ButtonBulb,
-.aoMobile__ButtonBulbActive {
+.AOM__ButtonActive {
+    background-color: hsl(174, 25%, 40%);
+}
+
+.AOM__ButtonActive > .AOM__ButtonText {
+    color: white;
+}
+
+.AOM__ButtonIcon,
+.AOM__ButtonIconActive {
     width: 2rem;
     height: 100%;
 }
 
-.aoMobile__ButtonBulb svg,
-.aoMobile__ButtonBulbActive svg {
+.AOM__ButtonIcon svg,
+.AOM__ButtonIconActive svg {
     height: 1rem;
     width: 1rem;
 }
 
-.aoMobile__ButtonBulbActive {
+.AOM__ButtonIconActive {
     fill: white;
 }
 
-.aoMobile__ButtonText {
+.AOM__ButtonText {
     text-align: left;
     width: 15rem;
 }
 
-.aoMobile__ButtonActive {
-    background-color: rgb(57, 89, 86);
-}
-
-.aoMobile__ButtonActive>.aoMobile__ButtonText {
-    color: white;
-}
-
-.aoMobile__Description {
+.AOM__Description {
     text-align: left;
     color: rgb(58, 90, 87, 0.8);
 }
 
-.aoMobile__Description a {
-    color: rgb(57, 89, 86);
+.AOM__DescriptionLink {
+    color: hsl(174, 25%, 35%);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.1rem;
 }
 
 
