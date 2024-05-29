@@ -694,90 +694,13 @@ main {
 
 
 
-
-
+/* *** */
 
 
 
 /* ALTERNATIVE OPTIONS */
-.AlternativeOptions__Div {
-    font-size: 1.1rem;
-    position: relative;
-    width: 100%;
-}
-
-@media (min-width: 1000px) {
-    .AlternativeOptions__Div {
-        font-size: 1.4rem;
-    }
-}
-
-.AlternativeOptions__Subtitle {
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding-left: 15px;
-    margin: 15px 0 10px 0;
-}
-
-@media (min-width: 1000px) {
-    .AlternativeOptions__Subtitle {
-        font-size: 1.5rem;
-    }
-}
-
-@media (min-width: 1000px) {
-    .AlternativeOptions__Description {
-        margin: 0;
-        margin-bottom: 1rem;
-    }
-}
-
-.AlternativeOptions__Cross {
-    position: absolute;
-    top: -20px;
-    right: 10px;
-    background-color: rgb(233, 248, 246);
-    border-radius: 13px;
-    padding: 0.3rem 0.5rem;
-    cursor: pointer;
-}
-
-.AlternativeOptions__Cross:active {
-    background-color: rgb(138, 165, 162);
-}
-
-.AlternativeOptions__CharDisplay {
-    display: flex;
-    justify-content: center;
-    font-size: 1.5rem;
-    gap: 1rem;
-}
-
-@media (min-width: 1000px) {
-    .AlternativeOptions__CharDisplay {
-        font-size: 1.8rem;
-        gap: 2rem;
-    }
-}
-
-.AlternativeOptions__SingleChar {
-    background-color: rgb(233, 248, 246);
-    padding: 0.3rem 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-@media (min-width: 1000px) {
-    .AlternativeOptions__SingleChar {
-        padding: 0.5rem 0.7rem;
-    }
-}
-
-
-
-
-/* ALTERNATIVE OPTIONS DESKTOP */
-.aoDesktop__General {
+/* components/Home/subcomponents/AlternaiveOptionsDesktop */
+.AOD__GeneralDiv {
     margin-top: 0.5rem;
     display: flex;
     justify-content: center;
@@ -787,28 +710,28 @@ main {
 }
 
 @media (min-width: 850px) {
-    .aoDesktop__General {
+    .AOD__GeneralDiv {
         justify-content: flex-start;
         padding-left: 50.5%;
     }
 }
 
-#aoDesktop__Checkbox {
+#AOD__SwitchCheckbox {
+    display: none;
     width: 1rem;
     height: 1rem;
     margin-top: 0.25rem;
-    display: none;
 }
 
-#aoDesktop__Checkbox:checked+#aoDesktop__SwitchLabel::after {
+#AOD__SwitchCheckbox:checked+#AOD__SwitchLabel::after {
     left: 1.6rem;
 }
 
-#aoDesktop__Checkbox:checked+#aoDesktop__SwitchLabel {
+#AOD__SwitchCheckbox:checked+#AOD__SwitchLabel {
     background-color: rgb(59, 175, 164);
 }
 
-#aoDesktop__SwitchLabel {
+#AOD__SwitchLabel {
     position: relative;
     display: inline-block;
     width: 3.5rem;
@@ -818,7 +741,7 @@ main {
     cursor: pointer;
 }
 
-#aoDesktop__SwitchLabel::after {
+#AOD__SwitchLabel::after {
     content: "";
     display: flex;
     justify-content: center;
@@ -834,18 +757,17 @@ main {
     transition: all 0.3s;
 }
 
-.aoDesktop__RightBox {
+.AOD__TextDiv {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
 }
 
-.aoDesktop__RightBox label {
+.AOD__MainText {
     max-width: 21rem;
 }
 
-
-.aoDesktop__TooltipButton {
+.AOD__Tooltip {
     position: relative;
     font-size: 1.2rem;
     opacity: 0.8;
@@ -857,7 +779,7 @@ main {
     cursor: help;
 }
 
-.aoDesktop__TooltipText {
+.AOD__TooltipText {
     display: none;
     position: absolute;
     z-index: 1;
@@ -869,13 +791,24 @@ main {
     border-radius: 1rem;
 }
 
-.aoDesktop__TooltipButton:hover .aoDesktop__TooltipText {
+.AOD__Tooltip:hover .AOD__TooltipText {
     display: unset;
 }
 
-.aoDesktop__TooltipButton:hover {
+.AOD__Tooltip:hover {
     background-color: rgb(214, 237, 234);
 }
+
+.AOD__TooltipLink {
+    color: hsl(174, 25%, 35%);
+    font-weight: 600;
+    text-underline-offset: 0.1rem;
+}
+
+.AOD__TooltipLink:hover {
+    color: hsl(174, 15%, 25%);
+}
+
 
 /* components/Home/subcomponents/AlternativeOptionsMobile */
 .AOM__GeneralDiv {
@@ -906,7 +839,7 @@ main {
     background-color: hsl(174, 25%, 40%);
 }
 
-.AOM__ButtonActive > .AOM__ButtonText {
+.AOM__ButtonActive>.AOM__ButtonText {
     color: white;
 }
 
