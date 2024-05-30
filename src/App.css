@@ -420,7 +420,7 @@ main {
 
 .InputWindow__ClearDiv {
     position: absolute;
-    bottom: 1.9rem;
+    bottom: 2.1rem;
     right: 0.4rem;
     display: flex;
     gap: 0.2rem;
@@ -476,13 +476,13 @@ main {
 
 
 /* OUTPUT WINDOW */
-.OutputWindow {
+.Output__GeneralDiv {
     margin-top: 1rem;
     width: 100%;
     position: relative;
 }
 
-.OutputWindow__Subtitle {
+.Output__Title {
     font-size: 1.3rem;
     font-weight: 500;
     padding-left: 15px;
@@ -490,12 +490,12 @@ main {
 }
 
 @media (min-width: 1000px) {
-    .OutputWindow__Subtitle {
+    .Output__Title {
         font-size: 1.5rem;
     }
 }
 
-.OutputWindow__Display {
+.Output__TextDisplay {
     border: 1px solid rgba(96, 117, 115, 0.5);
     border-radius: 5px;
     width: 100%;
@@ -507,12 +507,11 @@ main {
     overflow-wrap: break-word;
     overflow: scroll;
     word-break: break-word;
-    /* this single line below solves the linebreak issue for OutputWindow */
     white-space: pre-wrap;
 }
 
 @media (min-width: 1000px) {
-    .OutputWindow__Display {
+    .Output__TextDisplay {
         height: 320px;
         max-height: none;
         max-width: 100%;
@@ -521,19 +520,19 @@ main {
 }
 
 @media (min-width: 1000px) and (min-height: 1000px) {
-    .OutputWindow__Display {
+    .Output__TextDisplay {
         height: 420px;
     }
 }
 
-.OuputWindow__PlaceholderText {
+.Output__Placeholder {
     color: rgb(96, 117, 115);
     opacity: 0.7;
 }
 
-.OutputWindow__CopyDiv {
+.Output__CopyButton {
     position: absolute;
-    bottom: 0.3rem;
+    bottom: 0.4rem;
     right: 0.4rem;
     display: flex;
     gap: 0.2rem;
@@ -547,149 +546,22 @@ main {
     user-select: none;
 }
 
-.OutputWindow__CopyDiv:active {
-    background-color: hsl(172, 42%, 84%);
+.Output__CopyButton:active {
+    background-color: rgb(138, 165, 162);
 }
-
 @media (min-width: 1000px) {
-    .OutputWindow__CopyDiv {
-        bottom: 1.8rem;
+    .Output__CopyButton {
+        bottom: 2rem;
         font-size: 1.5rem;
     }
 
-    .OutputWindow__CopyDiv:hover {
+    .Output__CopyButton:hover {
         background-color: hsl(172, 42%, 84%);
     }
 }
 
-.OutputWindow__CopyDiv:active {
-    background-color: rgb(138, 165, 162);
-}
-
-.OutputWindow__CopyIcon {
+.Output__CopyIcon {
     height: 1.4rem;
-}
-
-
-
-
-
-
-
-
-
-
-/* EXTRA TOOLS */
-.ExtraTools {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools--Alone {
-        display: flex;
-        flex-direction: column;
-        width: 49%;
-    }
-}
-
-.ExtraTools__Subtitle {
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding-left: 15px;
-    margin: 15px 0 10px 0;
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools__Subtitle {
-        font-size: 1.5rem;
-    }
-}
-
-.ExtraTools__Buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 0.4rem;
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools__Buttons {
-        flex-direction: row;
-        padding: 0;
-    }
-}
-
-.ExtraTools__AlternativeOptionsBox {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools__AlternativeOptionsBox {
-        flex-direction: row;
-        gap: 0.5rem;
-        align-items: flex-start;
-    }
-}
-
-.ExtraTools__Button {
-    display: flex;
-    gap: 0.8rem;
-    align-items: center;
-    font-size: 1.2rem;
-    /* width: 90%; */
-    opacity: 0.8;
-    padding: 0.5rem 1rem;
-    background-color: rgb(233, 248, 246);
-    border-radius: 13px;
-    border: 0;
-    text-align: left;
-    cursor: pointer;
-}
-
-.ExtraTools__Button:hover {
-    background-color: hsl(172, 42%, 84%);
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools__Button {
-        font-size: 1.4rem;
-        max-width: 18.5rem;
-        min-width: 17rem;
-    }
-}
-
-.ExtraTools__Button--On {
-    background-color: rgb(57, 89, 86);
-}
-
-.ExtraTools__Button--On:hover {
-    background-color: hsl(174, 32%, 39%);
-}
-
-.ExtraTools__Button p {
-    margin: 0;
-}
-
-.ExtraTools__Button div {
-    font-size: 1.8rem;
-}
-
-.ExtraTools__Button--On p {
-    color: rgb(233, 248, 246);
-}
-
-#LightBulb--On {
-    fill: rgb(233, 248, 246);
-}
-
-@media (min-width: 1000px) {
-    .ExtraTools__Info {
-        font-size: 1.2rem;
-    }
 }
 
 
@@ -1301,6 +1173,7 @@ main {
     display: inline-block;
     justify-content: center;
     padding: 2px;
+    margin: 0 0.1rem;
     border-radius: 5px;
     cursor: pointer;
 }
