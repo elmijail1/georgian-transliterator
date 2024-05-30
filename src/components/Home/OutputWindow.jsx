@@ -21,26 +21,25 @@ export default function OutputWindow() {
         optionsDisplay,
         setActiveAlternativeOption,
         setLatestOutput,
-    } = useContext(TransliteratorContext)
+    } = useContext(TransliteratorContext) // Context 1.1*
 
-    const { language } = useOutletContext()
+    const { language } = useOutletContext() // Context 1.2*
 
-    let letterOptionRef = useRef()
-    let handler = (e) => {
-        if (letterOptionRef.current && !letterOptionRef.current.contains(e.target)) {
+    let letterOptionRef = useRef() // Effect 2*
+    function clickOffSuggestedOptions (event) { // Effect 2*
+        if (letterOptionRef.current && !letterOptionRef.current.contains(event.target)) {
             setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
         }
     }
-    useElsewhereClick(() => handler(event))
+    useElsewhereClick(() => clickOffSuggestedOptions(event)) // Effect 2*
 
-
-    function copyToClipboardLatestOutput() {
+    function copyToClipboardLatestOutput() { // Functions 3.1*
         const arrayToCopy = []
         latestOutput.map(entry => arrayToCopy.push(entry.geoChar))
         navigator.clipboard.writeText(arrayToCopy.join(""))
     }
 
-    const mapOutputArguments = {
+    const mapOutputArguments = { // Functions 3.2*
         optionsDisplay,
         latestOutput,
         activeAlternativeOption,
@@ -51,20 +50,20 @@ export default function OutputWindow() {
     }
 
     return (
-        <div className="OutputWindow">
+        <div className="Output__GeneralDiv">
 
             {/* title */}
-            <p className="OutputWindow__Subtitle">
+            <p className="Output__Title">
                 {language === "ENG" ? "To Georgian script" : "На грузинский шрифт"}
             </p>
 
 
             {/* output display */}
-            <div className="OutputWindow__Display">
+            <div className="Output__TextDisplay">
                 {latestOutput.length
                     ? mapOutput(mapOutputArguments)
                     :
-                    <span className="OuputWindow__PlaceholderText">
+                    <span className="Output__Placeholder">
                         {language === "ENG"
                             ? "...to see Georgian text here!"
                             : "...и получите грузинский текст здесь!"
@@ -75,14 +74,77 @@ export default function OutputWindow() {
             {/* copy button */}
             {latestOutput &&
                 <WindowButton
-                    className="OutputWindow__CopyDiv"
+                    className="Output__CopyButton"
                     onClick={copyToClipboardLatestOutput}
                     language={language}
                     text={{ eng: "Click to copy", rus: "Копировать" }}
-                    icon={<MdContentCopy className="OutputWindow__CopyIcon" />}
+                    icon={<MdContentCopy className="Output__CopyIcon" />}
                 />
             }
 
         </div>
     )
 }
+
+{/*
+RENDER STRUCTURE
+1. Title
+2. Output display
+2.1. mapOutput's return / placeholder
+3. Copy button
+
+COMMENTS
+This component displays the result of the translieration – i.e. the text typed in by
+the user turned into the Georgian script from the Latin one. Technically speaking, this
+component is meant for displaying the result of the mapOutput function. To learn more
+about mapOutput refer to utilities/Home/mapOutput.
+
+1. Context
+1.1. TransliteratorContext
+It comes from pages/Home and carries states & state setters defined there. For full info
+about each of them refer to the respective file. Here are brief descriptions:
+- i. activeAlterantiveOption: the state containing data about the latest clicked highlighted
+letter. Some letters become highlighted when the "Alternative options" button / switch
+is on. In this component it's passed to the mapOutput function. Learn more about how it's
+used in it in utilities/Home/mapOutput;
+- ii. latestOutput: the state containing an array of objects each representing a
+transliterated character (to learn more about transliteration refer to
+utilities/Home/transliterate & components/Home/InputWindow). In this component it's passed
+to the mapOutput function and used for copying the output to the clipboard (see 3.1);
+- iii. optionsDisplay: the state containing a boolean that represents whether additional
+options are shown (i.e. if letters that have such available options are highlighted).
+In this component it's passed to the mapOutput function;
+- iv. setActiveAlternativeOption: a state setter for i.;
+- v. setLatestOutout: a state setter for ii..
+.
+1.2. OutletContext
+It comes from pages/Layout and carries the language state that represents the user's
+choice in terms of which of the 2 languages they want to see their UI text in (English
+or Russian). It contains a string: "ENG" or "RUS". By default it's "ENG".
+
+2. Effect
+The useElsewhereClick effect handles clicks off the additional options list. When additional
+options are turned on and a highlighted letter is clicked, the user is also shown a list
+of options available for that same letter. If they click one of the suggested options, the
+highlighted letters changes to the clicked suggested letter. But what happens if they click
+elsewhere? This effect handles that.
+.
+In brief, it accepts a function that does what you want to happen on the off-click, attaches
+it to the document as an event listener, and then removes it. You can learn more about it
+in utilities/useElsewhereClick.
+.
+The function we pass to that hook (clickOffSuggestedOptions) checks if the clicked target
+is related to the options menu (letterOptionRef) and if it's not, it defaults the
+activeAlternativeOption state thus resetting the latest clicked letter.
+
+3. Functions
+3.1. copyToClipboardLatestOutput
+It lets the user copy the output text. It's a bit tricky however. The latestOutput state
+contains an array of objects, so we need to map it first into another array to get a simple
+array of characters (strings) to later join.
+.
+3.2. mapOutputArguments
+To make the render part easier to read I've collected all the arguments the mapOutput
+function needs above it. To learn more about why the function needs all those arguments,
+refer to utilities/Home/mapOutput.
+*/}
