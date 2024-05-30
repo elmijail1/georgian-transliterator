@@ -14,31 +14,28 @@ export default function InputWindow() {
     const {
         setActiveAlternativeOption,
         setLatestOutput,
-    } = useContext(TransliteratorContext)
+    } = useContext(TransliteratorContext) // Context 1.1*
+    const { language, vpWidth } = useOutletContext() // Context 1.2*
 
-    const { language, vpWidth } = useOutletContext()
-
-    const [currentInput, setCurrentInput] = useState("")
-
-    function handleChange(event) {
+    const [currentInput, setCurrentInput] = useState("") // State 2.1*
+    function handleInputChange(event) { // State 2.1*
         setCurrentInput(event.target.value)
         setLatestOutput(transliterate(event.target.value))
     }
 
-    function clearCurrentInput() {
+    function clearCurrentInput() { // Clear function 3*
         setCurrentInput("")
         setLatestOutput("")
         setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
     }
 
-    const [counter, setCounter] = useState(currentInput.length)
-    useEffect(() => {
+    const [counter, setCounter] = useState(currentInput.length) // State 2.2*
+    useEffect(() => { // State 2.2*
         setCounter(currentInput.length)
     }, [currentInput])
 
     // dynamic height change block
-    const textAreaRef = useRef(null) // DHCB
-
+    const textAreaRef = useRef(null) // DHCB // Resize effect 4*
     function resizeTextArea() { // DHCB
         if (vpWidth < 450) {
             textAreaRef.current.style.height = "auto"
@@ -47,51 +44,51 @@ export default function InputWindow() {
             textAreaRef.current.style.height = null
         }
     }
-
     useEffect(resizeTextArea, [currentInput, vpWidth]) // DHCB
 
     return (
-        <div className="InputWindow">
+        <div className="Input__GeneralDiv">
 
-            {/* Header */}
-            <p className="InputWindow__Subtitle">
-                {
-                    language === "RUS"
-                        ? "С латиницы"
-                        : "From Latin script"
-                }
+            {/* title */}
+            <p className="Input__Title">
+                {language === "ENG" ? "From Latin script" : "С латиницы"}
             </p>
 
-            {/* Input Textarea */}
+            {/* textarea */}
             <textarea
-                className="InputWindow__Input"
-                type="text"
+                className="Input__Textarea"
                 name="currentInput"
                 id="current-input"
-                placeholder={language === "RUS" ? "Введите текст латиницей здесь..." : "Enter Latin text here..."}
+                placeholder={language === "ENG" ? "Enter Latin text here..." : "Введите текст латиницей здесь..."}
                 value={currentInput}
-                onChange={handleChange}
+                onChange={handleInputChange}
                 maxLength="500"
                 ref={textAreaRef}
                 rows={1}
             />
 
-            {/* Counter */}
-            <div className="InputWindow__Counter">
-                {counter > 499 && <p className="InputWindow__Counter--Red">
+            {/* character counter */}
+            <div className="Input__Counter">
+
+                {/* limit reached message */}
+                {counter > 499 && <p className="Input__CounterReached">
                     {
                         language === "RUS"
                             ? "Макс. кол-во символов"
                             : "Text limit has been reached"
                     }
                 </p>}
-                <p className={counter > 499 ? "InputWindow__Counter--Red" : ""}>{counter}/500</p>
+
+                {/* number of characters */}
+                <p className={counter > 499 ? "Input__CounterReached" : ""}>
+                    {counter}/500
+                </p>
             </div>
 
-            {/* Clear Button */}
+            {/* clear button */}
             {currentInput &&
                 <WindowButton
-                    className="InputWindow__ClearDiv"
+                    className="Input__ClearButton"
                     onClick={clearCurrentInput}
                     language={language}
                     text={{ eng: "Click to clear", rus: "Очистить" }}
@@ -101,3 +98,28 @@ export default function InputWindow() {
         </div>
     )
 }
+
+{/*
+RENDER STRUCTURE
+1. Title
+2. Textarea
+3. Character counter
+3.1. Limit reached message
+3.2. Number of characters
+4. Clear button
+
+COMMENT
+1. Context
+1.1. TransliteratorContext
+.
+1.2. OutletCountext
+
+2. States
+2.1. currentInput
+.
+2.2. counter
+
+3. Clear function
+
+4. Resize effect
+*/}
