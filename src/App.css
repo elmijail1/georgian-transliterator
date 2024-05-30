@@ -366,12 +366,13 @@ main {
 
 
 /* INPUT WINDOW */
-.InputWindow {
+/* components/InputWindow */
+.Input__GeneralDiv {
     width: 100%;
     position: relative;
 }
 
-.InputWindow__Subtitle {
+.Input__Title {
     font-size: 1.3rem;
     font-weight: 500;
     padding-left: 15px;
@@ -379,12 +380,12 @@ main {
 }
 
 @media (min-width: 1000px) {
-    .InputWindow__Subtitle {
+    .Input__Title {
         font-size: 1.5rem;
     }
 }
 
-.InputWindow__Input {
+.Input__Textarea {
     min-height: 132px;
     height: 200px;
     max-height: 200px;
@@ -398,7 +399,7 @@ main {
 }
 
 @media (min-width: 1000px) {
-    .InputWindow__Input {
+    .Input__Textarea {
         height: 320px;
         max-height: none;
         font-size: 1.7rem;
@@ -406,19 +407,19 @@ main {
 }
 
 @media (min-width: 1000px) and (min-height: 1000px) {
-    .InputWindow__Input {
+    .Input__Textarea {
         height: 420px;
         max-height: none;
         font-size: 1.7rem;
     }
 }
 
-.InputWindow__Input::placeholder {
+.Input__Textarea::placeholder {
     color: rgb(96, 117, 115);
     opacity: 0.7;
 }
 
-.InputWindow__ClearDiv {
+.Input__ClearButton {
     position: absolute;
     bottom: 2.1rem;
     right: 0.4rem;
@@ -434,22 +435,22 @@ main {
     user-select: none;
 }
 
-.InputWindow__ClearDiv:hover {
+.Input__ClearButton:hover {
     background-color: hsl(172, 42%, 84%);
 }
 
 @media (min-width: 1000px) {
-    .InputWindow__ClearDiv {
+    .Input__ClearButton {
         font-size: 1.5rem;
     }
 }
 
 
-.InputWindow__ClearDiv:active {
+.Input__ClearButton:active {
     background-color: rgb(138, 165, 162);
 }
 
-.InputWindow__Counter {
+.Input__Counter {
     opacity: 60%;
     margin-top: 0.2rem;
     display: flex;
@@ -457,11 +458,11 @@ main {
     justify-content: flex-end;
 }
 
-.InputWindow__Counter p {
+.Input__Counter p {
     margin: 0;
 }
 
-.InputWindow__Counter--Red {
+.Input__CounterReached {
     color: red;
     font-weight: 600;
 }
