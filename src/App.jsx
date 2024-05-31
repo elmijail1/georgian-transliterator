@@ -1,19 +1,13 @@
-// misc
+// general
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
-import { knowledgeData } from "./data/knowledgeData"
-import { createContext, useState } from "react"
-
+import { createContext } from "react"
 // pages
+import Contacts from './pages/Contacts.jsx'
 import Home from "./pages/Home.jsx"
 import Knowledge from "./pages/Knowledge.jsx"
-import Contacts from './pages/Contacts.jsx'
-import NotFound from './pages/NotFound.jsx'
-import KnowledgeExperiment from './pages/Knowledge.jsx'
-
-// components
 import Layout from "./pages/Layout.jsx"
+import NotFound from './pages/NotFound.jsx'
 
 export const KnowledgeContext = createContext()
 
@@ -26,7 +20,6 @@ export default function App() {
             <Route path="knowledge" element={<Knowledge />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="knowledge-experiment" element={<KnowledgeExperiment />} />
           </Route>
         </Routes>
     </BrowserRouter>
