@@ -680,6 +680,10 @@ main {
     color: hsl(174, 15%, 25%);
 }
 
+.AOD__TooltipWarning {
+    margin-top: 0.5rem;
+}
+
 
 /* components/Home/subcomponents/AlternativeOptionsMobile */
 .AOM__GeneralDiv {
@@ -735,7 +739,7 @@ main {
     width: 15rem;
 }
 
-.AOM__Description {
+.AOM__Description, .AOM__Description * {
     text-align: left;
     color: rgb(58, 90, 87, 0.8);
 }
@@ -745,6 +749,10 @@ main {
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 0.1rem;
+}
+
+.AOM__TooltipWarning {
+    margin-top: 0.5rem;
 }
 
 
