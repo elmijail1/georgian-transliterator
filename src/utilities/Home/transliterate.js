@@ -10,6 +10,8 @@ function turnStringToArray (string) {
 }
 
 function matchChars(initialArray, dictionary) {
+
+    // 1. Preparations
     const finalArray = [] // S1
 
     const digraphs = { // S3
@@ -23,6 +25,7 @@ function matchChars(initialArray, dictionary) {
 
     initialArray.map((char, charIndex) => { // S1; S3 for charIndex
 
+        // 2. Condition 1: Is latestChar regular or not?
         if (latestChar.length > 1) { // S4
             if (latestChar.length === 3 && latestChar[1] === char) { // S5
                 return
@@ -31,11 +34,13 @@ function matchChars(initialArray, dictionary) {
             return
         }
 
+        // 3. Condition 2: Does the dictionary have an entry with this character?
         if (!Array.from(dictionary, x => x.lat).includes(char)) { // S2
             latestChar = char; // S4
             return finalArray.push({ geoChar: char, latInit: char });
         }
 
+        // 4. Condition 3: Is this character a digraph?
         if (digraphs.total.includes(char)) { // S3
             if (digraphs.h_Digraphs.includes(char) && initialArray[charIndex + 1] === "h") {
                 char = char + "h"
@@ -50,6 +55,7 @@ function matchChars(initialArray, dictionary) {
             }
         }
 
+        // 5. Get the corresponding Georgian character
         dictionary.map((entry) => { // S1
             if (entry.lat === char) { // S1
                 latestChar = char; // S4
@@ -68,9 +74,91 @@ export default function transliterate (string) {
 
 
 {/*
+COMMENTS
+
 TRANSLITERATE
-i. Lat string –> Lat array
-ii. Lat array –> Geo array (Geo array is further handled by mapOutput)
+While the transliterare function itself isn't large, one of its child functions, matchChars,
+is. I'll start the description of the functions in this file with the main one, then
+proceed to the smaller child function, and finish with the matchChars function.
+
+transliterate
+USED IN: components/Home/InputWindow inside the handleInputChange function.
+WHAT IT DOES: accepts a text in Latin and turns it into a text in the Georgian script.
+Technically, it receives a string in Latin (event.target.value of the textarea in the
+InputWindow component), turns it into an array of Latin strings, and then creates another
+array, this time containing objects with the Latin characters from the previous array as
+well as corresponding Georgian characters.
+ARGUMENTS (1): string.
+DESCRIPTION: it consists of 2 parts: turn the passed string into an array of strings,
+then turn that array of strings into an array of objects containing both Latin and
+Georgian characters for further use in page/OutputWindow (to be more precise, in its
+mapOutput function). The former is done by turnStringToArray, the latter – by matchChars.
+Both those functions can be found in the same file here.
+
+
+turnStringToArray
+USED IN: the transliterate function's first step.
+WHAT IT DOES: receives a string and returns an array of its characters.
+ARGUMENTS (1): string.
+DESCRIPTION: the received string is the same that the transliterator function receives.
+The string is mapped: each of its characters is turned to lower case and pushed to a
+new array. After all the characters of the string have been pushed to the array, the
+array is returned.
+
+
+matchChars
+USED IN: the transliterate function's second step.
+WHAT IT DOES: receives an array of Latin characters and returns an array with
+corresponding Georgian characters. Technically, the returned array contains not only
+Georgian characters but also the same Latin ones that have been initially passed to the
+function.
+ARGUMENTS (2): initialArray, dictionary.
+DESCRIPTION: the description of this function will take a lot of space since it has several
+important parts and conditions. That's why I'll add a table of contents for it first:
+CONTENTS:
+1. PREPARATIONS
+2. CONDITION 1: IS latestChar REGULAR OR NOT?
+3. CONDITION 2: DOES THE DICTIONARY HAVE AN ENTRY WITH THIS CHARACTER?
+4. CONDITION 3: IS THIS CHARACTER A DIGRAPH?
+5. GET THE CORRESPONDING GEORGIAN CHARACTER
+.
+1. PREPARATIONS
+The heart of this function is the mapping of the initialArray, the received array of
+Latin characters. But before the function starts mapping of that array, it does some
+preparation. To be more precise, there are 3 things it does: it makes an empty array,
+it creates a digraphs object, and it creates the latestChar variable. Let's take a
+look at each of those steps:
+- i. Making an empty array. The finalArray array is initially empty. It will be later
+used inside the mapping loop to store the return of each loop. Finally, it's what will
+be returned at the end of the function and the bigger transliterate function.
+- ii. Making a digraph object. The digraph object contains initial letters of digraphs.
+The total property contains them all, while the 3 others contain particular ones:
+..- h_Digraphs: they contain the first character of digraphs the second character of which
+is "h". That includes ch, gh, kh,ph, sh, and zh;
+..- z_Digraphs: they contain the first character of digraphs the second character of which
+is "z". That oncludes just dz;
+..- s_Digraphs: they contain the first character of digraphs the second character of which
+is "s". That oncludes just ts.
+How exactly it's used will be described later (step 4).
+- iii. Creating the latestChar variable. It's an empty string that will be filled at the
+end of each mapping loop with the current character. While in most cases it's going to
+contain one character ("o", "m", etc), in some cases it can contain more than that:
+2 for digraphs ("ch", "dz", etc) and 3 for trigraphs (so far there's just one: "tsh").
+If latestChar's length is bigger than 1, the current character will be treated differently.
+More about that in step 2.
+.
+2. CONDITION 1: IS latestChar REGULAR OR NOT?
+...
+
+
+
+3. CONDITION 2: DOES THE DICTIONARY HAVE AN ENTRY WITH THIS CHARACTER?
+4. CONDITION 3: IS THIS CHARACTER A DIGRAPH?
+5. GET THE CORRESPONDING GEORGIAN CHARACTER
+
+
+
+
 
 
 MATCHCHATRACTERS
