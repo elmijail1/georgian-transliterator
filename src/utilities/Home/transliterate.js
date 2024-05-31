@@ -1,4 +1,15 @@
-export default function matchChars(initialArray, dictionary) {
+// data
+import {charsData} from "../../data/charsData.js"
+
+function turnStringToArray (string) {
+    const charArray = []
+    for (let i = 0; i < string.length; i++) {
+        charArray.push(string[i].toLowerCase());
+    }
+    return charArray
+}
+
+function matchChars(initialArray, dictionary) {
     const finalArray = [] // S1
 
     const digraphs = { // S3
@@ -50,8 +61,19 @@ export default function matchChars(initialArray, dictionary) {
     return finalArray // S1
 }
 
+export default function transliterate (string) {
+    const initialArray = turnStringToArray(string) // lat string –> lat array
+    return matchChars(initialArray, charsData) // lat array -> geo array
+}
+
 
 {/*
+TRANSLITERATE
+i. Lat string –> Lat array
+ii. Lat array –> Geo array (Geo array is further handled by mapOutput)
+
+
+MATCHCHATRACTERS
 To make the code easier to read, I've added several markers:
 - S1. BAREBONES
 The barebones code that turns latin characters into georgian. It does just that: finds
