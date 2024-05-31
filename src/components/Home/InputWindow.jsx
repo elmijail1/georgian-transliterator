@@ -6,7 +6,7 @@ import WindowButton from "./subcomponents/WindowButton.jsx"
 // context
 import { TransliteratorContext } from "../../pages/Home.jsx"
 // utilities
-import transliterate from "../../utilities/transliterate"
+import transliterate from "../../utilities/Home/transliterate.js"
 // icons
 import { MdCancel } from "react-icons/md"
 
