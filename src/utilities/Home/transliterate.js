@@ -76,7 +76,6 @@ export default function transliterate (string) {
 {/*
 COMMENTS
 
-TRANSLITERATE
 While the transliterare function itself isn't large, one of its child functions, matchChars,
 is. I'll start the description of the functions in this file with the main one, then
 proceed to the smaller child function, and finish with the matchChars function.
@@ -121,6 +120,10 @@ CONTENTS:
 3. CONDITION 2: DOES THE DICTIONARY HAVE AN ENTRY WITH THIS CHARACTER?
 4. CONDITION 3: IS THIS CHARACTER A DIGRAPH?
 5. GET THE CORRESPONDING GEORGIAN CHARACTER
+.
+Also, before moving on to the steps' description, I'll add that there's another
+description of this function where it's shown via stages of its development how exactly
+it works. To find it, refer to utilities/Home/matchCharsWithStages.
 .
 1. PREPARATIONS
 The heart of this function is the mapping of the initialArray, the received array of
