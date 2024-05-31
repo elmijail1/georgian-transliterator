@@ -4,6 +4,8 @@ import { useOutletContext } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
 // context
 import { TransliteratorContext } from "../../../pages/Home.jsx"
+// data
+import { tooltipTexts } from "../../../data/alternativeOptionsData.js"
 
 export default function AlternativeOptionsDesktop() {
 
@@ -61,11 +63,7 @@ export default function AlternativeOptionsDesktop() {
                     <div className="AOD__TooltipText">
 
                         {/* description */}
-                        {
-                            language === "ENG"
-                                ? "Press a highlighted letter to see how else it can be transliterated. Learn more about why it's important "
-                                : "Нажмите на подсвеченную букву, чтобы узнать, как ещё её можно перевести. Узнайте о том, почему одну букву можно перевести по-разному, "
-                        }
+                        {language === "ENG" ? tooltipTexts.descriptionEng : tooltipTexts.descriptionRus}
 
                         {/* link */}
                         <HashLink
@@ -75,6 +73,10 @@ export default function AlternativeOptionsDesktop() {
                         >
                             {language === "ENG" ? "here" : "здесь"}
                         </HashLink>
+
+                        <div className="AOD__TooltipWarning">
+                            {language === "ENG" ? tooltipTexts.warningEng : tooltipTexts.warningRus}
+                        </div>
 
                     </div>
 
