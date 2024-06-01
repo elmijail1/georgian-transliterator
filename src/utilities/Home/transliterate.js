@@ -1,7 +1,7 @@
 // data
-import {charsData} from "../../data/charsData.js"
+import { charsData } from "../../data/charsData.js"
 
-function turnStringToArray (string) {
+function turnStringToArray(string) {
     const charArray = []
     for (let i = 0; i < string.length; i++) {
         charArray.push(string[i].toLowerCase());
@@ -12,9 +12,9 @@ function turnStringToArray (string) {
 function matchChars(initialArray, dictionary) {
 
     // 1. Preparations
-    const finalArray = [] // S1
+    const finalArray = []
 
-    const digraphs = { // S3
+    const digraphs = {
         total: ["c", "d", "g", "k", "p", "s", "t", "z"],
         h_Digraphs: ["c", "g", "k", "p", "s", "z"],
         z_Digraphs: "d",
@@ -23,11 +23,11 @@ function matchChars(initialArray, dictionary) {
 
     let latestChar = "" // S4
 
-    initialArray.map((char, charIndex) => { // S1; S3 for charIndex
+    initialArray.map((char, charIndex) => {
 
         // 2. Condition 1: Is latestChar regular or not?
-        if (latestChar.length > 1) { // S4
-            if (latestChar.length === 3 && latestChar[1] === char) { // S5
+        if (latestChar.length > 1) {
+            if (latestChar.length === 3 && latestChar[1] === char) {
                 return
             }
             latestChar = char;
@@ -35,19 +35,19 @@ function matchChars(initialArray, dictionary) {
         }
 
         // 3. Condition 2: Does the dictionary have an entry with this character?
-        if (!Array.from(dictionary, x => x.lat).includes(char)) { // S2
-            latestChar = char; // S4
+        if (!Array.from(dictionary, x => x.lat).includes(char)) {
+            latestChar = char;
             return finalArray.push({ geoChar: char, latInit: char });
         }
 
         // 4. Condition 3: Is this character a digraph?
-        if (digraphs.total.includes(char)) { // S3
+        if (digraphs.total.includes(char)) {
             if (digraphs.h_Digraphs.includes(char) && initialArray[charIndex + 1] === "h") {
                 char = char + "h"
             } else if (char === digraphs.z_Digraphs && initialArray[charIndex + 1] === "z") {
                 char = char + "z"
             } else if (char === digraphs.s_Digraphs && initialArray[charIndex + 1] === "s") {
-                if (initialArray[charIndex + 2] === "h") { // S5
+                if (initialArray[charIndex + 2] === "h") {
                     char = char + "sh"
                 } else {
                     char = char + "s"
@@ -56,18 +56,18 @@ function matchChars(initialArray, dictionary) {
         }
 
         // 5. Get the corresponding Georgian character
-        dictionary.map((entry) => { // S1
-            if (entry.lat === char) { // S1
-                latestChar = char; // S4
+        dictionary.map((entry) => {
+            if (entry.lat === char) {
+                latestChar = char;
                 finalArray.push({ geoChar: entry.geo, latInit: char })
             }
         })
     })
 
-    return finalArray // S1
+    return finalArray
 }
 
-export default function transliterate (string) {
+export default function transliterate(string) {
     const initialArray = turnStringToArray(string) // lat string –> lat array
     return matchChars(initialArray, charsData) // lat array -> geo array
 }
@@ -194,30 +194,56 @@ assigned to "/" and this character-related entry is pushed to the finalArray as
 .
 .
 4. CONDITION 3: IS THIS CHARACTER A DIGRAPH?
-
-
-
-        // 4. Condition 3: Is this character a digraph?
-        if (digraphs.total.includes(char)) { // S3
-            if (digraphs.h_Digraphs.includes(char) && initialArray[charIndex + 1] === "h") {
-                char = char + "h"
-            } else if (char === digraphs.z_Digraphs && initialArray[charIndex + 1] === "z") {
-                char = char + "z"
-            } else if (char === digraphs.s_Digraphs && initialArray[charIndex + 1] === "s") {
-                if (initialArray[charIndex + 2] === "h") { // S5
-                    char = char + "sh"
-                } else {
-                    char = char + "s"
-                }
-            }
-        }
-
-
+Now it's necessary to check if the currently mapped character is a part of a digraph /
+trigraph. To do that we'll need to use the digraphs object that we defined in step 1.
+First, we check if the total array contains the current character. If it doesn't, the
+further checks are skipped. If it does, a couple more checks are made: whether the
+character belongs to the h-digraph array, then the z-digraph array, and finally the
+s-digraph array. If it does belong to any of them, the "char" variable that represents
+the currently mapped character is reassigned to the full digraph.
+.
+To determine that we're dealing with a digraph we need the character to meet 2 conditions:
+- it belongs to one of the digraph arrays: it's straightforward;
+- the next character is the character that forms a digraph / trigraph with the currently
+mapped character. e.g. If the currently mapped character is "d", we first make sure that
+it belongs to one of the digraph arrays (it does belong to the z-digraph array), then we
+check the next character: if it's "z", we have a digraph here. If it's not, we don't and
+the char variable isn't reassigned (it remains equal to "d").
+.
+e.g. The same word "khidi" as we've already mentioned in previous steps' examples. The
+first character to be mapped is "k". It successfully goes through the previous steps to
+this one. The first check is successful: "k" belongs to the total array of the digraphs
+object. The first second-level check is successful too: "k" belongs to the h-digraph
+array. The second second-level check is also successful: "h" is the character that goes
+after "k", hence there's a sequence "kh" in the word which is a digraph. So now the char
+variable doesn't carry just "k" as its value – it now carries the full digraph: "kh".
+We need that for the next mapped character ("h" which is a part of the same digraph) to
+succeed at the first condition check (step 2) to handle the digraph the right way.
+.
+You might've noticed that one of the sub-array checkers – namely the third one – has
+another checker inside it. It's necessary to have it to be able to detect the only
+Georgian trigraph: tsh. To do that we need to not only check the character that goes right
+after the currently mapped one but also the one that goes after that.
+.
+.
 5. GET THE CORRESPONDING GEORGIAN CHARACTER
-
-
-
-
-
-
+Finally, after all the checks we do the most important part: matching the currently
+mapped Latin character with the corresponding Georgian one. It's important to note that
+most characters will fail all the previous checks and ignore the related logic, coming
+straight to this step. Digraphs / trigraphs and non-Latin symbols will have to stop at
+any of those steps though.
+.
+Anyway, what happens here is simple: we map the dictionary and compare its entries'
+"lat" value with the currently mapped char. The dictionary contains both regular
+characters & digraphs / trigraphs, so it doesn't matter if "char" contains a 1-character
+string or if it's 2- or 3-character long. When the match is found, we push a new object
+to the finalArray: it contains the "char" value for its latInit property and the just
+found matching Georgian letter for the geoChar value. 
+.
+Finally, when all the input's characters have been mapped and there are no more loops,
+the finalArray is returned. It contains objects with all the characters of the initial
+input – note that the length of the array can be different from the length of the initial
+input string since some of its characters are digraphs / trigraphs. e.g. "khidi" has 5
+characters but its finalArray will have 4 objects: the reasons for that is that "kh" will
+be added to finalArray as a single character {geoChar: "ხ", latInit: "kh"}.
 */}
