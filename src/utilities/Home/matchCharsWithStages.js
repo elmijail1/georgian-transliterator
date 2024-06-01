@@ -239,105 +239,116 @@ COMMENTS
 
 STAGES OF THE MATCHCHARS FUNCTION
 To make the code easier to read, I've added several markers:
-- S1. BAREBONES
+- S1 (Stage 1). BAREBONES
 The barebones code that turns latin characters into georgian. It does just that: finds
-a match between a passed char and a dictionary entry and returns a georgian counterpart. It
-doesn't however handle special symbols and digraphs.
+a match between a passed char and a dictionary entry and returns a georgian counterpart.
+It doesn't however handle special symbols and digraphs hence the output isn't perfect.
 .
 .
-- S2. SPECIAL CHARACTERS HANDLING
-The transliterator is expected to turn only Latin characters to Georgian (at this point
-at least). So we need to let all other symbols, including other scripts & punctuation, to be
-passed to the output intact. The related function is a bit tricky, so here's an explanation:
-.. - 1. The position. The check must be done before mapping dictionary since we don't have
-to do the check every time we compare the current character and the current entry. That would
-result in multiplication of the current symbol by the number of entries. Say, if the dictionary
-has 3 entries, we'll get "///" as a n output by passing just a single "/". That will happen
-because the dictionary-presence check will happen every time a comparison of the character and
-entry occurs.
-.. - 2. Array.from(dictionary, x => x.lat). This method creates an array from the given data.
-In our case it's the dictionary which is already an array. We specify the function for creation
-of it: x => x.lat. x here is an entry in the dictionary. x.lat is what should be passed which
-is the latin symbol from an entry. So it returns a new array, consisting of latin symbols from
-all the dictionary's entries.
-.. - 3. .includes(char). The includes method is attached to the new latin-char-containing
-array that we've received in the previous step. So we explore it to see if it has a character
-identical to the current one.
-.. - 4. !Array... . Before the "Array" there's an exclamation mark which negates what follows
-it. So here's what we get in total: !Array.from(dictionary, x => x.lat).includes(char). It reads
-as follows:
+- S2 (Stage 2). SPECIAL CHARACTERS HANDLING
+The transliterator is expected to turn only Latin characters to Georgian. So we need to
+let all other symbols, including other scripts, punctuation, and numbers, to be passed
+to the output intact. The related function is a bit tricky, so here's an explanation:
+.. - 1. The position. The check must be done before mapping dictionary since we don't
+have to do the check every time we compare the current character and the current entry.
+That would result in multiplication of the current symbol by the number of entries. Say,
+if the dictionary has 3 entries, we'll get "///" as a n output by passing just a single
+"/". That will happen because the dictionary-presence check will happen every time a
+comparison of the character and entry occurs.
+.. - 2. Array.from(dictionary, x => x.lat). This method creates an array from the given
+data. In our case it's the dictionary which is already an array. We specify the function
+for creation of a new array: x => x.lat. x here is an entry in the dictionary. x.lat is
+what should be passed which is the Latin symbol from an entry. So it returns a new array,
+consisting of Latin symbols from all the dictionary's entries.
+.. - 3. .includes(char). The includes method is attached to the new Latin-char-containing
+array that we've received in the previous step. So we explore it to see if it has a
+character identical to the current one.
+.. - 4. !Array... . Before the "Array" there's an exclamation mark which negates what
+follows it. So here's what we get in total:
+!Array.from(dictionary, x => x.lat).includes(char). It reads as follows:
 .. .. - not
 .. .. - a new array consisting of x.lat from dictionary's entries
 .. .. - contains char
-Which translates as "the new array of latin chars doesn't contain the current char".
-.. - 5. return. If the current char hasn't been found in the newly made latin-char array, we
-just pass the current character further to the finalArray and carry on to the next one.
+Which translates as "the new array of Latin chars doesn't contain the current char".
+.. - 5. return. If the current char hasn't been found in the newly made latin-char array,
+we just pass the current character further to the finalArray and carry on to the next one.
 .
 .
 - S3. DIGRAPHS HANDLING – THE INITIAL CHAR
-Digraphs are genuinely evil. Using 2 different characters to represent one sound is irrational
-and stupid but that's what we have to deal with. So after we've checked if the character present
-in the dictionary (i.e. not a special symbol, see S2 for more info) but before we start comparing
-it with dictionary entries, we need to make a digraph check: whether the char belongs to it.
-Digraphs are not hard to spot since we know exactly what they can be and I've made a special
-dictionary with them (digraphs).
+Digraphs are genuinely evil. Using 2 different characters to represent one sound is
+irrational and stupid but that's what we have to deal with. So after we've checked if the
+character's present in the dictionary (i.e. not a special symbol, see S2 for more info)
+but before we start comparing it with dictionary entries, we need to make a digraph check:
+whether the char belongs to a digraph. Digraphs are not hard to spot since there's a finite
+number of them in Georgian and I've added them all to the special dictionary object
+"digraphs".
 .
-The digraphs object contains 4 properties. The total property stores an array. It contains all
-the letters that can be digraph initials (i.e. the first of the 2 letters comprising a digraph).
-First we should run a check of whether the current character belongs to that array.
+The digraphs object contains 4 properties. The total property stores an array.
+It contains all the letters that can be digraph initials (i.e. the first of the 2 letters
+comprising a digraph). First we should run a check of whether the current character
+belongs to that array.
 .
-If the character belongs to the total array, we need to see what type of a digraph it is. For
-that we'll have to take a look at what the following character is. That will require the index
-of the current character which should be passed at the initialArray mapping. The next letter
-is accessed with "initialArray[charIndex+1]". So we check which group of the digraphs the current
-char belongs to and what char follows it. If there's a match, we make the current char a digraph:
-char = char + particular char.
+If the character belongs to the total array, we need to see what type of a digraph it is.
+For that we'll have to take a look at what the character following it is. That will
+require the index of the current character which should be passed at the initialArray
+mapping. The next letter is accessed with "initialArray[charIndex+1]". So we check which
+group of the digraphs the current char belongs to and what char follows it. If there's a
+match, we make the current char a digraph: char = char + particular char.
 .
 .
 - S4. DIGRAPHS HANDLING – THE ULTIMATE CHAR
-The previous step is very important since it lets us match digraphs. But it fails to return a
-clean output that avoids things like "შჰ" for "sh". Here we get შ instead of s which is what
-we'd love since, s is followed by h, and sh = შ. But it also keeps ჰ. This should be avoided
-at all costs and there is a way to do that. We'll need to use a separate variable for that though.
+The previous step is very important since it lets us match digraphs. But it fails to
+return a clean output that avoids things like "შჰ" for "sh". Here we get შ instead of "s"
+which is what we'd love, since "s" is followed by "h", and "sh" = შ. But our function also
+keeps the ჰ. This should be avoided at all costs and there is a way to do that. We'll need
+to use a separate variable for that though.
 .
-That variable is latestChar. We use it to store the latest char, i.e. the char that has been
-mapped previously. If we deal with a digraph initial, we assign it to a full digraph. Say, if
-we determine that we have a digraph initial as a current char (s from sh, for example), we
-assign latestChar to "sh".
+That variable is latestChar. We use it to store the latest char, i.e. the char that has
+been mapped previously. If we deal with a digraph initial, we assign it to a full digraph.
+Say, if we determine that we have a digraph initial as a current char ("s" from "sh",
+for example), we assign latestChar to "sh".
 .
-To avoid "h" being transliterated too, we look at the latestChar's length. If it's longer than 1
-(digraphs are always longer than 1 character), it's clear that the current letter is the second
-char of the digraph, hence we just skip mapping all together (with return).
+To avoid "h" being transliterated too, we look at the latestChar's length. If it's longer
+than 1 (digraphs are always longer than 1 character), it's clear that the current letter
+is the second char of the digraph, hence we just skip mapping all together (with return).
 .
 .
 - S5. TRIGRAPHS – SOMETHING THAT I DIDN'T EXPECT
-I thought that by this point I was prepared for anything but I was wrong. I've encountered the
-peculiar case of the word "paketshi" that got transliterated as პაკეცჰი which is obviously wrong.
-The transliterator didn't do anything wrong: it saw the dograph "ts", it turned it into ც. And the
-following "h" got transliterated as ჰ. So good job there but actually this set of letters should be
-treated differently: not as ts-h but as t-sh. The reason for that is a very frequent pattern in
-Georgian at the end of nouns: ...-shi (...-ში) which is the postposition "in". It's not rare for it
-to follow a stem ending with -t (-თ or -ტ). It occurs much more often than ცჰ (ts-h) that I personally
-haven't ever seen, albeit my experience with Georgian is not very extensive. Hence, I believe it's
-essential to make this set of letters work differently.
+I thought that by this point I was prepared for anything but I was wrong. I've encountered
+the peculiar case of the word "paketshi" that got transliterated as პაკეცჰი which is
+obviously wrong.
 .
-Of course, it's not a trigraph per se. It doesn't give one sound with 3 characters similarly to how
-the German "sh" is represented: sch. It's the regular character t and the digraph sh. But for the sake
-of simplicity we'll treat is a trigraph.
+It's not the transliterator's fault, however. It stuck to the instructions to the letter
+(pun intended): it saw the digraph "ts", it turned it into ც. And the following "h" got
+transliterated as ჰ. So good job there but actually this set of letters should be treated
+differently: not as ts-h but as t-sh. The reason for that is a very frequent pattern in
+Georgian at the end of nouns: ...-shi (...-ში) which is the postposition "in". It's not
+rare for it to follow a stem ending with -t (-თ or -ტ). It occurs much more often than
+ცჰ (ts-h) that I personally haven't ever seen, albeit my experience with Georgian is not
+very extensive. Hence, I believe it's essential to make this set of letters work
+differently.
 .
-The first thing I changed to take it into account, was adding a condition inside the larger trigraph
-condition. I put it inside the "s" condition and it checks what the index+2 character is. If it's "h",
-it's safe to asume that we're not looking at "ts", we're looking at "t-sh". Hence, our char variable
-should take that value: "tsh". Later it will be found in the dictionary where I've added it to.
+Of course, it's not a trigraph per se. It doesn't give one sound with 3 characters
+similarly, for example, to how the German "sh" is represented: sch. It's the regular
+character "t" followed by the digraph "sh". But for the sake of simplicity we'll treat
+it as a trigraph.
 .
-There's one more thing to change. The very first part of the map-code: digraph-checker. We have a condition
-there that checks the length of the latestChar variable that contains the previous char. If it was a digraph,
-the length is more than 1. If that's the case, the latestChar is updated to hold the value of the current char
-and the mapping ends (return). But that's not what we want. We need to skip the second char of the trigraph
-completely. So we add an extra condition: if (latestChar.length === 3 && latestChar[1] === char) {return}. So
-the second character of the trigraph should not be registered as latestChar. Is it a perfect solution? It
-doesn't look so since it lacks elegance and flexibility. It will work for trigraphs 100% but what if I'll have
-to deal with 4-character combinations in the future? Another solution will be needed and just adding more
-conditions might not be the best way to go about it. But since this thing works and I don't have other ideas
-at the moment, it should be good for the time being. 
+The first thing I changed to take it into account, was adding a condition inside the
+larger digraph condition. I put it inside the "s" condition and it checks what the
+index+2 character is. If it's "h", it's safe to assume that we're not looking at "ts",
+we're looking at "t-sh". Hence, our char variable should take that value: "tsh".
+.
+There's one more thing to change. The very 1st part of the map-code: digraph-checker.
+We have a condition there that checks the length of the latestChar variable that
+contains the previous char. If it was a digraph, the length would be more than 1. If
+that's the case, the latestChar is updated to hold the value of the current char and
+the mapping ends (return). But that's not what we want. We need to skip the second char
+of the trigraph completely. So we add an extra condition: if (latestChar.length === 3
+&& latestChar[1] === char) {return}. So the second character of the trigraph should not
+be registered as latestChar. Is it a perfect solution? It doesn't look so since it
+lacks elegance and flexibility. It will work for trigraphs 100% but what if I have
+to deal with 4-character combinations in the future? Another solution will be needed
+and just adding more conditions might not be the best way to go about it. But since
+this thing works and I don't have other ideas at the moment, it should be good for the
+time being. 
 */}
