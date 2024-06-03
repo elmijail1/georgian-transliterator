@@ -26,8 +26,8 @@ export default function OutputWindow() {
     const { language } = useOutletContext() // Context 1.2*
 
     let letterOptionRef = useRef() // Effect 2*
-    function clickOffSuggestedOptions (event) { // Effect 2*
-        if (letterOptionRef.current && !letterOptionRef.current.contains(event.target)) {
+    function clickOffSuggestedOptions(event) { // Effect 2*
+        if (!letterOptionRef.current?.contains(event.target) && !event.target.className?.includes("TriggerLetter")) {
             setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
         }
     }
@@ -133,9 +133,21 @@ In brief, it accepts a function that does what you want to happen on the off-cli
 it to the document as an event listener, and then removes it. You can learn more about it
 in utilities/useElsewhereClick.
 .
-The function we pass to that hook (clickOffSuggestedOptions) checks if the clicked target
-is related to the options menu (letterOptionRef) and if it's not, it defaults the
-activeAlternativeOption state thus resetting the latest clicked letter.
+The function we pass to that hook (clickOffSuggestedOptions) checks the clicked element
+(event.target) for 2 things:
+- whether the letterOptionRef reference contains in. It's the reference that we've set
+for the TriggerLetter__Options (the list of options that appears upon clicking on a
+highlighted character). We add "?" after current in the condition definition to imply
+that the letterOptionRef has "current". If it doesn't, the condition won't work but it
+won't throw an error either;
+- whether the event.target has a className and, if it does, whether it includes the class
+"TriggerLetter". That is, if the element that we click is a TriggerLetter. We need this
+condition to make clicking on other TriggerLetters open their option menus right away
+instead of just closing the currently opened one. So if you click on a highlighted
+character and then click elsewhere with its menu open, the menu will just close. If you
+click on another highlighted letter, however, the respective optio menu will open while
+the one that's been open for the latest clicked character will close.
+
 
 3. Functions
 3.1. copyToClipboardLatestOutput
