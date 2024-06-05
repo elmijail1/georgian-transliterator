@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { nanoid } from "nanoid"
 
 export default function MapOutputTest() {
 
@@ -23,17 +24,46 @@ export default function MapOutputTest() {
 
         inputArray.map(character => {
             dictionary.map(entry => {
-                console.log(character, entry)
                 if (entry.lat === character) {
                     finalArray.push(entry.arm)
+                    // finalArray.push({lat: character, arm: entry.arm})
                 }
             })
         })
-        return finalArray        
+        return finalArray
     }
 
+    console.log(output)
+
     function mapOutput() {
-        // carry on here
+        return output.map((character, index) => {
+            return (
+                <span
+                    key={nanoid()}
+                    onClick={
+                        () => setOutput(
+                            prevOutput => {
+                                const newArray = []
+                                prevOutput.map((character1, index1) => {
+                                    if (index1 === index) {
+                                        if (character1 == character1.toLowerCase()) {
+                                            newArray.push(character1.toUpperCase())
+                                        } else {
+                                            newArray.push(character1.toLowerCase())
+                                        }
+                                    } else {
+                                        newArray.push(character1)
+                                    }
+                                })
+                                return newArray
+                            }
+                        )
+                    }
+                >
+                    {character}
+                </span>
+            )
+        })
     }
 
     function handleInput(event) {
@@ -51,7 +81,11 @@ export default function MapOutputTest() {
             </textarea>
 
             <div style={outputStyles}>
-                {output}
+                {
+                    output?.length
+                        ? mapOutput()
+                        : ""
+                }
             </div>
         </main>
     )
