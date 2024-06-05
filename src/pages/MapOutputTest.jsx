@@ -33,6 +33,26 @@ export default function MapOutputTest() {
         return finalArray
     }
 
+    function changeCharsCase(index) {
+        setOutput(
+            prevOutput => {
+                const newArray = []
+                prevOutput.map((character1, index1) => {
+                    if (index1 === index) {
+                        if (character1 == character1.toLowerCase()) {
+                            newArray.push(character1.toUpperCase())
+                        } else {
+                            newArray.push(character1.toLowerCase())
+                        }
+                    } else {
+                        newArray.push(character1)
+                    }
+                })
+                return newArray
+            }
+        )
+    }
+
     console.log(output)
 
     function mapOutput() {
@@ -40,25 +60,7 @@ export default function MapOutputTest() {
             return (
                 <span
                     key={nanoid()}
-                    onClick={
-                        () => setOutput(
-                            prevOutput => {
-                                const newArray = []
-                                prevOutput.map((character1, index1) => {
-                                    if (index1 === index) {
-                                        if (character1 == character1.toLowerCase()) {
-                                            newArray.push(character1.toUpperCase())
-                                        } else {
-                                            newArray.push(character1.toLowerCase())
-                                        }
-                                    } else {
-                                        newArray.push(character1)
-                                    }
-                                })
-                                return newArray
-                            }
-                        )
-                    }
+                    onClick={() => changeCharsCase(index)}
                 >
                     {character}
                 </span>
