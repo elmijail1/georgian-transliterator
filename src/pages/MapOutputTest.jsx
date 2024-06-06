@@ -65,21 +65,52 @@ export default function MapOutputTest() {
                     }
                 })
                 setModifiedOutput(newArray.filter(char => char.modified))
+                console.log(newArray)
                 return newArray
             }
         )
     }
 
+    if (modifiedOutput){
+        console.log(modifiedOutput)
+        console.log(output)
+    }
+
     function mapOutput() {
-        return output.map((character, index) => {
-            return (
-                <span
-                    key={nanoid()}
-                    onClick={() => changeCharsCase(index)}
-                >
-                    {character.arm}
-                </span>
-            )
+        return output.map((char, index) => {
+            if (!modifiedOutput || !modifiedOutput.length) {
+                return (
+                    <span
+                        key={nanoid()}
+                        onClick={() => changeCharsCase(index)}
+                    >
+                        {char.arm}
+                    </span>
+                )
+            } else { // TRY MOVING THIS PART TO TRANSLITERATE
+                modifiedOutput.map(modChar => {
+                    console.log(modChar.lat === char.lat, modChar.index === index)
+                    if (modChar.lat === char.lat && modChar.index === index) {
+                        char = { ...char, arm: modChar.arm, modified: true }
+                        return (
+                            <span
+                                key={nanoid()}
+                                onClick={() => changeCharsCase(index)}
+                            >
+                                {char.arm}
+                            </span>
+                        )
+                    }
+                })
+                return (
+                    <span
+                        key={nanoid()}
+                        onClick={() => changeCharsCase(index)}
+                    >
+                        {char.arm}
+                    </span>
+                )
+            }
         })
     }
 
@@ -87,6 +118,11 @@ export default function MapOutputTest() {
         setInput(event.target.value)
         setOutput(transliterate(event.target.value))
     }
+
+    // WE ALSO NEED AN EFFECT THAT WILL CHECK THE LENGTH OF THE OUTPUT AND IF
+    // MODIFIED OUTPUT CONTAINS ITEMS WITH INDICES HIGHER THAN THE LENGTH OF OUTPUT,
+    // SUCH ITEMS SHOULD BE REMOVED (THAT WILL PREVENT RETYPING THE SAME TEXT &
+    // GETTING CHARS AUTO MODIFIED AGAIN )
 
     return (
         <main>
