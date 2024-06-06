@@ -11,6 +11,7 @@ export default function MapOutputTest() {
 
     const [input, setInput] = useState()
     const [output, setOutput] = useState()
+    const [modifiedOutput, setModifiedOutput] = useState()
 
     const outputStyles = {
         border: "1px solid black",
@@ -22,11 +23,10 @@ export default function MapOutputTest() {
         const finalArray = []
         const inputArray = string.split("")
 
-        inputArray.map(character => {
+        inputArray.map((character, index) => {
             dictionary.map(entry => {
                 if (entry.lat === character) {
-                    finalArray.push(entry.arm)
-                    // finalArray.push({lat: character, arm: entry.arm})
+                    finalArray.push({ lat: character, arm: entry.arm, index: index })
                 }
             })
         })
@@ -39,21 +39,36 @@ export default function MapOutputTest() {
                 const newArray = []
                 prevOutput.map((character1, index1) => {
                     if (index1 === index) {
-                        if (character1 == character1.toLowerCase()) {
-                            newArray.push(character1.toUpperCase())
+                        if (character1.modified) {
+                            if (character1.arm == character1.arm.toLowerCase()) {
+                                newArray.push(
+                                    { ...character1, arm: character1.arm.toUpperCase(), modified: false }
+                                )
+                            } else {
+                                newArray.push(
+                                    { ...character1, arm: character1.arm.toLowerCase(), modified: false }
+                                )
+                            }
                         } else {
-                            newArray.push(character1.toLowerCase())
+                            if (character1.arm == character1.arm.toLowerCase()) {
+                                newArray.push(
+                                    { ...character1, arm: character1.arm.toUpperCase(), modified: true }
+                                )
+                            } else {
+                                newArray.push(
+                                    { ...character1, arm: character1.arm.toLowerCase(), modified: true }
+                                )
+                            }
                         }
                     } else {
                         newArray.push(character1)
                     }
                 })
+                setModifiedOutput(newArray.filter(char => char.modified))
                 return newArray
             }
         )
     }
-
-    console.log(output)
 
     function mapOutput() {
         return output.map((character, index) => {
@@ -62,7 +77,7 @@ export default function MapOutputTest() {
                     key={nanoid()}
                     onClick={() => changeCharsCase(index)}
                 >
-                    {character}
+                    {character.arm}
                 </span>
             )
         })
