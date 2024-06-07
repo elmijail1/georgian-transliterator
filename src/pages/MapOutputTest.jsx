@@ -25,11 +25,34 @@ export default function MapOutputTest() {
 
         inputArray.map((character, index) => {
             dictionary.map(entry => {
-                if (entry.lat === character) {
-                    finalArray.push({ lat: character, arm: entry.arm, index: index })
+                if (!modifiedOutput || !modifiedOutput.length) {
+                    if (entry.lat === character) {
+                        finalArray.push({ lat: character, arm: entry.arm, index: index })
+                    }
+                } else {
+
+                    // THE DOUBLING PROBLEM IS SOMEWHERE HERE
+                    // KEEP DOING STEP-BY-STEPS TO FIGURE IT OUT
+
+                    modifiedOutput.map((modChar) => {
+                        if (entry.lat === character && modChar.lat === character && modChar.index === index) {
+                            finalArray.push({ lat: character, arm: modChar.arm, index: index, modified: true })
+                        } else if (entry.lat === character) {
+                            if (modChar.lat === character && modChar.index !== index) {
+                                finalArray.push({ lat: character, arm: entry.arm, index: index })
+                            } else if (modChar.lat !== character && modChar.index === index) {
+                                finalArray.push({ lat: character, arm: entry.arm, index: index })
+                            } else if (modChar.lat !== character && modChar.index !== index) {
+                                finalArray.push({ lat: character, arm: entry.arm, index: index })
+                            }
+                        }
+
+                    })
                 }
+
             })
         })
+        console.log(finalArray)
         return finalArray
     }
 
@@ -71,11 +94,6 @@ export default function MapOutputTest() {
         )
     }
 
-    if (modifiedOutput){
-        console.log(modifiedOutput)
-        console.log(output)
-    }
-
     function mapOutput() {
         return output.map((char, index) => {
             if (!modifiedOutput || !modifiedOutput.length) {
@@ -89,7 +107,6 @@ export default function MapOutputTest() {
                 )
             } else { // TRY MOVING THIS PART TO TRANSLITERATE
                 modifiedOutput.map(modChar => {
-                    console.log(modChar.lat === char.lat, modChar.index === index)
                     if (modChar.lat === char.lat && modChar.index === index) {
                         char = { ...char, arm: modChar.arm, modified: true }
                         return (
