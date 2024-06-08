@@ -27,32 +27,37 @@ export default function MapOutputTest() {
             dictionary.map(entry => {
                 if (!modifiedOutput || !modifiedOutput.length) {
                     if (entry.lat === character) {
-                        finalArray.push({ lat: character, arm: entry.arm, index: index })
+                        return finalArray.push({ lat: character, arm: entry.arm, index: index })
                     }
                 } else {
 
                     // THE DOUBLING PROBLEM IS SOMEWHERE HERE
                     // KEEP DOING STEP-BY-STEPS TO FIGURE IT OUT
 
-                    modifiedOutput.map((modChar) => {
-                        if (entry.lat === character && modChar.lat === character && modChar.index === index) {
-                            finalArray.push({ lat: character, arm: modChar.arm, index: index, modified: true })
-                        } else if (entry.lat === character) {
-                            if (modChar.lat === character && modChar.index !== index) {
-                                finalArray.push({ lat: character, arm: entry.arm, index: index })
-                            } else if (modChar.lat !== character && modChar.index === index) {
-                                finalArray.push({ lat: character, arm: entry.arm, index: index })
-                            } else if (modChar.lat !== character && modChar.index !== index) {
-                                finalArray.push({ lat: character, arm: entry.arm, index: index })
+                    let found = 0
+                    // modifiedOutput.map((modChar) => {
+                    modifiedOutput.map((modChar, modIndex) => {
+                        if (found > 0) {
+                            return
+                        } else {
+                            if (entry.lat === character && modChar.lat === character && modChar.index === index) {
+                                found++
+                                return finalArray.push({ lat: character, arm: modChar.arm, index: index, modified: true })
+                            } else if (entry.lat === character) {
+                                if (modIndex === modifiedOutput.length-1) {
+                                    found++
+                                    return finalArray.push({ lat: character, arm: entry.arm, index: index })
+                                } else {
+                                    return
+                                }
                             }
                         }
-
                     })
                 }
 
             })
         })
-        console.log(finalArray)
+        // console.log(finalArray)
         return finalArray
     }
 
@@ -60,31 +65,31 @@ export default function MapOutputTest() {
         setOutput(
             prevOutput => {
                 const newArray = []
-                prevOutput.map((character1, index1) => {
-                    if (index1 === index) {
+                prevOutput.map((character1) => {
+                    if (character1.index === index) {
                         if (character1.modified) {
                             if (character1.arm == character1.arm.toLowerCase()) {
-                                newArray.push(
+                                return newArray.push(
                                     { ...character1, arm: character1.arm.toUpperCase(), modified: false }
                                 )
                             } else {
-                                newArray.push(
+                                return newArray.push(
                                     { ...character1, arm: character1.arm.toLowerCase(), modified: false }
                                 )
                             }
                         } else {
                             if (character1.arm == character1.arm.toLowerCase()) {
-                                newArray.push(
+                                return newArray.push(
                                     { ...character1, arm: character1.arm.toUpperCase(), modified: true }
                                 )
                             } else {
-                                newArray.push(
+                                return newArray.push(
                                     { ...character1, arm: character1.arm.toLowerCase(), modified: true }
                                 )
                             }
                         }
                     } else {
-                        newArray.push(character1)
+                        return newArray.push(character1)
                     }
                 })
                 setModifiedOutput(newArray.filter(char => char.modified))
@@ -96,38 +101,38 @@ export default function MapOutputTest() {
 
     function mapOutput() {
         return output.map((char, index) => {
-            if (!modifiedOutput || !modifiedOutput.length) {
-                return (
-                    <span
-                        key={nanoid()}
-                        onClick={() => changeCharsCase(index)}
-                    >
-                        {char.arm}
-                    </span>
-                )
-            } else { // TRY MOVING THIS PART TO TRANSLITERATE
-                modifiedOutput.map(modChar => {
-                    if (modChar.lat === char.lat && modChar.index === index) {
-                        char = { ...char, arm: modChar.arm, modified: true }
-                        return (
-                            <span
-                                key={nanoid()}
-                                onClick={() => changeCharsCase(index)}
-                            >
-                                {char.arm}
-                            </span>
-                        )
-                    }
-                })
-                return (
-                    <span
-                        key={nanoid()}
-                        onClick={() => changeCharsCase(index)}
-                    >
-                        {char.arm}
-                    </span>
-                )
-            }
+            // if (!modifiedOutput || !modifiedOutput.length) {
+            return (
+                <span
+                    key={nanoid()}
+                    onClick={() => changeCharsCase(index)}
+                >
+                    {char.arm}
+                </span>
+            )
+            // } else { // TRY MOVING THIS PART TO TRANSLITERATE
+            //     modifiedOutput.map(modChar => {
+            //         if (modChar.lat === char.lat && modChar.index === index) {
+            //             char = { ...char, arm: modChar.arm, modified: true }
+            //             return (
+            //                 <span
+            //                     key={nanoid()}
+            //                     onClick={() => changeCharsCase(index)}
+            //                 >
+            //                     {char.arm}
+            //                 </span>
+            //             )
+            //         }
+            //     })
+            //     return (
+            //         <span
+            //             key={nanoid()}
+            //             onClick={() => changeCharsCase(index)}
+            //         >
+            //             {char.arm}
+            //         </span>
+            //     )
+            // }
         })
     }
 
