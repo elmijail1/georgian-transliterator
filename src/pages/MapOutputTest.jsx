@@ -5,13 +5,9 @@ export default function MapOutputTest() {
 
     {/*
     to do
-    - I added digraphs and now things go crazy when you click a char.
+    I added digraphs and now things go crazy when you click a char.
     The reason for that is that modifiedOutput's main reliance value is
     index. Diphthongs break that. There are 2 ways to handle it:
-    ..- look for a way to make index work with digraphs (preferable);
-    ..- look for a way to make unique IDs work with them (might be a
-    good idea too).
-    I think I should try both approaches;
     - add alternative options to the dictionary and see how it's going
     to work with it;
     - basically reproduce all the transliterator logic of the original
@@ -41,6 +37,8 @@ export default function MapOutputTest() {
         height: "3rem",
     }
 
+    console.log(output, modifiedOutput)
+
     function transliterate(string) {
         const finalArray = []
         const inputArray = string.split("")
@@ -51,12 +49,13 @@ export default function MapOutputTest() {
             sDigraphs: ["t"],
         }
 
+        let digraphCount = 0 // digraph counter
         inputArray.map((character, index) => {
 
-            console.log(character, prevChar)
 
             if (prevChar.length > 1) {
                 prevChar = character
+                digraphCount++ // digraph counter
                 return
             }
 
@@ -75,7 +74,7 @@ export default function MapOutputTest() {
             dictionary.map(entry => {
                 if (!modifiedOutput || !modifiedOutput.length) {
                     if (entry.lat === character) {
-                        return finalArray.push({ lat: character, arm: entry.arm, index: index })
+                        return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
                     }
                 } else {
 
@@ -84,13 +83,13 @@ export default function MapOutputTest() {
                         if (found > 0) {
                             return
                         } else {
-                            if (entry.lat === character && modChar.lat === character && modChar.index === index) {
+                            if (entry.lat === character && modChar.lat === character && modChar.index === index-digraphCount) {
                                 found++
-                                return finalArray.push({ lat: character, arm: modChar.arm, index: index, modified: true })
+                                return finalArray.push({ lat: character, arm: modChar.arm, index: index - digraphCount, modified: true })
                             } else if (entry.lat === character) {
                                 if (modIndex === modifiedOutput.length - 1) {
                                     found++
-                                    return finalArray.push({ lat: character, arm: entry.arm, index: index })
+                                    return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
                                 } else {
                                     return
                                 }
@@ -206,4 +205,16 @@ the modifiedOutput state array contains any values that have index of
 a greater value than the length of the output. All such values are
 filtered and we don't get auto change in cases similar to the one
 described above.
+
+DIGRAPH COUNTER (digraphCount)
+It's used inside the transliterate function to match digraphs in output
+with entries in modifiedOutput. After each registered digraph in the
+output, the value of the counter increments. That value is subtracted
+from the regular index of the character (the regular index is naturally
+the same as that of the respective character in the input). Before the
+first digraph is registered, the value of the counter is 0, hence when
+it's subtracted, the natural index doesn't change. The difference
+between the natural index and the one with the subtracted digraphCount
+widens as more digraphs are registered.
+
 */}
