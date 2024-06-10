@@ -21,8 +21,9 @@ export default function MapOutputTest() {
         { lat: "a", arm: "ա" },
         { lat: "b", arm: "բ" },
         { lat: "c", arm: "ծ" },
+        { lat: "r", arm: "ռ", options: ["ռ", "ր"] },
         { lat: "s", arm: "ս" },
-        { lat: "t", arm: "տ" },
+        { lat: "t", arm: "տ", options: ["տ", "թ"] },
         { lat: "ts", arm: "ծ" },
 
     ]
@@ -36,8 +37,6 @@ export default function MapOutputTest() {
         width: "10rem",
         height: "3rem",
     }
-
-    console.log(output, modifiedOutput)
 
     function transliterate(string) {
         const finalArray = []
@@ -62,7 +61,7 @@ export default function MapOutputTest() {
             if (digraphs.total.includes(character)) {
                 if (
                     digraphs.sDigraphs.includes(character)
-                    && inputArray[index+1] === "s"
+                    && inputArray[index + 1] === "s"
                 ) {
                     character = character + "s"
                     prevChar = character
@@ -74,7 +73,11 @@ export default function MapOutputTest() {
             dictionary.map(entry => {
                 if (!modifiedOutput || !modifiedOutput.length) {
                     if (entry.lat === character) {
-                        return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
+                        if (entry.options) {
+                            return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount, options: entry.options })
+                        } else {
+                            return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
+                        }
                     }
                 } else {
 
@@ -83,13 +86,21 @@ export default function MapOutputTest() {
                         if (found > 0) {
                             return
                         } else {
-                            if (entry.lat === character && modChar.lat === character && modChar.index === index-digraphCount) {
+                            if (entry.lat === character && modChar.lat === character && modChar.index === index - digraphCount) {
                                 found++
-                                return finalArray.push({ lat: character, arm: modChar.arm, index: index - digraphCount, modified: true })
+                                if (entry.options) {
+                                    return finalArray.push({ lat: character, arm: modChar.arm, index: index - digraphCount, modified: true, options: entry.options })
+                                } else {
+                                    return finalArray.push({ lat: character, arm: modChar.arm, index: index - digraphCount, modified: true })
+                                }
                             } else if (entry.lat === character) {
                                 if (modIndex === modifiedOutput.length - 1) {
                                     found++
-                                    return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
+                                    if (entry.options) {
+                                        return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount, options: entry.options })
+                                    } else {
+                                        return finalArray.push({ lat: character, arm: entry.arm, index: index - digraphCount })
+                                    }
                                 } else {
                                     return
                                 }
@@ -140,17 +151,76 @@ export default function MapOutputTest() {
         )
     }
 
+    const stylesCharSpecial = {
+        backgroundColor: "hsla(30, 100%, 80%, 1)",
+        padding: "0 0.05rem",
+
+    }
+
+    function activateOption(char, option) {
+        setOutput((prevOutput) => {
+            return prevOutput.map((prevEntry) => {
+                if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
+                    return { ...prevEntry, arm: option }
+                } else {
+                    return {...prevEntry}
+                }
+            })
+        })
+
+        // IF THE CHAR ISN'T IN modifiedOutput YET, WE GOTTA ADD IT
+        if (modifiedOutput && modifiedOutput.length > 0) {
+            setModifiedOutput((prevOutput) => {
+                return prevOutput.map((prevEntry) => {
+                    if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
+                        return { ...prevEntry, arm: option }
+                    } else {
+                        return {...prevEntry}
+                    }
+                })
+            })
+        }
+    }
+
+    console.log(modifiedOutput)
+
     function mapOutput() {
         return output.map((char, index) => {
-            // if (!modifiedOutput || !modifiedOutput.length) {
-            return (
-                <span
-                    key={nanoid()}
-                    onClick={() => changeCharsCase(index)}
-                >
-                    {char.arm}
-                </span>
-            )
+            if (!char.options) {
+                return (
+                    <span
+                        key={nanoid()}
+                        onClick={() => changeCharsCase(index)}
+                    >
+                        {char.arm}
+                    </span>
+                )
+            } else {
+                return (
+                    <div key={nanoid()} className="SpecialChar">
+                        <span
+                            style={stylesCharSpecial}
+                            onClick={() => changeCharsCase(index)}
+                        >
+                            {char.arm}
+                        </span>
+                        <div className="SpecialCharOptions">
+                            {char.options?.map((option) => {
+                                if (option !== char.arm) {
+                                    return (
+                                        <span
+                                            key={nanoid()}
+                                            onClick={() => activateOption(char, option)}
+                                        >
+                                            {option}
+                                        </span>
+                                    )
+                                }
+                            })}
+                        </div>
+                    </div>
+                )
+            }
         })
     }
 
@@ -162,11 +232,9 @@ export default function MapOutputTest() {
     // cleaner effect
     useEffect(() => {
         if (modifiedOutput) {
-            console.log(modifiedOutput)
             setModifiedOutput((prevModifiedOutput) => {
                 return prevModifiedOutput.filter((modChar) => modChar.index < output.length)
             })
-            console.log(modifiedOutput)
         }
     }, [output])
 
