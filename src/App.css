@@ -1232,3 +1232,28 @@ main {
 .TriggerLetter__SingleOption:hover {
     background-color: rgb(201, 223, 220);
 }
+
+
+
+
+/* Map Output Test */
+.SpecialChar {
+    display: inline;
+    position: relative;
+    cursor: pointer;
+}
+
+.SpecialCharOptions {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    bottom: -0.35rem;
+    right: -1.1rem;
+    background: hsl(40, 80%, 80%);
+    padding: 0.1rem 0.2rem;
+    cursor: pointer;
+}
+
+.SpecialChar:hover > .SpecialCharOptions {
+    display: unset;
+}
