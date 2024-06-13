@@ -145,7 +145,7 @@ export default function MapOutputTest() {
                         return newArray.push(character1)
                     }
                 })
-                setModifiedOutput(newArray.filter(char => char.modified))
+                // setModifiedOutput(newArray.filter(char => char.modified))
                 return newArray
             }
         )
@@ -156,30 +156,40 @@ export default function MapOutputTest() {
         padding: "0 0.05rem",
 
     }
+    
+    useEffect(()=> { // this is important
+        if (output) {
+            setModifiedOutput(output.filter(char => char.modified))
+        }
+    }, [output])
+
 
     function activateOption(char, option) {
         setOutput((prevOutput) => {
             return prevOutput.map((prevEntry) => {
                 if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
-                    return { ...prevEntry, arm: option }
+                    // return { ...prevEntry, arm: option }
+                    return { ...prevEntry, arm: option, modified: true }
                 } else {
                     return {...prevEntry}
                 }
             })
         })
 
+
+
         // IF THE CHAR ISN'T IN modifiedOutput YET, WE GOTTA ADD IT
-        if (modifiedOutput && modifiedOutput.length > 0) {
-            setModifiedOutput((prevOutput) => {
-                return prevOutput.map((prevEntry) => {
-                    if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
-                        return { ...prevEntry, arm: option }
-                    } else {
-                        return {...prevEntry}
-                    }
-                })
-            })
-        }
+        // if (modifiedOutput && modifiedOutput.length > 0) {
+        //     setModifiedOutput((prevOutput) => {
+        //         return prevOutput.map((prevEntry) => {
+        //             if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
+        //                 return { ...prevEntry, arm: option }
+        //             } else {
+        //                 return {...prevEntry}
+        //             }
+        //         })
+        //     })
+        // }
     }
 
     console.log(modifiedOutput)
