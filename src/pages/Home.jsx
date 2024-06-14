@@ -9,6 +9,13 @@ export const TransliteratorContext = createContext() // Context 2*
 
 export default function Home() {
 
+    // to dos
+    // - modifiedOutput
+// - output (latestOutput) now has the modified parameter
+// - transliterate
+// ..- digraphCount
+// - useEffect that updates modifiedOutput each time output (latestOutput) changes
+
     const [latestOutput, setLatestOutput] = useState("") // States 1.1*
     const [activeAlternativeOption, setActiveAlternativeOption] = useState( //States 1.2*
         { shown: false, char: "", initLat: "", index: null }
