@@ -9,7 +9,7 @@ function turnStringToArray(string) {
     return charArray
 }
 
-function matchChars(initialArray, dictionary) {
+function matchChars(initialArray, dictionary, modifiedOutput) {
 
     // 1. Preparations
     const finalArray = []
@@ -23,6 +23,8 @@ function matchChars(initialArray, dictionary) {
 
     let latestChar = "" // S4
 
+    let digraphCount = 0 // MAP-OUTPUT-TEST IMPORTANT
+
     initialArray.map((char, charIndex) => {
 
         // 2. Condition 1: Is latestChar regular or not?
@@ -31,6 +33,9 @@ function matchChars(initialArray, dictionary) {
                 return
             }
             latestChar = char;
+
+            digraphCount++ // MAP-OUTPUT-TEST IMPORTANT
+
             return
         }
 
@@ -57,9 +62,32 @@ function matchChars(initialArray, dictionary) {
 
         // 5. Get the corresponding Georgian character
         dictionary.map((entry) => {
-            if (entry.lat === char) {
-                latestChar = char;
-                finalArray.push({ geoChar: entry.geo, latInit: char })
+            if (!modifiedOutput || !modifiedOutput.length) { // MAP-OUTPUT-TEST IMPORTANT
+                if (entry.lat === char) {
+                    latestChar = char;
+                    finalArray.push({ geoChar: entry.geo, latInit: char, setIndex: charIndex - digraphCount }) // MAP-OUTPUT-TEST IMPORTANT (setIndex)
+                }
+            } else { // MAP-OUTPUT-TEST IMPORTANT (full)
+
+                let found = 0
+                modifiedOutput.map((modChar, modIndex) => {
+                    if (found > 0) {
+                        return
+                    } else {
+                        if (entry.lat === char && modChar.latInit === char && modChar.setIndex === charIndex - digraphCount) {
+                            found++
+                            finalArray.push({latInit: char, geoChar: modChar.geoChar, setIndex: charIndex - digraphCount, modified: true })
+                        } else if (entry.lat === char) {
+                            if (modIndex === modifiedOutput.length - 1) {
+                                found++
+                                finalArray.push({latInit: char, geoChar: entry.geo, setIndex: charIndex - digraphCount})
+                            }
+                        } else {
+                            return
+                        }
+                    }
+                })
+
             }
         })
     })
@@ -67,9 +95,10 @@ function matchChars(initialArray, dictionary) {
     return finalArray
 }
 
-export default function transliterate(string) {
+
+export default function transliterate(string, modifiedOutput) {
     const initialArray = turnStringToArray(string) // lat string –> lat array
-    return matchChars(initialArray, charsData) // lat array -> geo array
+    return matchChars(initialArray, charsData, modifiedOutput) // lat array -> geo array
 }
 
 
