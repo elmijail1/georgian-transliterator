@@ -22,7 +22,7 @@ export default function InputWindow() {
     const [currentInput, setCurrentInput] = useState("") // State 2.1*
     function handleInputChange(event) { // State 2.1*
         setCurrentInput(event.target.value)
-        setLatestOutput(transliterate(event.target.value))
+        setLatestOutput(transliterate(event.target.value, modifiedOutput))
     }
 
     function clearCurrentInput() { // Clear function 3*
