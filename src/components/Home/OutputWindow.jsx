@@ -1,5 +1,5 @@
 // general
-import { useContext, useRef } from "react"
+import { useContext, useRef, useState, useEffect } from "react"
 import { useOutletContext } from "react-router-dom"
 // components
 import WindowButton from "./subcomponents/WindowButton.jsx"
@@ -15,15 +15,33 @@ import { MdContentCopy } from "react-icons/md";
 
 export default function OutputWindow() {
 
+    // to dos
+    // - modifiedOutput
+// - output (latestOutput) now has the modified parameter
+// - transliterate
+// ..- digraphCount
+// - useEffect that updates modifiedOutput each time output (latestOutput) changes
+
     const {
         activeAlternativeOption,
         latestOutput,
+        modifiedOutput,
         optionsDisplay,
         setActiveAlternativeOption,
         setLatestOutput,
+        setModifiedOutput,
     } = useContext(TransliteratorContext) // Context 1.1*
 
     const { language } = useOutletContext() // Context 1.2*
+
+    // // MAP-OUTPUT-TEST IMPORTANT
+    // const [modifiedOutput, setModifiedOutput] = useState()
+    // useEffect(() => {
+    //     if (latestOutput) {
+    //         setModifiedOutput(latestOutput.filter(char => char.modified))
+    //         console.log(modifiedOutput)
+    //     }
+    // }, [latestOutput])
 
     let letterOptionRef = useRef() // Effect 2*
     function clickOffSuggestedOptions(event) { // Effect 2*
