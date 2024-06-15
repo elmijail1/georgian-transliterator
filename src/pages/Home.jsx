@@ -1,5 +1,5 @@
 // general
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect } from "react"
 // components
 import InputWindow from "../components/Home/InputWindow"
 import OutputWindow from "../components/Home/OutputWindow"
@@ -8,28 +8,40 @@ import AlternativeOptions from "../components/Home/AlternativeOptions"
 export const TransliteratorContext = createContext() // Context 2*
 
 export default function Home() {
-
-    // to dos
-    // - modifiedOutput
-// - output (latestOutput) now has the modified parameter
-// - transliterate
-// ..- digraphCount
-// - useEffect that updates modifiedOutput each time output (latestOutput) changes
-
     const [latestOutput, setLatestOutput] = useState("") // States 1.1*
     const [activeAlternativeOption, setActiveAlternativeOption] = useState( //States 1.2*
         { shown: false, char: "", initLat: "", index: null }
     )
     const [optionsDisplay, setOptionsDisplay] = useState(false) // States 1.3*
+    
+    // MAP-OUTPUT-TEST IMPORTANT
+    const [modifiedOutput, setModifiedOutput] = useState()
+    useEffect(() => { // setter
+        if (latestOutput) {
+            setModifiedOutput(latestOutput.filter(char => char.modified))
+            console.log(modifiedOutput)
+        }
+    }, [latestOutput])
+    useEffect(() => { // cleaner
+        if (modifiedOutput) {
+            setModifiedOutput((prevModifiedOutput) => {
+                return prevModifiedOutput.filter((modChar) => modChar.setIndex < latestOutput.length)
+            })
+        }
+    }, [latestOutput])
+
 
     const transliteratorContextContent = { // Context 2*
         activeAlternativeOption,
         latestOutput,
+        modifiedOutput, // MAP-OUTPUT-TEST IMPORTANT
         optionsDisplay,
         setActiveAlternativeOption,
         setLatestOutput,
+        setModifiedOutput, // MAP-OUTPUT-TEST IMPORTANT
         setOptionsDisplay,
     }
+
 
 
     return (
