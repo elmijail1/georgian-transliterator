@@ -12,8 +12,10 @@ import { MdCancel } from "react-icons/md"
 
 export default function InputWindow() {
     const {
+        modifiedOutput,
         setActiveAlternativeOption,
         setLatestOutput,
+        setModifiedOutput,
     } = useContext(TransliteratorContext) // Context 1.1*
     const { language, vpWidth } = useOutletContext() // Context 1.2*
 
