@@ -10,6 +10,7 @@ function showAlternativeOptions( // Separate Options 1*
     }
 }
 
+
 function determineIfOptionsShouldBeShown( // Separate Options 2*
     charIndex, activeAlternativeOption
 ) {
@@ -18,6 +19,7 @@ function determineIfOptionsShouldBeShown( // Separate Options 2*
     }
 }
 
+
 function useAlternativeOption( // Separate Options 3*
     char, setLatestOutput, activeAlternativeOption, setActiveAlternativeOption
 ) {
@@ -25,12 +27,14 @@ function useAlternativeOption( // Separate Options 3*
         return (
             [
                 ...previousOutput,
-                previousOutput[activeAlternativeOption.index].geoChar = char
+                previousOutput[activeAlternativeOption.index].geoChar = char,
+                previousOutput[activeAlternativeOption.index].modified = true, // MAP-OUTPUT-TEST IMPORTANT
             ]
         )
     })
     setActiveAlternativeOption(prevOptions => ({ ...prevOptions, geoChar: char }))
 }
+
 
 function mapAlternativeOptions( // Separate Options 4*
     activeAlternativeOption, charsData, setActiveAlternativeOption, setLatestOutput
