@@ -175,21 +175,6 @@ export default function MapOutputTest() {
                 }
             })
         })
-
-
-
-        // IF THE CHAR ISN'T IN modifiedOutput YET, WE GOTTA ADD IT
-        // if (modifiedOutput && modifiedOutput.length > 0) {
-        //     setModifiedOutput((prevOutput) => {
-        //         return prevOutput.map((prevEntry) => {
-        //             if (prevEntry.lat === char.lat && prevEntry.index === char.index) {
-        //                 return { ...prevEntry, arm: option }
-        //             } else {
-        //                 return {...prevEntry}
-        //             }
-        //         })
-        //     })
-        // }
     }
 
     console.log(modifiedOutput)
