@@ -12,14 +12,22 @@ import { MdCancel } from "react-icons/md"
 
 export default function InputWindow() {
     const {
-        modifiedOutput,
+        latestOutput,
         setActiveAlternativeOption,
         setLatestOutput,
     } = useContext(TransliteratorContext) // Context 1.1*
     const { language, vpWidth } = useOutletContext() // Context 1.2*
 
-    const [currentInput, setCurrentInput] = useState("") // State 2.1*
-    function handleInputChange(event) { // State 2.1*
+    const [modifiedOutput, setModifiedOutput] = useState() // States 2.1*
+    useEffect(() => { // States 2.1.4*
+        if (latestOutput) {
+            setModifiedOutput(latestOutput.filter(char => char.modified))
+            console.log(modifiedOutput)
+        }
+    }, [latestOutput])
+
+    const [currentInput, setCurrentInput] = useState("") // State 2.2*
+    function handleInputChange(event) { // State 2.2*
         setCurrentInput(event.target.value)
         setLatestOutput(transliterate(event.target.value, modifiedOutput))
     }
@@ -30,8 +38,8 @@ export default function InputWindow() {
         setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
     }
 
-    const [counter, setCounter] = useState(currentInput.length) // State 2.2*
-    useEffect(() => { // State 2.2*
+    const [counter, setCounter] = useState(currentInput.length) // State 2.3*
+    useEffect(() => { // State 2.3*
         setCounter(currentInput.length)
     }, [currentInput])
 
@@ -137,14 +145,48 @@ By default it's "ENG";
 the resizing effect (see 4).
 
 2. States
-2.1. currentInput
+2.1. modifiedOutput
+Used in: transliterate
+It contains all the latestOutput's  entries with the property "modified" containing the "true" value.
+Entries receive the "modified: true" property whenever they have been changed to an alternative option.
+This state & the lofic related to it are very important to keep the text stable & prevent letters that
+have been changed to alternative options from rolling back to initial letters. Here's what it's all about:
+2.1.1. The problem
+Before I had this state & its related logic, the following thing happened: letters that have beene changed
+to alternative  options kept rolling back to initial letters whenever the input changed in any way: you
+could just type in 1 more letter or delete 1 symbol & all the previously changed letters rolled back. Why
+was that the case?
+2.1.2. The flaw of utilities
+2 essential utilities that consitute the transliterator logic were at fault here: transliterate (InputWindow)
+& mapOutput (OutputWindow). They treated input as new at every render. That means that they started
+re-mapping the input from the first character to the last one every time the input has changed. Hence the
+previosly changed characters got treated like new ones since there were no records of their previous
+changes stored anywhere outside the "latestOutput" state which changed every render together with the
+input. That means that I needed a separate state that could register all the changes of characters & that
+the 2 utilities could refer to, to restore the changed letters.
+2.1.3. modifiedOutput, the referral state for letter changes
+The modifiedOutput is meant to contain records of all the letters from the output that got changed (since
+it's in the latestOutput where those changes took place, not in the input). Whenever the 2 main utilities
+(transliterate & mapOutput) re-mapped the input & output, they now could refer to modifiedOutput to not
+miss letters with the history of changes and render them the right way, keeping the output text stable.
+How does modifiedOutput get its contents?
+2.1.4. Filling modifiedOutput with an effect
+Whenever the latestOutput state changes, a special effect triggers that checks if the latestOutput has
+any entries with the "modified: true" property. It does so with the .filter method. All the entries
+containing the property, are filtered inside the modifiedOutput which keeps it up to date after any
+change of input & output. But how do entries actually get that "modified: true" property?
+2.1.5. The "modified: true" property
+Whenever you change a character to any of its alternative options, the character receives the modified
+property. You can see how it happens exactly in the "utilities/Home/mapOutput".
+.
+2.2. currentInput
 It's a controller state that controlls the input textarea. handleInputChange uses the
 event.target.value to set it as the state's value and later that value is passed to the
 textarea's value property. However, the handleInputChange does another important thing:
 it sets the latestOutput state to the result of the transliterate function with the same
 event.target.value passed to it.
 .
-2.2. counter
+2.3. counter
 It's a state counting the number of characters in the textarea. The limit is controlled
 by the textarea's property, not by the state, however. The state controlls the character
 counter element's visual representation: the number before the slash (x/500) and the
