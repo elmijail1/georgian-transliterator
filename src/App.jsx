@@ -8,7 +8,6 @@ import Home from "./pages/Home.jsx"
 import Knowledge from "./pages/Knowledge.jsx"
 import Layout from "./pages/Layout.jsx"
 import NotFound from './pages/NotFound.jsx'
-import MapOutputTest from './pages/MapOutputTest.jsx'
 
 export const KnowledgeContext = createContext()
 
@@ -21,7 +20,6 @@ export default function App() {
             <Route path="knowledge" element={<Knowledge />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="map-output-test" element={<MapOutputTest />} />
           </Route>
         </Routes>
     </BrowserRouter>
