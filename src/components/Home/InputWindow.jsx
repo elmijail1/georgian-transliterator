@@ -15,7 +15,6 @@ export default function InputWindow() {
         modifiedOutput,
         setActiveAlternativeOption,
         setLatestOutput,
-        setModifiedOutput,
     } = useContext(TransliteratorContext) // Context 1.1*
     const { language, vpWidth } = useOutletContext() // Context 1.2*
 
@@ -114,12 +113,15 @@ COMMENT
 1.1. TransliteratorContext
 It comes from pages/Home and carries states & state setters defined there. For full info
 about each of them refer to the respective file. Here are brief descriptions:
-- i. setActiveAlterantiveOption: it's a state setter of the state containing data about
+- i. modifiedOutput: I need to pass it to the "transliterate" utility as it's imporant
+for several checks inside it. To learn more about the modifiedOutput state & its purpose,
+refer to comments in /pages/Home;
+- ii. setActiveAlterantiveOption: it's a state setter of the state containing data about
 the latest clicked highlighted letter. Some letters become highlighted when the
 "Alternative options" button / switch is on. In this component it's passed to the 
 clearCurrentInput function that clears input, output, and the latest clicked highlighted
 character;
-- ii. setLatestOutput: it's a state setter of the state containing an array of objects
+- iii. setLatestOutput: it's a state setter of the state containing an array of objects
 each representing a translisterated character. Simply put, it's the transliterated text,
 the output of the transliterator. In this component it's used twice: in the
 clearCurrentInput function that clears input, output, and the latest clicked highlighted

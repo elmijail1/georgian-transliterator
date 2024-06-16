@@ -21,9 +21,9 @@ function matchChars(initialArray, dictionary, modifiedOutput) {
         s_Digraphs: "t",
     }
 
-    let latestChar = "" // S4
+    let latestChar = ""
 
-    let digraphCount = 0 // MAP-OUTPUT-TEST IMPORTANT
+    let digraphCount = 0
 
     initialArray.map((char, charIndex) => {
 
@@ -34,7 +34,7 @@ function matchChars(initialArray, dictionary, modifiedOutput) {
             }
             latestChar = char;
 
-            digraphCount++ // MAP-OUTPUT-TEST IMPORTANT
+            digraphCount++
 
             return
         }
@@ -62,12 +62,12 @@ function matchChars(initialArray, dictionary, modifiedOutput) {
 
         // 5. Get the corresponding Georgian character
         dictionary.map((entry) => {
-            if (!modifiedOutput || !modifiedOutput.length) { // MAP-OUTPUT-TEST IMPORTANT
+            if (!modifiedOutput || !modifiedOutput.length) {
                 if (entry.lat === char) {
                     latestChar = char;
                     finalArray.push({ geoChar: entry.geo, latInit: char, setIndex: charIndex - digraphCount }) // MAP-OUTPUT-TEST IMPORTANT (setIndex)
                 }
-            } else { // MAP-OUTPUT-TEST IMPORTANT (full)
+            } else {
 
                 let found = 0
                 modifiedOutput.map((modChar, modIndex) => {
@@ -177,7 +177,16 @@ end of each mapping loop with the current character. While in most cases it's go
 contain one character ("o", "m", etc), in some cases it can contain more than that:
 2 for digraphs ("ch", "dz", etc) and 3 for trigraphs (so far there's just one: "tsh").
 If latestChar's length is bigger than 1, the current character will be treated differently.
-More about that in step 2.
+More about that in step 2;
+- iv. Creating the digraphCount variable. It tracks the number of digraphs that have been
+registered during the transliteration. It helps the function better understand the output's
+length that becomes different from the input's length whenever digraphs are detected in it.
+Say, if the input is "khvicha" & its length is 7, the transliterated output for it is
+ხვიჩა & it length is 5. That means the input's length (7) minus the number of digraphs (2).
+We need this number to keep the text more stable by preventing its modified characters from
+rolling back to their initial Georgian values upon each re-render. Understanding an output
+character's static index (setIndex) is vital to match it correcty with the respective entry
+of the modfiedOutput state.
 .
 .
 2. CONDITION 1: IS latestChar REGULAR OR NOT?
@@ -195,7 +204,9 @@ with. If the current character is in the middle of it (being the 2nd of 3 charac
 comprise the trigraph), there's nothing else we can do with this character, since the
 trigraphs is handled at the 1st character of it (during the 1st trigrap character mapping);
 ..- if neither condition is true, the latestChar is assigned to the value of the current
-entry (char) and the loop ends – the mapping goes to the next character if there is any.
+entry (char), increments the digraphCount variable (since we've detected a digraph) and
+the loop ends – the mapping goes to the next character if there is any.
+.
 This situation can happen in 2 cases: we're dealing with either a digraph's 2nd character
 or a trigraph's 3rd character. At that point we just need to pave the road for whatever
 comes next after the current character cluster (digraph / trigraph) and set the
@@ -262,12 +273,62 @@ most characters will fail all the previous checks and ignore the related logic, 
 straight to this step. Digraphs / trigraphs and non-Latin symbols will have to stop at
 any of those steps though.
 .
-Anyway, what happens here is simple: we map the dictionary and compare its entries'
+Anyway, what happens here is simple: we first check if the mapOutput state has any content.
+It's important to understand whether we need to refer to it before determining the final
+Georgian letter output. If it's not we just map the dictionary and compare its entries'
 "lat" value with the currently mapped char. The dictionary contains both regular
 characters & digraphs / trigraphs, so it doesn't matter if "char" contains a 1-character
 string or if it's 2- or 3-character long. When the match is found, we push a new object
 to the finalArray: it contains the "char" value for its latInit property and the just
 found matching Georgian letter for the geoChar value. 
+.
+If the mapOutput state isn't empty, it becomes a bit more complicated since we need to
+make sure that the currently mapped character is or isn't a part of the modifiedOutput
+array state. So here's what we do:
+.5.1. Setting the found variable
+"found" will increment whenever we've found a matching entry in modifiedOutput. It's a
+tool to direct the loop correctly after we've found the matching entry. By defaul it's
+0.
+.5.2. Mapping modifiedOutput
+We need to compate the currently mapped character with all the entries of that state.
+.5.3. First check: is found 0?
+If found is 0, it means that we still haven't found any match among the entries of the
+modifiedOutput array state. If found is not 0 (i.e. 1), it means that the function has
+already found a match and all the further comparisons are redundant, hence they'll be
+skipped.
+.5.4. Second check: are all the essential values equal?
+To claim that the currently mapped character and the modifiedOutput's entry match, we
+need to determine 3 equations:
+- 1. the character's latin letter is equal to that of the dictionary's entry (entry.lat
+=== char),
+- 2. its latin letter is equal to that of the modChar (modChar.latInit === char),
+- 3. its static index is equal to that of the modChar (modChar.setIndex === charIndex -
+digraphCounter)
+If all the 3 are true, we can be certain that we have in front of us is a match. Hence
+we increment found and push this character to the finalArray (latestOutput) with these
+values:
+- latInit (initial Latin letter): char (i.e. the currently mapped character);
+- geoChar (ultimate Georgian letter): modChar.geoChar (i.e. the alternative option that
+has been previously chosen & then registered to modifiedOutput);
+- setIndex (static index in the output): charIndex - digraphCount (i.e. the char's
+index inside the input minus the number of detected digraphs);
+- modified: true (we need it to add this char to the modifiedOutput).
+.
+.5.5. Second check (else if): is it at least equal to the dictionary entry?
+If the first check failed, we need to make sure that the current dictionary entry is
+right. If it is, we do another check: are we currently mapping the last entry of the
+modifiedOutput state? If so, we can be sure of these things:
+- modifiedOutput doesn't have the currently mapped character. That means that we won't
+rely on it for determining how this character should be added to the latestOutput;
+- the currently mapped character & the currently mapped dictionary's entry are a match.
+Hence we've found what we needed and we can increment the found variable.
+After that we push the letter to the latestOutput with its geoChar value reliant on the
+dictionary, not modifiedOutput.
+.
+.5.6. Second check (else): what if there's no match at all?
+It means several that the currently mapped dictionary entry doesn't match the currently
+mapped character and we need to move on to the next one.
+.
 .
 Finally, when all the input's characters have been mapped and there are no more loops,
 the finalArray is returned. It contains objects with all the characters of the initial
