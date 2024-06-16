@@ -28,7 +28,7 @@ function useAlternativeOption( // Separate Options 3*
             [
                 ...previousOutput,
                 previousOutput[activeAlternativeOption.index].geoChar = char,
-                previousOutput[activeAlternativeOption.index].modified = true, // MAP-OUTPUT-TEST IMPORTANT
+                previousOutput[activeAlternativeOption.index].modified = true,
             ]
         )
     })
@@ -306,7 +306,9 @@ ARGUMENTS (4): char, setLatestOutput, activeAlternativeOption, setActiveAlternat
 DESCRIPTION: when an alternative option from the visible option list has been clicked,
 2 states change:
 - latestOutput. The latestOutput array is now re-mapped with the current letter replaced
-with the clicked option. Now geoChar of that entry is the just clicked option.
+with the clicked option. Now geoChar of that entry is the just clicked option. Also, this
+entry gets the "modified: true" property that will later automatically add it to the
+modifiedOutput state array (see pages/Home for more details about that state);
 - activeAlternativeOption: the geoChar property of the active alternative option is now
 the just clicked option.
 
