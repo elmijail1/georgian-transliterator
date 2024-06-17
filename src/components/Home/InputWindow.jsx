@@ -22,7 +22,6 @@ export default function InputWindow() {
     useEffect(() => { // States 2.1.4*
         if (latestOutput) {
             setModifiedOutput(latestOutput.filter(char => char.modified))
-            console.log(modifiedOutput)
         }
     }, [latestOutput])
 
