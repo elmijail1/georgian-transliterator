@@ -76,10 +76,12 @@ function matchChars(initialArray, dictionary, modifiedOutput) {
                     } else {
                         if (entry.lat === char && modChar.latInit === char && modChar.setIndex === charIndex - digraphCount) {
                             found++
+                            latestChar = char
                             finalArray.push({latInit: char, geoChar: modChar.geoChar, setIndex: charIndex - digraphCount, modified: true })
                         } else if (entry.lat === char) {
                             if (modIndex === modifiedOutput.length - 1) {
                                 found++
+                                latestChar = char
                                 finalArray.push({latInit: char, geoChar: entry.geo, setIndex: charIndex - digraphCount})
                             }
                         } else {
