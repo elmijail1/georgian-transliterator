@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid"
+import { charsData } from "../../data/charsData"
 
 function showAlternativeOptions( // Separate Options 1*
     entry, index, activeAlternativeOption, setActiveAlternativeOption
@@ -68,8 +69,14 @@ export function mapOutput({ // 1. Arguments
 }) {
 
     // 2. Trigger letters
-    const triggerLetters = ["t", "y", "p", "h", "k", "ts", "ch", "c", "w", "x"]
-
+    const triggerLetters = charsData.map(x => {
+        if (x.options) {
+            return x.lat
+        } else {
+            return
+        }
+    }).filter(x => x !== undefined)
+    
     // 3. Condition 1: Are alternative options on?
     if (optionsDisplay) {
 
