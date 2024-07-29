@@ -38,4 +38,6 @@ Using Georgian Transliterator is straightforward:
 3. Get the same text in the Georgian script in the output window
 4. Copy it with the help of the button on the bottom right
 
-However, if you're willing to spend some time learning about how it works, you'll discover more cool features that will help you with _transliterating_ things. By the way, transliteration just means changing the text from one script to another. So despite being a formidable word, it describes a simple concept and is quite handy in this context, so I'll use it more often from now on.
+However, if you're willing to spend some time learning about how it works, you'll discover more cool features that will help you with _transliterating_ things from Latin to Georgian.
+
+(By the way, transliteration just means changing the text from one script to another. So despite being a formidable word, it describes a simple concept and is quite handy in this context, so I'll use it more often from now on.)
