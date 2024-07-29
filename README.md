@@ -40,4 +40,4 @@ Using Georgian Transliterator is straightforward:
 
 However, if you're willing to spend some time learning about how it works, you'll discover more cool features that will help you with _transliterating_ things from Latin to Georgian.
 
-(By the way, transliteration just means changing the text from one script to another. So despite being a formidable word, it describes a simple concept and is quite handy in this context, so I'll use it more often from now on.)
+(By the way, _transliteration_ just means changing the text from one script to another. So despite being a formidable word, it describes a simple concept and is quite handy. So I'll use it more often below)
