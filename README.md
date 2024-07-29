@@ -18,7 +18,7 @@ If you don't tick even a single box, you still might find this app interesting i
 - Care about languages (especially not very widespread ones)
 - Like language-related apps and tools
 
-If you live in Georgia but don't speak much Georgian, understanding texts in that language might be an issue. It has its own alphabet that differs a lot from the Latin one. Online translators help, of course, but they have limitations. This app helps you deal with one of them.
+If you live in Georgia but don't speak much Georgian, understanding texts in that language might be an issue. It has its own alphabet that differs a lot from the Latin one. Online translators help, of course, but they have limitations. This app helps you overcome one of them.
 
 Sometimes you can find a text in Georgian written in Latin characters. It's quite common for mobile messages, for example. Pasting a text like that to most translators won't work as they don't treat the Latin text you pass to them as Georgian. That means that you first need to turn the Latin text into the special Georgian script.
 
