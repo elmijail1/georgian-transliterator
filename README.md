@@ -74,7 +74,9 @@ If you're struggling to think of an example of such things happening in any lang
 
 Anyway, back to the transliterator. I've discovered only one occurrence when the transliterator has to assess 3 Latin characters as 1 entity. But it's not exactly a digraph as it is transliterated to a 2-character Georgian output. I believe that an example will make it more clear:
 
-Here's the word "paketshi" which means "in the packet / bundle". Somewhere close to the end of the word you see this sequence of letters: "tsh". In most cases it should be treated as ts-h but not here, as it's much more likely to be t-sh. That is, of these 3 letters 2 are parts of one digraph and since "ts" comes first, the transliterator thinks that it's a digraph. It's wrong, however, and in such cases I've changed the logic to check the whole 3-character sequence, not a 2-character one as with other digraphs and trigger letters. The default option you get after transliteration is: tsh –> ტშ (ტ for t, შ for sh). There are alternative options available if you want to change it somehow too.
+Here's the word "paketshi" which means "in the packet / bundle". Somewhere close to the end of the word you see this sequence of letters: "tsh". In most cases it should be treated as ts-h but not here, as it's much more likely to be t-sh.
+
+That is, of these 3 letters 2 are parts of one digraph and since "ts" comes first, the transliterator thinks that it's a digraph. It's wrong, however, and in such cases I've changed the logic to check the whole 3-character sequence, not a 2-character one as with other digraphs and trigger letters. The default option you get after transliteration is: tsh –> ტშ (ტ for t, შ for sh). There are alternative options available if you want to change it somehow too.
 
 ## ➕ Contribution
 
