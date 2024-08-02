@@ -40,6 +40,8 @@ Using Georgian Transliterator is straightforward:
 3. Get the same text in the Georgian script in the output window
 4. Copy it with the help of the button on the bottom right
 
+![Translitearting "mama da deda"](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjF3eTluM2xpNzk0YWRmbW81bTJmYzVjdG96aTl1OWt6dDJ3bHM4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TDHvLO6tZayDI0ns9R/giphy.gif)
+
 However, if you're willing to spend some more time learning about how it works, you'll discover more cool features that will help you with _transliterating_ things from Latin to Georgian more effectively.
 
 (By the way, _transliteration_ just means changing the text from one script to another. So despite being a formidable word, it describes a simple concept and is quite handy. So I'll use it more often below)
@@ -54,6 +56,8 @@ But "k" can also be transliterated as ქ. While it's a less frequent than კ i
 
 So you can click the button "Show alternative options" and the letter კ in the word კართული will get highlighted. Click it and you'll see other options you can use. So if you know the right letter for the word, you can manually change the automatically suggested one.
 
+![Translitearting "kartuli" and showing alternative options](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG5sMHBsMjhpZjJrNTJjamE4d2FzZjEwaW5sOTJrYjM0Z2E2NGVpYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wLhofVTXlP77T9lWwN/giphy.gif)
+
 Please note that if a letter gets highlighted when you turn alternative options on, it doesn't mean that it's the wrong letter to use in the current word. It can be but it also can be the right one. For example, the same word ქართული will have the letter თ highlighted as well, but it's the letter that the word really has. What the highlight means is that there's another letter in the language that is the counterpart of the Latin "t" – and that's the letter ტ – but you don't need it in this particular case.
 
 It would be so much easier if there was a database of Georgian words that I could use to show alternative options only for the letters that do require changing. In fact, I wouldn't even need to hihglight them – they can just get transliterated the right way by default. But that's a whole different story – learn more in the Contributing section.
@@ -61,6 +65,8 @@ It would be so much easier if there was a database of Georgian words that I coul
 ### Alternative options don't go away!
 
 You shouldn't worry about letters resetting after you've made changes and kept on typing. The chosen alternative options remain in their place even if you add more input!
+
+![Translitearting "kartuli ena" and showing alternative options that don't go away after typing further](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2N4emVycTE1aHFmZ256ZHpldnp4eWY3MDRicWdmYXlleWJ1ZTEyNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QfBtM2LS81t7qTyma6/giphy.gif)
 
 🧑‍💻 Technical details: it was an interesting puzzle to make it work. I marked letters replaced with alternative options in the output state with a special property and created a new state to store all the changed letters there. Those 2 states seem to work well with each other.
 
@@ -71,6 +77,8 @@ Another challenging part of transliterating Latin to Georgian is digraphs: combi
 For example: sh is შ in Georgian (they read as "sh" in "shade"), kh is ხ (they read as "ch" in the Scottish word "loch"), and so on.
 
 You won't have any issues with them in this transliterator as it treats digraphs as digraphs and correctly outputs its single-letter Georgian counterpart.
+
+![Translitearting "shen" and "khar"](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGY2dW42ZnRncTRnZjZsZ3l5b3NlOWhwdzZ3OWY1YTltNDJkOXFwNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AIohDiHTzBelHi7z60/giphy.gif)
 
 🧑‍💻 Technical details: to make it work I first created an array of characters that I called "digraph triggers". For example: in the digraph "sh" the character "s" is the trigger – that is, the program sees it and knows that if the following character is "h", it should treat the 2 Latin letters as a single unit and return just 1 Georgian letter. If it's followed by a character that does't form a digraph with "s", "s" is left alone and is rendered the regular way, as it should.
 
