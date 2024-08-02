@@ -44,11 +44,17 @@ However, if you're willing to spend some more time learning about how it works, 
 
 ### Alternative options
 
-Transliteration from Latin to Georgian has its issues. Most notably, some Latin characters can be transliterated to Georgian in several ways. That's why the transliteration you get in this app isn't 100% accurate. It offers you the most probable character (that is, more frequently used in the language as a whole, according to data) which might not always be the right one for the word.
+Transliteration from Latin to Georgian has its issues. Most notably, some Latin characters can be transliterated to Georgian in several ways. That's why the transliteration you get in this app isn't 100% accurate. It offers you the most probable character (that is, most frequently used in the language as a whole, according to data) which might not always be the right one for the word.
 
-For example, the Latin word "kartuli" is transliterated as კართული. The first character "k" gets transliterated as კ and there's nothing wrong about it. But "k" can also be transliterated as ქ and, while it's a less frequent letter in the language in general, it's the letter that this word actually has: ქართული (it translates as the adjective "Georgian").
+For example, the word "kartuli". It's a real Georgian word written in Latin and it's transliterated in this app as კართული. The first character "k" gets transliterated as კ and that's the most frequently used counterpart of "k" in Georgian indeed.
 
-So you can click the button "Show alternative options" and the letter კ in the word კართული will get highlighted. Click it and you'll see other options you can use. So if you know the right letter for the word, you can manually change the auomatically suggested one. Making it automatic is a dream... But that's a whole different story (for the contribution section).
+But "k" can also be transliterated as ქ. While it's a less frequent than კ in the language in general, it's the letter that this word actually has: ქართული (it translates as the adjective "Georgian").
+
+So you can click the button "Show alternative options" and the letter კ in the word კართული will get highlighted. Click it and you'll see other options you can use. So if you know the right letter for the word, you can manually change the automatically suggested one.
+
+Please note that if a letter gets highlighted when you turn alternative options on, it doesn't mean that it's the wrong letter to use in the current word. It can be but it also can be the right one. For example, the same word ქართული will have the letter თ highlighted as well, but it's the letter that the word really has. What the highlight means is that there's another letter in the language that is the counterpart of the Latin "t" – and that's the letter ტ – but you don't need it in this particular case.
+
+It would be so much easier if there was a database of Georgian words that I could use to show alternative options only for the letters that do require changing. In fact, I wouldn't even need to hihglight them – they can just get transliterated the right way by default. But that's a whole different story – learn more in the Contributing section.
 
 ### Alternative options don't go away!
 
@@ -60,9 +66,9 @@ You shouldn't worry about letters resetting after you've made changes and kept o
 
 Another challenging part of transliterating Latin to Georgian is digraphs: combinations of 2 Latin letters that in Georgian are represented with just 1 character.
 
-For example: sh is შ in Georgian (both read as "sh" in "shade"), kh is ხ (both read as "ch" in the Scottish word "loch"), and so on.
+For example: sh is შ in Georgian (they read as "sh" in "shade"), kh is ხ (they read as "ch" in the Scottish word "loch"), and so on.
 
-You won't have any issues with them in this transliterator as it treats digraphs as digraphs and correctly gives its the single-letter Georgian counterpart.
+You won't have any issues with them in this transliterator as it treats digraphs as digraphs and correctly outputs its single-letter Georgian counterpart.
 
 🧑‍💻 Technical details: to make it work I first created an array of characters that I called "digraph triggers". For example: in the digraph "sh" the character "s" is the trigger – that is, the program sees it and knows that if the following character is "h", it should treat the 2 Latin letters as a single unit and return just 1 Georgian letter. If it's followed by a character that does't form a digraph with "s", "s" is left alone and is rendered the regular way, as it should.
 
