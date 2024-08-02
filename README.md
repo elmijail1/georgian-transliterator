@@ -4,6 +4,8 @@
 
 This web app helps you turn Latin script into Georgian. That is, characters like ABC to აბც.
 
+![Translitearting "a b c"](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDNnZnA0ajE2czZvMTI3ZG9sa3VsMHR3Nno3dW5qcGhhZjA4dzV6OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KJ3K6ID7fHdEBbdJQ6/giphy.gif)
+
 ## 🤷‍♂️ Why do I need it?
 
 First things first: this app is certainly not for everyone. There's a high chance that you'll find it useful, if you:
