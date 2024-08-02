@@ -78,7 +78,15 @@ Here's the word "paketshi" which means "in the packet / bundle". Somewhere close
 
 That is, of these 3 letters 2 are parts of one digraph and since "ts" comes first, the transliterator thinks that it's a digraph. It's wrong, however, and in such cases I've changed the logic to check the whole 3-character sequence, not a 2-character one as with other digraphs and trigger letters. The default option you get after transliteration is: tsh –> ტშ (ტ for t, შ for sh). There are alternative options available if you want to change it somehow too.
 
-## ➕ Contribution
+## 🤝 Contributing
+
+Clone this repo:
+
+```
+git clone https://github.com/chalupa-bazooka/georgian-transliterator.git
+```
+
+Here are things that can be improved:
 
 - If you have any reliable data from a trustworthy source about letter frequency in Georgian, I'd be happy to use it over my current data source as I don't find it 100% trustworthy (simia.net/letters)
 - Making manual alternative options automatic: I don't have any other ideas but to use some database with Georgian words to make more accurate transliteration. If you know an API that could solve it, let me know;
