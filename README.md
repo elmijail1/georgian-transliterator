@@ -22,7 +22,7 @@ If you live in Georgia but don't speak much Georgian, understanding texts in tha
 
 Sometimes you can find a text in Georgian written in Latin characters. It's quite common for mobile messages, for example. Pasting a text like that to most translators won't work as they don't treat the Latin text you pass to them as Georgian. That means that you first need to turn the Latin text into the special Georgian script.
 
-I spent quite some time doing it manually. And it took too much time to just put up with it. So I decided to create an app that can do it for you. You pass a text written in Latin to it and it returns the same text in the Georgian script. Now you can safely pass it to the online translator of your choice to get a translation!
+I spent quite some time doing it manually. And it was just too much work to humbly put up with it. So I decided to create an app that can do it for you. You pass a text written in Latin to it and it returns the same text in the Georgian script. Now you can safely pass it to the online translator of your choice to get a translation!
 
 ## 🚀 Quick start
 
