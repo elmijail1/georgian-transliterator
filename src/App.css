@@ -435,13 +435,14 @@ main {
     user-select: none;
 }
 
-.Input__ClearButton:hover {
-    background-color: hsl(172, 42%, 84%);
-}
 
 @media (min-width: 1000px) {
     .Input__ClearButton {
         font-size: 1.5rem;
+    }
+
+    .Input__ClearButton:hover {
+        background-color: hsl(172, 42%, 84%);
     }
 }
 
@@ -545,18 +546,19 @@ main {
     user-select: none;
 }
 
-.Output__CopyButton:active {
-    background-color: rgb(138, 165, 162);
-}
 @media (min-width: 1000px) {
     .Output__CopyButton {
         bottom: 2rem;
         font-size: 1.5rem;
     }
-
+    
     .Output__CopyButton:hover {
         background-color: hsl(172, 42%, 84%);
     }
+}
+
+.Output__CopyButton:active {
+    background-color: rgb(138, 165, 162);
 }
 
 .Output__CopyIcon {
