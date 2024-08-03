@@ -33,7 +33,7 @@ export default function InputWindow() {
 
     function clearCurrentInput() { // Clear function 3*
         setCurrentInput("")
-        setLatestOutput("")
+        setLatestOutput([])
         setActiveAlternativeOption({ shown: false, char: "", initLat: "", index: null })
     }
 

@@ -1,5 +1,5 @@
 // general
-import { useContext, useRef } from "react"
+import { useContext, useRef, useEffect } from "react"
 import { useOutletContext } from "react-router-dom"
 // components
 import WindowButton from "./subcomponents/WindowButton.jsx"
@@ -49,6 +49,9 @@ export default function OutputWindow() {
         setLatestOutput,
     }
 
+    useEffect(() => {
+        console.log(latestOutput)
+    }, [latestOutput])
     return (
         <div className="Output__GeneralDiv">
 
@@ -72,7 +75,7 @@ export default function OutputWindow() {
             </div>
 
             {/* copy button */}
-            {latestOutput &&
+            {latestOutput.length > 0 &&
                 <WindowButton
                     className="Output__CopyButton"
                     onClick={copyToClipboardLatestOutput}
