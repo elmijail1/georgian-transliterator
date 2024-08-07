@@ -1,1261 +1,1236 @@
 * {
-    font-family: "Inter", sans-serif;
-    box-sizing: border-box;
-    color: rgb(57, 89, 86);
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  color: rgb(57, 89, 86);
 }
 
 main {
-    margin-top: 3.5rem;
+  margin-top: 3.5rem;
 }
 
 @media (min-width: 1000px) {
-    main {
-        margin: 6rem 0 4rem 0;
-        padding: 0 5%;
-    }
+  main {
+    margin: 6rem 0 4rem 0;
+    padding: 0 5%;
+  }
 }
 
 @media (min-width: 1300px) {
-    main {
-        padding: 0 10%;
-    }
+  main {
+    padding: 0 10%;
+  }
 }
 
 .TransliteratorBody {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1000px) {
+  .TransliteratorBody {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .TransliteratorExtras {
     display: flex;
-    flex-direction: column;
-}
-
-@media (min-width: 1000px) {
-    .TransliteratorBody {
-        flex-direction: row;
-        gap: 1rem;
-    }
-}
-
-@media (min-width: 1000px) {
-    .TransliteratorExtras {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-top: 3rem;
-    }
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
 }
 
 @media (max-height: 1000px) {
-    .TransliteratorExtras {
-        margin-top: 1rem;
-    }
+  .TransliteratorExtras {
+    margin-top: 1rem;
+  }
 }
 
-
-
 /* *** */
-
-
 
 /* LAYOUT */
 /* page/Layout */
 .Layout__GeneralDiv {
-    /* size */
-    width: 100%;
-    height: 3.2rem;
-    /* arrangement */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    /* appearance */
-    box-shadow: 2px -5px 20px rgb(215, 215, 215);
-    background-color: rgb(59, 175, 164);
-    position: fixed;
-    z-index: 1;
-    margin: 0;
-    top: 0;
+  /* size */
+  width: 100%;
+  height: 3.2rem;
+  /* arrangement */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  /* appearance */
+  box-shadow: 2px -5px 20px rgb(215, 215, 215);
+  background-color: rgb(59, 175, 164);
+  position: fixed;
+  z-index: 1;
+  margin: 0;
+  top: 0;
 }
 
 @media (min-width: 1000px) {
-    .Layout__GeneralDiv {
-        padding: 0 5%;
-        height: 4.5rem;
-    }
+  .Layout__GeneralDiv {
+    padding: 0 5%;
+    height: 4.5rem;
+  }
 }
 
 @media (min-width: 1300px) {
-    .Layout__GeneralDiv {
-        padding: 0 10%;
-        height: 5rem;
-    }
+  .Layout__GeneralDiv {
+    padding: 0 10%;
+    height: 5rem;
+  }
 }
 
 .Layout__MenusDiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 35%;
 }
 
 @media (min-width: 350px) {
-    .Layout__MenusDiv {
-        width: 25%;
-    }
+  .Layout__MenusDiv {
+    width: 25%;
+  }
 }
 
 @media (min-width: 1000px) {
-    .Layout__MenusDiv {
-        width: unset;
-    }
+  .Layout__MenusDiv {
+    width: unset;
+  }
 }
-
 
 /* component/LetteringAndLogo */
 .LAL__Link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .LAL__GeneralDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
 }
 
 .LAL__Image {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 7px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 7px;
 }
 
 @media (min-width: 1000px) {
-    .LAL__Image {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
+  .LAL__Image {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 .LAL__Title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: white;
-    display: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  display: none;
 }
 
 @media (min-width: 350px) {
-    .LAL__Title {
-        display: unset;
-    }
+  .LAL__Title {
+    display: unset;
+  }
 }
 
 @media (min-width: 1000px) {
-    .LAL__Title {
-        font-size: 1.5rem;
-    }
+  .LAL__Title {
+    font-size: 1.5rem;
+  }
 }
-
 
 /* component/MenuDesktop */
 .MenuDesk__ListGeneral {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .MenuDesk__ListGeneral * {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding: 1.5px 0.1rem;
-    box-sizing: border-box;
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 1.5px 0.1rem;
+  box-sizing: border-box;
 }
 
 .MenuDesk__ListItem {
-    width: 7.4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  width: 7.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-
 
 /* component/MenuMobile */
 .MenuMob__GeneralDiv {
-    position: relative;
+  position: relative;
 }
 
 .MenuMob__Button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    padding-top: 0.5rem;
-    fill: white;
-    border-radius: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+  fill: white;
+  border-radius: 0.5rem;
 }
 
 @media (min-width: 650px) {
-    .MenuMob__Button {
-        cursor: pointer;
-    }
+  .MenuMob__Button {
+    cursor: pointer;
+  }
 }
 
 .MenuMob__Button svg {
-    fill: inherit;
+  fill: inherit;
 }
 
 .MenuMob__Menu {
-    position: fixed;
-    z-index: 10;
-    top: 3.7rem;
-    right: 0;
-    list-style: none;
-    font-size: 1.3rem;
-    background: rgb(233, 248, 246);
-    padding-inline-start: 0;
-    margin: 0px;
-    border: 1px solid rgb(57, 89, 86, 0.5);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
-    display: flex;
-    flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  top: 3.7rem;
+  right: 0;
+  list-style: none;
+  font-size: 1.3rem;
+  background: rgb(233, 248, 246);
+  padding-inline-start: 0;
+  margin: 0px;
+  border: 1px solid rgb(57, 89, 86, 0.5);
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
+  display: flex;
+  flex-direction: column;
 }
 
 .MenuMob__Menu a {
-    padding: 1rem 1rem;
-    width: 100%;
-    cursor: pointer;
-    text-decoration: none;
+  padding: 1rem 1rem;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .MenuMob__Menu a:hover {
-    background-color: hsl(172, 42%, 84%);
+  background-color: hsl(172, 42%, 84%);
 }
 
 .MenuMob__Menu a:first-child {
-    border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .MenuMob__Menu a:last-child {
-    border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
-
 
 /* component/Languages */
 .Lang__GeneralDiv {
-    padding: 2px 0 0 10px;
-    position: relative;
+  padding: 2px 0 0 10px;
+  position: relative;
 }
 
 .Lang__Button {
-    background: none;
-    border: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0;
-    color: white;
-    display: flex;
-    align-items: center;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
 @media (min-width: 400px) {
-    .Lang__Button {
-        background-color: rgb(57, 89, 86, 0.5);
-        padding: 0.4rem 0.7rem;
-        font-weight: 600;
-        border-radius: 10px;
-    }
+  .Lang__Button {
+    background-color: rgb(57, 89, 86, 0.5);
+    padding: 0.4rem 0.7rem;
+    font-weight: 600;
+    border-radius: 10px;
+  }
 }
 
 @media (min-width: 640px) {
-    .Lang__Button {
-        cursor: pointer;
-    }
+  .Lang__Button {
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 1000px) {
-    .Lang__Button {
-        font-size: 1.2rem;
-        background-color: rgb(57, 89, 86, 0.5);
-        padding: 0.4rem 0.7rem;
-        border-radius: 10px;
-    }
+  .Lang__Button {
+    font-size: 1.2rem;
+    background-color: rgb(57, 89, 86, 0.5);
+    padding: 0.4rem 0.7rem;
+    border-radius: 10px;
+  }
 }
 
 .Lang__Button span {
-    color: inherit;
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
-    padding-top: 0.2rem;
+  color: inherit;
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  padding-top: 0.2rem;
 }
 
 .Lang__Menu {
-    position: fixed;
-    z-index: 1;
-    top: 5.5%;
-    right: 4.2%;
-    list-style: none;
-    font-size: 1.3rem;
-    background: rgb(233, 248, 246);
-    padding-inline-start: 0;
-    padding: 0;
-    margin: 0;
-    border: 1px solid rgb(57, 89, 86, 0.5);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
+  position: fixed;
+  z-index: 1;
+  top: 5.5%;
+  right: 4.2%;
+  list-style: none;
+  font-size: 1.3rem;
+  background: rgb(233, 248, 246);
+  padding-inline-start: 0;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgb(57, 89, 86, 0.5);
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 5px hsl(0, 0%, 80%);
 }
 
 @media (min-width: 400px) {
-    .Lang__Menu {
-        position: absolute;
-        right: auto;
-        top: 150%;
-        left: -110%;
-    }
+  .Lang__Menu {
+    position: absolute;
+    right: auto;
+    top: 150%;
+    left: -110%;
+  }
 }
 
 @media (min-width: 500px) {
-    .Lang__Menu {
-        left: -50%;
-    }
+  .Lang__Menu {
+    left: -50%;
+  }
 }
 
 @media (min-width: 600px) {
-    .Lang__Menu {
-        left: -10%;
-    }
+  .Lang__Menu {
+    left: -10%;
+  }
 }
 
 @media (min-width: 1000px) {
-    .Lang__Menu {
-        top: 120%;
-        left: 10%;
-    }
+  .Lang__Menu {
+    top: 120%;
+    left: 10%;
+  }
 }
 
 .Lang__MenuItem {
-    padding: 1rem 1rem;
-    width: 100%;
-    cursor: pointer;
+  padding: 1rem 1rem;
+  width: 100%;
+  cursor: pointer;
 }
 
 .Lang__MenuItem:hover {
-    padding: 1rem 1rem;
-    width: 100%;
-    cursor: pointer;
-    background-color: hsl(172, 42%, 84%);
+  padding: 1rem 1rem;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsl(172, 42%, 84%);
 }
 
 .Lang__MenuItem:first-of-type {
-    border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .Lang__MenuItem:last-of-type {
-    border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .Lang__MenuItemActive {
-    font-weight: 700;
+  font-weight: 700;
 }
 
-
-
 /* *** */
-
-
 
 /* INPUT WINDOW */
 /* components/InputWindow */
 .Input__GeneralDiv {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .Input__Title {
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding-left: 15px;
-    margin: 15px 0 10px 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-left: 15px;
+  margin: 15px 0 10px 0;
 }
 
 @media (min-width: 1000px) {
-    .Input__Title {
-        font-size: 1.5rem;
-    }
+  .Input__Title {
+    font-size: 1.5rem;
+  }
 }
 
 .Input__Textarea {
-    min-height: 132px;
-    height: 200px;
-    max-height: 200px;
-    width: 100%;
-    padding: 0.5rem 2.2rem 4rem 1rem;
-    font-size: 1.5rem;
-    border: 1px solid rgba(96, 117, 115, 0.5);
-    border-radius: 5px;
-    margin-bottom: 0;
-    resize: none;
+  min-height: 132px;
+  height: 200px;
+  max-height: 200px;
+  width: 100%;
+  padding: 0.5rem 2.2rem 4rem 1rem;
+  font-size: 1.5rem;
+  border: 1px solid rgba(96, 117, 115, 0.5);
+  border-radius: 5px;
+  margin-bottom: 0;
+  resize: none;
 }
 
 @media (min-width: 1000px) {
-    .Input__Textarea {
-        height: 320px;
-        max-height: none;
-        font-size: 1.7rem;
-    }
+  .Input__Textarea {
+    height: 320px;
+    max-height: none;
+    font-size: 1.7rem;
+  }
 }
 
 @media (min-width: 1000px) and (min-height: 1000px) {
-    .Input__Textarea {
-        height: 420px;
-        max-height: none;
-        font-size: 1.7rem;
-    }
+  .Input__Textarea {
+    height: 420px;
+    max-height: none;
+    font-size: 1.7rem;
+  }
 }
 
 .Input__Textarea::placeholder {
-    color: rgb(96, 117, 115);
-    opacity: 0.7;
+  color: rgb(96, 117, 115);
+  opacity: 0.7;
 }
 
 .Input__ClearButton {
-    position: absolute;
-    bottom: 2.1rem;
-    right: 0.4rem;
-    display: flex;
-    gap: 0.2rem;
-    align-items: center;
-    font-size: 1.2rem;
-    opacity: 0.9;
-    padding: 0.3rem 0.5rem;
-    background-color: hsl(172, 50%, 90%);
-    border-radius: 13px;
-    cursor: pointer;
-    user-select: none;
+  position: absolute;
+  bottom: 2.1rem;
+  right: 0.4rem;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  padding: 0.3rem 0.5rem;
+  background-color: hsl(172, 50%, 90%);
+  border-radius: 13px;
+  cursor: pointer;
+  user-select: none;
 }
-
 
 @media (min-width: 1000px) {
-    .Input__ClearButton {
-        font-size: 1.5rem;
-    }
+  .Input__ClearButton {
+    font-size: 1.5rem;
+  }
 
-    .Input__ClearButton:hover {
-        background-color: hsl(172, 42%, 84%);
-    }
+  .Input__ClearButton:hover {
+    background-color: hsl(172, 42%, 84%);
+  }
 }
 
-
 .Input__ClearButton:active {
-    background-color: rgb(138, 165, 162);
+  background-color: rgb(138, 165, 162);
 }
 
 .Input__Counter {
-    opacity: 60%;
-    margin-top: 0.2rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
+  opacity: 60%;
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .Input__Counter p {
-    margin: 0;
+  margin: 0;
 }
 
 .Input__CounterReached {
-    color: red;
-    font-weight: 600;
+  color: red;
+  font-weight: 600;
 }
 
-
-
 /* *** */
-
-
 
 /* OUTPUT WINDOW */
 /* pages/OutputWindow */
 .Output__GeneralDiv {
-    margin-top: 1rem;
-    width: 100%;
-    position: relative;
+  margin-top: 1rem;
+  width: 100%;
+  position: relative;
 }
 
 .Output__Title {
-    font-size: 1.3rem;
-    font-weight: 500;
-    padding-left: 15px;
-    margin: 0px 0 10px 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-left: 15px;
+  margin: 0px 0 10px 0;
 }
 
 @media (min-width: 1000px) {
-    .Output__Title {
-        font-size: 1.5rem;
-    }
+  .Output__Title {
+    font-size: 1.5rem;
+  }
 }
 
 .Output__TextDisplay {
-    border: 1px solid rgba(96, 117, 115, 0.5);
-    border-radius: 5px;
-    width: 100%;
-    padding: 0.5rem 2.2rem 4rem 1rem;
-    min-height: 132px;
-    max-height: 200px;
-    font-size: 1.5rem;
-    position: relative;
-    overflow-wrap: break-word;
-    overflow: scroll;
-    word-break: break-word;
-    white-space: pre-wrap;
+  border: 1px solid rgba(96, 117, 115, 0.5);
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem 2.2rem 4rem 1rem;
+  min-height: 132px;
+  max-height: 200px;
+  font-size: 1.5rem;
+  position: relative;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 @media (min-width: 1000px) {
-    .Output__TextDisplay {
-        height: 320px;
-        max-height: none;
-        max-width: 100%;
-        font-size: 1.7rem;
-    }
+  .Output__TextDisplay {
+    height: 320px;
+    max-height: none;
+    max-width: 100%;
+    font-size: 1.7rem;
+  }
 }
 
 @media (min-width: 1000px) and (min-height: 1000px) {
-    .Output__TextDisplay {
-        height: 420px;
-    }
+  .Output__TextDisplay {
+    height: 420px;
+  }
 }
 
 .Output__Placeholder {
-    color: rgb(96, 117, 115);
-    opacity: 0.7;
+  color: rgb(96, 117, 115);
+  opacity: 0.7;
 }
 
 .Output__CopyButton {
-    position: absolute;
-    bottom: 0.4rem;
-    right: 0.4rem;
-    display: flex;
-    gap: 0.2rem;
-    align-items: center;
-    font-size: 1.2rem;
-    opacity: 0.9;
-    padding: 0.3rem 0.5rem;
-    background-color: hsl(172, 50%, 90%);
-    border-radius: 13px;
-    cursor: pointer;
-    user-select: none;
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.4rem;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  padding: 0.3rem 0.5rem;
+  background-color: hsl(172, 50%, 90%);
+  border-radius: 13px;
+  cursor: pointer;
+  user-select: none;
 }
 
 @media (min-width: 1000px) {
-    .Output__CopyButton {
-        bottom: 2rem;
-        font-size: 1.5rem;
-    }
-    
-    .Output__CopyButton:hover {
-        background-color: hsl(172, 42%, 84%);
-    }
+  .Output__CopyButton {
+    bottom: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .Output__CopyButton:hover {
+    background-color: hsl(172, 42%, 84%);
+  }
 }
 
 .Output__CopyButton:active {
-    background-color: rgb(138, 165, 162);
+  background-color: rgb(138, 165, 162);
 }
 
 .Output__CopyIcon {
-    height: 1.4rem;
+  height: 1.4rem;
 }
 
-
-
 /* *** */
-
-
 
 /* ALTERNATIVE OPTIONS */
 /* components/Home/subcomponents/AlternaiveOptionsDesktop */
 .AOD__GeneralDiv {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0.2rem;
-    font-size: 1.3rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.2rem;
+  font-size: 1.3rem;
 }
 
 @media (min-width: 850px) {
-    .AOD__GeneralDiv {
-        justify-content: flex-start;
-        padding-left: 50.5%;
-    }
+  .AOD__GeneralDiv {
+    justify-content: flex-start;
+    padding-left: 50.5%;
+  }
 }
 
 #AOD__SwitchCheckbox {
-    display: none;
-    width: 1rem;
-    height: 1rem;
-    margin-top: 0.25rem;
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.25rem;
 }
 
-#AOD__SwitchCheckbox:checked+#AOD__SwitchLabel::after {
-    left: 1.6rem;
+#AOD__SwitchCheckbox:checked + #AOD__SwitchLabel::after {
+  left: 1.6rem;
 }
 
-#AOD__SwitchCheckbox:checked+#AOD__SwitchLabel {
-    background-color: rgb(59, 175, 164);
+#AOD__SwitchCheckbox:checked + #AOD__SwitchLabel {
+  background-color: rgb(59, 175, 164);
 }
 
 #AOD__SwitchLabel {
-    position: relative;
-    display: inline-block;
-    width: 3.5rem;
-    height: 2rem;
-    background-color: rgb(209, 224, 222);
-    border-radius: 1.1rem;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 3.5rem;
+  height: 2rem;
+  background-color: rgb(209, 224, 222);
+  border-radius: 1.1rem;
+  cursor: pointer;
 }
 
 #AOD__SwitchLabel::after {
-    content: "";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 1.6rem;
-    height: 1.6rem;
-    top: 0.19rem;
-    left: 0.3rem;
-    /* outline: rgb(218, 217, 217) solid 1px; */
-    border-radius: 50%;
-    background-color: white;
-    transition: all 0.3s;
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  top: 0.19rem;
+  left: 0.3rem;
+  /* outline: rgb(218, 217, 217) solid 1px; */
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s;
 }
 
 .AOD__TextDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 .AOD__MainText {
-    max-width: 21rem;
+  max-width: 21rem;
 }
 
 .AOD__Tooltip {
-    position: relative;
-    font-size: 1.2rem;
-    opacity: 0.8;
-    margin-left: -0.1rem;
-    padding: 0.3rem 0.7rem;
-    width: max-content;
-    background-color: rgb(233, 248, 246);
-    border-radius: 1rem;
-    cursor: help;
+  position: relative;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-left: -0.1rem;
+  padding: 0.3rem 0.7rem;
+  width: max-content;
+  background-color: rgb(233, 248, 246);
+  border-radius: 1rem;
+  cursor: help;
 }
 
 .AOD__TooltipText {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    top: 95%;
-    left: 10%;
-    width: 28rem;
-    background-color: rgb(233, 248, 246);
-    padding: 0.8rem 1rem;
-    border-radius: 1rem;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 95%;
+  left: 10%;
+  width: 28rem;
+  background-color: rgb(233, 248, 246);
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
 }
 
 .AOD__Tooltip:hover .AOD__TooltipText {
-    display: unset;
+  display: unset;
 }
 
 .AOD__Tooltip:hover {
-    background-color: rgb(214, 237, 234);
+  background-color: rgb(214, 237, 234);
 }
 
 .AOD__TooltipLink {
-    color: hsl(174, 25%, 35%);
-    font-weight: 600;
-    text-underline-offset: 0.1rem;
+  color: hsl(174, 25%, 35%);
+  font-weight: 600;
+  text-underline-offset: 0.1rem;
 }
 
 .AOD__TooltipLink:hover {
-    color: hsl(174, 15%, 25%);
+  color: hsl(174, 15%, 25%);
 }
 
 .AOD__TooltipWarning {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
-
 
 /* components/Home/subcomponents/AlternativeOptionsMobile */
 .AOM__GeneralDiv {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 0.8rem;
-    margin-top: 1rem;
-    margin-bottom: 5rem;
-    padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  padding: 0 10%;
 }
 
 .AOM__Button {
-    border: 1px solid rgb(57, 89, 86);
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    background-color: rgb(214, 237, 234);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
+  border: 1px solid rgb(57, 89, 86);
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: rgb(214, 237, 234);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .AOM__ButtonActive {
-    background-color: hsl(174, 25%, 40%);
+  background-color: hsl(174, 25%, 40%);
 }
 
-.AOM__ButtonActive>.AOM__ButtonText {
-    color: white;
+.AOM__ButtonActive > .AOM__ButtonText {
+  color: white;
 }
 
 .AOM__ButtonIcon,
 .AOM__ButtonIconActive {
-    width: 2rem;
-    height: 100%;
+  width: 2rem;
+  height: 100%;
 }
 
 .AOM__ButtonIcon svg,
 .AOM__ButtonIconActive svg {
-    height: 1rem;
-    width: 1rem;
+  height: 1rem;
+  width: 1rem;
 }
 
 .AOM__ButtonIconActive {
-    fill: white;
+  fill: white;
 }
 
 .AOM__ButtonText {
-    text-align: left;
-    width: 15rem;
+  text-align: left;
+  width: 15rem;
 }
 
-.AOM__Description, .AOM__Description * {
-    text-align: left;
-    color: rgb(58, 90, 87, 0.8);
+.AOM__Description,
+.AOM__Description * {
+  text-align: left;
+  color: rgb(58, 90, 87, 0.8);
 }
 
 .AOM__DescriptionLink {
-    color: hsl(174, 25%, 35%);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.1rem;
+  color: hsl(174, 25%, 35%);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.1rem;
 }
 
 .AOM__TooltipWarning {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-
-
 /* *** */
-
-
 
 /* KNOWLEDGE*/
 /* page: Knowledge */
 .Know__Title {
-    padding-left: 15px;
-    margin: 4rem 0 1rem 0;
+  padding-left: 15px;
+  margin: 4rem 0 1rem 0;
 }
 
 @media (min-width: 1000px) {
-    .Know__Title {
-        margin-top: 6.5rem;
-        font-size: 3rem;
-    }
+  .Know__Title {
+    margin-top: 6.5rem;
+    font-size: 3rem;
+  }
 }
 
 .Know__ItemsDisplay {
-    margin: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 40rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 40rem;
 }
 
 @media (min-width: 1000px) {
-    .Know__ItemsDisplay {
-        margin-top: 2rem;
-        gap: 1.5rem;
-    }
+  .Know__ItemsDisplay {
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
 }
-
 
 /* component: Knowledge/KnowledgeItem */
 .KnowItem__GeneralDiv {
-    position: relative;
+  position: relative;
 }
 
 .KnowItem__DesktopAnchor {
-    position: absolute;
-    top: -5rem;
+  position: absolute;
+  top: -5rem;
 }
 
 .KnowItem__MobileAnchor {
-    position: absolute;
-    top: -4rem;
+  position: absolute;
+  top: -4rem;
 }
 
 .KnowItem__ItemBody {
-    background-color: transparent;
-    border: 1px solid rgb(57, 89, 86);
-    padding: 0;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
+  background-color: transparent;
+  border: 1px solid rgb(57, 89, 86);
+  padding: 0;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 @media (min-width: 1000px) {
-    .KnowItem__ItemBody {
-        gap: 1.5rem;
-    }
+  .KnowItem__ItemBody {
+    gap: 1.5rem;
+  }
 }
 
 .KnowQuestion__OpenCloseSymbol {
-    font-size: 1rem;
-    height: 1.3rem;
-    opacity: 0.8;
+  font-size: 1rem;
+  height: 1.3rem;
+  opacity: 0.8;
 }
-
 
 /* component: Knowledge/KnowledgeItemQuestion */
 .KnowQuestion__Button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(233, 248, 246);
-    width: 100%;
-    padding: 1rem;
-    gap: 1rem;
-    border: none;
-    border-radius: 1rem;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(233, 248, 246);
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 
 .KnowQuestion__Button:hover {
-    background-color: hsl(173, 44%, 84%);
+  background-color: hsl(173, 44%, 84%);
 }
 
 .KnowQuestion__ButtonOpen {
-    border-radius: 1rem 1rem 0 0;
-    border-bottom: 1px solid rgb(57, 89, 86);
-    background-color: hsl(173, 44%, 84%);
+  border-radius: 1rem 1rem 0 0;
+  border-bottom: 1px solid rgb(57, 89, 86);
+  background-color: hsl(173, 44%, 84%);
 }
 
 .KnowQuestion__ButtonOpen:hover {
-    background-color: hsl(173, 34%, 74%);
+  background-color: hsl(173, 34%, 74%);
 }
 
 .KnowQuestion__Text {
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: start;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: start;
 }
 
 @media (min-width: 1000px) {
-    .KnowQuestion__Text {
-        font-size: 1.5rem;
-    }
+  .KnowQuestion__Text {
+    font-size: 1.5rem;
+  }
 }
-
 
 /* component: Knowledge/KnowledgeItemAnswer */
 .KnowAnswer__GeneralDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 @media (min-width: 1000px) {
-    .KnowAnswer__GeneralDiv {
-        font-size: 1.5rem;
-    }
+  .KnowAnswer__GeneralDiv {
+    font-size: 1.5rem;
+  }
 }
-
-
 
 /* *** */
 
-
-
 /* CONTACTS*/
-/* page: Contacts */
+/* pages/Contacts */
 .Contacts__GeneralDiv {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 .Contacts__Title {
-    margin: 4rem 0 1rem 0;
-    font-size: 2rem;
+  margin: 4rem 0 1rem 0;
+  font-size: 2rem;
 }
 
 @media (min-width: 1000px) {
-    .Contacts__Title {
-        margin-top: 6.5rem;
-        font-size: 3rem;
-    }
+  .Contacts__Title {
+    margin-top: 6.5rem;
+    font-size: 3rem;
+  }
 }
 
 @media (min-width: 1000px) {
-    .Contacts__Description {
-        font-size: 1.5rem;
-    }
+  .Contacts__Description {
+    font-size: 1.5rem;
+  }
 }
 
 .Contacts__Buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
 }
 
 @media (min-width: 650px) {
-    .Contacts__Buttons {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+  .Contacts__Buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
-@media (min-width: 1400px) {
-    .Contacts__Buttons {
-        justify-content: flex-start;
-        gap: 5%;
-    }
+@media (min-width: 1630px) {
+  .Contacts__Buttons {
+    justify-content: flex-start;
+    gap: 5%;
+  }
 }
 
+/* @media (min-width: 1400px) {
+  .Contacts__Buttons {
+    justify-content: flex-start;
+    gap: 5%;
+  }
+} */
 
 /* component: Contacts/ContactsButton */
 .ContactsButton__GeneralDiv {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid rgb(57, 89, 86);
-    border-radius: 0.8rem;
-    padding: 0.5rem 1rem 0 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid rgb(57, 89, 86);
+  border-radius: 0.8rem;
+  padding: 0.5rem 1rem 0 1rem;
 }
 
 .ContactsButton__GeneralDiv:active {
-    background-color: rgb(233, 248, 246);
+  background-color: rgb(233, 248, 246);
 }
 
 @media (min-width: 650px) {
-    .ContactsButton__GeneralDiv {
-        width: 45%;
-        padding: 1rem 1rem 0 1rem;
-        cursor: pointer;
-    }
+  .ContactsButton__GeneralDiv {
+    width: 45%;
+    padding: 1rem 1rem 0 1rem;
+    cursor: pointer;
+  }
 
-    .ContactsButton__GeneralDiv:hover {
-        background-color: rgb(233, 248, 246);
-    }
+  .ContactsButton__GeneralDiv:hover {
+    background-color: rgb(233, 248, 246);
+  }
 
-    .ContactsButton__GeneralDiv:hover .Contact__TextHalf__CopyButton {
-        background-color: white;
-    }
+  .ContactsButton__GeneralDiv:hover .Contact__TextHalf__CopyButton {
+    background-color: white;
+  }
 }
 
 @media (min-width: 1000px) {
-    .ContactsButton__GeneralDiv {
-        padding: 1rem 1.5rem 0 1.5rem;
-    }
+  .ContactsButton__GeneralDiv {
+    padding: 1rem 1.5rem 0 1.5rem;
+  }
 }
 
-@media (min-width: 1400px) {
-    .ContactsButton__GeneralDiv {
-        width: 30%;
-        max-width: 30rem;
-    }
-
+@media (min-width: 1630px) {
+  .ContactsButton__GeneralDiv {
+    width: 30%;
+    max-width: 30rem;
+  }
 }
+
+/* @media (min-width: 1400px) {
+  .ContactsButton__GeneralDiv {
+    width: 30%;
+    max-width: 30rem;
+  }
+} */
 
 .ContactsButton__GeneralDiv:active .ContactsButton__Button {
-    background-color: hsl(172, 30%, 70%);
-    opacity: 1;
-    color: white;
+  background-color: hsl(172, 30%, 70%);
+  opacity: 1;
+  color: white;
 }
 
 .ContactsButton__TextsDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 @media (min-width: 1000px) {
-    .ContactsButton__TextsDiv {
-        gap: 1rem;
-    }
+  .ContactsButton__TextsDiv {
+    gap: 1rem;
+  }
 }
 
 .ContactsButton__Title {
-    margin: 0;
-    font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 1000px) {
-    .ContactsButton__Title {
-        font-size: 2rem;
-    }
+  .ContactsButton__Title {
+    font-size: 2rem;
+  }
 }
 
 .ContactsButton__Subtitle {
-    margin: 0;
-    font-size: 1.3rem;
+  margin: 0;
+  font-size: 1.3rem;
+  word-break: break-all;
 }
 
 @media (min-width: 1000px) {
-    .ContactsButton__Subtitle {
-        font-size: 1.8rem;
-    }
+  .ContactsButton__Subtitle {
+    font-size: 1.8rem;
+  }
 }
 
 .ContactsButton__Button {
-    margin: 0;
-    margin-left: -1rem;
-    font-size: 1.2rem;
-    opacity: 0.8;
-    padding: 0.5rem;
-    background-color: rgb(233, 248, 246);
-    border-top: 2px solid rgb(57, 89, 86);
-    border-right: 2px solid rgb(57, 89, 86);
-    border-radius: 0 1rem 0 0.8rem;
-    width: fit-content;
+  margin: 0;
+  margin-left: -1rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  padding: 0.5rem;
+  background-color: rgb(233, 248, 246);
+  border-top: 2px solid rgb(57, 89, 86);
+  border-right: 2px solid rgb(57, 89, 86);
+  border-radius: 0 1rem 0 0.8rem;
+  width: fit-content;
 }
 
 @media (min-width: 650px) {
-    .ContactsButton__Button {
-        margin-left: -1rem;
-    }
+  .ContactsButton__Button {
+    margin-left: -1rem;
+  }
 }
 
 @media (min-width: 1000px) {
-    .ContactsButton__Button {
-        font-size: 1.7rem;
-        margin-left: -1.5rem;
-    }
+  .ContactsButton__Button {
+    font-size: 1.7rem;
+    margin-left: -1.5rem;
+  }
 }
 
 .ContactsButton__Image {
-    width: 5rem;
-    position: absolute;
-    top: -0.7rem;
-    right: -0.7rem;
+  width: 5rem;
+  position: absolute;
+  top: -0.7rem;
+  right: -0.7rem;
 }
 
-@media (min-width: 1840px) {
-    .ContactsButton__Image {
-        position: static;
-        width: 5.8rem;
-    }
+@media (min-width: 2030px) {
+  .ContactsButton__Image {
+    position: static;
+    width: 5.8rem;
+  }
 }
 
-
+/* @media (min-width: 1840px) {
+  .ContactsButton__Image {
+    position: static;
+    width: 5.8rem;
+  }
+} */
 
 /* *** */
-
-
 
 /* NOT FOUND */
 /* page: NotFound */
 .NF__GeneralDiv {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 .NF__Title {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 @media (min-width: 1000px) {
-    .NF__Title {
-        margin-top: 6.5rem;
-        font-size: 3rem;
-    }
+  .NF__Title {
+    margin-top: 6.5rem;
+    font-size: 3rem;
+  }
 }
 
 .NF__Description {
-    margin: 0;
-    font-size: 1.2rem;
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 @media (min-width: 1000px) {
-    .NF__Description {
-        font-size: 1.5rem;
-    }
+  .NF__Description {
+    font-size: 1.5rem;
+  }
 }
 
 .NF__Buttons {
-    list-style: none;
-    margin: 2rem 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.4rem;
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
 }
 
 @media (min-width: 1000px) {
-    .NF__Buttons {
-        flex-direction: row;
-        width: 80%;
-        margin: 2rem auto;
-    }
+  .NF__Buttons {
+    flex-direction: row;
+    width: 80%;
+    margin: 2rem auto;
+  }
 }
-
 
 /* component: NotFound/NotFoundButton */
 .NFButton__General {
-    background: rgb(59, 175, 164);
-    padding: 1rem;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    border-radius: 1rem;
-    cursor: pointer;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
+  background: rgb(59, 175, 164);
+  padding: 1rem;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 @media (min-width: 600px) {
-    .NFButton__General {
-        width: 70%;
-    }
+  .NFButton__General {
+    width: 70%;
+  }
 }
 
 @media (min-width: 700px) {
-    .NFButton__General {
-        width: 60%;
-    }
+  .NFButton__General {
+    width: 60%;
+  }
 }
 
 @media (min-width: 1000px) {
-    .NFButton__General {
-        padding: 2rem;
-        font-size: 1.7rem;
-        letter-spacing: 0.1rem;
-        max-width: 30rem;
-        height: 7rem;
-    }
+  .NFButton__General {
+    padding: 2rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    max-width: 30rem;
+    height: 7rem;
+  }
 }
 
 @media (min-width: 1480px) {
-    .NFButton__General {
-        height: unset;
-    }
+  .NFButton__General {
+    height: unset;
+  }
 }
 
 .NFButton__General:hover {
-    background-color: rgb(47, 143, 133);
-    transition-duration: 0.5s;
+  background-color: rgb(47, 143, 133);
+  transition-duration: 0.5s;
 }
 
-
-
 /* *** */
-
-
 
 /* MAPOUTPUT */
 /* utilities/Home/mapOutput */
 .TriggerLetter {
-    background-color: rgb(198, 245, 238);
-    position: relative;
-    display: inline-block;
-    justify-content: center;
-    padding: 2px;
-    margin: 0 0.1rem;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: rgb(198, 245, 238);
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  padding: 2px;
+  margin: 0 0.1rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .TriggerLetter:hover {
-    background-color: hsl(171, 60%, 77%);
+  background-color: hsl(171, 60%, 77%);
 }
 
 .TriggerLetterActive {
-    background-color: rgb(57, 89, 86, 0.8);
-    color: white;
+  background-color: rgb(57, 89, 86, 0.8);
+  color: white;
 }
 
 .TriggerLetterActive:hover {
-    background-color: hsla(174, 32%, 39%);
+  background-color: hsla(174, 32%, 39%);
 }
 
 .TriggerLetter__Options {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    z-index: 1;
-    top: 0%;
-    left: 120%;
-    background-color: rgb(214, 237, 234);
-    box-shadow: 0px 2px 5px rgb(81, 81, 81);
-    border-radius: 0.5rem;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  top: 0%;
+  left: 120%;
+  background-color: rgb(214, 237, 234);
+  box-shadow: 0px 2px 5px rgb(81, 81, 81);
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .TriggerLetter__SingleOption {
-    padding: 0.3rem 0rem;
-    margin: 0 1rem;
-    text-align: center;
-    width: 100%;
-    border-radius: 0.5rem;
+  padding: 0.3rem 0rem;
+  margin: 0 1rem;
+  text-align: center;
+  width: 100%;
+  border-radius: 0.5rem;
 }
 
 .TriggerLetter__SingleOption:first-of-type {
-    padding-top: 0.7rem;
+  padding-top: 0.7rem;
 }
 
 .TriggerLetter__SingleOption:last-of-type {
-    padding-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
 }
 
 .TriggerLetter__SingleOption:hover {
-    background-color: rgb(201, 223, 220);
+  background-color: rgb(201, 223, 220);
 }
-
-
-
 
 /* Map Output Test */
 .SpecialChar {
-    display: inline;
-    position: relative;
-    cursor: pointer;
+  display: inline;
+  position: relative;
+  cursor: pointer;
 }
 
 .SpecialCharOptions {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    bottom: -0.35rem;
-    right: -1.1rem;
-    background: hsl(40, 80%, 80%);
-    padding: 0.1rem 0.2rem;
-    cursor: pointer;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: -0.35rem;
+  right: -1.1rem;
+  background: hsl(40, 80%, 80%);
+  padding: 0.1rem 0.2rem;
+  cursor: pointer;
 }
 
 .SpecialChar:hover > .SpecialCharOptions {
-    display: unset;
+  display: unset;
 }
