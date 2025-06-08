@@ -101,7 +101,7 @@ That is, of these 3 letters 2 are parts of one digraph and since "ts" comes firs
 Clone this repo:
 
 ```
-git clone https://github.com/chalupa-bazooka/georgian-transliterator.git
+git@github.com:elmijail1/georgian-transliterator.git
 ```
 
 Here are things that can be improved:
