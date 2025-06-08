@@ -88,7 +88,7 @@ Fortunately for me, Latin-Georgian transliterator doesn't have to deal with many
 
 If you're struggling to think of an example of such things happening in any language, here are several examples: the word "watch" in English has the trigraph "tch" which represents one sound entity /tʃ/ (similar to "ch" in "chair"). Or a more consistent phenomenon: "sch" in the German word "schade" (too bad). "Sch" represents just 1 sound entity /ʃ/ (as "sh" in "shake").
 
-Anyway, back to the transliterator. I've discovered only one occurrence when the transliterator has to assess 3 Latin characters as 1 entity. But it's not exactly a digraph as it is transliterated to a 2-character Georgian output. I believe that an example will make it more clear:
+Anyway, back to the transliterator. I've discovered only one occurrence when the transliterator has to assess 3 Latin characters as 1 entity. But it's not exactly a trigraph as it is transliterated to a 2-character Georgian output. I believe that an example will make it more clear:
 
 ![Translitearting "paketshi"](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWExbG9vaXNyN2tydTY5bTRsNXU4NHhvMm43c3U5N2JxcHd3Nm51NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/j2ISH1ZMbnFIWXXyzy/giphy.gif)
 
